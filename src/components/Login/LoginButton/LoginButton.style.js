@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonWrapper = styled.div`
+export const LoginButtonDiv = styled.div`
   border: 1px solid #999999;
   border-radius: 10px;
 
@@ -9,7 +9,7 @@ export const ButtonWrapper = styled.div`
   font-weight: bold;
 
   width: 130px;
-  height: 30px;
+  height: 50px;
 
   display: flex;
   justify-content: center;
@@ -17,6 +17,8 @@ export const ButtonWrapper = styled.div`
 
   cursor: pointer;
 `;
+
+export default LoginButtonDiv;
 
 // NOTICE: 참고용1 (개발화라리)
 
