@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import { GlobalStyles } from "./commonStyles";
+
 import TestPage from "./routes/TestPage";
 import LoginPage from "./routes/LoginPage";
 import ErrorPage from "./routes/ErrorPage";
@@ -9,6 +11,7 @@ import LandingPage from "./routes/LandingPage";
 function App() {
   return (
     <Router>
+      <GlobalStyles />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/test" element={<TestPage />} />
