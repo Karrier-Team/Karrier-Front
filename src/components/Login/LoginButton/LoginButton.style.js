@@ -8,8 +8,9 @@ export const LoginButtonDiv = styled.div`
   color: white;
   font-weight: bold;
 
-  width: 130px;
-  height: 50px;
+  width: 430px;
+  height: 55px;
+  margin: 3em;
 
   display: flex;
   justify-content: center;
@@ -275,3 +276,21 @@ export const PostSubmit = styled.div`
   font-size: 20px;
 `;
 // export default MediaDiv;
+
+// NOTICE: 참고용3 (처음만난리액트
+
+const Wrapper = styled.div`
+  width: calc(100% - 32px);
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border: 1px solid grey;
+  border-radius: 8px;
+  cursor: pointer;
+  background: white;
+  :hover {
+    background: lightgrey;
+  }
+`;
