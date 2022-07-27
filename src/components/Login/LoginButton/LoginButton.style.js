@@ -4,7 +4,7 @@ export const LoginButtonDiv = styled.div`
   border: 1px solid #999999;
   border-radius: 10px;
 
-  background-color: #007cc6;
+  background-color: #2c8ecb;
   color: white;
   font-weight: bold;
 
