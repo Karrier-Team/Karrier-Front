@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginButtonDiv = styled.div`
+export const LoginButtonInput = styled.input`
   border: 1px solid #999999;
   border-radius: 10px;
 
@@ -19,7 +19,7 @@ export const LoginButtonDiv = styled.div`
   cursor: pointer;
 `;
 
-export default LoginButtonDiv;
+export default LoginButtonInput;
 
 // NOTICE: 참고용1 (개발화라리)
 

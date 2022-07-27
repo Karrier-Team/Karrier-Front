@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import * as S from "./LoginButton.style";
 
-export function LoginButton() {
-  return <S.LoginButtonDiv onClick={() => console.log("clicked login button")}>LOGIN</S.LoginButtonDiv>;
+export function LoginButton({ handleSubmit }) {
+  return <S.LoginButtonInput onClick={handleSubmit} value="LOGIN" type="button"></S.LoginButtonInput>;
 }
 
 export default memo(LoginButton);
