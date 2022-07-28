@@ -9,8 +9,10 @@ import SocialLoginSection from "../components/Login/SocialLoginSection";
 
 // styled-components
 const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
 
   display: flex;
   flex-direction: column;
@@ -26,8 +28,7 @@ const ErrorParap = styled.div`
 export function LoginPage() {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [repasswordValue, setRepasswordValue] = useState("");
-  const [errorInfo, setErrorInfo] = useState({ emailError: "", passwordError: "", repasswordError: "" });
+  const [errorInfo, setErrorInfo] = useState({ emailError: "", passwordError: "" });
 
   function handleSubmit() {
     setErrorInfo(utils.validate(emailValue, passwordValue));
