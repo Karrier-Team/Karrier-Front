@@ -30,11 +30,7 @@ function SubDropdown({ college: idx }) {
   return (
     <SubDropdownWrapper>
       <StyledH1>{colleges[idx].college}</StyledH1>
-      <FlexWrapper
-        onMouseLeave={() => {
-          console.log("mouse leave");
-        }}
-      >
+      <FlexWrapper>
         {colleges[idx].departments.map((dept, idx) => {
           return <S.StyledDropdownLi key={idx}>{dept}</S.StyledDropdownLi>;
         })}
