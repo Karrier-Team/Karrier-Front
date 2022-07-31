@@ -8,6 +8,7 @@ import LoginPage from "./routes/LoginPage";
 import SignupPage from "./routes/SignupPage";
 import ErrorPage from "./routes/ErrorPage";
 import LandingPage from "./routes/LandingPage";
+import MentorPage from "./routes/MentorPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/mentor/:id" element={<MentorPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
