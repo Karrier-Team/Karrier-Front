@@ -4,11 +4,12 @@ import styled from "styled-components";
 // components
 import AdBar from "../components/Mentor/Adbar";
 import ProfileImg from "../components/Mentor/ProfileImg";
+import MentorContactSection from "../components/Mentor/MentorContactSection";
+import MentorInfoSection from "../components/Mentor/MentorInfoSection";
 
 const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: red;
   display: flex;
 `;
 
@@ -18,18 +19,17 @@ const LeftsideWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 30%;
-  background-color: blue;
 `;
 
 const MainWrapper = styled.div`
-  width: 100%;
+  width: 70%;
   height: 100%;
   background-color: green;
 `;
 
 const UpperMainWrapper = styled.div`
   width: 100%;
-  height: 50%;
+  height: calc(100vw * 0.3);
   background-color: yellow;
 `;
 
@@ -50,10 +50,10 @@ function MentorPage() {
       <Wrapper>
         <LeftsideWrapper>
           <ProfileImg />
-          {/* <MentorContactSection />
-        <MentorInfoSection />
-        <MentoringInfoSection />
-        <MentorSubMenu /> */}
+          <MentorContactSection />
+          <MentorInfoSection />
+          {/* <MentoringInfoSection /> */}
+          {/* <MentorSubMenu /> */}
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper></UpperMainWrapper>

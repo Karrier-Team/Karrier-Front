@@ -5,8 +5,7 @@ import DefaultProfileImg from "../../../images/DefaultProfileImg.jpeg";
 
 const Box = styled.div`
   width: 100%;
-  /* height: 60px; */
-  padding-bottom: 100%;
+  height: calc(100vw * 0.3);
 `;
 
 const Img = styled.img`
@@ -21,7 +20,7 @@ const Img = styled.img`
 function ProfileImg() {
   return (
     <Box>
-      <Img src={DefaultProfileImg} alt="profile img"></Img>
+      <Img src={DefaultProfileImg} alt="img"></Img>
     </Box>
   );
 }
