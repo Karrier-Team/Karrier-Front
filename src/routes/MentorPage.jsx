@@ -6,6 +6,7 @@ import AdBar from "../components/Mentor/Adbar";
 import ProfileImg from "../components/Mentor/ProfileImg";
 import MentorContactSection from "../components/Mentor/MentorContactSection";
 import MentorInfoSection from "../components/Mentor/MentorInfoSection";
+import MentoringInfoSection from "../components/Mentor/MentoringInfoSection";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -40,10 +41,6 @@ const LowerMainWrapper = styled.div`
 `;
 
 function MentorPage() {
-  useEffect(() => {
-    console.log("This is Mentor Page");
-  }, []);
-
   return (
     <>
       <AdBar />
@@ -52,8 +49,7 @@ function MentorPage() {
           <ProfileImg />
           <MentorContactSection />
           <MentorInfoSection />
-          {/* <MentoringInfoSection /> */}
-          {/* <MentorSubMenu /> */}
+          <MentoringInfoSection />
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper></UpperMainWrapper>
