@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components";
-import * as S from "./MentorInfoSection";
+import * as S from "./MentorInfoSection.style";
 
 const Wrapper = styled.div`
   display: flex;
