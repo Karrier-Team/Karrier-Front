@@ -1,5 +1,58 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
+//style component
+const StyledProfileItem = styled.div`
+  width: 332px;
+  height: 430px;
+  border: solid 1px black;
+  background-color: aliceblue;
+  box-shadow: 5px 5px 10px grey;
+  display: flex;
+`;
+
+const StyledProfileItemInfo = styled.div`
+  background-color: green;
+  display: flex;
+  border: 1px solid black;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+`;
+
+//img
+const StyledImg = styled.div`
+  padding-bottom: 1rem;
+`;
+//name
+const StyledName = styled.span`
+  padding-bottom: 1rem;
+  font-family: S-CoreDream-6;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.48px;
+  text-align: left;
+  color: #c4c4c4;
+`;
+//major
+const StyledMajor = styled.span`
+  padding-bottom: 1rem;
+  font-family: S-CoreDream-6;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -1.8px;
+  text-align: left;
+  color: #c4c4c4;
+`;
+
+//ProfileItem div
 const ProfileItem = ({ name, major }) => {
   // state
   const [state, setState] = useState({
@@ -8,6 +61,7 @@ const ProfileItem = ({ name, major }) => {
     comment:
       "안녕하세요 컴퓨터 공학을 전공하여 멘토를 맡게 된 이승열 입니다 잘 부탁 드립니다",
   });
+
   const [hover, setHover] = useState(true);
 
   const handleMouseEnter = (e) => {
@@ -21,23 +75,27 @@ const ProfileItem = ({ name, major }) => {
   };
 
   return (
-    <div
-      className="ProfileItem"
+    <StyledProfileItem
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={
+        hover
+          ? { alignItems: "flex-end", justifyContent: "center" }
+          : { alignItems: "center" }
+      }
     >
       {hover ? (
-        <div className="ProfileItem__info">
-          <span className="ProfileItem--img"></span>
-          <span className="ProfileItem--name">{state.name}</span>
-          <span className="ProfileItem--major">{state.major}</span>
-        </div>
+        <StyledProfileItemInfo>
+          <StyledImg>img</StyledImg>
+          <StyledName>{state.name}</StyledName>
+          <StyledMajor>{state.major}</StyledMajor>
+        </StyledProfileItemInfo>
       ) : (
-        <div className="ProfilItem__content">
-          <p className="ProfileItem__comment">{state.comment}</p>
+        <div style={{ padding: 20 }}>
+          <p>{state.comment}</p>
         </div>
       )}
-    </div>
+    </StyledProfileItem>
   );
 };
 

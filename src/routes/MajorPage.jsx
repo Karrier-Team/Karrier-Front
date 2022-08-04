@@ -1,11 +1,13 @@
+import styled from "styled-components";
+
 import MajorInfoBar from "../components/Major/MajorInfoBar";
 import MajorInfo from "../components/Major/MajorInfo";
 import ProfileList from "../components/Profile/ProfileList";
 
 const MajorPage = () => {
   const dummyProps = {
-    college: "IT 대학",
-    major: "컴퓨터 학부",
+    college: "IT대학",
+    major: "컴퓨터학부",
   };
   return (
     <>
