@@ -1,5 +1,4 @@
 import React, { useEffect, memo } from "react";
-import Profile from "../components/Profile/Profile";
 
 function TestPage() {
   useEffect(() => {

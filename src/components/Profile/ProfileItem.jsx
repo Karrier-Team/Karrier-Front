@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "./Profile.css";
 
-const Profile = ({ name, major }) => {
+const ProfileItem = ({ name, major }) => {
   // state
   const [state, setState] = useState({
     name: "이승열",
@@ -23,23 +22,23 @@ const Profile = ({ name, major }) => {
 
   return (
     <div
-      className="Profile"
+      className="ProfileItem"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {hover ? (
-        <div className="Profile__info">
-          <span className="Profile--img"></span>
-          <span className="Profile--name">{state.name}</span>
-          <span className="Profile--major">{state.major}</span>
+        <div className="ProfileItem__info">
+          <span className="ProfileItem--img"></span>
+          <span className="ProfileItem--name">{state.name}</span>
+          <span className="ProfileItem--major">{state.major}</span>
         </div>
       ) : (
-        <div className="Profile__content">
-          <p className="Profile__comment">{state.comment}</p>
+        <div className="ProfilItem__content">
+          <p className="ProfileItem__comment">{state.comment}</p>
         </div>
       )}
     </div>
   );
 };
 
-export default Profile;
+export default ProfileItem;

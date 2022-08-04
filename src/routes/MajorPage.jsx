@@ -1,24 +1,20 @@
-import styled from "styled-components";
-// component
+import MajorInfoBar from "../components/Major/MajorInfoBar";
+import MajorInfo from "../components/Major/MajorInfo";
 import ProfileList from "../components/Profile/ProfileList";
-import Major from "../components/Major";
-
-// styled-components
-const Wrapper = styled.div`
-  position: relative;
-  height: 100%;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-`;
 
 const MajorPage = () => {
+  const dummyProps = {
+    college: "IT 대학",
+    major: "컴퓨터 학부",
+  };
   return (
-    <Wrapper>
-      <Major />
+    <>
+      {/* <nav></nav> */}
+      <MajorInfoBar college={dummyProps.college} major={dummyProps.major} />
+      <MajorInfo college={dummyProps.college} major={dummyProps.major} />
       <ProfileList />
-    </Wrapper>
+      {/* footer */}
+    </>
   );
 };
 export default MajorPage;
