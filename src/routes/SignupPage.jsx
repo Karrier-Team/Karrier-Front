@@ -10,8 +10,10 @@ import SocialLoginSection from "../components/Login/SocialLoginSection";
 
 // styled-components
 const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
 
   display: flex;
   flex-direction: column;
