@@ -1,4 +1,5 @@
-import React, { useState, useEffect, memo, useCallback } from "react";
+import React, { memo, useCallback } from "react";
+import { NavLink, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -13,10 +14,30 @@ const Wrapper = styled.div`
   padding-top: 1px;
   padding-left: 1px;
 
-  div {
+  * {
     border: 1px solid #dadada;
     margin-top: -1px;
     margin-left: -1px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    grid-row: auto / span 1;
+    grid-column: auto / span 1;
+
+    :last-child {
+      grid-column: span 2;
+      cursor: default;
+    }
+    :not(:last-child):hover {
+      background-color: #f0f0f0;
+    }
+
+    text-decoration: none;
+    color: black;
   }
 
   .left {
@@ -33,16 +54,12 @@ const Wrapper = styled.div`
     ~ .left:hover {
       background-color: #0078be;
       color: white;
+      cursor: pointer;
     }
   }
 
-  .activatedLeft {
-    background-color: #0078be;
-    color: white;
-  }
-
   .onemore {
-    grid-row: auto / span 2;
+    grid-row: 8 / -2;
   }
 
   .sub-content {
@@ -61,46 +78,47 @@ const Wrapper = styled.div`
     grid-column: 2 / -1;
     grid-row: 2 / -2;
   }
-
-  .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-row: auto / span 1;
-    grid-column: auto / span 1;
-    :last-child {
-      grid-column: 5 / -1;
-    }
-    :not(:last-child):hover {
-      background-color: #f0f0f0;
-    }
-  }
 `;
 
 function UpperMainGrid({ sub_content, main_content, mentorCarrierMenu, setMentorCarrierMenu }) {
   const handleOnClick = useCallback((e) => {
     setMentorCarrierMenu(e.target.getAttribute("value"));
   }, []);
+
+  const activeProgramStyle = {
+    backgroundColor: "#f0f0f0",
+  };
+
+  const activeLeftStyle = {
+    backgroundColor: "#0078be",
+    color: "white",
+  };
+
+  const [searchParams] = useSearchParams();
+  const activeLink = searchParams.get("program");
+
   return (
     <>
       <Wrapper>
-        <div className="left">멘토 소개</div>
-        <div className={`left ${mentorCarrierMenu === "regular_info" ? "activatedLeft" : ""}`} value="regular_info" onClick={handleOnClick}>
-          기본 소개
+        <div className="left" value="tags_info">
+          #태그
         </div>
-        <div className={`left ${mentorCarrierMenu === "university_info" ? "activatedLeft" : ""}`} value="university_info" onClick={handleOnClick}>
-          대학 소개
+        <div className="left" style={mentorCarrierMenu === "mentor_info" ? activeLeftStyle : null} value="mentor_info" onClick={handleOnClick}>
+          멘토 소개
         </div>
-        <div className={`left ${mentorCarrierMenu === "club_info" ? "activatedLeft" : ""}`} value="club_info" onClick={handleOnClick}>
+        <div className="left" style={mentorCarrierMenu === "club_info" ? activeLeftStyle : null} value="club_info" onClick={handleOnClick}>
           동아리
         </div>
-        <div className={`left ${mentorCarrierMenu === "offline_info" ? "activatedLeft" : ""}`} value="offline_info" onClick={handleOnClick}>
-          오프라인
-        </div>
-        <div className={`left ${mentorCarrierMenu === "competition_info" ? "activatedLeft" : ""}`} value="competition_info" onClick={handleOnClick}>
+        <div className="left" style={mentorCarrierMenu === "competition_info" ? activeLeftStyle : null} value="competition_info" onClick={handleOnClick}>
           공모전
         </div>
-        <div className={`left ${mentorCarrierMenu === "blog_info" ? "activatedLeft" : ""}`} value="blog_info" onClick={handleOnClick}>
+        <div className="left" style={mentorCarrierMenu === "activities_info" ? activeLeftStyle : null} value="activities_info" onClick={handleOnClick}>
+          대외활동
+        </div>
+        <div className="left" style={mentorCarrierMenu === "intern_info" ? activeLeftStyle : null} value="intern_info" onClick={handleOnClick}>
+          인턴
+        </div>
+        <div className="left" style={mentorCarrierMenu === "blog_info" ? activeLeftStyle : null} value="blog_info" onClick={handleOnClick}>
           블로그
         </div>
         <div className="left onemore">+</div>
@@ -108,11 +126,19 @@ function UpperMainGrid({ sub_content, main_content, mentorCarrierMenu, setMentor
         <div className="sub-content">{sub_content}</div>
         <div className="main-content">{main_content}</div>
 
-        <div className="footer">프로그램소개</div>
-        <div className="footer">커리큘럼</div>
-        <div className="footer">수강후기</div>
-        <div className="footer">질의응답</div>
-        <div className="footer"></div>
+        <NavLink to="?program=introduction" style={activeLink === "introduction" ? activeProgramStyle : null}>
+          프로그램소개
+        </NavLink>
+        <NavLink to="?program=curriculum" style={activeLink === "curriculum" ? activeProgramStyle : null}>
+          커리큘럼
+        </NavLink>
+        <NavLink to="?program=review" style={activeLink === "review" ? activeProgramStyle : null}>
+          수강후기
+        </NavLink>
+        <NavLink to="?program=qna" style={activeLink === "qna" ? activeProgramStyle : null}>
+          질의응답
+        </NavLink>
+        <NavLink to="#"></NavLink>
       </Wrapper>
     </>
   );
