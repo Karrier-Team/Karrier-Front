@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledMajorInfoBar = styled.div`
-  height: 5.5vh;
+  height: 4.7396vw;
   background-color: #fbfbfb;
   display: flex;
   align-items: center;

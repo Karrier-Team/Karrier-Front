@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const StyledMajorInfo = styled.div`
-  height: 50vh;
+  height: 33.9583vw;
   background-color: yellowgreen;
   display: flex;
   flex-direction: column;

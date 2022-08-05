@@ -3,16 +3,17 @@ import styled from "styled-components";
 
 //style component
 const StyledProfileItem = styled.div`
-  width: 332px;
-  height: 430px;
+  width: 22.0313vw;
+  height: 29.5833vw;
   border: solid 1px black;
   background-color: aliceblue;
   box-shadow: 5px 5px 10px grey;
   display: flex;
+  background-color: aqua;
 `;
 
 const StyledProfileItemInfo = styled.div`
-  background-color: green;
+  background-color: black;
   display: flex;
   border: 1px solid black;
   width: 100%;
@@ -81,7 +82,7 @@ const ProfileItem = ({ name, major }) => {
       style={
         hover
           ? { alignItems: "flex-end", justifyContent: "center" }
-          : { alignItems: "center" }
+          : { alignItems: "center", opacity: 0.7 }
       }
     >
       {hover ? (
@@ -99,4 +100,4 @@ const ProfileItem = ({ name, major }) => {
   );
 };
 
-export default ProfileItem;
+export default React.memo(ProfileItem);
