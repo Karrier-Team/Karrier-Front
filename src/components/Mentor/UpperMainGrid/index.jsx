@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { memo, useCallback } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
@@ -83,7 +84,7 @@ const Wrapper = styled.div`
 function UpperMainGrid({ sub_content, main_content, mentorCarrierMenu, setMentorCarrierMenu }) {
   const handleOnClick = useCallback((e) => {
     setMentorCarrierMenu(e.target.getAttribute("value"));
-  }, []);
+  });
 
   const activeProgramStyle = {
     backgroundColor: "#f0f0f0",

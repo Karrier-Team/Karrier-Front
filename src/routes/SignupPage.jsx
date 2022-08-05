@@ -1,5 +1,4 @@
-import React, { useState, useEffect, memo, useRef } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
 import styled from "styled-components";
 import * as utils from "../utils/index";
 

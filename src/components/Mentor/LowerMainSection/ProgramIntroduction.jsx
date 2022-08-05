@@ -1,5 +1,5 @@
-import React, { useState, useEffect, memo } from "react";
-import styled from "styled-components";
+import React, { memo } from "react";
+// import styled from "styled-components";
 import * as S from "./LowerMainSection.stlye";
 
 function ProgramIntroduction({ content }) {

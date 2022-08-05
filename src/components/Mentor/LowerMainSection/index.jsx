@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import * as S from "./LowerMainSection.stlye";
 

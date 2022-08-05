@@ -1,5 +1,4 @@
-import React, { useState, useEffect, memo } from "react";
-import styled from "styled-components";
+import React, { useState, memo } from "react";
 
 import * as S from "./Navbar.style";
 

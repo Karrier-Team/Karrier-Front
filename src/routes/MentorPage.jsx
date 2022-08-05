@@ -59,7 +59,7 @@ function MentorPage() {
   const [mentorCarrierMenu, setMentorCarrierMenu] = useState("mentor_info");
   const [mentorCarrierContent, setMentorCarrierContent] = useState("");
   const [mentorProgramContent, setMentorProgramContent] = useState("null");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   //CONNECT:
   useEffect(() => {
