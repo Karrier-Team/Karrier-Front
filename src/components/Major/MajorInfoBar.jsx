@@ -12,7 +12,7 @@ const StyledCollege = styled.div`
   margin-right: 5px;
   font-family: S-CoreDream-6;
   font-size: 1.3rem;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
@@ -24,7 +24,7 @@ const StyledCollege = styled.div`
 const StyledMajor = styled.div`
   font-family: S-CoreDream-6;
   font-size: 1.3rem;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
