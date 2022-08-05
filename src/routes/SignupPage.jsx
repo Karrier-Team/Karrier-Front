@@ -30,7 +30,11 @@ export function SignupPage() {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [repasswordValue, setRepasswordValue] = useState("");
-  const [errorInfo, setErrorInfo] = useState({ emailError: "", passwordError: "", repasswordError: "" });
+  const [errorInfo, setErrorInfo] = useState({
+    emailError: "",
+    passwordError: "",
+    repasswordError: "",
+  });
 
   function handleSubmit() {
     setErrorInfo(utils.validate(emailValue, passwordValue, repasswordValue));
@@ -41,11 +45,29 @@ export function SignupPage() {
     <>
       <Wrapper>
         <SocialLoginSection></SocialLoginSection>
-        <LoginInput handleChange={setEmailValue} name="email" type="email" caption="이메일" placeholder="이메일을 입력해주세요"></LoginInput>
+        <LoginInput
+          handleChange={setEmailValue}
+          name="email"
+          type="email"
+          caption="이메일"
+          placeholder="이메일을 입력해주세요"
+        ></LoginInput>
         <ErrorParap>{errorInfo.emailError}</ErrorParap>
-        <LoginInput handleChange={setPasswordValue} name="password" type="password" caption="비밀번호" placeholder="비밀번호를 입력해주세요"></LoginInput>
+        <LoginInput
+          handleChange={setPasswordValue}
+          name="password"
+          type="password"
+          caption="비밀번호"
+          placeholder="비밀번호를 입력해주세요"
+        ></LoginInput>
         <ErrorParap>{errorInfo.passwordError}</ErrorParap>
-        <LoginInput handleChange={setRepasswordValue} name="repassword" type="password" caption="비밀번호 확인" placeholder="비밀번호를 입력해주세요"></LoginInput>
+        <LoginInput
+          handleChange={setRepasswordValue}
+          name="repassword"
+          type="password"
+          caption="비밀번호 확인"
+          placeholder="비밀번호를 입력해주세요"
+        ></LoginInput>
         <ErrorParap>{errorInfo.repasswordError}</ErrorParap>
         <LoginButton handleSubmit={handleSubmit} />
       </Wrapper>
