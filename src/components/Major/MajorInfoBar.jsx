@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledMajorInfoBar = styled.div`
-  height: 4.7396vw;
+  height: 3.5vw;
   background-color: #fbfbfb;
   display: flex;
   align-items: center;
@@ -33,12 +33,12 @@ const StyledMajor = styled.div`
   color: #333;
 `;
 
-const MajorInfoBar = ({ college, major }) => {
+const MajorInfoBar = ({ majorData }) => {
   return (
     <StyledMajorInfoBar>
-      <StyledCollege>{college}</StyledCollege>
+      <StyledCollege>{majorData.college}</StyledCollege>
       <span style={{ fontWeight: "normal", marginRight: 5 }}>&#62;</span>
-      <StyledMajor>{major}</StyledMajor>
+      <StyledMajor>{majorData.major}</StyledMajor>
     </StyledMajorInfoBar>
   );
 };

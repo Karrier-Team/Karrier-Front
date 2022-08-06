@@ -6,16 +6,14 @@ const StyledProfileItem = styled.div`
   width: 22.0313vw;
   height: 29.5833vw;
   border: solid 1px black;
-  background-color: aliceblue;
   box-shadow: 5px 5px 10px grey;
   display: flex;
-  background-color: aqua;
+  background-color: tomato;
 `;
 
 const StyledProfileItemInfo = styled.div`
-  background-color: black;
   display: flex;
-  border: 1px solid black;
+
   width: 100%;
 
   display: flex;
@@ -54,24 +52,14 @@ const StyledMajor = styled.span`
 `;
 
 //ProfileItem div
-const ProfileItem = ({ name, major }) => {
-  // state
-  const [state, setState] = useState({
-    name: "이승열",
-    major: "컴퓨터통신공학과",
-    comment:
-      "안녕하세요 컴퓨터 공학을 전공하여 멘토를 맡게 된 이승열 입니다 잘 부탁 드립니다",
-  });
-
+const ProfileItem = ({ name, major, comment }) => {
   const [hover, setHover] = useState(true);
 
-  const handleMouseEnter = (e) => {
-    //e.target.style.background = "grey";
+  const handleMouseEnter = () => {
     setHover(false);
   };
 
-  const handleMouseLeave = (e) => {
-    //e.target.style.background = "yellowgreen";
+  const handleMouseLeave = () => {
     setHover(true);
   };
 
@@ -87,13 +75,13 @@ const ProfileItem = ({ name, major }) => {
     >
       {hover ? (
         <StyledProfileItemInfo>
-          <StyledImg>img</StyledImg>
-          <StyledName>{state.name}</StyledName>
-          <StyledMajor>{state.major}</StyledMajor>
+          <StyledImg>profileimg</StyledImg>
+          <StyledName>{name}</StyledName>
+          <StyledMajor>{major}</StyledMajor>
         </StyledProfileItemInfo>
       ) : (
         <div style={{ padding: 20 }}>
-          <p>{state.comment}</p>
+          <p>{comment}</p>
         </div>
       )}
     </StyledProfileItem>

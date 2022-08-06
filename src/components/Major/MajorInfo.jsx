@@ -33,12 +33,12 @@ const StyledMajor = styled.div`
   color: #f3f3f3;
 `;
 
-const MajorInfo = ({ college, major }) => {
+const MajorInfo = ({ majorData }) => {
   return (
     <StyledMajorInfo>
       {/* props 로 받기 */}
-      <StyledCollege>{college}</StyledCollege>
-      <StyledMajor>{major}</StyledMajor>
+      <StyledCollege>{majorData.college}</StyledCollege>
+      <StyledMajor>{majorData.major}</StyledMajor>
     </StyledMajorInfo>
   );
 };
