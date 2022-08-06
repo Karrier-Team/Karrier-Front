@@ -279,7 +279,7 @@ export const PostSubmit = styled.div`
 
 // NOTICE: 참고용3 (처음만난리액트
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   width: calc(100% - 32px);
   padding: 8px 16px;
   display: flex;
