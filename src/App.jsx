@@ -12,7 +12,7 @@ import ErrorPage from "./routes/ErrorPage";
 import LandingPage from "./routes/LandingPage";
 import MajorPage from "./routes/MajorPage";
 import MentorPage from "./routes/MentorPage";
-
+import ApplyPage from "./routes/ApplyPage";
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/mentor" element={<MentorPage />} />
         <Route path="/mentor/:id" element={<MentorPage />} />
+        <Route path="/apply/*" element={<ApplyPage />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="/major" element={<MajorPage />} />
       </Routes>
