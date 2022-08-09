@@ -12,16 +12,24 @@ import * as S from "./style";
 // /** click handler */
 // onClick?: () => void;
 
-function Btn({ to, hide, children }) {
+function Btn({ data, handleClick, to, hide, children }) {
+  const handleClickWithData = () => {
+    handleClick(data);
+  };
+
   if (to) {
     return (
-      <S.StyledLink to={to} hide={hide}>
+      <S.StyledLink onClick={handleClickWithData} to={to} hide={hide}>
         {children}
       </S.StyledLink>
     );
   }
 
-  return <S.Btn hide={hide}>{children}</S.Btn>;
+  return (
+    <S.Btn onClick={handleClickWithData} hide={hide}>
+      {children}
+    </S.Btn>
+  );
 }
 
 // function Button({ children, href, to, styletype = "primary", fit = false, grow = false, ...props }: Props): React.ReactElement {

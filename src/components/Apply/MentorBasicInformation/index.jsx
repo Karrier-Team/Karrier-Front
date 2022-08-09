@@ -1,8 +1,12 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useMemo } from "react";
 import * as S from "./style";
 
+// components
 import LabeledInput from "../../molecules/LabeledInput";
 import Btn from "../../atoms/Btn";
+
+// apis
+import { postMentorApplyBasicInformation } from "../../../apis/apply";
 
 function MentorBasicInformation() {
   const [name, setName] = useState("");
@@ -10,6 +14,10 @@ function MentorBasicInformation() {
   const [major, setMajor] = useState("");
   const [student_id, setStudent_id] = useState("");
   const [year, setYear] = useState("");
+
+  const submitJson = useMemo(() => {
+    return { name, university, major, student_id, year };
+  }, [name, university, major, student_id, year]);
 
   return (
     <>
@@ -41,7 +49,13 @@ function MentorBasicInformation() {
         ></LabeledInput>
         <S.RowWrapper>
           <Btn hide={true}>이전</Btn>
-          <Btn to="../step2">다음</Btn>
+          <Btn
+            data={submitJson}
+            handleClick={postMentorApplyBasicInformation}
+            to="../step2"
+          >
+            다음
+          </Btn>
         </S.RowWrapper>
       </S.Wrapper>
     </>
