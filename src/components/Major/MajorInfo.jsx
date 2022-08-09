@@ -1,6 +1,6 @@
 import styled from "styled-components";
 const StyledMajorInfo = styled.div`
-  height: 50vh;
+  height: 33.9583vw;
   background-color: yellowgreen;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ const StyledCollege = styled.div`
   margin-bottom: 5px;
   font-family: S-CoreDream-6;
   font-size: 3.5rem;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
@@ -24,7 +24,7 @@ const StyledCollege = styled.div`
 const StyledMajor = styled.div`
   font-family: S-CoreDream-6;
   font-size: 5rem;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
@@ -33,12 +33,12 @@ const StyledMajor = styled.div`
   color: #f3f3f3;
 `;
 
-const MajorInfo = ({ college, major }) => {
+const MajorInfo = ({ majorData }) => {
   return (
     <StyledMajorInfo>
       {/* props 로 받기 */}
-      <StyledCollege>{college}</StyledCollege>
-      <StyledMajor>{major}</StyledMajor>
+      <StyledCollege>{majorData.college}</StyledCollege>
+      <StyledMajor>{majorData.major}</StyledMajor>
     </StyledMajorInfo>
   );
 };

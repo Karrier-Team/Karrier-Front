@@ -3,18 +3,17 @@ import styled from "styled-components";
 
 //style component
 const StyledProfileItem = styled.div`
-  width: 332px;
-  height: 430px;
-  border: solid 1px black;
-  background-color: aliceblue;
-  box-shadow: 5px 5px 10px grey;
+  width: 22.0313vw;
+  height: 29.5833vw;
+
   display: flex;
+  box-shadow: 5px 5px 10px grey;
+  background-color: tomato;
 `;
 
 const StyledProfileItemInfo = styled.div`
-  background-color: green;
   display: flex;
-  border: 1px solid black;
+
   width: 100%;
 
   display: flex;
@@ -53,24 +52,14 @@ const StyledMajor = styled.span`
 `;
 
 //ProfileItem div
-const ProfileItem = ({ name, major }) => {
-  // state
-  const [state, setState] = useState({
-    name: "이승열",
-    major: "컴퓨터통신공학과",
-    comment:
-      "안녕하세요 컴퓨터 공학을 전공하여 멘토를 맡게 된 이승열 입니다 잘 부탁 드립니다",
-  });
-
+const ProfileItem = ({ name, major, comment }) => {
   const [hover, setHover] = useState(true);
 
-  const handleMouseEnter = (e) => {
-    //e.target.style.background = "grey";
+  const handleMouseEnter = () => {
     setHover(false);
   };
 
-  const handleMouseLeave = (e) => {
-    //e.target.style.background = "yellowgreen";
+  const handleMouseLeave = () => {
     setHover(true);
   };
 
@@ -81,22 +70,22 @@ const ProfileItem = ({ name, major }) => {
       style={
         hover
           ? { alignItems: "flex-end", justifyContent: "center" }
-          : { alignItems: "center" }
+          : { alignItems: "center", opacity: 0.7 }
       }
     >
       {hover ? (
         <StyledProfileItemInfo>
-          <StyledImg>img</StyledImg>
-          <StyledName>{state.name}</StyledName>
-          <StyledMajor>{state.major}</StyledMajor>
+          <StyledImg>profileimg</StyledImg>
+          <StyledName>{name}</StyledName>
+          <StyledMajor>{major}</StyledMajor>
         </StyledProfileItemInfo>
       ) : (
         <div style={{ padding: 20 }}>
-          <p>{state.comment}</p>
+          <p>{comment}</p>
         </div>
       )}
     </StyledProfileItem>
   );
 };
 
-export default ProfileItem;
+export default React.memo(ProfileItem);

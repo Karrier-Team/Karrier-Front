@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledMajorInfoBar = styled.div`
-  height: 5.5vh;
+  height: 3.5vw;
   background-color: #fbfbfb;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@ const StyledCollege = styled.div`
   margin-right: 5px;
   font-family: S-CoreDream-6;
   font-size: 1.3rem;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
@@ -24,7 +24,7 @@ const StyledCollege = styled.div`
 const StyledMajor = styled.div`
   font-family: S-CoreDream-6;
   font-size: 1.3rem;
-  font-weight: normal;
+  font-weight: bold;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.2;
@@ -33,12 +33,12 @@ const StyledMajor = styled.div`
   color: #333;
 `;
 
-const MajorInfoBar = ({ college, major }) => {
+const MajorInfoBar = ({ majorData }) => {
   return (
     <StyledMajorInfoBar>
-      <StyledCollege>{college}</StyledCollege>
+      <StyledCollege>{majorData.college}</StyledCollege>
       <span style={{ fontWeight: "normal", marginRight: 5 }}>&#62;</span>
-      <StyledMajor>{major}</StyledMajor>
+      <StyledMajor>{majorData.major}</StyledMajor>
     </StyledMajorInfoBar>
   );
 };
