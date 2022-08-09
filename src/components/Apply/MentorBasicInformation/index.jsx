@@ -1,16 +1,14 @@
 import React, { memo } from "react";
-import styled from "styled-components";
-import * as S from "./MentorBasicInformation.style";
+import * as S from "./style";
 
-const Wrapper = styled.div``;
+import LabeledInput from "../../molecules/LabeledInput";
 
 function MentorBasicInformation() {
-  console.log("step1");
   return (
     <>
-      <Wrapper>
-        <h1>step1</h1>
-      </Wrapper>
+      <S.Wrapper>
+        <LabeledInput placeholder="이메일을 입력하세요." name="이메일"></LabeledInput>
+      </S.Wrapper>
     </>
   );
 }

@@ -1,5 +1,12 @@
 import styled, { css } from "styled-components";
 
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+`;
+
 const colors = {
   point: "#007CC6",
   primary: "#262626",
