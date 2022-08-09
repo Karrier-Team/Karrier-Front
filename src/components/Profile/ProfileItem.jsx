@@ -5,9 +5,9 @@ import styled from "styled-components";
 const StyledProfileItem = styled.div`
   width: 22.0313vw;
   height: 29.5833vw;
-  border: solid 1px black;
-  box-shadow: 5px 5px 10px grey;
+
   display: flex;
+  box-shadow: 5px 5px 10px grey;
   background-color: tomato;
 `;
 
