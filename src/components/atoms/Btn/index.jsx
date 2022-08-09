@@ -12,7 +12,15 @@ import * as S from "./style";
 // /** click handler */
 // onClick?: () => void;
 
-function Btn({ hide, children }) {
+function Btn({ to, hide, children }) {
+  if (to) {
+    return (
+      <S.StyledLink to={to} hide={hide}>
+        {children}
+      </S.StyledLink>
+    );
+  }
+
   return <S.Btn hide={hide}>{children}</S.Btn>;
 }
 
