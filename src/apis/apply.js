@@ -18,3 +18,8 @@ export const postMentorApplyBasicInformation = async (data) => {
 
   return result;
 };
+
+export const postMentorApplyDetailedInformation = async (data) => {
+  const result = { statusCode: 200 };
+  return result;
+};
