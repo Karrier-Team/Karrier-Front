@@ -1,24 +1,35 @@
 import React, { memo, useState, useMemo } from "react";
 import * as S from "./style";
+import { colleges } from "../../../common/Navbar/colleges";
 
 // components
 import LabeledInput from "../../molecules/LabeledInput";
 import Btn from "../../atoms/Btn";
+import LabeledSelector from "../../molecules/LabeledSelector";
 
 // apis
 import { postMentorApplyBasicInformation } from "../../../apis/apply";
 import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
 
+const converted_colleges = (colleges) => {
+  return colleges.map((college) => {
+    return { value: college.value, name: college.college };
+  });
+};
+
+// return { itemId: item.id, itemName: item.name };
 function MentorBasicInformation() {
   const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [college, setCollege] = useState("");
   const [university, setUniversity] = useState("");
   const [major, setMajor] = useState("");
   const [student_id, setStudent_id] = useState("");
   const [year, setYear] = useState("");
 
   const submitJson = useMemo(() => {
-    return { name, university, major, student_id, year };
-  }, [name, university, major, student_id, year]);
+    return { name, university, major, student_id, year, gender, college };
+  }, [name, university, major, student_id, year, gender, college]);
 
   return (
     <>
@@ -36,11 +47,24 @@ function MentorBasicInformation() {
           placeholder="이름을 기입해주세요."
           name="이름"
         ></LabeledInput>
+        <LabeledSelector
+          name={"성별"}
+          handleChange={setGender}
+          options={[
+            { value: "male", name: "남성" },
+            { value: "female", name: "여성" },
+          ]}
+        ></LabeledSelector>
         <LabeledInput
           handleChange={setUniversity}
           placeholder="본인의 대학교를 기입해주세요."
           name="대학교"
         ></LabeledInput>
+        <LabeledSelector
+          name={"단과대학"}
+          handleChange={setCollege}
+          options={converted_colleges(colleges)}
+        ></LabeledSelector>
         <LabeledInput
           handleChange={setMajor}
           placeholder="본인의 전공을 기입해주세요."
