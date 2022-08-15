@@ -21,11 +21,18 @@ export const postMentorApplyBasicInformation = async (data) => {
 
 export const postMentorApplyDetailedInformation = async (data) => {
   const result = { statusCode: 200 };
+  console.log("멘토 세부 정보 전송 완료", data);
   return result;
 };
 
 export const postMentorVerificationInformation = async (data) => {
   const result = { statusCode: 200 };
-  console.log("이미지 파일 전송 완료");
+  console.log("이미지 파일 전송 완료", data);
+  return result;
+};
+
+export const postMentorApplyContactsInformation = async (data) => {
+  const result = { statusCode: 200 };
+  console.log("멘토 연락처 정보 전송 완료", data);
   return result;
 };
