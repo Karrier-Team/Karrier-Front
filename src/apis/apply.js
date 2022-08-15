@@ -23,3 +23,9 @@ export const postMentorApplyDetailedInformation = async (data) => {
   const result = { statusCode: 200 };
   return result;
 };
+
+export const postMentorVerificationInformation = async (data) => {
+  const result = { statusCode: 200 };
+  console.log("이미지 파일 전송 완료");
+  return result;
+};
