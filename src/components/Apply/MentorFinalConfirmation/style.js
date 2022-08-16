@@ -16,3 +16,17 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 1.2em 0;
 `;
+
+export const FlexCol = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+
+export const FlexRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;

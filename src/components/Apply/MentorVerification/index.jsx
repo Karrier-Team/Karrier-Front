@@ -33,7 +33,13 @@ function MentorVerification() {
           handleChange={setStudentInfoImg}
         ></LabeledFileInput>
         <S.RowWrapper>
-          <Btn to="../step3">이전</Btn>
+          <Btn
+            data={submitJson}
+            handleClick={postMentorVerificationInformation}
+            to="../step3"
+          >
+            이전
+          </Btn>
           <Btn
             data={submitJson}
             handleClick={postMentorVerificationInformation}

@@ -17,7 +17,8 @@ function Selector({ name, handleChange, options }) {
         {name + "을 입력해주세요."}
       </option>
       {options.map((option) => (
-        <option value={option.value}>{option.name}</option>
+        // value={option.value} -> value={option.name}
+        <option value={option.name}>{option.name}</option>
       ))}
     </S.Selector>
   );

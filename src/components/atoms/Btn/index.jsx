@@ -1,20 +1,10 @@
 import React from "react";
 import * as S from "./style";
 
-// /** react-router/Link 사용 (내부적인 routing)*/
-// to?: string;
-// /** 외부 링크 */
-// href?: string;
-// /** button styling type (ex. priamry, secondary) */
-// styletype?: string;
-// /** disabled 여부 */
-// disabled?: boolean;
-// /** click handler */
-// onClick?: () => void;
-
-function Btn({ data, handleClick, to, hide, children }) {
+function Btn({ data, handleClick, to, hide, children, withAlert }) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
+    if (withAlert) alert("제출완료!");
     return handleClick(data);
   };
 

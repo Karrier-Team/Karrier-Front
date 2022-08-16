@@ -1,17 +1,18 @@
 import React, { memo } from "react";
-import * as S from "./style";
+import { useLocalStorage } from "@mantine/hooks";
 
+import * as S from "./style";
 import Btn from "../../atoms/Btn";
 import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
-
-import { useLocalStorage } from "@mantine/hooks";
+import LabeledDiv from "../../molecules/LabeledDiv";
+import { Divider, Text, Space } from "@mantine/core";
 
 // apis
 import { postMentorApplyInfo } from "../../../apis/apply";
-import LabeledDiv from "../../molecules/LabeledDiv";
 
 function MentorFinalConfirmation() {
-  const [value, setValue] = useLocalStorage({ key: "detailedInfo" });
+  // eslint-disable-next-line no-unused-vars
+  const [storage, setStorage] = useLocalStorage({ key: "mentor_apply_info" });
 
   return (
     <>
@@ -27,14 +28,27 @@ function MentorFinalConfirmation() {
             "재학증명서, 프로필 사진을 해상도 낮은 사진으로 등록한 경우 관리자로부터 승인이 반려될 수 있습니다.",
           ]}
         />
-        <LabeledDiv name={"멘토 프로필"}>{value.introduce}</LabeledDiv>
+        <LabeledDiv name={"멘토 프로필"}>
+          <S.FlexCol>
+            <Text size="1.5em" align="center">
+              {storage.name + "멘토"}
+            </Text>
+            <Text size="xl">{storage.university}</Text>
+            <Text size="xl">{storage.college}</Text>
+            <Text size="xl">{storage.major}</Text>
+            <Text size="xl">{storage.student_id}</Text>
+            <Text size="xl">{storage.year}</Text>
+          </S.FlexCol>
+          <Divider />
+          <Space h="md"></Space>
+          <Text size="1.5em" align="center">
+            {"멘토소개"}
+          </Text>
+          <Text color={"var(--bg-color-d)"}>{storage.introduce}</Text>
+        </LabeledDiv>
         <S.RowWrapper>
           <Btn to="../step4">이전</Btn>
-          <Btn
-            data={() => console.log("최종제출")}
-            handleClick={() => postMentorApplyInfo(value)}
-            to="../step3"
-          >
+          <Btn data={storage} handleClick={postMentorApplyInfo} withAlert>
             제출
           </Btn>
         </S.RowWrapper>
