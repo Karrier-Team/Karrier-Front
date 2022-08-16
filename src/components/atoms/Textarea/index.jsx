@@ -4,7 +4,7 @@ import * as S from "./style";
 
 function Textarea({ storage: storage_key, value, handleChange, placeholder }) {
   const [storage] = useLocalStorage({
-    key: "detailed_information",
+    key: "mentor_apply_info",
   });
 
   useEffect(() => {

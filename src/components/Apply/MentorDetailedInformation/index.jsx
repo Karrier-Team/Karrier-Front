@@ -59,10 +59,10 @@ function MentorDetailedInformation() {
         />
         <LabeledTextarea
           storage={"introduce"}
+          value={introduce}
           placeholder="내용을 입력해주세요. (30자이상)"
           name="멘토소개"
           size="lg"
-          value={introduce}
           handleChange={setIntroduce}
         ></LabeledTextarea>
         <LabeledInput
@@ -74,18 +74,21 @@ function MentorDetailedInformation() {
         ></LabeledInput>
         <LabeledInput
           storage={"contest"}
+          value={contest}
           placeholder="공모전 수상내역을 기입해주세요."
           name="공모전"
           handleChange={setContest}
         ></LabeledInput>
         <LabeledInput
           storage={"external_activity"}
+          value={external_activity}
           placeholder="대외활동을 기입해주세요."
           name="대외활동"
           handleChange={setExternal_activity}
         ></LabeledInput>
         <LabeledInput
           storage={"intern"}
+          value={intern}
           placeholder="인턴을 기입해주세요."
           name="인턴"
           handleChange={setIntern}
