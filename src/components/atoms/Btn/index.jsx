@@ -13,8 +13,9 @@ import * as S from "./style";
 // onClick?: () => void;
 
 function Btn({ data, handleClick, to, hide, children }) {
-  const handleClickWithData = () => {
-    handleClick(data);
+  const handleClickWithData = (event) => {
+    if (handleClick === undefined) return null;
+    return handleClick(data);
   };
 
   if (to) {
