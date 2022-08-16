@@ -12,6 +12,6 @@ export const Input = styled.input`
 
   font-size: 1em;
   ::placeholder {
-    opacity: 50%;
+    color: #acacac;
   }
 `;
