@@ -1,20 +1,29 @@
-import React, { memo, useState, useMemo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import Btn from "../../atoms/Btn";
 import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
 import LabeledInput from "../../molecules/LabeledInput";
 import * as S from "./style";
 
-// apis
-import { postMentorApplyContactsInformation } from "../../../apis/apply";
+import { useLocalStorage } from "@mantine/hooks";
 
 function MentorContacts() {
+  // eslint-disable-next-line no-unused-vars
+  const [storage, setStorage] = useLocalStorage({
+    key: "mentor_apply_info",
+  });
   const [country, setCountry] = useState();
   const [city, setCity] = useState();
   const [phone_no, setPhone_no] = useState();
 
-  const submitJson = useMemo(() => {
-    return { country, city, phone_no };
-  }, [country, city, phone_no]);
+  useEffect(() => {
+    setStorage((prev) => ({
+      ...prev,
+      country,
+      city,
+      phone_no,
+      setStorage,
+    }));
+  }, [country, city, phone_no, setStorage]);
 
   return (
     <>
@@ -28,6 +37,8 @@ function MentorContacts() {
           ]}
         />
         <LabeledInput
+          storage={"phone_no"}
+          value={phone_no}
           placeholder="주요 활동 국가를 입력해주세요."
           name="휴대전화 번호"
           handleChange={setPhone_no}
@@ -36,21 +47,19 @@ function MentorContacts() {
           placeholder="주요 활동 국가를 입력해주세요."
           name="국가"
           handleChange={setCountry}
+          storage={"country"}
+          value={city}
         ></LabeledInput>
         <LabeledInput
           placeholder="주요 활동 도시를 입력해주세요."
           name="도시"
           handleChange={setCity}
+          storage={"city"}
+          value={city}
         ></LabeledInput>
         <S.RowWrapper>
           <Btn to="../step2">이전</Btn>
-          <Btn
-            data={submitJson}
-            handleClick={postMentorApplyContactsInformation}
-            to="../step4"
-          >
-            다음
-          </Btn>
+          <Btn to="../step4">다음</Btn>
         </S.RowWrapper>
       </S.Wrapper>
     </>
