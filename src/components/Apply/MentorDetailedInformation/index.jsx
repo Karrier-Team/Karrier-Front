@@ -17,14 +17,7 @@ import { postMentorApplyDetailedInformation } from "../../../apis/apply";
 
 function MentorDetailedInformation() {
   const [storage, setStorage] = useLocalStorage({
-    key: "detailed_information",
-    defaultValue: {
-      introduce: "",
-      club: "",
-      contest: "",
-      external_activity: "",
-      intern: "",
-    },
+    key: "mentor_apply_info",
   });
 
   const [introduce, setIntroduce] = useState("");
@@ -34,7 +27,14 @@ function MentorDetailedInformation() {
   const [intern, setIntern] = useState("");
 
   useEffect(() => {
-    setStorage({ introduce, club, contest, external_activity, intern });
+    setStorage((prev) => ({
+      ...prev,
+      introduce,
+      club,
+      contest,
+      external_activity,
+      intern,
+    }));
   }, [introduce, club, contest, external_activity, intern, setStorage]);
 
   // 연산량이 많은 그런 코드도 아니고,

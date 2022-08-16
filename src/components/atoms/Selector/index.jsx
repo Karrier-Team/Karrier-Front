@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./style";
 
+// TODO: Selector도 localStorage에 저장되어있으면 selected 설정을 해줘야함
 function Selector({ name, handleChange, options }) {
   const [selected, setSelected] = useState(false);
 

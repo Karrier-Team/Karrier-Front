@@ -1,14 +1,12 @@
-import React, { memo, useState, useMemo } from "react";
+import React, { memo, useState, useEffect } from "react";
 import * as S from "./style";
 import { colleges } from "../../../common/Navbar/colleges";
+import { useLocalStorage } from "@mantine/hooks";
 
 // components
 import LabeledInput from "../../molecules/LabeledInput";
 import Btn from "../../atoms/Btn";
 import LabeledSelector from "../../molecules/LabeledSelector";
-
-// apis
-import { postMentorApplyBasicInformation } from "../../../apis/apply";
 import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
 
 const converted_colleges = (colleges) => {
@@ -17,8 +15,11 @@ const converted_colleges = (colleges) => {
   });
 };
 
-// return { itemId: item.id, itemName: item.name };
 function MentorBasicInformation() {
+  const [storage, setStorage] = useLocalStorage({
+    key: "mentor_apply_info",
+  });
+
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [college, setCollege] = useState("");
@@ -27,9 +28,19 @@ function MentorBasicInformation() {
   const [student_id, setStudent_id] = useState("");
   const [year, setYear] = useState("");
 
-  const submitJson = useMemo(() => {
-    return { name, university, major, student_id, year, gender, college };
-  }, [name, university, major, student_id, year, gender, college]);
+  useEffect(() => {
+    setStorage((prev) => ({
+      ...prev,
+      name,
+      gender,
+      college,
+      university,
+      major,
+      student_id,
+      year,
+      setStorage,
+    }));
+  }, [name, gender, college, university, major, student_id, year, setStorage]);
 
   return (
     <>
@@ -43,6 +54,8 @@ function MentorBasicInformation() {
           ]}
         />
         <LabeledInput
+          storage={"name"}
+          value={name}
           handleChange={setName}
           placeholder="이름을 기입해주세요."
           name="이름"
@@ -56,6 +69,8 @@ function MentorBasicInformation() {
           ]}
         ></LabeledSelector>
         <LabeledInput
+          storage={"university"}
+          value={university}
           handleChange={setUniversity}
           placeholder="본인의 대학교를 기입해주세요."
           name="대학교"
@@ -66,29 +81,29 @@ function MentorBasicInformation() {
           options={converted_colleges(colleges)}
         ></LabeledSelector>
         <LabeledInput
+          storage={"major"}
+          value={major}
           handleChange={setMajor}
           placeholder="본인의 전공을 기입해주세요."
           name="전공"
         ></LabeledInput>
         <LabeledInput
+          storage={"student_id"}
+          value={student_id}
           handleChange={setStudent_id}
           placeholder="본인의 학번을 기입해주세요."
           name="학번"
         ></LabeledInput>
         <LabeledInput
+          storage={"year"}
+          value={year}
           handleChange={setYear}
           placeholder="본인의 학년을 기입해주세요."
           name="학년"
         ></LabeledInput>
         <S.RowWrapper>
           <Btn hide={true}>이전</Btn>
-          <Btn
-            data={submitJson}
-            handleClick={postMentorApplyBasicInformation}
-            to="../step2"
-          >
-            다음
-          </Btn>
+          <Btn to="../step2">다음</Btn>
         </S.RowWrapper>
       </S.Wrapper>
     </>
