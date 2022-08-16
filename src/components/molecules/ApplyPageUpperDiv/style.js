@@ -29,10 +29,12 @@ export const Title = styled.span`
   font-size: 2em;
   font-weight: bold;
   margin: 15px;
+  width: 25%;
 `;
 
 export const Subtitle = styled.span`
   font-size: 1.5em;
+  word-break: keep-all;
 `;
 
 export const Content = styled.span`

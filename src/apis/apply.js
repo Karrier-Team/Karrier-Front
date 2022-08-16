@@ -36,3 +36,9 @@ export const postMentorApplyContactsInformation = async (data) => {
   console.log("멘토 연락처 정보 전송 완료", data);
   return result;
 };
+
+export const postMentorApplyInfo = async (data) => {
+  const result = { statusCode: 200 };
+  console.log("멘토 지원 정보 POST 요청 완료", data);
+  return result;
+};
