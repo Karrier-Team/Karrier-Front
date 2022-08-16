@@ -48,7 +48,7 @@ function MentorContacts() {
           name="국가"
           handleChange={setCountry}
           storage={"country"}
-          value={city}
+          value={country}
         ></LabeledInput>
         <LabeledInput
           placeholder="주요 활동 도시를 입력해주세요."
