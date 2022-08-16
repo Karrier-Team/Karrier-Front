@@ -9,13 +9,14 @@ import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
 import { useLocalStorage } from "@mantine/hooks";
 
 // apis
-import { postMentorApplyDetailedInformation } from "../../../apis/apply";
+// import { postMentorApplyDetailedInformation } from "../../../apis/apply";
 
 // 데이터 플로우
 // 0. usef로 데이터 먼저 받아옴 -> 지금 생각해보니, 이건 딱히 저장을 해두진 않을것같다.
 // 1. 먼저 localstorage에서 값을 받아옴. 없으면 기존 정보 렌더링
 
 function MentorDetailedInformation() {
+  // eslint-disable-next-line no-unused-vars
   const [storage, setStorage] = useLocalStorage({
     key: "mentor_apply_info",
   });

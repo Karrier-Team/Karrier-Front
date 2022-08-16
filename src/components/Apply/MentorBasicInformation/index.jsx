@@ -16,6 +16,7 @@ const converted_colleges = (colleges) => {
 };
 
 function MentorBasicInformation() {
+  // eslint-disable-next-line no-unused-vars
   const [storage, setStorage] = useLocalStorage({
     key: "mentor_apply_info",
   });
