@@ -24,7 +24,15 @@ export const Text = styled.span`
   text-align: center;
 `;
 
-export const Searchbar = styled.input``;
+export const Searchbar = styled.input`
+  border: 1px solid var(--bg-color-d);
+  border-radius: 1em;
+  padding: 0.5em;
+  background-color: transparent;
+  ::placeholder {
+    text-align: center;
+  }
+`;
 
 export const StyledLink = styled(NavLink)`
   text-decoration: none;

@@ -1,10 +1,9 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, memo } from "react";
 
 import * as S from "./Navbar.style";
+import SubDropdown from "./SubDropdown";
 
 import { colleges } from "./colleges";
-
-import SubDropdown from "./SubDropdown";
 
 function Dropdown({ setShowDropbox }) {
   const [collegeIdx, setCollegeIdx] = useState("-1");
