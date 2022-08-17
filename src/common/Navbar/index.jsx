@@ -14,10 +14,15 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--line-color);
+
+  background-color: var(--bg-color-l);
 
   padding: 0px 20px;
   box-sizing: border-box;
+
+  font-weight: bold;
+  font-size: 1.3em;
 `;
 
 function Header() {
@@ -29,7 +34,11 @@ function Header() {
           <Link to="/">
             <S.Logo src={Logo} alt="service logo"></S.Logo>
           </Link>
-          <S.StyledLink to="/mentoring">
+          <S.StyledLink
+            to="/mentoring"
+            onMouseEnter={() => setShowDropbox(true)}
+            onMouseLeave={() => setShowDropbox(false)}
+          >
             <S.Text>멘토링</S.Text>
           </S.StyledLink>
           <S.StyledLink to="/community">
@@ -38,7 +47,7 @@ function Header() {
           <S.StyledLink to="/volunteer">
             <S.Text>자원봉사</S.Text>
           </S.StyledLink>
-          <S.StyledLink to="/apply" onMouseEnter={() => setShowDropbox(true)} onMouseLeave={() => setShowDropbox(false)}>
+          <S.StyledLink to="/apply">
             <S.Text>멘토모집</S.Text>
           </S.StyledLink>
         </S.LeftSection>

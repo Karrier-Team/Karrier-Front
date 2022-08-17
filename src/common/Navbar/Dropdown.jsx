@@ -11,7 +11,10 @@ function Dropdown({ setShowDropbox }) {
   const [clicked, setClicked] = useState(false);
   return (
     <>
-      <div onMouseOver={() => setShowDropbox(true)} onMouseLeave={() => setShowDropbox(false)}>
+      <div
+        onMouseOver={() => setShowDropbox(true)}
+        onMouseLeave={() => setShowDropbox(false)}
+      >
         <S.DropdownWrapper>
           {colleges.map((e) => {
             return (
