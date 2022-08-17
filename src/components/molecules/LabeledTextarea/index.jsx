@@ -1,22 +1,30 @@
 import React from "react";
 import * as S from "./style";
 import Label from "../../atoms/Label";
-import Input from "../../atoms/Input";
+import Textarea from "../../atoms/Textarea";
 
-function LabeledInput({ storage, value, handleChange, name, placeholder }) {
+function LabeledTextarea({
+  storage,
+  value,
+  handleChange,
+  size,
+  name,
+  placeholder,
+}) {
   return (
     <>
       <S.Wrapper>
         <Label name={name}></Label>
-        <Input
+        <Textarea
           storage={storage}
           value={value}
+          size={size}
           handleChange={handleChange}
           placeholder={placeholder}
-        ></Input>
+        ></Textarea>
       </S.Wrapper>
     </>
   );
 }
 
-export default LabeledInput;
+export default LabeledTextarea;
