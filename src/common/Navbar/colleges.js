@@ -1,6 +1,6 @@
 export const colleges = [
   {
-    id: 0,
+    id: "0",
     value: "humanities",
     college: "인문대학",
     departments: [
@@ -19,7 +19,7 @@ export const colleges = [
     ],
   },
   {
-    id: 1,
+    id: "1",
     value: "social_science",
     college: "사회과학대학",
     departments: [
@@ -33,7 +33,7 @@ export const colleges = [
     ],
   },
   {
-    id: 2,
+    id: "2",
     value: "natural_science",
     college: "자연과학대학",
     departments: [
@@ -46,13 +46,13 @@ export const colleges = [
     ],
   },
   {
-    id: 3,
+    id: "3",
     value: "economy_and_commerce",
     college: "경상대학",
     departments: ["경제통상학부", "경영학부"],
   },
   {
-    id: 4,
+    id: "4",
     value: "engineering",
     college: "공과대학",
     departments: [
@@ -69,13 +69,13 @@ export const colleges = [
     ],
   },
   {
-    id: 5,
+    id: "5",
     value: "it",
     college: "IT대학",
     departments: ["전자공학부", "컴퓨터학부", "전기공학과", "모바일공학과"],
   },
   {
-    id: 6,
+    id: "6",
     value: "agriculture_and_life_science",
     college: "농업생명과학대학",
     departments: [
@@ -90,13 +90,13 @@ export const colleges = [
     ],
   },
   {
-    id: 7,
+    id: "7",
     value: "art",
     college: "예술대학",
     departments: ["음악학과", "국악학과", "미술학과", "디자인학과"],
   },
   {
-    id: 8,
+    id: "8",
     value: "education",
     college: "사범대학",
     departments: [
@@ -118,28 +118,38 @@ export const colleges = [
     ],
   },
   {
-    id: 9,
+    id: "9",
     value: "medical",
     college: "의과대학",
     departments: ["의예과", "의학과"],
   },
-  { id: 10, value: "dental", college: "치과대학", departments: ["치과대학"] },
+  { id: "10", value: "dental", college: "치과대학", departments: ["치과대학"] },
   {
-    id: 11,
+    id: "11",
     value: "veterinary",
     college: "수의과대학",
     departments: ["수의과대학"],
   },
   {
-    id: 12,
+    id: "12",
     value: "life_science",
     college: "생활과학대학",
     departments: ["아동학부", "의류학과", "식품영양학과"],
   },
-  { id: 13, value: "nursing", college: "간호대학", departments: ["간호대학"] },
-  { id: 14, value: "medicine", college: "약학대학", departments: ["약학대학"] },
   {
-    id: 15,
+    id: "13",
+    value: "nursing",
+    college: "간호대학",
+    departments: ["간호대학"],
+  },
+  {
+    id: "14",
+    value: "medicine",
+    college: "약학대학",
+    departments: ["약학대학"],
+  },
+  {
+    id: "15",
     value: "ecology_and_environment",
     college: "생태환경대학",
     departments: [
@@ -154,7 +164,7 @@ export const colleges = [
     ],
   },
   {
-    id: 16,
+    id: "16",
     value: "science_and_tech",
     college: "과학기술대학",
     departments: [
@@ -170,19 +180,19 @@ export const colleges = [
     ],
   },
   {
-    id: 17,
+    id: "17",
     value: "public_administration",
     college: "행정학부",
     departments: ["행정학과"],
   },
   {
-    id: 18,
+    id: "18",
     value: "autonomous",
     college: "자율전공부",
     departments: ["인문사회자율전공", "자연과학자율전공"],
   },
   {
-    id: 19,
+    id: "19",
     value: "integration",
     college: "융합학부",
     departments: [

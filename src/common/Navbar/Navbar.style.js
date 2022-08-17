@@ -40,7 +40,7 @@ export const StyledLink = styled(NavLink)`
   }
 
   &.active {
-    color: #007bc3;
+    color: var(--primary-color);
   }
 `;
 
@@ -53,6 +53,10 @@ export const StyledDropdownLi = styled.li`
   cursor: pointer;
 
   :hover {
+    color: var(--primary-color);
+  }
+
+  &.active {
     color: var(--primary-color);
   }
 `;
