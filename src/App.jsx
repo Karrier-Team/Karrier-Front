@@ -24,11 +24,10 @@ function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/mentor" element={<MentorPage />} />
-        <Route path="/mentor/:id" element={<MentorPage />} />
+        <Route path="/mentoring" element={<MajorPage />} />
+        <Route path="/mentoring/:id" element={<MentorPage />} />
         <Route path="/apply/*" element={<ApplyPage />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/major" element={<MajorPage />} />
       </Routes>
     </Router>
   );
