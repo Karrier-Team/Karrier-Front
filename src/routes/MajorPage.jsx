@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import MajorInfoBar from "../components/Major/MajorInfoBar";
 import MajorInfo from "../components/Major/MajorInfo";
 import ProfileList from "../components/Profile/ProfileList";
-
 
 const dummyProps = {
   college: "IT대학",
@@ -57,15 +56,13 @@ const MajorPage = () => {
   // 남은 일
   // getData -> 서버에서 받아오기
   // 이때 각 객체당 이미지 파일도 저장해야 한다
-  // 이를 state로 
+  // 이를 state로
 
   // nav state 관리해서 넘겨주기
 
   // majorinfo, majorInfobar 용 state
 
   // profile 용 state 관리
-
-
 
   //데이터 받으면 따로 ID넣어주기
   // const dataId = useRef(0);
