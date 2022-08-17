@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const BarDiv = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 3em;
   box-sizing: border-box;
 

@@ -20,15 +20,24 @@ const Wrapper = styled.div`
   border-top: 1px solid #e1e1e1;
 `;
 
-function MentorContactSection() {
+function MentorContactSection({ data }) {
   return (
     <>
       <Wrapper>
-        <S.Text size="large">문준용</S.Text>
+        <S.Text size="large">{data.name}</S.Text>
         <S.Text size="small">멘토</S.Text>
-        <S.SNSImg src={IconMiniNaver} />
-        <S.SNSImg src={IconMiniInstagram} />
-        <S.SNSImg src={IconMiniFacebook} />
+        <S.SNSImg
+          src={IconMiniNaver}
+          onClick={() => window.open(data.naverblog_address, "_blank")}
+        />
+        <S.SNSImg
+          src={IconMiniInstagram}
+          onClick={() => window.open(data.instar_address, "_blank")}
+        />
+        <S.SNSImg
+          src={IconMiniFacebook}
+          onClick={() => window.open(data.facebook_address, "_blank")}
+        />
       </Wrapper>
     </>
   );

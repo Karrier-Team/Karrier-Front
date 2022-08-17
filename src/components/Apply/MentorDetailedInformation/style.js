@@ -17,7 +17,7 @@ export const Div = styled.div`
 
   border: none;
   border-radius: 9px;
-  box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow-strong);
 
   font-size: 1em;
   ::placeholder {

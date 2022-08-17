@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { memo, useCallback } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -57,6 +57,12 @@ const Wrapper = styled.div`
       transition: 0.3s;
       color: white;
       cursor: pointer;
+    }
+  }
+
+  .program {
+    :hover {
+      transition: 0.3s;
     }
   }
 
@@ -168,24 +174,28 @@ function UpperMainGrid({
         <div className="main-content">{main_content}</div>
 
         <NavLink
+          className="program"
           to="?program=introduction"
           style={activeLink === "introduction" ? activeProgramStyle : null}
         >
           프로그램소개
         </NavLink>
         <NavLink
+          className="program"
           to="?program=curriculum"
           style={activeLink === "curriculum" ? activeProgramStyle : null}
         >
           커리큘럼
         </NavLink>
         <NavLink
+          className="program"
           to="?program=review"
           style={activeLink === "review" ? activeProgramStyle : null}
         >
           수강후기
         </NavLink>
         <NavLink
+          className="program"
           to="?program=qna"
           style={activeLink === "qna" ? activeProgramStyle : null}
         >

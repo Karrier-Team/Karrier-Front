@@ -15,7 +15,7 @@ import LowerMainSection from "../components/Mentor/LowerMainSection";
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 10vh - 3em);
   display: flex;
 `;
 
@@ -24,38 +24,37 @@ const LeftsideWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 30%;
+  width: 20vw;
 `;
 
 const MainWrapper = styled.div`
-  width: 70%;
+  width: 80vw;
   height: 100%;
 `;
 
 const UpperMainWrapper = styled.div`
   width: 100%;
-  height: calc(100vw * 0.3);
+  height: calc(100vw * 0.2);
+  box-sizing: border-box;
 `;
 
 const LowerMainWrapper = styled.div`
   width: 100%;
-  height: calc(100vw * 0.7);
+  height: calc(100vh * 0.8 - 10vw - 3em);
   border-left: 1px solid #dadada;
 `;
 
 const fetchedMentorData = {
   hashtags: "#기본소개 #대학소개 #동아리 #오프라인 #공모전",
-  mentor_info:
-    "안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등",
-  club_info: "mic 해달 등등 잼게했어요",
-  activities_info: "오프라인 접오에요",
-  competition_info: "저는 수상내역도 하나없어요",
-  intern_info: "인턴안해봐서요",
-  blog_info: "저는 블로그 주소도 없어요",
+  mentor_info: "멘토 정보",
+  club_info: "동아리 내역",
+  activities_info: "대외활동 내역",
+  competition_info: "수상 내역",
+  intern_info: "인턴 내역",
+  blog_info: "블로그 정보",
 };
 
-const fetchedProgramData =
-  "안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. ";
+const fetchedProgramData = "안녕하세요 프로그램 소개입니다. ";
 
 function MentorPage() {
   const [mentorCarrierMenu, setMentorCarrierMenu] = useState("mentor_info");
@@ -80,15 +79,35 @@ function MentorPage() {
     setMentorProgramContent(fetchedProgramData);
   }, [searchParams]);
 
+  // 멘토정보
+  const dummyMountData = {
+    name: "아무개",
+    university: "경북대학교",
+    student_id: "18학번",
+    college: "IT대학",
+    department: "컴퓨터학부",
+    major: "글로벌소프트웨어융합전공",
+    naverblog_address: "https://www.naver.com",
+    facebook_address: "https://www.facecbook.com",
+    instar_address: "https://www.google.com",
+  };
+
+  // 사용자 - 프로그램 정보
+  const dummyUserProgramData = {
+    isParticipating: "true",
+    isFollowing: "true",
+    isInWishlist: "false",
+  };
+
   return (
     <>
       <AdBar />
       <Wrapper>
         <LeftsideWrapper>
-          <ProfileImg />
-          <MentorContactSection />
-          <MentorInfoSection />
-          <MentoringInfoSection />
+          <ProfileImg data={dummyMountData} />
+          <MentorContactSection data={dummyMountData} />
+          <MentorInfoSection data={dummyMountData} />
+          <MentoringInfoSection data={dummyUserProgramData} />
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper>

@@ -72,7 +72,7 @@ export const StyledDropdownLi = styled.li`
 export const DropdownWrapper = styled.div`
   position: absolute;
 
-  width: 100%;
+  width: 100vw;
   height: auto;
 
   box-sizing: border-box;

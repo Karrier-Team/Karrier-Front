@@ -32,23 +32,40 @@ const sizeStyles = ({ size }) => css`
 export const Text = styled.div`
   ${sizeStyles}
   ${colorStyles}
+  :hover {
+    color: white;
+  }
+`;
+
+const hoverStyles = css`
+  :hover {
+    transition: 0.3s;
+    color: white;
+    background-color: var(--primary-color);
+  }
+`;
+
+const activeStyles = css`
+  color: var(--primary-color);
 `;
 
 const boxSizeStyles = ({ size }) => {
   switch (size) {
     case "large":
       return css`
+        font-size: 1.3em;
         width: 100%;
-        height: 50px;
-        margin-top: 30px;
-        padding: 7%;
+        height: 3em;
+        margin-top: 1em;
+        padding: 1em;
       `;
     case "small":
       return css`
+        font-size: 1em;
         width: 30%;
-        height: 25px;
-        margin-top: 25px;
-        padding: 5%;
+        height: 1.5em;
+        margin-top: 1.5em;
+        padding: 1em;
       `;
     default:
       return css`
@@ -68,6 +85,20 @@ export const Box = styled.div`
 
   border: 1px solid #e1e1e1;
   border-radius: 5px;
+
+  cursor: pointer;
+
+  ${(props) => (props.hover ? hoverStyles : null)}
+  ${(props) => (props.active ? activeStyles : null)}
+  ${(props) =>
+    props.hover && props.active
+      ? css`
+          color: white;
+          background-color: var(--primary-color);
+        `
+      : null}
+
+  box-shadow: var(--box-shadow);
 
   ${boxSizeStyles}
 `;
