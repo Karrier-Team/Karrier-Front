@@ -40,7 +40,7 @@ const Content = styled(S.Text)`
   align-items: center;
   width: 75%;
   height: 100%;
-  padding-left: 10%;
+  padding-left: 1.5em;
 `;
 
 function MentorInfoSection() {

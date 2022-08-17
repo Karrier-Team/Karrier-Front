@@ -45,7 +45,8 @@ const LowerMainWrapper = styled.div`
 
 const fetchedMentorData = {
   hashtags: "#기본소개 #대학소개 #동아리 #오프라인 #공모전",
-  mentor_info: "안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등",
+  mentor_info:
+    "안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등 안녕하세요. 문준용 멘토입니다. 등등등",
   club_info: "mic 해달 등등 잼게했어요",
   activities_info: "오프라인 접오에요",
   competition_info: "저는 수상내역도 하나없어요",
@@ -53,7 +54,8 @@ const fetchedMentorData = {
   blog_info: "저는 블로그 주소도 없어요",
 };
 
-const fetchedProgramData = "안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. ";
+const fetchedProgramData =
+  "안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. 안녕하세요 프로그램 소개입니다. ";
 
 function MentorPage() {
   const [mentorCarrierMenu, setMentorCarrierMenu] = useState("mentor_info");
@@ -90,10 +92,18 @@ function MentorPage() {
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper>
-            <UpperMainGrid sub_content={fetchedMentorData["hashtags"]} main_content={mentorCarrierContent} mentorCarrierMenu={mentorCarrierMenu} setMentorCarrierMenu={setMentorCarrierMenu} />
+            <UpperMainGrid
+              sub_content={fetchedMentorData["hashtags"]}
+              main_content={mentorCarrierContent}
+              mentorCarrierMenu={mentorCarrierMenu}
+              setMentorCarrierMenu={setMentorCarrierMenu}
+            />
           </UpperMainWrapper>
           <LowerMainWrapper>
-            <LowerMainSection type={searchParams.get("program")} content={mentorProgramContent} />
+            <LowerMainSection
+              type={searchParams.get("program")}
+              content={mentorProgramContent}
+            />
           </LowerMainWrapper>
         </MainWrapper>
       </Wrapper>

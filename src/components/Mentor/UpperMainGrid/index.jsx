@@ -53,7 +53,8 @@ const Wrapper = styled.div`
     }
 
     ~ .left:hover {
-      background-color: #0078be;
+      background-color: var(--primary-color);
+      transition: 0.3s;
       color: white;
       cursor: pointer;
     }
@@ -71,7 +72,7 @@ const Wrapper = styled.div`
     justify-content: flex-start;
     align-items: center;
     padding-left: 10px;
-    color: #007cc6;
+    color: var(--primary-color-l);
   }
 
   .main-content {
@@ -81,17 +82,22 @@ const Wrapper = styled.div`
   }
 `;
 
-function UpperMainGrid({ sub_content, main_content, mentorCarrierMenu, setMentorCarrierMenu }) {
+function UpperMainGrid({
+  sub_content,
+  main_content,
+  mentorCarrierMenu,
+  setMentorCarrierMenu,
+}) {
   const handleOnClick = useCallback((e) => {
     setMentorCarrierMenu(e.target.getAttribute("value"));
   });
 
   const activeProgramStyle = {
-    backgroundColor: "#f0f0f0",
+    backgroundColor: "var(--bg-color-l)",
   };
 
   const activeLeftStyle = {
-    backgroundColor: "#0078be",
+    backgroundColor: "var(--primary-color)",
     color: "white",
   };
 
@@ -104,39 +110,85 @@ function UpperMainGrid({ sub_content, main_content, mentorCarrierMenu, setMentor
         <div className="left" value="tags_info">
           #태그
         </div>
-        <div className="left" style={mentorCarrierMenu === "mentor_info" ? activeLeftStyle : null} value="mentor_info" onClick={handleOnClick}>
+        <div
+          className="left"
+          style={mentorCarrierMenu === "mentor_info" ? activeLeftStyle : null}
+          value="mentor_info"
+          onClick={handleOnClick}
+        >
           멘토 소개
         </div>
-        <div className="left" style={mentorCarrierMenu === "club_info" ? activeLeftStyle : null} value="club_info" onClick={handleOnClick}>
+        <div
+          className="left"
+          style={mentorCarrierMenu === "club_info" ? activeLeftStyle : null}
+          value="club_info"
+          onClick={handleOnClick}
+        >
           동아리
         </div>
-        <div className="left" style={mentorCarrierMenu === "competition_info" ? activeLeftStyle : null} value="competition_info" onClick={handleOnClick}>
+        <div
+          className="left"
+          style={
+            mentorCarrierMenu === "competition_info" ? activeLeftStyle : null
+          }
+          value="competition_info"
+          onClick={handleOnClick}
+        >
           공모전
         </div>
-        <div className="left" style={mentorCarrierMenu === "activities_info" ? activeLeftStyle : null} value="activities_info" onClick={handleOnClick}>
+        <div
+          className="left"
+          style={
+            mentorCarrierMenu === "activities_info" ? activeLeftStyle : null
+          }
+          value="activities_info"
+          onClick={handleOnClick}
+        >
           대외활동
         </div>
-        <div className="left" style={mentorCarrierMenu === "intern_info" ? activeLeftStyle : null} value="intern_info" onClick={handleOnClick}>
+        <div
+          className="left"
+          style={mentorCarrierMenu === "intern_info" ? activeLeftStyle : null}
+          value="intern_info"
+          onClick={handleOnClick}
+        >
           인턴
         </div>
-        <div className="left" style={mentorCarrierMenu === "blog_info" ? activeLeftStyle : null} value="blog_info" onClick={handleOnClick}>
+        <div
+          className="left"
+          style={mentorCarrierMenu === "blog_info" ? activeLeftStyle : null}
+          value="blog_info"
+          onClick={handleOnClick}
+        >
           블로그
         </div>
-        <div className="left onemore">+</div>
+        <div className="onemore"></div>
 
         <div className="sub-content">{sub_content}</div>
         <div className="main-content">{main_content}</div>
 
-        <NavLink to="?program=introduction" style={activeLink === "introduction" ? activeProgramStyle : null}>
+        <NavLink
+          to="?program=introduction"
+          style={activeLink === "introduction" ? activeProgramStyle : null}
+        >
           프로그램소개
         </NavLink>
-        <NavLink to="?program=curriculum" style={activeLink === "curriculum" ? activeProgramStyle : null}>
+        <NavLink
+          to="?program=curriculum"
+          style={activeLink === "curriculum" ? activeProgramStyle : null}
+        >
           커리큘럼
         </NavLink>
-        <NavLink to="?program=review" style={activeLink === "review" ? activeProgramStyle : null}>
+        <NavLink
+          to="?program=review"
+          style={activeLink === "review" ? activeProgramStyle : null}
+        >
           수강후기
         </NavLink>
-        <NavLink to="?program=qna" style={activeLink === "qna" ? activeProgramStyle : null}>
+        <NavLink
+          to="?program=qna"
+          style={activeLink === "qna" ? activeProgramStyle : null}
+        >
           질의응답
         </NavLink>
         <NavLink to="#"></NavLink>
