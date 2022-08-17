@@ -14,6 +14,7 @@ function ApplyPage() {
     <>
       <MentorApplyNavbar />
       <Routes>
+        <Route index element={<MentorBasicInformation />} />
         <Route path="step1" element={<MentorBasicInformation />} />
         <Route path="step2" element={<MentorDetailedInformation />} />
         <Route path="step3" element={<MentorContacts />} />
