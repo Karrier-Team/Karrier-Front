@@ -14,6 +14,7 @@ import MajorPage from "./routes/MajorPage";
 import MentorPage from "./routes/MentorPage";
 import ApplyPage from "./routes/ApplyPage";
 import MentoringApplyPage from "./routes/MentoringApplyPage";
+import MentorProgramPage from "./routes/MentorProgramPage";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/mentoring/:id" element={<MentorPage />} />
         <Route path="/mentoring/:id/apply" element={<MentoringApplyPage />} />
         <Route path="/apply/*" element={<ApplyPage />} />
+        <Route path="/mentor/program/*" element={<MentorProgramPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>

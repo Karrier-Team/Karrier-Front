@@ -10,8 +10,10 @@ export const BtnStyle = css`
   width: ${(props) => props.size || "5.5em"};
   height: 2.25em;
 
-  color: white;
+  color: ${(props) => (props.color ? props.color : "white")};
   background-color: var(--primary-color);
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "var(--primary-color)"};
 
   border: none;
   border-radius: 9px;

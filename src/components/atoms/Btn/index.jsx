@@ -1,7 +1,17 @@
 import React from "react";
 import * as S from "./style";
 
-function Btn({ data, size, handleClick, to, hide, children, withAlert }) {
+function Btn({
+  data,
+  size,
+  handleClick,
+  to,
+  hide,
+  children,
+  withAlert,
+  color,
+  backgroundColor,
+}) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
     if (withAlert) alert("제출완료!");
@@ -17,7 +27,13 @@ function Btn({ data, size, handleClick, to, hide, children, withAlert }) {
   }
 
   return (
-    <S.Btn size={size} onClick={handleClickWithData} hide={hide}>
+    <S.Btn
+      size={size}
+      onClick={handleClickWithData}
+      hide={hide}
+      color={color}
+      backgroundColor={backgroundColor}
+    >
       {children}
     </S.Btn>
   );
