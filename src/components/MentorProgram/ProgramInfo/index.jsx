@@ -1,11 +1,8 @@
 import * as S from "./style";
-import DatePicker from "./../../molecules/DatePicker/ index";
+//components
+import TextArea from "../../atoms/TextArea";
+
 const ProgramInfo = () => {
-  return (
-    <S.Wrapper>
-      info
-      <DatePicker />
-    </S.Wrapper>
-  );
+  return <S.Wrapper></S.Wrapper>;
 };
 export default ProgramInfo;
