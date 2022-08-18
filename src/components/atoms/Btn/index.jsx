@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 
-function Btn({ data, handleClick, to, hide, children, withAlert }) {
+function Btn({ data, size, handleClick, to, hide, children, withAlert }) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
     if (withAlert) alert("제출완료!");
@@ -17,7 +17,7 @@ function Btn({ data, handleClick, to, hide, children, withAlert }) {
   }
 
   return (
-    <S.Btn onClick={handleClickWithData} hide={hide}>
+    <S.Btn size={size} onClick={handleClickWithData} hide={hide}>
       {children}
     </S.Btn>
   );

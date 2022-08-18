@@ -1,10 +1,24 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 // import { ifProp, palette, theme } from "styled-tools";
 
 export const Label = styled.label`
   width: 100%;
   margin: 0.5em 0;
-  font-size: 1.2em;
+  font-size: ${(props) => (props.fontsize === "big" ? "1.7em" : "1.2em")};
+  font-weight: ${(props) => (props.fontsize === "big" ? "bold" : null)};
+  ${(props) =>
+    props.required
+      ? css`
+          ::after {
+            content: "*";
+            position: relative;
+            top: 0.4em;
+            left: 0.2em;
+            color: red;
+            font-size: 2em;
+          }
+        `
+      : null}
 `;
 
 // export const Label = styled.label<Props>`

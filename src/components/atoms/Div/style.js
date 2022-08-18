@@ -9,5 +9,7 @@ export const Div = styled.div`
   border-radius: 9px;
   box-shadow: var(--box-shadow);
 
-  font-size: 1em;
+  font-size: ${(props) => (props.fontsize ? "1.3em" : "1em")};
+  font-weight: ${(props) => (props.fontsize ? "bold" : "")};
+  text-align: ${(props) => (props.centercontent ? "center" : null)};
 `;

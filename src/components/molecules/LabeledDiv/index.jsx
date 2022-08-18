@@ -3,12 +3,16 @@ import * as S from "./style";
 import Label from "../../atoms/Label";
 import Div from "../../atoms/Div";
 
-function LabeledDiv({ name, children }) {
+function LabeledDiv({ name, fontsize, required, children, centercontent }) {
   return (
     <>
       <S.Wrapper>
-        <Label name={name}></Label>
-        <Div>{children}</Div>
+        <Label reuired={required} fontsize={fontsize} name={name}></Label>
+        {children ? (
+          <Div centercontent={centercontent} fontsize={fontsize}>
+            {children}
+          </Div>
+        ) : null}
       </S.Wrapper>
     </>
   );

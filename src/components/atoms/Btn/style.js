@@ -7,7 +7,7 @@ export const BtnStyle = css`
   visibility: ${(props) => (props.hide ? "hidden" : "visible")};
 
   box-sizing: border-box;
-  width: 5.5em; // width (574px)
+  width: ${(props) => props.size || "5.5em"};
   height: 2.25em;
 
   color: white;

@@ -8,11 +8,10 @@ function ApplyPageUpperDiv({ title, subtitle, contents }) {
         <S.Title>{title}</S.Title>
         <S.Subtitle>{subtitle}</S.Subtitle>
       </S.RowWrapper>
-      {contents.length === 0 ? null : (
+      {contents && contents.length === 0 ? null : (
         <S.ColWrapper>
-          {contents.map((content) => (
-            <S.Content>{"-" + content}</S.Content>
-          ))}
+          {contents &&
+            contents.map((content) => <S.Content>{"-" + content}</S.Content>)}
         </S.ColWrapper>
       )}
     </S.Wrapper>
