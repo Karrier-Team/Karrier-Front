@@ -37,4 +37,7 @@ export const Text = styled.div`
 export const SNSImg = styled.img`
   width: ${sizes.large.fontSize};
   height: ${sizes.large.fontSize};
+  :hover {
+    cursor: pointer;
+  }
 `;

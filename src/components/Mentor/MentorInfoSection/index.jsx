@@ -40,28 +40,28 @@ const Content = styled(S.Text)`
   align-items: center;
   width: 75%;
   height: 100%;
-  padding-left: 10%;
+  padding-left: 1.5em;
 `;
 
-function MentorInfoSection() {
+function MentorInfoSection({ data }) {
   return (
     <>
       <Wrapper>
         <Row>
           <Title>소속</Title>
-          <Content>경북대학교</Content>
+          <Content>{data.university}</Content>
         </Row>
         <Row>
           <Title>학번</Title>
-          <Content>18학번</Content>
+          <Content>{data.student_id}</Content>
         </Row>
         <Row>
           <Title>학과</Title>
-          <Content>IT대학 컴퓨터학부</Content>
+          <Content>{data.department}</Content>
         </Row>
         <Row className="bt">
           <Title>전공</Title>
-          <Content>글로벌 소프트웨어 융합 전공</Content>
+          <Content>{data.major}</Content>
         </Row>
       </Wrapper>
     </>

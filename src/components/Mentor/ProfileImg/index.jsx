@@ -1,26 +1,29 @@
 import React, { memo } from "react";
 import styled from "styled-components";
 
-import DefaultProfileImg from "../../../images/DefaultProfileImg.jpeg";
-
 const Box = styled.div`
   width: 100%;
-  height: calc(100vw * 0.3);
+  aspect-ratio: 1 / 1;
+  padding: 5%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Img = styled.img`
-  width: 80%;
-  height: 80%;
-  margin: 10%;
+  width: 100%;
+  height: 100%;
 
-  border: 1px solid black;
+  border: none;
+  box-shadow: var(--box-shadow);
   border-radius: 100%;
 `;
 
-function ProfileImg() {
+function ProfileImg({ data }) {
   return (
     <Box>
-      <Img src={DefaultProfileImg} alt="img"></Img>
+      <Img src={data.img} alt="img"></Img>
     </Box>
   );
 }

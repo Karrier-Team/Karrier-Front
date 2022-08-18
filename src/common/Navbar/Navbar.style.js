@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const LeftSection = styled.div`
   height: 100%;
@@ -24,9 +24,17 @@ export const Text = styled.span`
   text-align: center;
 `;
 
-export const Searchbar = styled.input``;
+export const Searchbar = styled.input`
+  border: 1px solid var(--bg-color-d);
+  border-radius: 1em;
+  padding: 0.5em;
+  background-color: transparent;
+  ::placeholder {
+    text-align: center;
+  }
+`;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: black;
   box-sizing: border-box;
@@ -34,6 +42,14 @@ export const StyledLink = styled(Link)`
 
   display: flex;
   align-items: center;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+
+  &.active {
+    color: var(--primary-color);
+  }
 `;
 
 export const StyledDropdownLi = styled.li`
@@ -43,18 +59,26 @@ export const StyledDropdownLi = styled.li`
   width: calc(100% / 7);
   height: 70px;
   cursor: pointer;
+
+  :hover {
+    color: var(--primary-color);
+  }
+
+  &.active {
+    color: var(--primary-color);
+  }
 `;
 
 export const DropdownWrapper = styled.div`
   position: absolute;
 
-  width: 100%;
+  width: 100vw;
   height: auto;
 
   box-sizing: border-box;
   background-color: white;
   z-index: 1;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--line-color);
 
   display: flex;
   justify-content: flex-start;

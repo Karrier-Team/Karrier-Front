@@ -6,7 +6,7 @@ import * as S from "./Navbar.style";
 import { colleges } from "./colleges";
 
 const SubDropdownWrapper = styled(S.DropdownWrapper)`
-  top: calc(80px + 70px * 3 + 1px); // (navbar + dropdown * 3 + border-bottom)
+  top: calc(10vh + 70px * 3 + 1px); // (navbar + dropdown * 3 + border-bottom)
 `;
 
 export const StyledH1 = styled.h1`
