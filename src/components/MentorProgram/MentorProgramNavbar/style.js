@@ -5,9 +5,9 @@ export const Wrapper = styled.div`
   background-color: #f0f0f0;
 
   /* border-bottom: 1px solid #e1e1e1; */
-  width: 13%;
+  width: 14%;
   height: 100vh;
-  margin-left: 8%;
+  /* margin-left: 8%; */
 `;
 
 export const StyledNavLink = styled(NavLink)`

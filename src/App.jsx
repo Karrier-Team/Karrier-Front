@@ -30,7 +30,7 @@ function App() {
         <Route path="/apply/*" element={<ApplyPage />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="/major" element={<MajorPage />} />
-        <Route path="/mentor-program/*" element={<MentorProgramPage />} />
+        <Route path="/mentor/program/*" element={<MentorProgramPage />} />
       </Routes>
     </Router>
   );
