@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const BarDiv = styled.div`
+  display: ${(props) => (props.visible ? "" : "none")};
+
   width: 100vw;
   height: 3em;
   box-sizing: border-box;
@@ -31,7 +33,7 @@ const Text = styled.span`
   font-size: 1.5em;
 `;
 
-function AdBar() {
+function AdBar({ visible }) {
   return (
     <BarDiv>
       <Text>
