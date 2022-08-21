@@ -3,6 +3,8 @@ import styled from "styled-components";
 import React from "react";
 
 const StyledProfileList = styled.div`
+  width: 100%;
+  box-sizing: border-box;
   padding: 1.7vw;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
