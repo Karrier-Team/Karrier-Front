@@ -3,25 +3,33 @@ import styled from "styled-components";
 import Btn from "../../atoms/Btn/index";
 import Label from "../../atoms/Label/index";
 import Textarea from "../../atoms/Textarea/index";
+import FileInput from "../../atoms/FileInput/index";
 //styled-component
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  margin-bottom: 5%;
+`;
+
+const InfoSection = styled.section`
+  margin-bottom: 4%;
 `;
 
 const BtnSection = styled.section`
   display: flex;
 `;
 
-const InfoSection = styled.section`
-  padding: 3% 7%;
-`;
-
 const InfoTitleSection = styled.section`
   display: flex;
-  margin-bottom: 2%;
+  justify-content: space-between;
+  margin-bottom: 3%;
 `;
-const PhotoSection = styled.section``;
+const FileSection = styled.section`
+  margin-bottom: 4%;
+`;
+const File = styled.section`
+  width: 100%;
+  display: flex;
+  margin-top: 3%;
+`;
 
 const ProgramInfo = () => {
   return (
@@ -30,20 +38,20 @@ const ProgramInfo = () => {
         <InfoTitleSection>
           <Label name={"프로그램 대표 정보"} fontsize={"big"} />
           <BtnSection>
-            <div style={{ padding: "3%" }}>
+            <div style={{ margin: " 0 0.7em" }}>
               <Btn
                 children={"임시 저장"}
                 size={"4.5em"}
-                color={"black"}
-                backgroundColor={"white"}
+                color={"gray"}
+                backgroundColor={"RGB(235, 235, 235)"}
               />
             </div>
-            <div style={{ padding: "3%" }}>
+            <div style={{ margin: " 0 0.7em" }}>
               <Btn
                 children={"저장"}
                 size={"4.5em"}
                 color={"white"}
-                backgroundColor={"RGB(99, 99, 99)"}
+                backgroundColor={"#007bc3"}
               />
             </div>
           </BtnSection>
@@ -53,7 +61,17 @@ const ProgramInfo = () => {
           handleChange={() => {}}
         />
       </InfoSection>
-      <PhotoSection>Phto</PhotoSection>
+      <FileSection>
+        <Label name={"대표 사진"} fontsize={"big"} />
+        <File>
+          <div style={{ width: "80%", marginRight: "5em" }}>
+            <FileInput />
+          </div>
+          <div style={{ width: "80%" }}>
+            <FileInput />
+          </div>
+        </File>
+      </FileSection>
     </Wrapper>
   );
 };

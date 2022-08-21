@@ -1,5 +1,6 @@
 import React, { memo } from "react";
 import { Routes, Route } from "react-router-dom";
+import styled from "styled-components";
 
 // components
 import MentorApplyNavbar from "../components/Apply/MentorApplyNavbar";
@@ -9,18 +10,27 @@ import MentorContacts from "../components/Apply/MentorContacts";
 import MentorVerification from "../components/Apply/MentorVerification";
 import MentorFinalConfirmation from "../components/Apply/MentorFinalConfirmation";
 
+//styled-component
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 0 20vw;
+`;
+
 function ApplyPage() {
   return (
     <>
       <MentorApplyNavbar />
-      <Routes>
-        <Route index element={<MentorBasicInformation />} />
-        <Route path="step1" element={<MentorBasicInformation />} />
-        <Route path="step2" element={<MentorDetailedInformation />} />
-        <Route path="step3" element={<MentorContacts />} />
-        <Route path="step4" element={<MentorVerification />} />
-        <Route path="step5" element={<MentorFinalConfirmation />} />
-      </Routes>
+      <Wrapper>
+        <Routes>
+          <Route index element={<MentorBasicInformation />} />
+          <Route path="step1" element={<MentorBasicInformation />} />
+          <Route path="step2" element={<MentorDetailedInformation />} />
+          <Route path="step3" element={<MentorContacts />} />
+          <Route path="step4" element={<MentorVerification />} />
+          <Route path="step5" element={<MentorFinalConfirmation />} />
+        </Routes>
+      </Wrapper>
     </>
   );
 }

@@ -14,7 +14,9 @@ function LabeledInput({
   return (
     <>
       <S.Wrapper>
-        <Label required={required} name={name}></Label>
+        <div style={{ marginBottom: "1rem" }}>
+          <Label required={required} name={name}></Label>
+        </div>
         <Input
           storage={storage}
           value={value}

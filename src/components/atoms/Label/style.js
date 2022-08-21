@@ -2,10 +2,8 @@ import styled, { css } from "styled-components";
 // import { ifProp, palette, theme } from "styled-tools";
 
 export const Label = styled.label`
-  width: 100%;
-  margin: 0.5em 0;
   font-size: ${(props) => (props.fontsize === "big" ? "1.7em" : "1.2em")};
-  font-weight: ${(props) => (props.fontsize === "big" ? "bold" : null)};
+  font-weight: bold;
   ${(props) =>
     props.required
       ? css`
