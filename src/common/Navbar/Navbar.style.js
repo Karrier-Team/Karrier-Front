@@ -70,13 +70,14 @@ export const StyledDropdownLi = styled.li`
 `;
 
 export const DropdownWrapper = styled.div`
-  position: absolute;
+  position: ${(props) => (props.inCommunityPage ? "relative" : "absolute")};
 
-  width: 100vw;
+  width: 100%;
   height: auto;
 
   box-sizing: border-box;
-  background-color: white;
+  background-color: ${(props) =>
+    props.inCommunityPage ? "var(--bg-color-l)" : "white"};
   z-index: 1;
   border-bottom: 1px solid var(--line-color);
 
@@ -85,4 +86,17 @@ export const DropdownWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
+`;
+
+export const MajorItems = styled.li`
+  list-style: none;
+  margin: 0.7em 1em;
+  cursor: pointer;
+  :hover {
+    color: var(--primary-color);
+  }
+
+  &.active {
+    color: var(--primary-color);
+  }
 `;

@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { FlexColCenter } from "../../commonStyles";
+import { FlexCol } from "../../commonStyles";
 
 export const Wrapper = styled.div`
-  ${FlexColCenter}
+  ${FlexCol}
   box-sizing: border-box;
-  padding: 0 5%;
+  width: 100%;
+  padding: 0 10%;
 `;

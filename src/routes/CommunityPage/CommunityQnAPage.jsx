@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import CommunityNavbar from "../../organisms/CommunityNavbar";
 import ControllBar from "../../organisms/ControllBar";
-import CollegeNavBar from "../../organisms/CollegeNavBar";
+// import CollegeNavBar from "../../organisms/CollegeNavBar";
 import ProfileList from "../../components/Profile/ProfileList";
 import * as S from "./style.js";
+import Dropdown from "../../common/Navbar/Dropdown";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -12,13 +13,15 @@ const sortTypeOptions = [
 ];
 
 const searchTypeOptions = [
-  { value: "program_title", name: "프로그램 제목" },
-  { value: "mentor_name", name: "멘토 이름" },
+  { value: "programName", name: "프로그램 제목" },
+  { value: "mentorName", name: "멘토 이름" },
 ];
 
 function CommunityQnAPage() {
+  const [currentCollege, setCurrentCollege] = useState("인문대학");
   const [sortType, setSortType] = useState("latest"); // sort by recent, likes, name || recent, unsolved, solved
   const [searchValue, setSearchValue] = useState("");
+  const [showDropbox, setShowDropbox] = useState(true);
 
   return (
     <>
@@ -31,7 +34,7 @@ function CommunityQnAPage() {
           onChangeSearchValue={setSearchValue}
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
-        {/* <CollegeNavBar></CollegeNavBar> */}
+        <Dropdown inCommunityPage setShowDropbox={setShowDropbox} />
         {/* <ProfileList mentoData={dummyMentoData} /> */}
       </S.Wrapper>
     </>

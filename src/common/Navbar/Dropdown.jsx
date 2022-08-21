@@ -2,19 +2,21 @@ import React, { useState, memo } from "react";
 
 import * as S from "./Navbar.style";
 import SubDropdown from "./SubDropdown";
+import DropdownMajorSection from "./DropdownMajorSection";
 
 import { colleges } from "./colleges";
 
-function Dropdown({ setShowDropbox }) {
-  const [collegeIdx, setCollegeIdx] = useState("-1");
+function Dropdown({ inCommunityPage, setShowDropbox }) {
+  const [collegeIdx, setCollegeIdx] = useState("0");
 
   return (
     <>
       <div
-        onMouseOver={() => setShowDropbox(true)}
-        onMouseLeave={() => setShowDropbox(false)}
+        style={{ width: "100%" }}
+        onMouseOver={() => !inCommunityPage && setShowDropbox(true)}
+        onMouseLeave={() => !inCommunityPage && setShowDropbox(false)}
       >
-        <S.DropdownWrapper>
+        <S.DropdownWrapper inCommunityPage={inCommunityPage}>
           {colleges.map((e) => {
             return (
               <S.StyledDropdownLi
@@ -34,7 +36,12 @@ function Dropdown({ setShowDropbox }) {
             );
           })}
         </S.DropdownWrapper>
-        {collegeIdx >= 0 ? <SubDropdown college={collegeIdx} /> : null}
+        {!inCommunityPage && collegeIdx >= 0 ? (
+          <SubDropdown college={collegeIdx} />
+        ) : null}
+        {inCommunityPage && collegeIdx >= 0 && (
+          <DropdownMajorSection college={collegeIdx} />
+        )}
       </div>
     </>
   );
