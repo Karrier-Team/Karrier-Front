@@ -1,11 +1,25 @@
-const SortingBar = ({ sortTypeOptions, onChangeSortType }) => {
+import { useSearchParams } from "react-router-dom";
+import * as S from "./style";
+
+const SortingBar = ({ sortType, sortTypeOptions, onChangeSortType }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   return (
     <div style={{ display: "flex", gap: "1em" }}>
-      {sortTypeOptions.map((sortType, idx) => {
+      {sortTypeOptions.map((sortTypeOption, idx) => {
         return (
-          <div onClick={() => onChangeSortType(sortType.value)} key={idx}>
-            {sortType.name}
-          </div>
+          <S.Div
+            className={sortType === sortTypeOption.value ? "active" : null}
+            onClick={() => {
+              onChangeSortType(sortTypeOption.value);
+              // 기존에 있는 searchParams에다가 key-value를 추가하고 다시 세팅한다.
+              searchParams.set("sort", sortTypeOption.value);
+              setSearchParams(searchParams);
+            }}
+            key={idx}
+          >
+            {sortTypeOption.name}
+          </S.Div>
         );
       })}
     </div>

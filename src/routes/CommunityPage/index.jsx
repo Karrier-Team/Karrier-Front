@@ -10,6 +10,7 @@ function CommunityPage() {
       <Routes>
         <Route index element={<CommunityQnA />} />
         <Route path="qna" element={<CommunityQnA />} />
+        <Route path="qna/:major" element={<CommunityQnA />} />
       </Routes>
     </>
   );

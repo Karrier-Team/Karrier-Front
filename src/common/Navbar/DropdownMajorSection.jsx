@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import * as S from "./Navbar.style";
@@ -27,6 +27,7 @@ export const StyledH1 = styled.h1`
 
 function DropdownMajorSection({ college: idx }) {
   const navigate = useNavigate();
+  const { major } = useParams();
 
   return (
     <>
@@ -34,7 +35,11 @@ function DropdownMajorSection({ college: idx }) {
         <StyledH1>{colleges[idx].college + " >"}</StyledH1>
         {colleges[idx].departments.map((dept, idx) => {
           return (
-            <S.MajorItems onClick={() => navigate(`${dept}`)} key={idx}>
+            <S.MajorItems
+              className={dept === major ? "active" : null}
+              onClick={() => navigate(`../qna/${dept}`)}
+              key={idx}
+            >
               {dept}
             </S.MajorItems>
           );
