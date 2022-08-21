@@ -30,7 +30,7 @@ function App() {
         <Route path="/mentoring/:id" element={<MentorPage />} />
         <Route path="/mentoring/:id/apply" element={<MentoringApplyPage />} />
         <Route path="/apply/*" element={<ApplyPage />} />
-        <Route path="/communtiy/*" element={<CommunityPage />} />
+        <Route path="/community/*" element={<CommunityPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
