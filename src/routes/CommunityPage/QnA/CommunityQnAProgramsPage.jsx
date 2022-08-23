@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import CommunityNavbar from "../../organisms/CommunityNavbar";
-import ControllBar from "../../organisms/ControllBar";
-import ProfileList from "../../components/Profile/ProfileList";
+import CommunityNavbar from "../../../organisms/CommunityNavbar";
+import ControllBar from "../../../organisms/ControllBar";
+import ProfileList from "../../../components/Profile/ProfileList";
 import * as S from "./style.js";
-import Dropdown from "../../common/Navbar/Dropdown";
+import Dropdown from "../../../common/Navbar/Dropdown";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -59,7 +59,7 @@ const dummyMentoData = [
   },
 ];
 
-function CommunityQnAPage() {
+function CommunityQnaProgramsPage() {
   const [sortType, setSortType] = useState("latest"); // sort by recent, likes, name || recent, unsolved, solved
   const [searchType, setSearchType] = useState("programName");
   const [searchValue, setSearchValue] = useState("");
@@ -85,4 +85,4 @@ function CommunityQnAPage() {
   );
 }
 
-export default CommunityQnAPage;
+export default CommunityQnaProgramsPage;
