@@ -1,7 +1,11 @@
 import * as S from "./style";
 import { useSearchParams } from "react-router-dom";
+import Btn from "../../atoms/Btn";
+import { Space } from "@mantine/core";
 
 const SearchBar = ({
+  withBtn = false,
+  onClickBtn,
   searchType,
   searchTypeOptions,
   onChangeSearchType,
@@ -36,6 +40,8 @@ const SearchBar = ({
         }}
         placeholder="입력하세요."
       ></S.Input>
+      <Space w="xs"></Space>
+      {withBtn ? <Btn handleClick={onClickBtn}>작성하기</Btn> : null}
     </S.Wrapper>
   );
 };

@@ -1,10 +1,10 @@
 import Adbar from "../../common/Adbar";
 import * as S from "./style";
 
-const CommunityNavbar = ({ isAdVisible = true, type, children }) => {
+const CommunityNavbar = ({ isAdVisible, type, children }) => {
   return (
     <>
-      <Adbar visible={isAdVisible}></Adbar>
+      <Adbar type={type} isAdVisible={isAdVisible}></Adbar>
       <S.SubHeader type={type}>{children}</S.SubHeader>
     </>
   );

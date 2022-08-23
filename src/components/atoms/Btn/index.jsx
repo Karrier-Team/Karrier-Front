@@ -10,14 +10,22 @@ function Btn({ data, size, handleClick, to, hide, children, withAlert }) {
 
   if (to) {
     return (
-      <S.StyledLink onClick={handleClickWithData} to={to} hide={hide}>
+      <S.StyledLink
+        onClick={data ? handleClickWithData : handleClick}
+        to={to}
+        hide={hide}
+      >
         {children}
       </S.StyledLink>
     );
   }
 
   return (
-    <S.Btn size={size} onClick={handleClickWithData} hide={hide}>
+    <S.Btn
+      size={size}
+      onClick={data ? handleClickWithData : handleClick}
+      hide={hide}
+    >
       {children}
     </S.Btn>
   );
