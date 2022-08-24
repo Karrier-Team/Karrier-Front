@@ -40,7 +40,8 @@ export const ColWrapper = styled.div`
   }
 
   .onClicked {
-    height: 10em;
+    width: 100%;
+    height: auto;
   }
 `;
 
