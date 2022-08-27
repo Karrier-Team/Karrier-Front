@@ -3,7 +3,10 @@ import styled from "styled-components";
 export const Textarea = styled.textarea`
   box-sizing: border-box;
   width: 100%; // width (574px)
-  aspect-ratio: 4 / 1;
+  /* aspect-ratio: 4 / 1; //height */
+
+  height: ${(props) => (props.height ? props.height : "30vh")};
+
   padding: 25px;
 
   border: none;

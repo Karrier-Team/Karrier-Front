@@ -10,6 +10,7 @@ function LabeledInput({
   handleChange,
   name,
   placeholder,
+  height,
 }) {
   return (
     <>
@@ -23,6 +24,7 @@ function LabeledInput({
           handleChange={handleChange}
           placeholder={placeholder}
           required={required}
+          height={height}
         ></Input>
       </S.Wrapper>
     </>

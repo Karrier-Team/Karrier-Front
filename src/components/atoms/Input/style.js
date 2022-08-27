@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const Input = styled.input`
   box-sizing: border-box;
   width: 100%; // width (574px)
-  aspect-ratio: 9.25/1; // height
-  padding: 25px;
+
+  height: ${(props) => (props.height ? props.height : "10vh")};
+  padding: ${(props) => (props.padding ? props.padding : "2em")};
+
+  font-weight: bold;
 
   border: none;
   border-radius: 9px;

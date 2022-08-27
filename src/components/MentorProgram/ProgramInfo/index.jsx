@@ -4,6 +4,7 @@ import Btn from "../../atoms/Btn/index";
 import Label from "../../atoms/Label/index";
 import Textarea from "../../atoms/Textarea/index";
 import FileInput from "../../atoms/FileInput/index";
+
 //styled-component
 const Wrapper = styled.div`
   margin-bottom: 5%;

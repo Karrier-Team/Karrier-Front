@@ -11,6 +11,8 @@ function Btn({
   withAlert,
   color,
   backgroundColor,
+  fontSize,
+  height,
 }) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
@@ -28,11 +30,13 @@ function Btn({
 
   return (
     <S.Btn
-      size={size}
+      size={size} //width
+      height={height}
       onClick={handleClickWithData}
       hide={hide}
       color={color}
       backgroundColor={backgroundColor}
+      fontSize={fontSize}
     >
       {children}
     </S.Btn>

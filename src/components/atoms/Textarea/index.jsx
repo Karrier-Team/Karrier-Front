@@ -2,7 +2,13 @@ import React, { useEffect } from "react";
 import { useLocalStorage } from "@mantine/hooks";
 import * as S from "./style";
 
-function Textarea({ storage: storage_key, value, handleChange, placeholder }) {
+function Textarea({
+  storage: storage_key,
+  value,
+  handleChange,
+  placeholder,
+  height,
+}) {
   const [storage] = useLocalStorage({
     key: "mentor_apply_info",
   });
@@ -16,6 +22,7 @@ function Textarea({ storage: storage_key, value, handleChange, placeholder }) {
   return (
     <S.Textarea
       value={value}
+      height={height}
       onChange={(e) => handleChange(e.target.value)}
       placeholder={placeholder}
     ></S.Textarea>

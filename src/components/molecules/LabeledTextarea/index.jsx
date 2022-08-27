@@ -12,12 +12,13 @@ function LabeledTextarea({
   name,
   placeholder,
   required,
+  height,
 }) {
   return (
     <>
       <S.Wrapper>
         <div style={{ marginBottom: "1em" }}>
-          <Label required name={name} fontsize={fontsize}></Label>
+          <Label required={required} name={name} fontsize={fontsize}></Label>
         </div>
         <Textarea
           storage={storage}
@@ -25,6 +26,7 @@ function LabeledTextarea({
           size={size}
           handleChange={handleChange}
           placeholder={placeholder}
+          height={height}
         ></Textarea>
       </S.Wrapper>
     </>

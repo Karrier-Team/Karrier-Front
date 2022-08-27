@@ -16,18 +16,18 @@ const Wrapper = styled.div`
 //   margin-right: 20px;
 // `;
 
-function DatePicker() {
+function DatePicker({ label, placeholder }) {
   const [value, setValue] = useState([new Date(), new Date()]);
   return (
     <Wrapper>
       <DateRangePicker
-        label="Book hotel"
-        placeholder="Pick dates range"
+        placeholder="placeholder"
         value={value}
         inputFormat="MM/DD/YYYY"
         labelFormat="MM/YYYY"
         onChange={setValue}
-        style={{ width: "20vw", height: "10vh" }}
+        style={{ width: "24.5vw", height: "10vh" }}
+        size={"md"}
       />
     </Wrapper>
   );

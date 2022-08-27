@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Div = styled.div`
+export const TagDiv = styled.div`
   box-sizing: border-box;
   width: 100%; // width (574px)
   padding: ${(props) => (props.padding ? props.padding : "25px")};
@@ -12,4 +12,9 @@ export const Div = styled.div`
   font-size: ${(props) => (props.fontsize ? "1.3em" : "1em")};
   font-weight: ${(props) => (props.fontsize ? "bold" : "")};
   text-align: ${(props) => (props.centercontent ? "center" : null)};
+
+  // 가로 스크롤
+  display: flex;
+  overflow: auto;
+  white-space: nowrap;
 `;

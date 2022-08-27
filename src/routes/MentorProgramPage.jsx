@@ -7,6 +7,7 @@ import ProgramInfo from "../components/MentorProgram/ProgramInfo";
 import ProgramIntro from "../components/MentorProgram/ProgramIntro";
 import Curriculum from "../components/MentorProgram/Curriculum";
 import MentorIntro from "../components/MentorProgram/MentorIntro";
+import Btn from "../components/atoms/Btn";
 
 //styled-components
 const Wrapper = styled.div`
@@ -27,7 +28,11 @@ const Section = styled.section`
   margin-top: 5%;
 `;
 
-const SubmitSection = styled.section``;
+const SubmitSection = styled.section`
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10%;
+`;
 
 const MentorProgramPage = () => {
   return (
@@ -39,7 +44,24 @@ const MentorProgramPage = () => {
           <ProgramIntro id="2" />
           <Curriculum id="3" />
           <MentorIntro id="4" />
-          <SubmitSection>버튼 두개</SubmitSection>
+          <SubmitSection>
+            <Btn
+              children={"임시저장"}
+              color={"black"}
+              backgroundColor={"RGB(235, 235, 235)"}
+              handleClick={() => {}}
+              size={"27vw"}
+              fontSize={"1.2em"}
+            />
+
+            <Btn
+              children={"저장"}
+              backgroundColor={"#007bc3"}
+              handleClick={() => {}}
+              size={"27vw"}
+              fontSize={"1.2em"}
+            />
+          </SubmitSection>
         </Section>
       </PageWrapper>
     </Wrapper>

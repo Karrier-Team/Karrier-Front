@@ -1620,34 +1620,41 @@
   "resolved" "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   "version" "2.0.4"
 
-"@mantine/core@^5.1.1":
-  "integrity" "sha512-IjEUSQinGawinVNjBXVZTmhcVTaFURtHP/JuJtFDcVCdXEB18ibeyEh985NGhMwoar71tpsWZ0XsQQf9cMhcsA=="
-  "resolved" "https://registry.npmjs.org/@mantine/core/-/core-5.1.1.tgz"
-  "version" "5.1.1"
+"@mantine/core@^5.2.0", "@mantine/core@5.2.0":
+  "integrity" "sha512-FWR+TtSu+kJjSFHSGedVLVshfTX5J/2v3e/aU+jGlsZmZrm+UHWI4FbqRuDIWI6QSDbWcaNXn03RYbKJRpGXSQ=="
+  "resolved" "https://registry.npmjs.org/@mantine/core/-/core-5.2.0.tgz"
+  "version" "5.2.0"
   dependencies:
     "@floating-ui/react-dom-interactions" "0.6.6"
-    "@mantine/styles" "5.1.1"
-    "@mantine/utils" "5.1.1"
+    "@mantine/styles" "5.2.0"
+    "@mantine/utils" "5.2.0"
     "@radix-ui/react-scroll-area" "1.0.0"
     "react-textarea-autosize" "8.3.4"
 
-"@mantine/hooks@^5.1.1", "@mantine/hooks@5.1.1":
-  "integrity" "sha512-paixen37qs9a8g/hYMIAMXCl+WUK2DdGqSPahGpza1BdNqtYEIfbu12LcuZkfswufIY8DaagdabG0yL6Swh+bg=="
-  "resolved" "https://registry.npmjs.org/@mantine/hooks/-/hooks-5.1.1.tgz"
-  "version" "5.1.1"
+"@mantine/dates@^5.2.0":
+  "integrity" "sha512-QN3c0VAo3cXtLKqHaulWHvvwu1ew128PVa/eMn9OHpxcLeucybUFnEwr+E5lwaVwzn/O5F8szqPysXdlAdSouA=="
+  "resolved" "https://registry.npmjs.org/@mantine/dates/-/dates-5.2.0.tgz"
+  "version" "5.2.0"
+  dependencies:
+    "@mantine/utils" "5.2.0"
 
-"@mantine/styles@5.1.1":
-  "integrity" "sha512-QMGiG/w3WaqUd79uQ9OjGLsdccqjExsIQpyGq2GbZJRAlrP8TYnohUtrXQx0VhGfM8oCn5n2IrZc48LzNkArJg=="
-  "resolved" "https://registry.npmjs.org/@mantine/styles/-/styles-5.1.1.tgz"
-  "version" "5.1.1"
+"@mantine/hooks@^5.2.0", "@mantine/hooks@5.2.0":
+  "integrity" "sha512-9pBlt12lxwzTOWUmigTlcbkW9eEHOYODALEXc65F0uMkbdYpjfMq2rJ0Pp4mEoQkXtl9m77vbD1b3RLrncVpfg=="
+  "resolved" "https://registry.npmjs.org/@mantine/hooks/-/hooks-5.2.0.tgz"
+  "version" "5.2.0"
+
+"@mantine/styles@5.2.0":
+  "integrity" "sha512-0wUUqB+JmGGyUoMIrKig+7cd3s2A48tzAIexTu94LVixBQ4l7RnFjxh8/1ZPcWz76SVpmliljiCIHyQUV590Kg=="
+  "resolved" "https://registry.npmjs.org/@mantine/styles/-/styles-5.2.0.tgz"
+  "version" "5.2.0"
   dependencies:
     "clsx" "1.1.1"
     "csstype" "3.0.9"
 
-"@mantine/utils@5.1.1":
-  "integrity" "sha512-2FiSrD1lYuDHSGVi1QL5iskO8/Bnd6eDrwdpEWS/PJfg6iEz80HnmBxf/xzkDBaNdK3/n8g2kOaOcw5Ff1OFkA=="
-  "resolved" "https://registry.npmjs.org/@mantine/utils/-/utils-5.1.1.tgz"
-  "version" "5.1.1"
+"@mantine/utils@5.2.0":
+  "integrity" "sha512-wDJKbW5EYboTSNkWhIXKdyDgBVxGLmdkGL4O94iNtZbRy5zoouGaEP3sW88GgIhyFmeVlnu+Mdzzsd76IsX/NA=="
+  "resolved" "https://registry.npmjs.org/@mantine/utils/-/utils-5.2.0.tgz"
+  "version" "5.2.0"
 
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
@@ -3804,6 +3811,11 @@
     "abab" "^2.0.3"
     "whatwg-mimetype" "^2.3.0"
     "whatwg-url" "^8.0.0"
+
+"dayjs@^1.11.5", "dayjs@>=1.0.0":
+  "integrity" "sha512-CAdX5Q3YW3Gclyo5Vpqkgpj8fSdLQcRuzfX6mC6Phy0nfJ0eGYOeS7m4mt2plDWLAtA4TqTakvbboHvUxfe4iA=="
+  "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.11.5.tgz"
+  "version" "1.11.5"
 
 "debug@^2.6.0":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="

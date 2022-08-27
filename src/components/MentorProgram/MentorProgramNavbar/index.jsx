@@ -21,4 +21,4 @@ const MentorProgramNav = () => {
     </S.Wrapper>
   );
 };
-export default React.memo(MentorProgramNav);
+export default MentorProgramNav;
