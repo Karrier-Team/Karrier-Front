@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 // Pages
 import CommunityQnAProgramsPage from "./QnA/CommunityQnAProgramsPage";
 import CommunityQnaProgramPage from "./QnA/CommunityQnaProgramPage";
+import CommunityQuestionPage from "./QnA/CommunityQuestionPage";
 
 import CommunityReviewsProgramsPage from "./Reviews/CommunityReviewsProgramsPage";
 import CommunityReviewsProgramPage from "./Reviews/CommunityReviewsProgramPage";
@@ -18,8 +19,12 @@ function CommunityPage() {
         <Route path="qna" element={<CommunityQnAProgramsPage />} />
         <Route path="qna/:major" element={<CommunityQnAProgramsPage />} />
         <Route
-          path="qna/:major/:programId"
+          path="qna/:major/:programNo"
           element={<CommunityQnaProgramPage />}
+        />
+        <Route
+          path="qna/:major/:programNo/question/:questionNo"
+          element={<CommunityQuestionPage />}
         />
 
         <Route path="reviews" element={<CommunityReviewsProgramsPage />} />
@@ -28,11 +33,11 @@ function CommunityPage() {
           element={<CommunityReviewsProgramsPage />}
         />
         <Route
-          path="reviews/:major/:programId"
+          path="reviews/:major/:programNo"
           element={<CommunityReviewsProgramsPage />}
         />
         <Route
-          path="qna/:major/:programId"
+          path="qna/:major/:programNo"
           element={<CommunityReviewsProgramPage />}
         />
       </Routes>
