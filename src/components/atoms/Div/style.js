@@ -4,7 +4,9 @@ export const Div = styled.div`
   box-sizing: border-box;
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || null};
-  padding: 25px;
+  padding: ${(props) => props.pd || "1.5rem"};
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 
   border: none;
   border-radius: 9px;
@@ -15,6 +17,13 @@ export const Div = styled.div`
   font-weight: ${(props) => (props.fontsize ? "bold" : "")};
 
   text-align: ${(props) => (props.centercontent ? "center" : null)};
+
+  ${(props) =>
+    props.column &&
+    css`
+      display: flex;
+      flex-direction: column;
+    `}
 
   ${(props) =>
     props.centercontent &&

@@ -5,7 +5,7 @@ import Div from "../../../components/atoms/Div";
 // import API from apis
 
 // components
-import { Text } from "@mantine/core";
+import { Text, Space } from "@mantine/core";
 import DoubleTextWithProfileImg from "../../../components/molecules/DoubleTextWithProfileImg";
 
 // /community/qna/{major}/{programId}/question/{questionId}
@@ -23,7 +23,7 @@ const CommunityQuestionPage = () => {
       "https://karrier.s3.ap-northeast-2.amazonaws.com/profile_image/932ac58a-d41e-4dc8-8c4d-bc1a8761c9f2변경된 프로필 사진.PNG",
     title: "질문 제목",
     content: "질문 내용",
-    answer: null,
+    answer: "질문 답변",
     modifyDate: "2022-08-20T17:01:56.707375",
     answerDate: null,
     questionLikeNo: 1,
@@ -60,16 +60,54 @@ const CommunityQuestionPage = () => {
   return (
     <S.Wrapper>
       <DoubleTextWithProfileImg
-        src={dummyData.mentorProfileImage}
+        src={dummyData.writerProfileImage}
         type="upperbig"
         uppertxt={dummyData.title}
-        lowertxt={[dummyData.writer, dummyData.modifyDate].join("·")}
+        lowertxt={[dummyData.writer, dummyData.modifyDate].join(" · ")}
       />
-      <Div height="15rem" centercontent>
+      {/* question */}
+      <Div column pd="5rem">
+        <Text>{dummyData.content}</Text>
+        <S.RowWrapper>
+          <div style={{ display: "flex" }}>
+            <Text color="var(--primary-color)">좋아요</Text>
+            <Space w="md"></Space>
+            <Text>{dummyData.questionLikeNo}</Text>
+          </div>
+          <div style={{ display: "flex" }}>
+            <Text color="var(--primary-color)">수정</Text>
+            <Space w="md"></Space>
+            <Text>삭제</Text>
+          </div>
+        </S.RowWrapper>
+      </Div>
+
+      {/* answer */}
+      <Div column pd="5rem" centercontent={dummyData.answer ? null : true}>
         {dummyData.answer ? (
-          <div>멘토 답변</div>
+          <>
+            <DoubleTextWithProfileImg
+              src={dummyData.mentorProfileImage}
+              type="upperbig"
+              uppertxt={dummyData.mentorName}
+              lowertxt={dummyData.answerDate}
+            />
+            <Text>{dummyData.answer}</Text>
+            <S.RowWrapper>
+              <div style={{ display: "flex" }}>
+                <Text color="var(--primary-color)">좋아요</Text>
+                <Space w="md"></Space>
+                <Text>{dummyData.answerLikeNo}</Text>
+              </div>
+              <div style={{ display: "flex" }}>
+                <Text color="var(--primary-color)">수정</Text>
+                <Space w="md"></Space>
+                <Text>삭제</Text>
+              </div>
+            </S.RowWrapper>
+          </>
         ) : (
-          <Text size="1.5rem" color="gray">
+          <Text size="1.5rem" color="gray" style={{ padding: "7rem" }}>
             아직 멘토의 답변이 없습니다.
           </Text>
         )}

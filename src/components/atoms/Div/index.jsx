@@ -1,9 +1,20 @@
 import React from "react";
 import * as S from "./style";
 
-function Div({ children, width, height, centercontent, bgcolor, fontsize }) {
+function Div({
+  children,
+  column,
+  width,
+  height,
+  centercontent,
+  bgcolor,
+  fontsize,
+  pd, //padding
+}) {
   return (
     <S.Div
+      pd={pd}
+      column={column}
       width={width}
       height={height}
       fontsize={fontsize}
