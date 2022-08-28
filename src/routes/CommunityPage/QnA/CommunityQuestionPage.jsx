@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as S from "./style";
 import Div from "../../../components/atoms/Div";
@@ -7,6 +7,7 @@ import Div from "../../../components/atoms/Div";
 // components
 import { Text, Space } from "@mantine/core";
 import DoubleTextWithProfileImg from "../../../components/molecules/DoubleTextWithProfileImg";
+import InputWithProfileImg from "../../../components/molecules/InputWithProfileImg";
 
 // /community/qna/{major}/{programId}/question/{questionId}
 const CommunityQuestionPage = () => {
@@ -114,12 +115,13 @@ const CommunityQuestionPage = () => {
       </Div>
 
       {/* comments */}
-      <Div column>
+      <Div pd="3.5rem" column>
         <S.RowWrapper>
           <Text size="xl">댓글</Text>
           <Space w="xl"></Space>
           <Text>{dummyData.questionCommentListDto.length}</Text>
         </S.RowWrapper>
+        <InputWithProfileImg src={dummyData.writerProfileImage} />
         {dummyData.questionCommentListDto.map((comment) => (
           <DoubleTextWithProfileImg
             key={comment.commentNo}
