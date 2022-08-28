@@ -68,7 +68,7 @@ const CommunityQuestionPage = () => {
       {/* question */}
       <Div column pd="5rem">
         <Text>{dummyData.content}</Text>
-        <S.RowWrapper>
+        <S.RowWrapperBtwn>
           <div style={{ display: "flex" }}>
             <Text color="var(--primary-color)">좋아요</Text>
             <Space w="md"></Space>
@@ -79,7 +79,7 @@ const CommunityQuestionPage = () => {
             <Space w="md"></Space>
             <Text>삭제</Text>
           </div>
-        </S.RowWrapper>
+        </S.RowWrapperBtwn>
       </Div>
 
       {/* answer */}
@@ -93,7 +93,7 @@ const CommunityQuestionPage = () => {
               lowertxt={dummyData.answerDate}
             />
             <Text>{dummyData.answer}</Text>
-            <S.RowWrapper>
+            <S.RowWrapperBtwn>
               <div style={{ display: "flex" }}>
                 <Text color="var(--primary-color)">좋아요</Text>
                 <Space w="md"></Space>
@@ -104,13 +104,31 @@ const CommunityQuestionPage = () => {
                 <Space w="md"></Space>
                 <Text>삭제</Text>
               </div>
-            </S.RowWrapper>
+            </S.RowWrapperBtwn>
           </>
         ) : (
           <Text size="1.5rem" color="gray" style={{ padding: "7rem" }}>
             아직 멘토의 답변이 없습니다.
           </Text>
         )}
+      </Div>
+
+      {/* comments */}
+      <Div column>
+        <S.RowWrapper>
+          <Text size="xl">댓글</Text>
+          <Space w="xl"></Space>
+          <Text>{dummyData.questionCommentListDto.length}</Text>
+        </S.RowWrapper>
+        {dummyData.questionCommentListDto.map((comment) => (
+          <DoubleTextWithProfileImg
+            key={comment.commentNo}
+            src={comment.writerProfileImage}
+            type="lowerbig"
+            uppertxt={[comment.writerName, comment.commentDate].join(" · ")}
+            lowertxt={comment.content}
+          />
+        ))}
       </Div>
     </S.Wrapper>
   );

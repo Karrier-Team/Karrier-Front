@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FlexCol, FlexRowBtwn } from "../../../commonStyles";
+import { FlexRow, FlexCol, FlexRowBtwn } from "../../../commonStyles";
 
 export const Wrapper = styled.div`
   ${FlexCol}
@@ -8,6 +8,10 @@ export const Wrapper = styled.div`
   padding: 0 10%;
 `;
 
-export const RowWrapper = styled.div`
+export const RowWrapperBtwn = styled.div`
   ${FlexRowBtwn}
+`;
+
+export const RowWrapper = styled.div`
+  ${FlexRow}
 `;
