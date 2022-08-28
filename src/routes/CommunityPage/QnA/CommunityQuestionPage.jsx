@@ -6,6 +6,7 @@ import Div from "../../../components/atoms/Div";
 
 // components
 import { Text } from "@mantine/core";
+import DoubleTextWithProfileImg from "../../../components/molecules/DoubleTextWithProfileImg";
 
 // /community/qna/{major}/{programId}/question/{questionId}
 const CommunityQuestionPage = () => {
@@ -58,6 +59,12 @@ const CommunityQuestionPage = () => {
 
   return (
     <S.Wrapper>
+      <DoubleTextWithProfileImg
+        src={dummyData.mentorProfileImage}
+        type="upperbig"
+        uppertxt={dummyData.title}
+        lowertxt={[dummyData.writer, dummyData.modifyDate].join("·")}
+      />
       <Div height="15rem" centercontent>
         {dummyData.answer ? (
           <div>멘토 답변</div>
