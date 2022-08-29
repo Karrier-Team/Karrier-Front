@@ -12,6 +12,9 @@ export const GlobalStyles = createGlobalStyle`
     --bg-color: #ACACAC;
     --bg-color-d: gray;
     --review-color: #19A96A;
+    --programs-color: #E19200;
+    --follow-color: 
+    --wishlist-color: #F84971;
     --notice-color: #3929CF;
     --line-color: #E1E1E1;
     --navbar-zindex: 10;

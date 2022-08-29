@@ -15,6 +15,7 @@ import MentorPage from "./routes/MentorPage";
 import ApplyPage from "./routes/ApplyPage";
 import MentoringApplyPage from "./routes/MentoringApplyPage";
 import CommunityPage from "./routes/CommunityPage";
+import Mypage from "./routes/Mypage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/mentoring/:id/apply" element={<MentoringApplyPage />} />
         <Route path="/apply/*" element={<ApplyPage />} />
         <Route path="/community/*" element={<CommunityPage />} />
+        <Route path="/mypage/*" element={<Mypage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Router>
