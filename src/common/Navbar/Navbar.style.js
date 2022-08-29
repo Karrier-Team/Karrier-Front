@@ -1,5 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
+
+const colors = css`
+  ${(props) => {
+    switch (props.type) {
+      case "qna":
+        return "var(--primary-color)";
+      case "review":
+        return "var(--review-color)";
+      case "notice":
+        return "var(--nocie-color)";
+      default:
+        return "var(--primary-color)";
+    }
+  }}
+`;
 
 export const LeftSection = styled.div`
   height: 100%;
@@ -44,11 +59,11 @@ export const StyledLink = styled(NavLink)`
   align-items: center;
 
   &:hover {
-    color: var(--primary-color);
+    color: ${colors};
   }
 
   &.active {
-    color: var(--primary-color);
+    color: ${colors};
   }
 `;
 
@@ -61,11 +76,11 @@ export const StyledDropdownLi = styled.li`
   cursor: pointer;
 
   :hover {
-    color: var(--primary-color);
+    color: ${colors};
   }
 
   &.active {
-    color: var(--primary-color);
+    color: ${colors};
   }
 `;
 
@@ -93,10 +108,10 @@ export const MajorItems = styled.li`
   margin: 0.7em 1em;
   cursor: pointer;
   :hover {
-    color: var(--primary-color);
+    color: ${colors};
   }
 
   &.active {
-    color: var(--primary-color);
+    color: ${colors};
   }
 `;

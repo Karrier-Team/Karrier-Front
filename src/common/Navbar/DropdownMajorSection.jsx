@@ -1,10 +1,25 @@
 import React, { memo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import * as S from "./Navbar.style";
 
 import { colleges } from "./colleges";
+
+const colors = css`
+  ${(props) => {
+    switch (props.type) {
+      case "qna":
+        return "var(--primary-color)";
+      case "review":
+        return "var(--review-color)";
+      case "notice":
+        return "var(--nocie-color)";
+      default:
+        return "var(--primary-color)";
+    }
+  }}
+`;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,23 +36,24 @@ export const Wrapper = styled.div`
 export const StyledH1 = styled.h1`
   font-size: 1.5rem;
   box-sizing: border-box;
-  color: var(--primary-color);
+  color: ${colors};
   font-weight: bold;
 `;
 
-function DropdownMajorSection({ college: idx }) {
+function DropdownMajorSection({ type, college: idx }) {
   const navigate = useNavigate();
   const { major } = useParams();
 
   return (
     <>
       <Wrapper>
-        <StyledH1>{colleges[idx].college + " >"}</StyledH1>
+        <StyledH1 type={type}>{colleges[idx].college + " >"}</StyledH1>
         {colleges[idx].departments.map((dept, idx) => {
           return (
             <S.MajorItems
+              type={type}
               className={dept === major ? "active" : null}
-              onClick={() => navigate(`../qna/${dept}`)}
+              onClick={() => navigate(`/community/${type || "qna"}/${dept}`)}
               key={idx}
             >
               {dept}

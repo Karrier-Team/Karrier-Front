@@ -79,7 +79,7 @@ function CommunityReviewsProgramsPage() {
           onChangeSearchValue={setSearchValue}
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
-        <Dropdown inCommunityPage />
+        <Dropdown type={"review"} inCommunityPage />
         <ProfileList mentoData={dummyMentoData} />
       </S.Wrapper>
     </>

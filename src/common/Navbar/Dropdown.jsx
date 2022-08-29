@@ -6,7 +6,7 @@ import DropdownMajorSection from "./DropdownMajorSection";
 
 import { colleges } from "./colleges";
 
-function Dropdown({ inCommunityPage, setShowDropbox }) {
+function Dropdown({ inCommunityPage, type, setShowDropbox }) {
   const [collegeIdx, setCollegeIdx] = useState("0");
 
   return (
@@ -16,11 +16,12 @@ function Dropdown({ inCommunityPage, setShowDropbox }) {
         onMouseOver={() => !inCommunityPage && setShowDropbox(true)}
         onMouseLeave={() => !inCommunityPage && setShowDropbox(false)}
       >
-        <S.DropdownWrapper inCommunityPage={inCommunityPage}>
+        <S.DropdownWrapper type={type} inCommunityPage={inCommunityPage}>
           {colleges.map((e) => {
             return (
               <S.StyledDropdownLi
                 className={e.id === collegeIdx ? "active" : null}
+                type={type}
                 key={e.id}
                 id={e.id}
                 onClick={(e) =>
@@ -40,7 +41,7 @@ function Dropdown({ inCommunityPage, setShowDropbox }) {
           <SubDropdown college={collegeIdx} />
         ) : null}
         {inCommunityPage && collegeIdx >= 0 && (
-          <DropdownMajorSection college={collegeIdx} />
+          <DropdownMajorSection type={type} college={collegeIdx} />
         )}
       </div>
     </>

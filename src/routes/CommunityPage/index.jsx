@@ -27,18 +27,14 @@ function CommunityPage() {
           element={<CommunityQuestionPage />}
         />
 
-        <Route path="reviews" element={<CommunityReviewsProgramsPage />} />
+        <Route path="review" element={<CommunityReviewsProgramsPage />} />
         <Route
-          path="reviews/:major"
+          path="review/:major"
           element={<CommunityReviewsProgramsPage />}
         />
         <Route
-          path="reviews/:major/:programNo"
+          path="review/:major/:programNo"
           element={<CommunityReviewsProgramsPage />}
-        />
-        <Route
-          path="qna/:major/:programNo"
-          element={<CommunityReviewsProgramPage />}
         />
       </Routes>
     </>
