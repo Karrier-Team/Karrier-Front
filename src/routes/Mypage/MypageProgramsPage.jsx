@@ -54,7 +54,7 @@ const sortTypeOptions = [
 ];
 
 function MypageProgramsPage() {
-  const [sortType, setSortType] = useState("latest"); // sort by recent, likes, name || recent, unsolved, solved
+  const [sortType, setSortType] = useState("all"); // sort by recent, likes, name || recent, unsolved, solved
 
   return (
     <>
