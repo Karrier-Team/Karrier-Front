@@ -34,12 +34,14 @@ export const Logo = styled.img`
 `;
 
 export const Text = styled.span`
+  cursor: pointer;
   font-size: 1rem;
-  margin: auto 2rem;
+  margin: auto 1rem;
   text-align: center;
 `;
 
 export const Searchbar = styled.input`
+  margin-right: 1rem;
   border: 1px solid var(--bg-color-d);
   border-radius: 1em;
   padding: 0.5em;
