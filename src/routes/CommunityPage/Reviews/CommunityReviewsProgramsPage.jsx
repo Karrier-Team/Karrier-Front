@@ -66,10 +66,10 @@ function CommunityReviewsProgramsPage() {
 
   return (
     <>
-      <CommunityNavbar type={"review"}>커뮤니티 수강후기</CommunityNavbar>
+      <CommunityNavbar type={"reviews"}>커뮤니티 수강후기</CommunityNavbar>
       <S.Wrapper>
         <ControllBar
-          type={"review"}
+          type={"reviews"}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
           onChangeSortType={setSortType}
@@ -79,7 +79,7 @@ function CommunityReviewsProgramsPage() {
           onChangeSearchValue={setSearchValue}
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
-        <Dropdown type={"review"} inCommunityPage />
+        <Dropdown type={"reviews"} inCommunityPage />
         <ProfileList mentoData={dummyMentoData} />
       </S.Wrapper>
     </>

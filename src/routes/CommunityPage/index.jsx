@@ -8,6 +8,7 @@ import CommunityQuestionPage from "./QnA/CommunityQuestionPage";
 
 import CommunityReviewsProgramsPage from "./Reviews/CommunityReviewsProgramsPage";
 import CommunityReviewsProgramPage from "./Reviews/CommunityReviewsProgramPage";
+import CommunityReviewPage from "./Reviews/CommunityReviewPage";
 
 // /community/*
 function CommunityPage() {
@@ -27,14 +28,18 @@ function CommunityPage() {
           element={<CommunityQuestionPage />}
         />
 
-        <Route path="review" element={<CommunityReviewsProgramsPage />} />
+        <Route path="reviews" element={<CommunityReviewsProgramsPage />} />
         <Route
-          path="review/:major"
+          path="reviews/:major"
           element={<CommunityReviewsProgramsPage />}
         />
         <Route
-          path="review/:major/:programNo"
-          element={<CommunityReviewsProgramsPage />}
+          path="reviews/:major/:programNo"
+          element={<CommunityReviewsProgramPage />}
+        />
+        <Route
+          path="reviews/:major/:programNo/review/:questionNo"
+          element={<CommunityReviewPage />}
         />
       </Routes>
     </>

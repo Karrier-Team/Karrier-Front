@@ -6,7 +6,7 @@ export const Div = styled.div`
       switch (props.type) {
         case "qna":
           return "var(--primary-color)";
-        case "review":
+        case "reviews":
           return "var(--review-color)";
         case "notice":
           return "var(--nocie-color)";
