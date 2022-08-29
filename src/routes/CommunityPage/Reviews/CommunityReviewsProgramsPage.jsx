@@ -69,6 +69,7 @@ function CommunityReviewsProgramsPage() {
       <CommunityNavbar type={"review"}>커뮤니티 수강후기</CommunityNavbar>
       <S.Wrapper>
         <ControllBar
+          type={"review"}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
           onChangeSortType={setSortType}

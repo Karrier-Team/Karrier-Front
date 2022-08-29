@@ -3,6 +3,7 @@ import SearchBar from "../../components/molecules/SearchBar";
 import * as S from "./style";
 
 const ControllBar = ({
+  type,
   withBtn,
   onClickBtn,
   sortType,
@@ -17,6 +18,7 @@ const ControllBar = ({
   return (
     <S.Wrapper>
       <SortingBar
+        type={type}
         sortType={sortType}
         sortTypeOptions={sortTypeOptions}
         onChangeSortType={onChangeSortType}

@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import * as S from "./style";
 
-const SortingBar = ({ sortType, sortTypeOptions, onChangeSortType }) => {
+const SortingBar = ({ type, sortType, sortTypeOptions, onChangeSortType }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
@@ -9,6 +9,7 @@ const SortingBar = ({ sortType, sortTypeOptions, onChangeSortType }) => {
       {sortTypeOptions.map((sortTypeOption, idx) => {
         return (
           <S.Div
+            type={type}
             className={sortType === sortTypeOption.value ? "active" : null}
             onClick={() => {
               onChangeSortType(sortTypeOption.value);
