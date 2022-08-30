@@ -13,7 +13,7 @@ const SearchBar = ({
   onChangeSearchValue,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  if (!searchValue) return null;
+  if (!searchTypeOptions) return null;
 
   return (
     <S.Wrapper>
