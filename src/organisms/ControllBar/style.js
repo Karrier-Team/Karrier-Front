@@ -12,15 +12,15 @@ export const Text = styled.span`
       case "qna":
         return "var(--primary-color)";
       case "reviews":
-        return "var(--review-color)";
+        return "var(--reviews-color)";
       case "notice":
         return "var(--nocie-color)";
       case "wishlist":
         return "var(--wishlist-color)";
       case "programs":
         return "var(--programs-color)";
-      case "follow":
-        return "var(--follow-color)";
+      case "followers":
+        return "var(--followers-color)";
       default:
         return "var(--primary-color)";
     }
