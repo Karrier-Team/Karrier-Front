@@ -4,6 +4,8 @@ import * as S from "./style";
 
 const ControllBar = ({
   type,
+  lefttxt,
+  leftnum,
   withBtn,
   onClickBtn,
   sortType,
@@ -17,6 +19,12 @@ const ControllBar = ({
 }) => {
   return (
     <S.Wrapper>
+      {lefttxt && (
+        <div>
+          <S.Text type={type}>{lefttxt}</S.Text>
+          <S.Text style={{ marginLeft: "1em" }}>{leftnum}</S.Text>
+        </div>
+      )}
       <SortingBar
         type={type}
         sortType={sortType}

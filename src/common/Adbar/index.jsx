@@ -20,6 +20,12 @@ const BarDiv = styled.div`
         return "var(--review-color)";
       case "notice":
         return "var(--nocie-color)";
+      case "wishlist":
+        return "var(--wishlist-color)";
+      case "programs":
+        return "var(--programs-color)";
+      case "follow":
+        return "var(--follow-color)";
       default:
         return "var(--primary-color)";
     }
