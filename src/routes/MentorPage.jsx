@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 // components - left-side
-import AdBar from "../components/Mentor/Adbar";
+import AdBar from "../common/Adbar";
 import ProfileImg from "../components/Mentor/ProfileImg";
 import MentorContactSection from "../components/Mentor/MentorContactSection";
 import MentorInfoSection from "../components/Mentor/MentorInfoSection";

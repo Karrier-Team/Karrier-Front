@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 //style component
 const StyledProfileItem = styled.div`
-  width: 22.0313vw;
-  height: 29.5833vw;
+  width: 100%;
+  aspect-ratio: 3 / 4;
 
   display: flex;
   box-shadow: 5px 5px 10px grey;

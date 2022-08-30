@@ -1,5 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavLink } from "react-router-dom";
+
+const colors = css`
+  ${(props) => {
+    switch (props.type) {
+      case "qna":
+        return "var(--primary-color)";
+      case "reviews":
+        return "var(--review-color)";
+      case "notice":
+        return "var(--nocie-color)";
+      default:
+        return "var(--primary-color)";
+    }
+  }}
+`;
 
 export const LeftSection = styled.div`
   height: 100%;
@@ -20,12 +35,14 @@ export const Logo = styled.img`
 `;
 
 export const Text = styled.span`
+  cursor: pointer;
   font-size: 1rem;
-  margin: auto 2rem;
+  margin: auto 1rem;
   text-align: center;
 `;
 
 export const Searchbar = styled.input`
+  margin-right: 1rem;
   border: 1px solid var(--bg-color-d);
   border-radius: 1em;
   padding: 0.5em;
@@ -45,11 +62,11 @@ export const StyledLink = styled(NavLink)`
   align-items: center;
 
   &:hover {
-    color: var(--primary-color);
+    color: ${colors};
   }
 
   &.active {
-    color: var(--primary-color);
+    color: ${colors};
   }
 `;
 
@@ -62,22 +79,23 @@ export const StyledDropdownLi = styled.li`
   cursor: pointer;
 
   :hover {
-    color: var(--primary-color);
+    color: ${colors};
   }
 
   &.active {
-    color: var(--primary-color);
+    color: ${colors};
   }
 `;
 
 export const DropdownWrapper = styled.div`
-  position: absolute;
+  position: ${(props) => (props.inCommunityPage ? "relative" : "absolute")};
 
-  width: 100vw;
+  width: 100%;
   height: auto;
 
   box-sizing: border-box;
-  background-color: white;
+  background-color: ${(props) =>
+    props.inCommunityPage ? "var(--bg-color-l)" : "white"};
   z-index: 1;
   border-bottom: 1px solid var(--line-color);
 
@@ -86,4 +104,17 @@ export const DropdownWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
+`;
+
+export const MajorItems = styled.li`
+  list-style: none;
+  margin: 0.7em 1em;
+  cursor: pointer;
+  :hover {
+    color: ${colors};
+  }
+
+  &.active {
+    color: ${colors};
+  }
 `;

@@ -26,13 +26,17 @@ export const FlexWrapper = styled.div`
   text-align: center;
 `;
 
-function SubDropdown({ college: idx }) {
+function SubDropdown({ type, college: idx }) {
   return (
     <SubDropdownWrapper>
       <StyledH1>{colleges[idx].college}</StyledH1>
       <FlexWrapper>
         {colleges[idx].departments.map((dept, idx) => {
-          return <S.StyledDropdownLi key={idx}>{dept}</S.StyledDropdownLi>;
+          return (
+            <S.StyledDropdownLi type={type} key={idx}>
+              {dept}
+            </S.StyledDropdownLi>
+          );
         })}
       </FlexWrapper>
     </SubDropdownWrapper>

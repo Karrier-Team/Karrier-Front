@@ -9,10 +9,28 @@ const BarDiv = styled.div`
 
   padding: 0px 30px;
 
-  display: flex;
+  display: ${({ visible }) => (visible ? "flex" : "none")};
   align-items: center;
 
-  background-color: var(--primary-color);
+  background-color: ${(props) => {
+    switch (props.type) {
+      case "qna":
+        return "var(--primary-color)";
+      case "reviews":
+        return "var(--review-color)";
+      case "notice":
+        return "var(--nocie-color)";
+      case "wishlist":
+        return "var(--wishlist-color)";
+      case "programs":
+        return "var(--programs-color)";
+      case "follow":
+        return "var(--follow-color)";
+      default:
+        return "var(--primary-color)";
+    }
+  }};
+
   opacity: 0.8;
   transition: 0.3s;
 
@@ -31,9 +49,9 @@ const Text = styled.span`
   font-size: 1.5em;
 `;
 
-function AdBar() {
+function AdBar({ isAdVisible = true, type }) {
   return (
-    <BarDiv>
+    <BarDiv type={type} visible={isAdVisible}>
       <Text>
         <StyledLink to="/apply">
           상시 멘토 모집 지금 Karrier와 함께하세요

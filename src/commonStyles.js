@@ -7,12 +7,20 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --primary-color: #2566B8; // 짙은파랑
     --primary-color-l: #2191d2; // 짙은파랑 light
+    --bg-color-ll: #F6F6F6;
     --bg-color-l: #F0F0F0;
     --bg-color: #ACACAC;
     --bg-color-d: gray;
+    --review-color: #19A96A;
+    --programs-color: #E19200;
+    --follow-color: 
+    --wishlist-color: #F84971;
+    --notice-color: #3929CF;
     --line-color: #E1E1E1;
+    --navbar-zindex: 10;
     --box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
     --box-shadow-strong: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    --box-shadow-d: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
 `;
 

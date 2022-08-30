@@ -22,7 +22,11 @@ function Btn({
 
   if (to) {
     return (
-      <S.StyledLink onClick={handleClickWithData} to={to} hide={hide}>
+      <S.StyledLink
+        onClick={data ? handleClickWithData : handleClick}
+        to={to}
+        hide={hide}
+      >
         {children}
       </S.StyledLink>
     );
@@ -30,13 +34,19 @@ function Btn({
 
   return (
     <S.Btn
+
       size={size} //width
       height={height}
-      onClick={handleClickWithData}
+     
       hide={hide}
       color={color}
       backgroundColor={backgroundColor}
       fontSize={fontSize}
+
+      
+      onClick={data ? handleClickWithData : handleClick}
+     
+
     >
       {children}
     </S.Btn>
