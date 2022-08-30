@@ -1,7 +1,7 @@
 import React from "react";
 import { Select } from "@mantine/core";
 
-const SelectInput = ({ label, placeholder, data, handleChange }) => {
+const SelectInput = ({ label, placeholder, option, handleChange, width }) => {
   //해당 label, placehoder, data 입력하면 됨
   //data는 list로
 
@@ -18,9 +18,9 @@ const SelectInput = ({ label, placeholder, data, handleChange }) => {
       searchable
       nothingFound="No options"
       maxDropdownHeight={280}
-      data={data}
+      data={option}
       size={"md"}
-      style={{ width: "24.4792vw" }}
+      style={{ width: `${width}` }}
       radius={"10px"}
       onChange={handleChange}
     />

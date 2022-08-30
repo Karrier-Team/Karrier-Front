@@ -20,6 +20,7 @@ export const LeftSection = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  margin-left: 1vw;
 `;
 
 export const RightSection = styled.div`

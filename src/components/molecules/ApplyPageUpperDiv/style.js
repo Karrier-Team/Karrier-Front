@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlexCol, FlexRow } from "../../../commonStyles";
 
 export const Wrapper = styled.div`
-  width: 35%;
+  width: 100%;
 
   box-sizing: border-box;
   padding: 25px;

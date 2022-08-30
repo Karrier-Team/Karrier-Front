@@ -10,17 +10,21 @@ function LabeledInput({
   handleChange,
   name,
   placeholder,
+  height,
 }) {
   return (
     <>
       <S.Wrapper>
-        <Label required={required} name={name}></Label>
+        <div style={{ marginBottom: "1rem" }}>
+          <Label required={required} name={name}></Label>
+        </div>
         <Input
           storage={storage}
           value={value}
           handleChange={handleChange}
           placeholder={placeholder}
           required={required}
+          height={height}
         ></Input>
       </S.Wrapper>
     </>

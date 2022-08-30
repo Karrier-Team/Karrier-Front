@@ -8,10 +8,12 @@ export const BtnStyle = css`
 
   box-sizing: border-box;
   width: ${(props) => props.size || "5.5em"};
-  height: 2.25em;
+  height: ${(props) => props.height || "2.25em"};
 
-  color: white;
+  color: ${(props) => (props.color ? props.color : "white")};
   background-color: var(--primary-color);
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "var(--primary-color)"};
 
   border: none;
   border-radius: 9px;
@@ -19,10 +21,16 @@ export const BtnStyle = css`
 
   cursor: pointer;
 
-  font-size: 1em;
+  font-size: ${(props) => props.fontSize || "1em"};
+  font-weight: bold;
 
   text-align: center;
   line-height: 2.25em;
+
+  // center 배치
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Btn = styled.button`

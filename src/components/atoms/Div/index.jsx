@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./style";
 
+
 function Div({
   children,
   column,
@@ -21,6 +22,7 @@ function Div({
       bgcolor={bgcolor}
       centercontent={centercontent}
     >
+
       {children}
     </S.Div>
   );

@@ -6,7 +6,7 @@ export const Label = styled.label`
 
   box-sizing: border-box;
   width: 100%; // width (574px)
-  aspect-ratio: 3/1; // height
+  aspect-ratio: 5/3; // height
   padding: 25px;
 
   border: none;

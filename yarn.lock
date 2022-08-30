@@ -1648,12 +1648,14 @@
   version "5.1.1"
   resolved "https://registry.npmjs.org/@mantine/core/-/core-5.1.1.tgz"
   integrity sha512-IjEUSQinGawinVNjBXVZTmhcVTaFURtHP/JuJtFDcVCdXEB18ibeyEh985NGhMwoar71tpsWZ0XsQQf9cMhcsA==
+
   dependencies:
     "@floating-ui/react-dom-interactions" "0.6.6"
-    "@mantine/styles" "5.1.1"
-    "@mantine/utils" "5.1.1"
+    "@mantine/styles" "5.2.0"
+    "@mantine/utils" "5.2.0"
     "@radix-ui/react-scroll-area" "1.0.0"
     react-textarea-autosize "8.3.4"
+
 
 "@mantine/hooks@^5.1.1":
   version "5.1.1"
@@ -1664,6 +1666,7 @@
   version "5.1.1"
   resolved "https://registry.npmjs.org/@mantine/styles/-/styles-5.1.1.tgz"
   integrity sha512-QMGiG/w3WaqUd79uQ9OjGLsdccqjExsIQpyGq2GbZJRAlrP8TYnohUtrXQx0VhGfM8oCn5n2IrZc48LzNkArJg==
+
   dependencies:
     clsx "1.1.1"
     csstype "3.0.9"
@@ -1672,6 +1675,7 @@
   version "5.1.1"
   resolved "https://registry.npmjs.org/@mantine/utils/-/utils-5.1.1.tgz"
   integrity sha512-2FiSrD1lYuDHSGVi1QL5iskO8/Bnd6eDrwdpEWS/PJfg6iEz80HnmBxf/xzkDBaNdK3/n8g2kOaOcw5Ff1OFkA==
+
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3504,6 +3508,7 @@ cosmiconfig@^7.0.0:
   integrity sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==
   dependencies:
     "@types/parse-json" "^4.0.0"
+
     import-fresh "^3.2.1"
     parse-json "^5.0.0"
     path-type "^4.0.0"
@@ -3914,6 +3919,7 @@ dns-packet@^5.2.2:
   version "5.4.0"
   resolved "https://registry.npmjs.org/dns-packet/-/dns-packet-5.4.0.tgz"
   integrity sha512-EgqGeaBB8hLiHLZtp/IbaDQTL8pZ0+IvwzSHA6d7VyMDM+B9hgddEMa9xjK5oYnw0ci0JQ6g2XCD7/f6cafU6g==
+
   dependencies:
     "@leichtgewicht/ip-codec" "^2.0.1"
 
@@ -6076,6 +6082,7 @@ jsonfile@^6.0.1:
   dependencies:
     universalify "^2.0.0"
   optionalDependencies:
+
     graceful-fs "^4.1.6"
 
 jsonpointer@^5.0.0:
@@ -6642,6 +6649,8 @@ optionator@^0.9.1:
     prelude-ls "^1.2.1"
     type-check "^0.4.0"
     word-wrap "^1.2.3"
+
+
 
 p-limit@^1.1.0:
   version "1.3.0"
@@ -7420,6 +7429,7 @@ pretty-format@^28.0.0, pretty-format@^28.1.3:
   integrity sha512-8gFb/To0OmxHR9+ZTb14Df2vNxdGCX8g1xWGUTqUw5TiZvcQf5sHKObd5UcPyLLyowNwDAMTF3XWOG1B6mxl1Q==
   dependencies:
     "@jest/schemas" "^28.1.3"
+
     ansi-regex "^5.0.1"
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
@@ -7621,6 +7631,7 @@ react-scripts@5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
   integrity sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==
+
   dependencies:
     "@babel/core" "^7.16.0"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.5.3"
@@ -7672,6 +7683,8 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+
+
 react-simple-star-rating@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/react-simple-star-rating/-/react-simple-star-rating-4.0.5.tgz#030e576015c9fca881677c9eeb55218f42278cd8"
@@ -7681,15 +7694,18 @@ react-textarea-autosize@8.3.4:
   version "8.3.4"
   resolved "https://registry.npmjs.org/react-textarea-autosize/-/react-textarea-autosize-8.3.4.tgz"
   integrity sha512-CdtmP8Dc19xL8/R6sWvtknD/eCXkQr30dtvC4VmGInhRsfF8X/ihXCq6+9l9qbxmKRiq407/7z5fxE7cVWQNgQ==
+
   dependencies:
     "@babel/runtime" "^7.10.2"
     use-composed-ref "^1.3.0"
     use-latest "^1.2.1"
 
+
 react@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
+
   dependencies:
     loose-envify "^1.1.0"
 

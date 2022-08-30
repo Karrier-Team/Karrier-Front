@@ -8,6 +8,8 @@ function Input({
   handleChange,
   placeholder,
   required,
+  height,
+  padding,
 }) {
   const [storage] = useLocalStorage({
     key: "mentor_apply_info",
@@ -25,6 +27,8 @@ function Input({
       value={value}
       onChange={(e) => handleChange(e.target.value)}
       placeholder={placeholder}
+      height={height}
+      padding={padding}
     ></S.Input>
   );
 }

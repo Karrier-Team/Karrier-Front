@@ -2,11 +2,13 @@ import styled, { css } from "styled-components";
 
 export const Div = styled.div`
   box-sizing: border-box;
+
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || null};
   padding: ${(props) => props.pd || "1.5rem"};
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+
 
   border: none;
   border-radius: 9px;
