@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const TagDiv = styled.div`
   box-sizing: border-box;
@@ -12,6 +12,17 @@ export const TagDiv = styled.div`
   font-size: ${(props) => (props.fontsize ? "1.3em" : "1em")};
   font-weight: ${(props) => (props.fontsize ? "bold" : "")};
   text-align: ${(props) => (props.centercontent ? "center" : null)};
+  ${(props) =>
+    props.contentEditable
+      ? null
+      : css`
+          :empty:before {
+            content: attr(placeholder);
+            opacity: 0.35;
+            font-weight: bold;
+            padding: 0.3em 1em;
+          }
+        `};
 
   // 가로 스크롤
   display: flex;

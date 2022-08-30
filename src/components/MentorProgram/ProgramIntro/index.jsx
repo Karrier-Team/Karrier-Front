@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 //components
 import Label from "../../atoms/Label/index";
@@ -29,7 +29,7 @@ const OnelineIntroSection = styled.section`
 `;
 const ProgramDetailSection = styled.section`
   width: 100%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 `;
 const LocationSection = styled.section`
   width: 100%;
@@ -70,7 +70,7 @@ const OffLineWrapper = styled.div`
   align-items: center;
 `;
 
-const OfflineComponent = () => {
+const OfflineComponent = ({ value, handleChange }) => {
   return (
     <OffLineWrapper>
       <div style={{ marginLeft: "9%" }}>
@@ -81,27 +81,61 @@ const OfflineComponent = () => {
         <Input
           placeholder={"예) 대구시 경북대학교"}
           height={"0.7vh"}
-          handleChange={() => {}}
+          value={value}
+          handleChange={handleChange}
         />
       </div>
     </OffLineWrapper>
   );
 };
 
-const ProgramIntro = () => {
-  const [onOff, setOnOff] = useState([true, "default"]);
+const ProgramIntro = ({ programIntro, handleChange }) => {
+  // tag input state
+  const [inputValue, setInputValue] = useState("");
 
-  const handleOnOff = (e) => {
-    console.log(e);
-    setOnOff(!onOff);
-  };
+  // 태그 추가
+  const handleInsert = useCallback(() => {
+    if (programIntro.recommended_target.length < 10) {
+      if (programIntro.recommended_target.find((tag) => tag === inputValue)) {
+        alert("다른 추천 대상을 입력해 주세요.");
+      } else {
+        handleChange({
+          recommended_target: [inputValue, ...programIntro.recommended_target],
+        });
+      }
+    } else {
+      alert("최대 10개까지 작성할 수 있습니다.");
+    }
+    setInputValue("");
+  }, [inputValue]);
+
+  // 태그 삭제
+  const handleDelete = useCallback(
+    (e) => {
+      const newData = programIntro.recommended_target.filter((tag) => {
+        return !(tag === e.target.className);
+      });
+      handleChange({
+        ...programIntro,
+        recommended_target: [...newData],
+      });
+    },
+    [programIntro.recommended_target]
+  );
+
   return (
     <>
       <IntroSection>
         <LabeledTextarea
+          value={programIntro.intro}
           name={"프로그램 소개"}
           placeholder={"프로그램 소개에 관한 안내"}
-          handleChange={() => {}}
+          handleChange={(e) => {
+            handleChange({
+              ...programIntro,
+              intro: e,
+            });
+          }}
           fontsize={"big"}
         />
       </IntroSection>
@@ -109,8 +143,14 @@ const ProgramIntro = () => {
       <TitleSection>
         <LabeledInput
           required
+          value={programIntro.title}
           name={"프로그램 제목"}
-          handleChange={() => {}}
+          handleChange={(e) => {
+            handleChange({
+              ...programIntro,
+              title: e,
+            });
+          }}
           placeholder={"프로그램 제목을 작성해주세요."}
           height={"0.7vh"}
         />
@@ -118,9 +158,15 @@ const ProgramIntro = () => {
       <OnelineIntroSection>
         <LabeledTextarea
           required
+          value={programIntro.shortIntro}
           name={"프로그램에 대한 한 줄 소개"}
           placeholder={"프로그램에 대한 한 줄 소개를 작성해주세요."}
-          handleChange={() => {}}
+          handleChange={(e) => {
+            handleChange({
+              ...programIntro,
+              shortIntro: e,
+            });
+          }}
         />
       </OnelineIntroSection>
       <div>
@@ -142,10 +188,25 @@ const ProgramIntro = () => {
             <OnOffBtn
               text={{ on: "온라인", off: "오프라인" }}
               size={"xs"}
-              onClick={handleOnOff}
-              value={onOff}
+              value={programIntro.onOff}
+              onClick={() => {
+                handleChange({
+                  ...programIntro,
+                  onOff: !programIntro.onOff,
+                });
+              }}
             />
-            {onOff ? null : <OfflineComponent />}
+            {programIntro.onOff ? null : (
+              <OfflineComponent
+                value={programIntro.offline_place}
+                handleChange={(e) => {
+                  handleChange({
+                    ...programIntro,
+                    offline_place: e,
+                  });
+                }}
+              />
+            )}
           </div>
         </LocationSection>
         <PeriodSection>
@@ -153,7 +214,16 @@ const ProgramIntro = () => {
             <Label required name={"진행기간"} />
           </div>
           <div style={{ marginTop: "0.5%" }}>
-            <DatePicker />
+            <DatePicker
+              value={[programIntro.open_date, programIntro.close_date]}
+              onChange={(e) => {
+                handleChange({
+                  ...programIntro,
+                  open_date: e[0],
+                  close_date: e[1],
+                });
+              }}
+            />
           </div>
         </PeriodSection>
         <TimeSection>
@@ -162,7 +232,13 @@ const ProgramIntro = () => {
             <Input
               placeholder={"예) 대구시 경북대학교"}
               height={"0.7vh"}
-              handleChange={() => {}}
+              value={programIntro.running_time}
+              handleChange={(e) => {
+                handleChange({
+                  ...programIntro,
+                  running_time: e,
+                });
+              }}
             />
           </div>
         </TimeSection>
@@ -170,9 +246,15 @@ const ProgramIntro = () => {
           <Label required name={"가격 설정"} />
           <div style={{ width: "63%" }}>
             <Input
-              placeholder={"예) 대구시 경북대학교"}
+              placeholder={"가격을 입력해주세요."}
               height={"0.7vh"}
-              handleChange={() => {}}
+              value={programIntro.price}
+              handleChange={(e) => {
+                handleChange({
+                  ...programIntro,
+                  price: e,
+                });
+              }}
             />
           </div>
         </PaySection>
@@ -180,9 +262,15 @@ const ProgramIntro = () => {
           <Label required name={"최대 수강 인원"} />
           <div style={{ width: "63%" }}>
             <Input
-              placeholder={"예) 대구시 경북대학교"}
+              placeholder={"최대 수강 인원을 입력해주세요."}
               height={"0.7vh"}
-              handleChange={() => {}}
+              value={programIntro.max_people}
+              handleChange={(e) => {
+                handleChange({
+                  ...programIntro,
+                  max_people: e,
+                });
+              }}
             />
           </div>
         </MaxNumSection>
@@ -194,15 +282,35 @@ const ProgramIntro = () => {
             placeholder={
               "대상을 작성해주세요. 예) 컴퓨터에 관심이 있는데, 진로에 고민이 많은 이공계 학생"
             }
+            tagPlaceholder={"추천대상을 추가해주세요."}
             btnSize={"8vw"}
             padding={"1em"}
             height={"2.25em"}
-            handleInsert={() => {}}
-            handleDelete={() => {}}
+            tagList={programIntro.recommended_target}
+            inputValue={inputValue}
+            handleChange={setInputValue}
+            handleInsert={handleInsert}
+            handleDelete={handleDelete}
           />
         </RecomendationSection>
       </ProgramDetailSection>
     </>
   );
 };
+ProgramIntro.defaultProps = {
+  programIntro: {
+    intro: "",
+    title: "",
+    shortIntro: "",
+    onOff: true,
+    offline_place: "",
+    open_date: new Date(),
+    close_date: new Date(),
+    running_time: "",
+    max_people: undefined,
+    price: undefined,
+    recommended_target: [],
+  },
+};
+
 export default ProgramIntro;

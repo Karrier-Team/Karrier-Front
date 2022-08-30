@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React, { useState, useRef, useCallback } from "react";
 
 //component
 import Input from "../../atoms/Input/index";
@@ -17,88 +18,25 @@ const StyledBtnDiv = styled.div`
   justify-content: center;
 `;
 
-const StyledTagWrapper = styled.div`
-  margin: 0 0.4em;
-  padding: 0.4em;
-
-  border-radius: 9px;
-
-  font-weight: bold;
-
-  color: darkslategray;
-  background-color: ${(props) => props.backgroundColor};
-
-  text-align: center;
-`;
-
-const randomColor = [
-  "#f6c9cc",
-  "#a8c0c0",
-  "#FEBF36",
-  "#FF7238",
-  "#acc7bf",
-  "#c37070",
-  "#eae160",
-  "#bf7aa3",
-  "#d7d967",
-  "#ccccee",
-  "#e5ddff",
-  "#ffddf6",
-  "#eeccd4",
-  "#FC9EBD",
-  "#CCD1FF",
-  "#FFDDA6",
-  "#B8F3B8",
-];
-
-const TagItem = ({ value, onClick }) => {
-  return (
-    <StyledTagWrapper
-      backgroundColor={
-        randomColor[Math.floor(Math.random() * randomColor.length)]
-      }
-    >
-      {value}
-      <span
-        onClick={onClick}
-        style={{ color: "gray", marginLeft: "1em", textAlign: "center" }}
-      >
-        X
-      </span>
-    </StyledTagWrapper>
-  );
-};
-
-const dummyData = [
-  "#컴퓨터공학과",
-  "#예비 개발자",
-  "#코딩 테스트",
-  "#컴퓨터공학과",
-  "#컴퓨터공학과",
-  "#예비 개발자",
-
-  "#코딩 테스트",
-  "#컴퓨터공학과",
-  "#코딩 테스트",
-  "#컴퓨터공학과",
-];
-
 const InputTag = ({
-  value,
-  handleInsert,
-  handleDelete,
+  inputValue,
+  tagList,
+  tagPlaceholder,
   placeholder,
   height,
   btnSize,
   padding,
+  handleChange,
+  handleInsert,
+  handleDelete,
 }) => {
   return (
     <Wrapper>
       <StyledDiv>
         <div style={{ width: "85%" }}>
           <Input
-            value={value}
-            handleChange={() => {}}
+            value={inputValue || ""}
+            handleChange={handleChange}
             height={height}
             placeholder={placeholder}
             padding={padding}
@@ -107,7 +45,7 @@ const InputTag = ({
         <StyledBtnDiv>
           <Btn
             children={"추가"}
-            onClick={handleInsert}
+            handleClick={handleInsert}
             color={"white"}
             backgroundColor={"#007bc3"}
             height={height} //height
@@ -128,12 +66,16 @@ const InputTag = ({
       <div style={{ marginTop: "3%" }}>
         <TagDiv
           padding={"0.3em"}
-          children={dummyData.map((item, idx) => (
-            <TagItem value={item} index={idx} onClick={handleDelete} />
-          ))}
+          placeholder={tagPlaceholder}
+          contentEditable={false}
+          tagList={tagList}
+          handleDelete={handleDelete}
         />
       </div>
     </Wrapper>
   );
 };
-export default InputTag;
+InputTag.defaultProps = {
+  data: {},
+};
+export default React.memo(InputTag);

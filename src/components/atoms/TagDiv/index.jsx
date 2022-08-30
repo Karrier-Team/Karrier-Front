@@ -1,15 +1,34 @@
 import * as S from "./style";
+import React from "react";
 
-function TagDiv({ children, centercontent, fontsize, padding }) {
+import TagItem from "../../atoms/TagItem/index";
+
+const TagDiv = ({
+  tagList,
+  contentEditable,
+  centercontent,
+  fontsize,
+  padding,
+  placeholder,
+  handleDelete,
+}) => {
   return (
     <S.TagDiv
+      placeholder={placeholder}
+      contentEditable={contentEditable}
       fontsize={fontsize}
       centercontent={centercontent}
       padding={padding}
     >
-      {children}
+      {tagList.length > 0
+        ? tagList.map((item) => <TagItem value={item} onClick={handleDelete} />)
+        : null}
     </S.TagDiv>
   );
-}
+};
 
-export default TagDiv;
+TagDiv.defaultProps = {
+  tagList: [],
+};
+
+export default React.memo(TagDiv);

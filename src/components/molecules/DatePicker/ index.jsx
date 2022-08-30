@@ -16,8 +16,7 @@ const Wrapper = styled.div`
 //   margin-right: 20px;
 // `;
 
-function DatePicker({ label, placeholder }) {
-  const [value, setValue] = useState([new Date(), new Date()]);
+function DatePicker({ value, onChange, label, placeholder }) {
   return (
     <Wrapper>
       <DateRangePicker
@@ -25,7 +24,7 @@ function DatePicker({ label, placeholder }) {
         value={value}
         inputFormat="MM/DD/YYYY"
         labelFormat="MM/YYYY"
-        onChange={setValue}
+        onChange={onChange}
         style={{ width: "24.5vw", height: "10vh" }}
         size={"md"}
       />

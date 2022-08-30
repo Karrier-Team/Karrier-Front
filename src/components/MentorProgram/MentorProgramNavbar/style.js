@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link, animateScroll as scroll } from "react-scroll";
 
 export const Wrapper = styled.div`
   width: 10%;
@@ -9,7 +8,7 @@ export const Wrapper = styled.div`
   padding: 1em;
 `;
 
-export const StyledNavLink = styled(Link)`
+export const StyledNavLink = styled.div`
   text-decoration: none;
   color: black;
   margin: 3em 0;
@@ -18,7 +17,7 @@ export const StyledNavLink = styled(Link)`
   justify-content: center;
 
   font-weight: bold;
-  font-size: 1.1vw;
+  font-size: 1vw;
   cursor: pointer;
 
   &:hover {

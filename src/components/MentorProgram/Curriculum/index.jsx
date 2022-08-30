@@ -20,7 +20,7 @@ const ButtonSection = styled.section`
   margin-top: 8%;
 `;
 
-const Curriculum = () => {
+const Curriculum = ({ curriculum, handleChange }) => {
   return (
     <>
       <div style={{ marginBottom: "5%" }}>
@@ -28,7 +28,13 @@ const Curriculum = () => {
           fontsize={"big"}
           placeholder={"커리큘럼에 관한 안내"}
           name={"커리큘럼"}
-          handleChange={() => {}}
+          value={curriculum.curriculum_info}
+          handleChange={(e) => {
+            handleChange({
+              ...curriculum,
+              curriculum_info: e,
+            });
+          }}
         />
       </div>
       <LectureSection>
@@ -45,13 +51,14 @@ const Curriculum = () => {
         </HeadSection>
         <Input
           placeholder={"제목을 작성해주세요."}
-          height={"5vh"}
           handleChange={() => {}}
+          height={"5vh"}
+          padding={"1.5em"}
         />
         <Textarea
           placeholder={"내용을 작성해주세요."}
           handleChange={() => {}}
-          height={"40vh"}
+          height={"30vh"}
         />
         <ButtonSection>
           <div style={{ marginRight: "1%" }}>
@@ -71,7 +78,6 @@ const Curriculum = () => {
               fontSize={".7em"}
             />
           </div>
-
           <Btn
             children={"삭제"}
             size={"5em"}
@@ -84,5 +90,11 @@ const Curriculum = () => {
       </LectureSection>
     </>
   );
+};
+Curriculum.defaultProps = {
+  curriculum: {
+    curriculum_info: "",
+    lecture: [],
+  },
 };
 export default Curriculum;

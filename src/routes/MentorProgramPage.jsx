@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 //components
@@ -31,33 +31,98 @@ const Section = styled.section`
 const SubmitSection = styled.section`
   display: flex;
   justify-content: space-between;
+  padding-top: 10%;
   padding-bottom: 10%;
 `;
 
 const MentorProgramPage = () => {
+  // const infoRef = useRef();
+  // const introRef = useRef();
+  // const curriRef = useRef();
+  // const mentorRef = useRef();
+
+  //state
+  const [programInfo, setProgramInfo] = useState({
+    representInfo: "",
+  });
+
+  const [programIntro, setProgramIntro] = useState({
+    intro: "",
+    title: "",
+    shortIntro: "",
+    onOff: true,
+    offline_place: "",
+    open_date: new Date(),
+    close_date: new Date(),
+    running_time: "",
+    max_people: undefined,
+    price: undefined,
+    recommended_target: [],
+  });
+  const [curriculum, setCurriculum] = useState({
+    curriculum_info: "",
+    lecture: [],
+  });
+  const [mentorIntro, setMentorIntro] = useState({
+    mentorIntro_info: "",
+    introduce: "",
+    club: "",
+    contest: "",
+    external_activity: "",
+    intern: "",
+    naverblog_address: "",
+    facebook_address: "",
+    instar_address: "",
+    tag: [],
+  });
+
+  //method
+  // const handleScroll = () => {
+  //   // for scroll method
+  //   introRef.current.scrollToTop({ behaivior: "smooth" });
+  // };
+
+  const handleSubmit = () => {
+    // fetch 최종 저장 데이터
+  };
+
+  const handleTempSubmit = () => {
+    // fetch 임시 저장 데이터
+  };
+
   return (
     <Wrapper>
-      <MentorProgramNavBar />
+      <MentorProgramNavBar onClick={() => {}} />
       <PageWrapper>
         <Section>
-          <ProgramInfo id="1" />
-          <ProgramIntro id="2" />
-          <Curriculum id="3" />
-          <MentorIntro id="4" />
+          <ProgramInfo
+            programInfo={programInfo}
+            handleSubmit={handleSubmit}
+            handleTempSubmit={handleTempSubmit}
+            handleChange={setProgramInfo}
+          />
+          <ProgramIntro
+            programIntro={programIntro}
+            handleChange={setProgramIntro}
+          />
+          <Curriculum curriculum={curriculum} handleChange={setCurriculum} />
+          <MentorIntro
+            mentorIntro={mentorIntro}
+            handleChange={setMentorIntro}
+          />
           <SubmitSection>
             <Btn
               children={"임시저장"}
               color={"black"}
               backgroundColor={"RGB(235, 235, 235)"}
-              handleClick={() => {}}
+              handleClick={handleTempSubmit}
               size={"27vw"}
               fontSize={"1.2em"}
             />
-
             <Btn
               children={"저장"}
               backgroundColor={"#007bc3"}
-              handleClick={() => {}}
+              handleClick={handleSubmit}
               size={"27vw"}
               fontSize={"1.2em"}
             />
