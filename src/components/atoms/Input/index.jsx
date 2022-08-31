@@ -10,6 +10,7 @@ function Input({
   required,
   height,
   padding,
+  fontSize,
 }) {
   const [storage] = useLocalStorage({
     key: "mentor_apply_info",
@@ -29,6 +30,7 @@ function Input({
       placeholder={placeholder}
       height={height}
       padding={padding}
+      fontSize={fontSize}
     ></S.Input>
   );
 }

@@ -13,7 +13,7 @@ export const Input = styled.input`
   border-radius: 9px;
   box-shadow: var(--box-shadow);
 
-  font-size: 1em;
+  font-size: ${(props) => (props.fontSize ? props.fontSize : "1em")};
   ::placeholder {
     color: #acacac;
   }

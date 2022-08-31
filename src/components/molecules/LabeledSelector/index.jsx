@@ -7,7 +7,9 @@ function LabeledSelector({ handleChange, name, options }) {
   return (
     <>
       <S.Wrapper>
-        <Label name={name}></Label>
+        <div style={{ marginBottom: "3%" }}>
+          <Label name={name}></Label>
+        </div>
         <Selector
           name={name}
           handleChange={handleChange}
