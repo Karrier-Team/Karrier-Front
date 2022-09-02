@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { memo, useState } from "react";
 import styled from "styled-components";
 
 // components
@@ -33,16 +33,22 @@ const Section = styled.div`
 
 function MentoringApplyPage() {
   const [name, setName] = useState("");
+  const [gender, setGender] = useState(true);
   const [phone_no, setPhone_no] = useState("");
-  const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const [region, setRegion] = useState("");
   const [school_name, setSchool] = useState("");
   const [application_route, setApplication_route] = useState("");
   const [introduce, setIntroduce] = useState("");
   const [questionCategory, setQuestionCategory] = useState("");
+  const [questionContent, setQuestionContent] = useState("");
 
   const [hasBlankInput, setHasBlankInput] = useState(true);
+
+  // 최종 제출
+  const handleSubmit = () => {
+    console.log("fetch");
+  };
 
   return (
     <Wrapper>
@@ -80,14 +86,21 @@ function MentoringApplyPage() {
         </Section>
         <GenderSection>
           <Label required name={"성별"} />
-          <div style={{ marginLeft: "15%", marginTop: "1%" }}>
-            <OnOffBtn text={{ on: "남", off: "여" }} size={"sm"} />
+          <div style={{ marginLeft: "15%", marginTop: "3%" }}>
+            <OnOffBtn
+              text={{ on: "남", off: "여" }}
+              size={"sm"}
+              value={gender}
+              onClick={() => {
+                setGender(!gender);
+              }}
+            />
           </div>
         </GenderSection>
         <Section>
           <LabeledInput
             value={phone_no}
-            handleChange={setName}
+            handleChange={setPhone_no}
             placeholder="휴대전화(- 없이 작성해주세요.)"
             name="연락처"
             required
@@ -98,7 +111,7 @@ function MentoringApplyPage() {
         </Section>
         <Section>
           <LabeledInput
-            value={gender}
+            value={age}
             handleChange={setAge}
             placeholder="나이를 입력해주세요."
             name="나이"
@@ -110,6 +123,7 @@ function MentoringApplyPage() {
         </Section>
         <Section>
           <LabeledInput
+            value={region}
             handleChange={setRegion}
             placeholder="지역 입력해주세요."
             name="지역"
@@ -121,6 +135,7 @@ function MentoringApplyPage() {
         </Section>
         <Section>
           <LabeledInput
+            value={school_name}
             handleChange={setSchool}
             placeholder="학교를 입력해주세요."
             name="학교"
@@ -132,6 +147,7 @@ function MentoringApplyPage() {
         </Section>
         <Section>
           <LabeledInput
+            value={application_route}
             handleChange={setApplication_route}
             placeholder="강의를 어떻게 알게되었는지 입력해주세요.."
             name="강의"
@@ -143,22 +159,23 @@ function MentoringApplyPage() {
         </Section>
         {/* 자기소개서 */}
         <br />
-        <Section>
-          <LabeledDiv
-            centercontent={true}
-            fontsize="big"
-            name={"자기소개서"}
-            height={"14vh"}
-          >
-            {"해당 정보는 프로그램을 진행하는 멘토만 볼 수 있습니다."}
-          </LabeledDiv>
-        </Section>
+
+        <LabeledDiv
+          centercontent={true}
+          fontsize="big"
+          name={"자기소개서"}
+          height={"14vh"}
+        >
+          {"해당 정보는 프로그램을 진행하는 멘토만 볼 수 있습니다."}
+        </LabeledDiv>
+
         <Section>
           <LabeledTextarea
             required
             placeholder="내용을 입력해주세요. (30자이상)"
             name="자기소개"
             size="lg"
+            value={introduce}
             handleChange={setIntroduce}
           ></LabeledTextarea>
         </Section>
@@ -171,6 +188,7 @@ function MentoringApplyPage() {
           <LabeledSelector
             name={"질문 카테고리"}
             handleChange={setQuestionCategory}
+            value={questionCategory}
             options={[
               { value: "-", name: "진로" },
               { value: "-", name: "학과" },
@@ -187,14 +205,16 @@ function MentoringApplyPage() {
             placeholder="질문 내용을 작성해주세요"
             name="질문 내용"
             size="lg"
-            handleChange={setIntroduce}
+            handleChange={setQuestionContent}
+            value={questionContent}
           ></LabeledTextarea>
         </Section>
         <Section>
           <Btn
-            handleClick={() =>
-              !hasBlankInput && window.alert("프로그램신청완료")
-            }
+            handleClick={() => {
+              !hasBlankInput && window.alert("프로그램신청완료");
+              handleSubmit();
+            }}
             size="100%"
             height={"3em"}
           >
