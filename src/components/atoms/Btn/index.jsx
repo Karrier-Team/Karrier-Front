@@ -13,6 +13,7 @@ function Btn({
   backgroundColor,
   fontSize,
   height,
+  borderRadius,
 }) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
@@ -41,6 +42,7 @@ function Btn({
       backgroundColor={backgroundColor}
       fontSize={fontSize}
       onClick={data ? handleClickWithData : handleClick}
+      borderRadius={borderRadius}
     >
       {children}
     </S.Btn>

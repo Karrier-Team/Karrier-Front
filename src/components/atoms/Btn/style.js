@@ -11,12 +11,13 @@ export const BtnStyle = css`
   height: ${(props) => props.height || "2.25em"};
 
   color: ${(props) => (props.color ? props.color : "white")};
-  background-color: var(--primary-color);
+
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "var(--primary-color)"};
 
   border: none;
-  border-radius: 9px;
+  border-radius: ${(props) =>
+    props.borderRadius ? props.borderRadius : "9px"};
   box-shadow: var(--box-shadow);
 
   cursor: pointer;

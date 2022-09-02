@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
   :root {
     --primary-color: #2566B8; // 짙은파랑
     --primary-color-l: #2191d2; // 짙은파랑 light
-    --bg-color-ll: #F6F6F6;
+    --bg-color-ll: #F6F6F6; // 밝은 회색
     --bg-color-l: #F0F0F0;
     --bg-color: #ACACAC;
     --bg-color-d: gray;

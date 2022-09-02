@@ -10,7 +10,8 @@ export const Input = styled.input`
   font-weight: bold;
 
   border: none;
-  border-radius: 9px;
+  border-radius: ${(props) =>
+    props.borderRadius ? props.borderRadius : "9px"};
   box-shadow: var(--box-shadow);
 
   font-size: ${(props) => (props.fontSize ? props.fontSize : "1em")};
