@@ -27,8 +27,4 @@ const TagDiv = ({
   );
 };
 
-TagDiv.defaultProps = {
-  tagList: [],
-};
-
 export default React.memo(TagDiv);

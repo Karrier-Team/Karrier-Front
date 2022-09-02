@@ -36,12 +36,6 @@ const SubmitSection = styled.section`
 `;
 
 const MentorProgramPage = () => {
-  // const infoRef = useRef();
-  // const introRef = useRef();
-  // const curriRef = useRef();
-  // const mentorRef = useRef();
-
-  //state
   const [programInfo, setProgramInfo] = useState({
     representInfo: "",
   });

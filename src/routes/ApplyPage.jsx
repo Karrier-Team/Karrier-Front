@@ -14,7 +14,7 @@ import MentorFinalConfirmation from "../components/Apply/MentorFinalConfirmation
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 20vw;
+  width: 100vw;
 `;
 
 function ApplyPage() {

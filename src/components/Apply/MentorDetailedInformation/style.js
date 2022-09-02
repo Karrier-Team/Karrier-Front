@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RowWrapper = styled.div`
-  width: 30vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +26,7 @@ export const Div = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 100vw;
+  width: 45%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -39,4 +39,25 @@ export const Span = styled.span`
   font-size: 2em;
   font-weight: bold;
   margin: 15px;
+`;
+export const ContentWrapper = styled.div`
+  width: 90%;
+`;
+
+export const Section = styled.section`
+  margin-bottom: 5%;
+  width: 100%;
+`;
+
+export const StyledSection = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+  margin-top: 7%;
+  justify-content: space-between;
+`;
+
+export const StyledMarginDiv = styled.div`
+  margin-bottom: 3%;
 `;

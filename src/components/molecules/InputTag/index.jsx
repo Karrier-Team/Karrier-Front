@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState, useRef, useCallback } from "react";
+import React from "react";
 
 //component
 import Input from "../../atoms/Input/index";
@@ -75,7 +75,5 @@ const InputTag = ({
     </Wrapper>
   );
 };
-InputTag.defaultProps = {
-  data: {},
-};
+
 export default React.memo(InputTag);
