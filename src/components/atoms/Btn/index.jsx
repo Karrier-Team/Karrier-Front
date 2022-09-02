@@ -34,19 +34,13 @@ function Btn({
 
   return (
     <S.Btn
-
       size={size} //width
       height={height}
-     
       hide={hide}
       color={color}
       backgroundColor={backgroundColor}
       fontSize={fontSize}
-
-      
       onClick={data ? handleClickWithData : handleClick}
-     
-
     >
       {children}
     </S.Btn>

@@ -7,7 +7,9 @@ function LabeledFileInput({ handleChange, name }) {
   return (
     <>
       <S.Wrapper>
-        <Label name={name}></Label>
+        <div style={{ marginBottom: "3%" }}>
+          <Label name={name}></Label>
+        </div>
         <FileInput name={name} handleChange={handleChange}></FileInput>
       </S.Wrapper>
     </>

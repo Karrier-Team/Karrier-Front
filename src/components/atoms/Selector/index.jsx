@@ -12,6 +12,7 @@ function Selector({ name, handleChange, options }) {
         setSelected(true);
       }}
       selected={selected}
+      style={{ fontWeight: "bold" }}
     >
       <option disabled selected value="">
         {name + "을 입력해주세요."}

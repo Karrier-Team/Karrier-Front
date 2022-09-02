@@ -10,11 +10,20 @@ export const Wrapper = styled.div`
 `;
 
 export const RowWrapper = styled.div`
-  width: 30vw;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.2em 0;
+`;
+
+export const ContentWrapper = styled.div`
+  width: 90%;
+`;
+
+export const Section = styled.section`
+  margin-bottom: 5%;
+  width: 100%;
 `;
 
 const colors = {

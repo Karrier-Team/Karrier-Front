@@ -3,12 +3,12 @@ import * as S from "./style";
 import Label from "../../atoms/Label";
 import Selector from "../../atoms/Selector";
 
-function LabeledSelector({ handleChange, name, options }) {
+function LabeledSelector({ handleChange, name, options, required }) {
   return (
     <>
       <S.Wrapper>
         <div style={{ marginBottom: "3%" }}>
-          <Label name={name}></Label>
+          <Label required={required} name={name}></Label>
         </div>
         <Selector
           name={name}
