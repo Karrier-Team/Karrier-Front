@@ -3,13 +3,26 @@ import * as S from "./style";
 import Label from "../../atoms/Label";
 import Div from "../../atoms/Div";
 
-function LabeledDiv({ name, fontsize, required, children, centercontent }) {
+function LabeledDiv({
+  name,
+  fontsize,
+  required,
+  children,
+  centercontent,
+  height,
+}) {
   return (
     <>
       <S.Wrapper>
-        <Label reuired={required} fontsize={fontsize} name={name}></Label>
+        <div style={{ marginBottom: "3%" }}>
+          <Label reuired={required} fontsize={fontsize} name={name}></Label>
+        </div>
         {children ? (
-          <Div centercontent={centercontent} fontsize={fontsize}>
+          <Div
+            centercontent={centercontent}
+            fontsize={fontsize}
+            height={height}
+          >
             {children}
           </Div>
         ) : null}

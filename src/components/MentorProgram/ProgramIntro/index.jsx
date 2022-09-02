@@ -100,6 +100,7 @@ const ProgramIntro = ({ programIntro, handleChange }) => {
         alert("다른 추천 대상을 입력해 주세요.");
       } else {
         handleChange({
+          ...programIntro,
           recommended_target: [inputValue, ...programIntro.recommended_target],
         });
       }
@@ -139,7 +140,6 @@ const ProgramIntro = ({ programIntro, handleChange }) => {
           fontsize={"big"}
         />
       </IntroSection>
-
       <TitleSection>
         <LabeledInput
           required

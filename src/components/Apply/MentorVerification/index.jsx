@@ -19,35 +19,44 @@ function MentorVerification() {
   return (
     <>
       <S.Wrapper>
-        <ApplyPageUpperDiv
-          title={"멘토 확인"}
-          subtitle={"멘토 가능 여부를 위한 정보 기입란입니다."}
-          contents={[]}
-        />
-        <LabeledFileInput
-          name={"재학증명서"}
-          handleChange={setProfileImg}
-        ></LabeledFileInput>
-        <LabeledFileInput
-          name={"프로필사진"}
-          handleChange={setStudentInfoImg}
-        ></LabeledFileInput>
-        <S.RowWrapper>
-          <Btn
-            data={submitJson}
-            handleClick={postMentorVerificationInformation}
-            to="../step3"
-          >
-            이전
-          </Btn>
-          <Btn
-            data={submitJson}
-            handleClick={postMentorVerificationInformation}
-            to="../step5"
-          >
-            다음
-          </Btn>
-        </S.RowWrapper>
+        <S.Section>
+          <ApplyPageUpperDiv
+            title={"멘토 확인"}
+            subtitle={"멘토 가능 여부를 위한 정보 기입란입니다."}
+            contents={[]}
+          />
+        </S.Section>
+
+        <S.ContentWrapper>
+          <S.Section>
+            <LabeledFileInput
+              name={"재학증명서"}
+              handleChange={setProfileImg}
+            ></LabeledFileInput>
+          </S.Section>
+          <S.Section>
+            <LabeledFileInput
+              name={"프로필사진"}
+              handleChange={setStudentInfoImg}
+            ></LabeledFileInput>
+          </S.Section>
+          <S.RowWrapper>
+            <Btn
+              data={submitJson}
+              handleClick={postMentorVerificationInformation}
+              to="../step3"
+            >
+              이전
+            </Btn>
+            <Btn
+              data={submitJson}
+              handleClick={postMentorVerificationInformation}
+              to="../step5"
+            >
+              다음
+            </Btn>
+          </S.RowWrapper>
+        </S.ContentWrapper>
       </S.Wrapper>
     </>
   );

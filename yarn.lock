@@ -1669,15 +1669,16 @@
 
 "@mantine/styles@5.1.1":
   version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-5.1.1.tgz#8a2253747fc1817fc06ab7ac3633c1059369ca06"
+  resolved "https://registry.npmjs.org/@mantine/styles/-/styles-5.1.1.tgz"
   integrity sha512-QMGiG/w3WaqUd79uQ9OjGLsdccqjExsIQpyGq2GbZJRAlrP8TYnohUtrXQx0VhGfM8oCn5n2IrZc48LzNkArJg==
+
   dependencies:
     clsx "1.1.1"
     csstype "3.0.9"
 
 "@mantine/utils@5.1.1":
   version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-5.1.1.tgz#2fa9ecaac4fe61cc3e07c4953ca23a1bc9ac765c"
+  resolved "https://registry.npmjs.org/@mantine/utils/-/utils-5.1.1.tgz"
   integrity sha512-2FiSrD1lYuDHSGVi1QL5iskO8/Bnd6eDrwdpEWS/PJfg6iEz80HnmBxf/xzkDBaNdK3/n8g2kOaOcw5Ff1OFkA==
 
 "@mantine/utils@5.2.4":

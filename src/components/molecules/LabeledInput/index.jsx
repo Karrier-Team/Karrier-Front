@@ -11,6 +11,8 @@ function LabeledInput({
   name,
   placeholder,
   height,
+  fontSize,
+  padding,
 }) {
   return (
     <>
@@ -25,6 +27,8 @@ function LabeledInput({
           placeholder={placeholder}
           required={required}
           height={height}
+          fontSize={fontSize}
+          padding={padding}
         ></Input>
       </S.Wrapper>
     </>
