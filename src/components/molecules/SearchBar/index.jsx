@@ -18,30 +18,37 @@ const SearchBar = ({
 
   return (
     <S.Wrapper>
-      <select
-        name="searchOption"
-        id="searchOption"
-        onChange={(event) => {
-          searchParams.delete(searchType);
-          onChangeSearchType(event.target.value);
-        }}
-      >
-        {searchTypeOptions.map((searchType, idx) => (
-          <option key={idx} value={searchType.value}>
-            {searchType.name}
-          </option>
-        ))}
-      </select>
-      <S.Input
-        value={searchValue}
-        onChange={(event) => {
-          onChangeSearchValue(event.target.value);
-          // 원래 있던 쿼리에 다른 쿼리 더하기!
-          searchParams.set(searchType, event.target.value);
-          setSearchParams(searchParams);
-        }}
-        placeholder="입력하세요."
-      ></S.Input>
+      <S.Div>
+        <select
+          style={{
+            height: "2.25em",
+            border: "none",
+          }}
+          name="searchOption"
+          id="searchOption"
+          onChange={(event) => {
+            searchParams.delete(searchType);
+            onChangeSearchType(event.target.value);
+          }}
+        >
+          {searchTypeOptions.map((searchType, idx) => (
+            <option key={idx} value={searchType.value}>
+              {searchType.name}
+            </option>
+          ))}
+        </select>
+        <S.Input
+          value={searchValue}
+          onChange={(event) => {
+            onChangeSearchValue(event.target.value);
+            // 원래 있던 쿼리에 다른 쿼리 더하기!
+            searchParams.set(searchType, event.target.value);
+            setSearchParams(searchParams);
+          }}
+          placeholder="입력하세요."
+        ></S.Input>
+      </S.Div>
+
       <Space w="xs"></Space>
       {withBtn ? (
         <Btn type={type} handleClick={onClickBtn}>
