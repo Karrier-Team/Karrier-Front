@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: 0 10%;
   padding-top: 1rem;
-  gap: 2.5rem;
 `;
 
 export const RowWrapperBtwn = styled.div`

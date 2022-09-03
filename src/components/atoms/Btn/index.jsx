@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./style";
 
 function Btn({
+  type,
   data,
   size,
   handleClick,
@@ -23,6 +24,7 @@ function Btn({
   if (to) {
     return (
       <S.StyledLink
+        type={type}
         onClick={data ? handleClickWithData : handleClick}
         to={to}
         hide={hide}
@@ -34,6 +36,7 @@ function Btn({
 
   return (
     <S.Btn
+      type={type}
       size={size} //width
       height={height}
       hide={hide}

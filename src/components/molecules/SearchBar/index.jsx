@@ -5,6 +5,7 @@ import { Space } from "@mantine/core";
 
 const SearchBar = ({
   withBtn = false,
+  type,
   onClickBtn,
   searchType,
   searchTypeOptions,
@@ -42,7 +43,11 @@ const SearchBar = ({
         placeholder="입력하세요."
       ></S.Input>
       <Space w="xs"></Space>
-      {withBtn ? <Btn handleClick={onClickBtn}>작성하기</Btn> : null}
+      {withBtn ? (
+        <Btn type={type} handleClick={onClickBtn}>
+          작성하기
+        </Btn>
+      ) : null}
     </S.Wrapper>
   );
 };

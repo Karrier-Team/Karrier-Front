@@ -32,6 +32,7 @@ const ControllBar = ({
         onChangeSortType={onChangeSortType}
       ></SortingBar>
       <SearchBar
+        type={type}
         withBtn={withBtn}
         onClickBtn={onClickBtn}
         searchType={searchType}

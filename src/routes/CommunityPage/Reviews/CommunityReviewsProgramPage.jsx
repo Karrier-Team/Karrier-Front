@@ -8,39 +8,44 @@ import CommunityQnAQuestionModalContent from "../../../organisms/CommunityQnAQue
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
-  { value: "unsolved", name: "미해결" },
-  { value: "solved", name: "해결" },
+  { value: "unanswered", name: "미답변" },
+  { value: "answered", name: "답변" },
 ];
 
 const searchTypeOptions = [
-  { value: "content", name: "질문내용" },
-  { value: "title", name: "질문제목" },
+  { value: "content", name: "후기내용" },
+  { value: "title", name: "후기제목" },
   { value: "nickname", name: "닉네임" },
 ];
 
 const dummyProgramData = {
-  program_no: "1",
   title: "고3 대비 컴퓨터 공학과의 진실",
-  questions: [
+  reviews: [
     {
-      question_no: "1",
-      nickname: "소식돼지",
-      title: "경북대학교 컴퓨터 공학과 세부 학과는 뭐가있나요?",
-      content:
-        "안녕하세요 현재 컴퓨터공학과에 진학하고 싶어하는 고3입니다. 저는 평소에 컴퓨터에 대해 좋아하고 관심이 참 많은데요..",
-      modify_date: new Date().toLocaleDateString() + "",
-      question_like_no: "10",
-      solve: "true",
+      programNo: 1,
+      programName: "컴공 맛보기",
+      averageStar: 4.42857,
+      reviewStar: 4.5,
+      reviewNo: 1,
+      nickname: "행복한바지",
+      title: "수강후기 제목",
+      content: "수강후기 내용",
+      comment: false,
+      registerDate: "2022-08-19T18:00:23.460696",
+      reviewLikeNo: 1,
     },
     {
-      question_no: "2",
+      programNo: 2,
+      programName: "컴공 맛보기2",
+      averageStar: 4.42857,
+      reviewStar: 4.5,
+      reviewNo: 2,
       nickname: "소식돼지",
-      title: "경북대학교 컴퓨터 공학과 세부 학과는 뭐가있나요?",
-      content:
-        "안녕하세요 현재 컴퓨터공학과에 진학하고 싶어하는 고3입니다. 저는 평소에 컴퓨터에 대해 좋아하고 관심이 참 많은데요..",
-      modify_date: new Date().toLocaleDateString() + "",
-      question_like_no: "9",
-      solve: "false",
+      title: "제목입니다",
+      content: "내용입니다",
+      comment: true,
+      registerDate: "2022-08-19T19:53:57.726083",
+      reviewLikeNo: 0,
     },
   ],
 };
@@ -54,22 +59,21 @@ function CommunityReviewsProgramPage() {
   // states for Modal content
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [star, setStars] = useState("0");
 
   return (
     <>
-      <CommunityNavbar isAdVisible={false}>
+      <CommunityNavbar type="reviews" isAdVisible={false}>
         <div>
-          <Text align="center" size="0.8em">
-            여러분과 늘 함께하는 멘토
-          </Text>
-          <Text size="1em">무엇을 도와드릴까요?</Text>
+          <Text size="1em">수강후기</Text>
         </div>
       </CommunityNavbar>
       <S.Wrapper>
         <Text style={{ marginTop: "0.5em" }} weight={"bold"} size="2rem">
-          {"질의응답"}
+          {"수강후기"}
         </Text>
         <ControllBar
+          type="reviews"
           withBtn
           onClickBtn={setIsModalOpened}
           sortType={sortType}
@@ -88,17 +92,30 @@ function CommunityReviewsProgramPage() {
           onClose={() => setIsModalOpened(false)}
         >
           <CommunityQnAQuestionModalContent
+            type="reviews"
+            setStars={setStars}
             title={title}
             setTitle={setTitle}
             content={content}
             setContent={setContent}
           />
         </Modal>
-        <Text weight={"500"} color="var(--primary-color)" size="2.5rem">
-          {dummyProgramData.title}
-        </Text>
-        {dummyProgramData.questions.map((question) => (
-          <CommunityPostDiv data={question} />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text weight={"500"} color="var(--reviews-color)" size="2.5rem">
+            {dummyProgramData.title}
+          </Text>
+          <Text size="1rem" style={{ transform: "translateY(1.5rem)" }}>
+            {"평균 별점⭐️ " + dummyProgramData.reviews[0].averageStar}
+          </Text>
+        </div>
+        {dummyProgramData.reviews.map((review) => (
+          <CommunityPostDiv type="reviews" data={review} />
         ))}
       </S.Wrapper>
     </>

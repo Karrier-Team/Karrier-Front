@@ -5,7 +5,32 @@ import CircleWithText from "../../components/molecules/CircleWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-const CommunityPostDiv = ({ data: question }) => {
+const getColorByType = (type) => {
+  switch (type) {
+    case "qna":
+      return "var(--primary-color)";
+    case "reviews":
+      return "var(--reviews-color)";
+    case "notice":
+      return "var(--nocie-color)";
+    case "wishlist":
+      return "var(--wishlist-color)";
+    case "programs":
+      return "var(--programs-color)";
+    case "followers":
+      return "var(--followers-color)";
+    default:
+      return "var(--primary-color)";
+  }
+};
+
+function getFullPropertyName(object, str) {
+  const arr = Object.keys(object);
+  const idx = arr.findIndex((key) => key.includes(str));
+  return arr[idx];
+}
+
+const CommunityPostDiv = ({ type, data }) => {
   const [clicked, setClicked] = useState(false);
 
   const textRef = useRef();
@@ -14,7 +39,7 @@ const CommunityPostDiv = ({ data: question }) => {
     <S.Wrapper>
       <S.RowWrapper>
         <S.ColWrapper clicked={clicked}>
-          <Text size="2em">{question.title}</Text>
+          <Text size="2em">{data.title}</Text>
           <Space h="xs"></Space>
           <Text
             ref={textRef}
@@ -22,7 +47,7 @@ const CommunityPostDiv = ({ data: question }) => {
             size="1em"
             color={"gray"}
           >
-            {question.content}
+            {data.content}
           </Text>
           {clicked ? (
             <FontAwesomeIcon
@@ -39,23 +64,33 @@ const CommunityPostDiv = ({ data: question }) => {
           )}
         </S.ColWrapper>
         <S.ColWrapperCntr>
-          <CircleWithText upper={question.question_like_no} lower={"좋아요"} />
+          <CircleWithText
+            type={type}
+            upper={data[getFullPropertyName(data, "Like")]}
+            lower={"좋아요"}
+          />
         </S.ColWrapperCntr>
       </S.RowWrapper>
       <S.LowerRowWrapper>
         <div style={{ display: "flex", width: "80%" }}>
-          <Text color={"gray"}>{question.nickname}</Text>
-          {/* <Space w="xs"></Space>
-          <Text color={"gray"}>{question.nickname}</Text> */}
+          <Text color={"gray"}>{data.nickname}</Text>
         </div>
         <div style={{ display: "flex", width: "10%" }}>
-          <Text color="gray">{question.modify_date}</Text>
+          <Text color="gray">{data[getFullPropertyName(data, "Date")]}</Text>
         </div>
         <div
           style={{ display: "flex", width: "10%", justifyContent: "center" }}
         >
-          <Text color={question.solve === "true" ? "var(--primary-color)" : ""}>
-            {question.solve === "true" ? "해결" : "미해결"}
+          <Text
+            color={data.solve || data.comment ? getColorByType(type) : "black"}
+          >
+            {data.solve || data.comment
+              ? type === "reviews"
+                ? "답변"
+                : "해결"
+              : type === "reviews"
+              ? "미답변"
+              : "미해결"}
           </Text>
         </div>
       </S.LowerRowWrapper>
