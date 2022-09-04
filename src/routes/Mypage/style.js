@@ -1,11 +1,29 @@
 import styled from "styled-components";
-import { FlexCol, FlexColCenter } from "../../commonStyles";
+import { FlexCol, FlexRow, FlexColCenter } from "../../commonStyles";
+
+export const LeftSideWrapper = styled.div`
+  ${FlexColCenter}
+  width: 20%;
+`;
+
+export const RightSideWrapper = styled.div`
+  ${FlexCol}
+  width: 80%;
+`;
 
 export const Wrapper = styled.div`
   ${FlexCol}
   box-sizing: border-box;
   width: 100%;
   padding: 0 10%;
+  padding-top: 1rem;
+`;
+
+export const RowWrapper = styled.div`
+  ${FlexRow}
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 10%;
   padding-top: 1rem;
 `;
 

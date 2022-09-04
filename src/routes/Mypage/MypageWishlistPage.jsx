@@ -56,51 +56,51 @@ function MypageQnAPage() {
       <CommunityNavbar isAdVisible={false} type="wishlist">
         MY 찜 프로그램
       </CommunityNavbar>
-      <S.Wrapper>
-        <Text style={{ marginTop: "0.5em" }} weight={"bold"} size="2rem">
-          {"MY 질의응답"}
-        </Text>
-        <ControllBar
-          withBtn={true}
-          onClickBtn={setIsModalOpened}
-          sortType={sortType}
-          sortTypeOptions={sortTypeOptions}
-          onChangeSortType={setSortType}
-          onChangeSearchType={setSearchType}
-          searchType={searchType}
-          searchValue={searchValue}
-          onChangeSearchValue={setSearchValue}
-          searchTypeOptions={searchTypeOptions}
-        ></ControllBar>
-        <div>여기에 셀렉트 들어가야함</div>
-        <Modal
-          size="60%"
-          centered
-          opened={isModalOpened}
-          onClose={() => setIsModalOpened(false)}
-        >
-          <S.CenterWrapper>
-            <S.H1>질문이 해결되셨습니까?</S.H1>
-            <div>
-              <S.Button
-                onClick={() => {
-                  console.log("API");
-                  alert("질문해결완료");
-                }}
-                type="yes"
-              >
-                예
-              </S.Button>
-              <S.Button onClick={() => setIsModalOpened(false)} type="no">
-                아니오
-              </S.Button>
-            </div>
-          </S.CenterWrapper>
-        </Modal>
-        {dummyProgramData.questions.map((question) => (
-          <CommunityPostDiv data={question} />
-        ))}
-      </S.Wrapper>
+      <S.RowWrapper>
+        <S.LeftSideWrapper>{"blabla"}</S.LeftSideWrapper>
+        <S.RightSideWrapper>
+          <ControllBar
+            withBtn={true}
+            onClickBtn={setIsModalOpened}
+            sortType={sortType}
+            sortTypeOptions={sortTypeOptions}
+            onChangeSortType={setSortType}
+            onChangeSearchType={setSearchType}
+            searchType={searchType}
+            searchValue={searchValue}
+            onChangeSearchValue={setSearchValue}
+            searchTypeOptions={searchTypeOptions}
+          ></ControllBar>
+          <div>여기에 셀렉트 들어가야함</div>
+          <Modal
+            size="60%"
+            centered
+            opened={isModalOpened}
+            onClose={() => setIsModalOpened(false)}
+          >
+            <S.CenterWrapper>
+              <S.H1>질문이 해결되셨습니까?</S.H1>
+              <div>
+                <S.Button
+                  onClick={() => {
+                    console.log("API");
+                    alert("질문해결완료");
+                  }}
+                  type="yes"
+                >
+                  예
+                </S.Button>
+                <S.Button onClick={() => setIsModalOpened(false)} type="no">
+                  아니오
+                </S.Button>
+              </div>
+            </S.CenterWrapper>
+          </Modal>
+          {dummyProgramData.questions.map((question) => (
+            <CommunityPostDiv data={question} />
+          ))}
+        </S.RightSideWrapper>
+      </S.RowWrapper>
     </>
   );
 }
