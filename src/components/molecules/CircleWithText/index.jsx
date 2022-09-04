@@ -1,9 +1,9 @@
 import * as S from "./style";
 import { Text } from "@mantine/core";
 
-const CircleWithText = ({ upper, lower }) => {
+const CircleWithText = ({ type, upper, lower }) => {
   return (
-    <S.Round>
+    <S.Round type={type}>
       <Text align="center" size="md">
         {upper}
       </Text>

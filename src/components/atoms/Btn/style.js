@@ -11,9 +11,24 @@ export const BtnStyle = css`
   height: ${(props) => props.height || "2.25em"};
 
   color: ${(props) => (props.color ? props.color : "white")};
-  background-color: var(--primary-color);
-  background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "var(--primary-color)"};
+  background-color: ${(props) => {
+    switch (props.type) {
+      case "qna":
+        return "var(--primary-color)";
+      case "reviews":
+        return "var(--reviews-color)";
+      case "notice":
+        return "var(--nocie-color)";
+      case "wishlist":
+        return "var(--wishlist-color)";
+      case "programs":
+        return "var(--programs-color)";
+      case "followers":
+        return "var(--followers-color)";
+      default:
+        return "var(--primary-color)";
+    }
+  }};
 
   border: none;
   border-radius: 9px;

@@ -21,3 +21,22 @@ export function validate(emailValue, passwordValue, repasswordValue) {
   }
   return errors;
 }
+
+export const getColorByType = (type) => {
+  switch (type) {
+    case "qna":
+      return "var(--primary-color)";
+    case "reviews":
+      return "var(--reviews-color)";
+    case "notice":
+      return "var(--nocie-color)";
+    case "wishlist":
+      return "var(--wishlist-color)";
+    case "programs":
+      return "var(--programs-color)";
+    case "followers":
+      return "var(--followers-color)";
+    default:
+      return "var(--primary-color)";
+  }
+};

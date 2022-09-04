@@ -70,6 +70,7 @@ function CommunityQnaProgramPage() {
           {"질의응답"}
         </Text>
         <ControllBar
+          searchBarToTheRight
           withBtn
           onClickBtn={setIsModalOpened}
           sortType={sortType}
