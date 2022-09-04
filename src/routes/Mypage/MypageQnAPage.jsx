@@ -63,6 +63,7 @@ function MypageQnAPage() {
           {"MY 질의응답"}
         </Text>
         <ControllBar
+          searchBarToTheRight
           withBtn={true}
           onClickBtn={setIsModalOpened}
           sortType={sortType}

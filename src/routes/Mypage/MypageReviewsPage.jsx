@@ -167,6 +167,7 @@ function MypageQnAPage() {
           {"MY 수강후기"}
         </Text>
         <ControllBar
+          searchBarToTheRight
           type="reviews"
           withBtn={true}
           onClickBtn={setIsModalOpened}

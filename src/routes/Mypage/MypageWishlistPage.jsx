@@ -60,6 +60,7 @@ function MypageQnAPage() {
         <S.LeftSideWrapper>{"blabla"}</S.LeftSideWrapper>
         <S.RightSideWrapper>
           <ControllBar
+            spacebetween={true}
             withBtn={true}
             onClickBtn={setIsModalOpened}
             sortType={sortType}

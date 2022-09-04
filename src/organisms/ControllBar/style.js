@@ -27,3 +27,18 @@ export const Text = styled.span`
   }};
   font-weight: bold;
 `;
+
+export const Input = styled.input`
+  width: 20rem;
+  height: 2.25em;
+  border: none;
+`;
+
+export const SearchBar = styled.div`
+  margin-left: ${(props) => props.searchBarToTheRight && "auto"};
+  margin-right: ${(props) => props.searchBarToTheRight && "2rem"};
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+`;
