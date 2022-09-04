@@ -1,14 +1,50 @@
 import styled from "styled-components";
-import { FlexCol, FlexRow, FlexColCenter } from "../../commonStyles";
+import {
+  FlexCol,
+  FlexRow,
+  FlexColCenter,
+  FlexRowBtwn,
+} from "../../commonStyles";
+import { NavLink } from "react-router-dom";
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+
+  &.active {
+    color: var(--wishlist-color);
+    font-weight: bold;
+  }
+
+  color: black;
+  font-size: 1.5rem;
+`;
 
 export const LeftSideWrapper = styled.div`
   ${FlexColCenter}
   width: 20%;
+  height: 100vh;
+
+  background-color: #f0f0f0;
+
+  top: 0;
+  position: sticky;
+
+  overflow: auto;
+  padding: 0;
+  padding-top: 2rem;
+
+  gap: 3rem;
+`;
+
+export const SubControllBar = styled.div`
+  ${FlexRowBtwn};
 `;
 
 export const RightSideWrapper = styled.div`
   ${FlexCol}
   width: 80%;
+  height: auto;
+  padding-left: 3rem;
 `;
 
 export const Wrapper = styled.div`
@@ -21,10 +57,13 @@ export const Wrapper = styled.div`
 
 export const RowWrapper = styled.div`
   ${FlexRow}
+  align-items: flex-start;
   box-sizing: border-box;
   width: 100%;
+  padding: 0;
   padding-right: 10%;
-  padding-top: 1rem;
+  /* padding-top: 1rem; */
+  height: 100%;
 `;
 
 export const Button = styled.button`

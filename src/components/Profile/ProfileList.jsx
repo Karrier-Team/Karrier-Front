@@ -5,12 +5,12 @@ import React from "react";
 const StyledProfileList = styled.div`
   width: 100%;
   box-sizing: border-box;
-  padding: 1.7vw;
+  /* padding: 1.7vw; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 1.75vw;
   grid-row-gap: 1.7vw;
-  background-color: #fbfbfb;
+  /* background-color: #fbfbfb; */
 `;
 
 const ProfileList = ({ mentoData }) => {

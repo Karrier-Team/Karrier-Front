@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import CommunityPostDiv from "../../organisms/CommunityPostDiv/index.jsx";
 import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
 import ControllBar from "../../organisms/ControllBar/index.jsx";
 import * as S from "./style.js";
 
-import { Text, Modal } from "@mantine/core";
+import { Modal, Space, Text } from "@mantine/core";
+import ProfileList from "../../components/Profile/ProfileList.jsx";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
-  { value: "unsolved", name: "미해결" },
-  { value: "solved", name: "해결" },
+  { value: "title", name: "제목순" },
 ];
 
 const searchTypeOptions = [
@@ -18,48 +18,99 @@ const searchTypeOptions = [
   { value: "nickname", name: "닉네임" },
 ];
 
-const dummyProgramData = {
-  program_no: "1",
-  title: "고3 대비 컴퓨터 공학과의 진실",
-  questions: [
-    {
-      question_no: "1",
-      nickname: "소식돼지",
-      title: "경북대학교 컴퓨터 공학과 세부 학과는 뭐가있나요?",
-      content:
-        "안녕하세요 현재 컴퓨터공학과에 진학하고 싶어하는 고3입니다. 안녕하세요 현재 컴퓨터공학과에 진학하고 싶어하는 고3입니다. 안녕하세요 현재 컴퓨터공학과에 진학하고 싶어하는 고3입니다. 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라 블라블라",
-      modify_date: new Date().toLocaleDateString() + "",
-      question_like_no: "10",
-      solve: "true",
-    },
-    {
-      question_no: "2",
-      nickname: "소식돼지",
-      title: "경북대학교 컴퓨터 공학과 세부 학과는 뭐가있나요?",
-      content:
-        "안녕하세요 현재 컴퓨터공학과에 진학하고 싶어하는 고3입니다. 저는 평소에 컴퓨터에 대해 좋아하고 관심이 참 많은데요..",
-      modify_date: new Date().toLocaleDateString() + "",
-      question_like_no: "9",
-      solve: "false",
-    },
-  ],
-};
+const dummyData = [
+  {
+    college: "IT대학",
+    major: "컴퓨터학부",
+    name: "이승열",
+    comment:
+      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
+    major: "컴퓨터통신공학부",
+    name: "홍희림",
+    comment:
+      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
+    major: "글로벌SW융합전공",
+    name: "이승열",
+    comment:
+      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
+    major: "컴퓨터학부",
+    name: "이승열",
+    comment:
+      "안녕하세요 현재 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
+    major: "컴퓨터통신공학부",
+    name: "홍희림",
+    comment: "동해물과 백두산이 마르고 닳도록",
+  },
+  {
+    college: "IT대학",
+    major: "글로벌SW융합전공",
+    name: "서영균",
+    comment: "DB warrier가 되어봅시다 ",
+  },
+];
 
 function MypageQnAPage() {
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpened, setIsModalOpened] = useState(false);
-
   return (
     <>
       <CommunityNavbar isAdVisible={false} type="wishlist">
         MY 찜 프로그램
       </CommunityNavbar>
       <S.RowWrapper>
-        <S.LeftSideWrapper>{"blabla"}</S.LeftSideWrapper>
+        <S.LeftSideWrapper>
+          <S.StyledNavLink to="/mypage/wishlist">MY 찜</S.StyledNavLink>
+          <S.StyledNavLink to="/mypage/followers">MY 팔로우</S.StyledNavLink>
+        </S.LeftSideWrapper>
         <S.RightSideWrapper>
+          <S.SubControllBar>
+            <div style={{ display: "flex" }}>
+              <Text
+                size="1.5rem"
+                weight="bold"
+                style={{ color: "var(--wishlist-color" }}
+              >
+                {"좋아요"}
+              </Text>
+              <Space w="xs"></Space>
+              <Text size="1.5rem" weight="bold">
+                {dummyData.length || 0}
+              </Text>
+            </div>
+            <div style={{ display: "flex" }}>
+              <Text
+                size="1.5rem"
+                weight="bold"
+                style={{ color: "var(--wishlist-color" }}
+              >
+                {"개인"}
+              </Text>
+              <Space w="xs"></Space>
+              <Text
+                size="1.5rem"
+                weight="bold"
+                style={{ color: "", cursor: "pointer" }}
+              >
+                {"팀"}
+              </Text>
+            </div>
+          </S.SubControllBar>
           <ControllBar
+            type="wishlist"
             spacebetween={true}
             withBtn={true}
             onClickBtn={setIsModalOpened}
@@ -72,7 +123,6 @@ function MypageQnAPage() {
             onChangeSearchValue={setSearchValue}
             searchTypeOptions={searchTypeOptions}
           ></ControllBar>
-          <div>여기에 셀렉트 들어가야함</div>
           <Modal
             size="60%"
             centered
@@ -97,9 +147,7 @@ function MypageQnAPage() {
               </div>
             </S.CenterWrapper>
           </Modal>
-          {dummyProgramData.questions.map((question) => (
-            <CommunityPostDiv data={question} />
-          ))}
+          <ProfileList mentoData={dummyData} />
         </S.RightSideWrapper>
       </S.RowWrapper>
     </>

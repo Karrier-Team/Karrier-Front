@@ -1,6 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 import SortingBar from "../../components/molecules/SortingBar";
-import { Space } from "@mantine/core";
 import Btn from "../../components/atoms/Btn";
 import * as S from "./style";
 
