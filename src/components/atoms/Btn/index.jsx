@@ -2,6 +2,8 @@ import React from "react";
 import * as S from "./style";
 
 function Btn({
+  htmlFor,
+  as,
   data,
   size,
   handleClick,
@@ -35,6 +37,8 @@ function Btn({
 
   return (
     <S.Btn
+      as={"label"}
+      htmlFor={htmlFor ? htmlFor : null}
       size={size} //width
       height={height}
       hide={hide}

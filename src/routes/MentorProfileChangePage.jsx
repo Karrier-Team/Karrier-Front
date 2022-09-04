@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 //components
 import Btn from "../components/atoms/Btn";
 import Label from "../components/atoms/Label";
 import Div from "../components/atoms/Div";
-import Img from "../components/atoms/Img/index";
+import FileInput from "../components/atoms/FileInput/index";
 import Input from "../components/atoms/Input/index";
 import LabeledInput from "../components/molecules/LabeledInput/index";
 
@@ -47,8 +47,101 @@ const BtnSection = styled.section`
   margin-top: 10%;
 `;
 
+const CheckSpan = ({ data, color }) => {
+  return (
+    <span
+      style={{
+        fontWeight: "bold",
+        fontSize: "1em",
+        color: color,
+        display: "flex",
+        justifyContent: "flex-start",
+        marginTop: "3%",
+      }}
+    >
+      {data}
+    </span>
+  );
+};
+
 const MentorProfileChangePage = () => {
-  const [name, setName] = useState("");
+  // dummy
+  const currentNum = "hello";
+  const currentName = "front";
+  // state
+
+  const [rename, setRename] = useState("");
+  const [image, setImage] = useState();
+  const [currentCheckNum, setCurrentCheckNum] = useState("");
+  const [newNum, setNewNum] = useState("");
+  const [checkNewNum, setCheckNewNum] = useState("");
+
+  const [cmpCurrentNum, setCmpCurrentNum] = useState(false);
+  const [cmpNewNum, setCmpNewNum] = useState(false);
+
+  //effect
+
+  // 처음 렌더링 될 때 get 요청 -> 사진 이미지, 현재 비밀번호 (currentNum)
+  useEffect(() => {
+    // get 요청
+    console.log("get");
+    // 동기화 문제 때문에 첫 렌더링에 setter 초기화
+    setCurrentCheckNum("");
+    setCheckNewNum("");
+  }, []);
+
+  useEffect(() => {
+    // 현재 비밀번호와 같은지 확인
+    if (currentCheckNum !== "") {
+      if (currentCheckNum === currentNum) {
+        setCmpCurrentNum(true);
+      } else {
+        setCmpCurrentNum(false);
+      }
+    }
+  }, [currentCheckNum]);
+
+  useEffect(() => {
+    // 비밀번호 확인
+    if (checkNewNum !== "") {
+      if (newNum === checkNewNum) {
+        setCmpNewNum(true);
+      } else {
+        setCmpNewNum(false);
+      }
+    }
+  }, [checkNewNum, checkNewNum]);
+
+  // method
+  // 중복 확인
+  const doubleCheck = () => {
+    if (rename === currentName) {
+      alert("기존 닉네임과 같습니다.");
+    }
+  };
+
+  const handleDelete = () => {
+    setImage(null);
+    setRename("");
+  };
+
+  // 닉네임 수정사항 적용
+  const handleApply = () => {
+    "post 보냄";
+  };
+  // 변경된 비밀번호 사항 저장
+  const handleSave = () => {
+    if (cmpCurrentNum && cmpNewNum) {
+      alert("post");
+    } else {
+      alert("조건을 완성시켜 주세요.");
+    }
+  };
+  // 휴면 신청
+  const handleDormancy = () => {};
+  // 탈퇴 신청
+  const handleResign = () => {};
+
   return (
     <Wrapper>
       <Section>
@@ -67,14 +160,24 @@ const MentorProfileChangePage = () => {
         <ChangeSection>
           <Div centercontent={true}>
             <InnerSection>
-              <Img size={"100%"} />
+              <FileInput
+                name={"imgButton"}
+                borderRadius={"50%"}
+                aspectRatio={"1 / 1"}
+                file={image}
+                handleChange={setImage}
+              />
               <br />
               <br />
               <Btn
+                // label 속성으로 바꿈
+                as="label"
+                htmlFor="imgButton"
                 children={"사진 변경"}
                 size={"100%"}
                 borderRadius={"20px"}
                 height={"2.8em"}
+                handleClick={setImage}
               />
               <br />
               <br />
@@ -87,7 +190,7 @@ const MentorProfileChangePage = () => {
                     marginTop: "0.5em",
                     cursor: "pointer",
                   }}
-                  onClick={() => {}}
+                  onClick={doubleCheck}
                 >
                   중복확인
                 </span>
@@ -95,8 +198,8 @@ const MentorProfileChangePage = () => {
               <br />
               <Input
                 placeholder={"변경할 닉네임을 작성해주세요."}
-                value={""}
-                handleChange={() => {}}
+                value={rename}
+                handleChange={setRename}
                 height={"0.7em"}
                 padding={"1.3em 1.5em"}
                 borderRadius={"0"}
@@ -110,7 +213,7 @@ const MentorProfileChangePage = () => {
                   color={"white"}
                   backgroundColor={"var(--primary-color)"}
                   borderRadius={"0"}
-                  onClick={() => {}}
+                  onClick={handleApply}
                 />
                 <Btn
                   size={"35%"}
@@ -118,7 +221,7 @@ const MentorProfileChangePage = () => {
                   color={"black"}
                   backgroundColor={"white"}
                   borderRadius={"0"}
-                  onClick={() => {}}
+                  handleClick={handleDelete}
                 />
               </NicknameSection>
               <br />
@@ -144,16 +247,28 @@ const MentorProfileChangePage = () => {
               <LabeledInput
                 name={"현재 비밀번호"}
                 placeholder={"현재 비밀번호를 입력해주세요."}
-                handleChange={() => {}}
+                handleChange={setCurrentCheckNum}
                 height={"3.5em"}
                 padding={"1.3em 1.5em"}
               />
+              {currentCheckNum === "" ? null : cmpCurrentNum ? (
+                <CheckSpan
+                  data={"현재 비밀번호와 일치합니다."}
+                  color={"Green"}
+                />
+              ) : (
+                <CheckSpan
+                  data={"현재 비밀번호와 일치하지 않습니다."}
+                  color={"red"}
+                />
+              )}
+
               <br />
               <br />
               <LabeledInput
                 name={"새 비밀번호"}
                 placeholder={"새 비밀번호를 입력해주세요."}
-                handleChange={() => {}}
+                handleChange={setNewNum}
                 height={"3.5em"}
                 padding={"1.3em 1.5em"}
               />
@@ -162,10 +277,18 @@ const MentorProfileChangePage = () => {
               <LabeledInput
                 name={"비밀번호 확인"}
                 placeholder={"변경할 비밀번호를 한 번 더 입력해주세요."}
-                handleChange={() => {}}
+                handleChange={setCheckNewNum}
                 height={"3.5em"}
                 padding={"1.3em 1.5em"}
               />
+              {checkNewNum === "" ? null : cmpNewNum ? (
+                <CheckSpan data={"새 비밀번호와 일치합니다."} color={"Green"} />
+              ) : (
+                <CheckSpan
+                  data={"새 비밀번호와 일치하지 않습니다."}
+                  color={"red"}
+                />
+              )}
               <div
                 style={{
                   width: "100%",
@@ -181,7 +304,7 @@ const MentorProfileChangePage = () => {
                   children={"저장"}
                   color={"white"}
                   backgroundColor={"var(--primary-color)"}
-                  onClick={() => {}}
+                  handleClick={handleSave}
                 />
               </div>
             </PasswordSection>
