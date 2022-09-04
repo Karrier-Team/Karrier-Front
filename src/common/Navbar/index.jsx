@@ -77,7 +77,7 @@ function Header() {
                   <Menu.Item component={Link} to="/mypage/reviews">
                     수강 후기
                   </Menu.Item>
-                  <Menu.Item component={Link} to="/mypage/follows">
+                  <Menu.Item component={Link} to="/mypage/wishlist">
                     찜 및 팔로우
                   </Menu.Item>
 

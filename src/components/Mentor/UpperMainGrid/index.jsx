@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { memo, useCallback } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;

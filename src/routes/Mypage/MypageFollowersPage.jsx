@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CommunityNavbar from "../../../organisms/CommunityNavbar";
-import ControllBar from "../../../organisms/ControllBar";
-import CommunityPostDiv from "../../../organisms/CommunityPostDiv";
-import { Modal, Text } from "@mantine/core";
+import CommunityPostDiv from "../../organisms/CommunityPostDiv/index.jsx";
+import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
+import ControllBar from "../../organisms/ControllBar/index.jsx";
 import * as S from "./style.js";
-import CommunityQnAQuestionModalContent from "../../../organisms/CommunityQnAQuestionModalContent";
+
+import { Text, Modal } from "@mantine/core";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -45,33 +45,23 @@ const dummyProgramData = {
   ],
 };
 
-function CommunityQnaProgramPage() {
+function MypageFollowersPage() {
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpened, setIsModalOpened] = useState(false);
 
-  // states for Modal content
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
   return (
     <>
-      <CommunityNavbar isAdVisible={false}>
-        <div>
-          <Text align="center" size="0.8em">
-            여러분과 늘 함께하는 멘토
-          </Text>
-          <Text size="1em">무엇을 도와드릴까요?</Text>
-        </div>
+      <CommunityNavbar isAdVisible={false} type="followers">
+        MY 팔로우 멘티
       </CommunityNavbar>
       <S.Wrapper>
         <Text style={{ marginTop: "0.5em" }} weight={"bold"} size="2rem">
-          {"질의응답"}
+          {"MY 질의응답"}
         </Text>
         <ControllBar
-          searchBarToTheRight
-          withBtn
+          withBtn={true}
           onClickBtn={setIsModalOpened}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
@@ -82,22 +72,31 @@ function CommunityQnaProgramPage() {
           onChangeSearchValue={setSearchValue}
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
+        <div>여기에 셀렉트 들어가야함</div>
         <Modal
           size="60%"
           centered
           opened={isModalOpened}
           onClose={() => setIsModalOpened(false)}
         >
-          <CommunityQnAQuestionModalContent
-            title={title}
-            setTitle={setTitle}
-            content={content}
-            setContent={setContent}
-          />
+          <S.CenterWrapper>
+            <S.H1>질문이 해결되셨습니까?</S.H1>
+            <div>
+              <S.Button
+                onClick={() => {
+                  console.log("API");
+                  alert("질문해결완료");
+                }}
+                type="yes"
+              >
+                예
+              </S.Button>
+              <S.Button onClick={() => setIsModalOpened(false)} type="no">
+                아니오
+              </S.Button>
+            </div>
+          </S.CenterWrapper>
         </Modal>
-        <Text weight={"500"} color="var(--primary-color)" size="2.5rem">
-          {dummyProgramData.title}
-        </Text>
         {dummyProgramData.questions.map((question) => (
           <CommunityPostDiv data={question} />
         ))}
@@ -106,4 +105,4 @@ function CommunityQnaProgramPage() {
   );
 }
 
-export default CommunityQnaProgramPage;
+export default MypageFollowersPage;

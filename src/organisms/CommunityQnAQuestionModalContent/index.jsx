@@ -1,8 +1,12 @@
 import * as S from "./style";
 import { TextInput, Textarea, Text, Space } from "@mantine/core";
 import Btn from "../../components/atoms/Btn";
+import { getColorByType } from "../../utils";
+import StarRating from "../../components/molecules/StarRating";
 
 const CommunityQnAQuestionModalContent = ({
+  type,
+  setStars,
   title,
   setTitle,
   content,
@@ -11,11 +15,19 @@ const CommunityQnAQuestionModalContent = ({
   return (
     <>
       <S.ColWrapper>
-        <Text style={{}} color="var(--primary-color)" weight="bold" size="xl">
+        <Text color={getColorByType(type)} weight="bold" size="xl">
           {/* useContext를 이용해서 로그인한  유저의 정보를 빼와야함*/}
           {"소식돼지님"}
         </Text>
         <Space h="xs"></Space>
+        {type === "reviews" ? (
+          <div style={{ display: "flex" }}>
+            <Text weight="bold" size="1.5rem">
+              별점 :{" "}
+            </Text>
+            <StarRating star="0" setStars={setStars}></StarRating>
+          </div>
+        ) : null}
         <TextInput
           value={title}
           onChange={(event) => setTitle(event.target.value)}
@@ -33,7 +45,7 @@ const CommunityQnAQuestionModalContent = ({
         />
       </S.ColWrapper>
       <S.RowWrapper>
-        <Btn data={null} handleClick={null} withAlert>
+        <Btn type={type} data={null} handleClick={null} withAlert>
           작성완료
         </Btn>
       </S.RowWrapper>

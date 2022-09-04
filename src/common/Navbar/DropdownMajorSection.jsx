@@ -12,7 +12,7 @@ const colors = css`
       case "qna":
         return "var(--primary-color)";
       case "reviews":
-        return "var(--review-color)";
+        return "var(--reviews-color)";
       case "notice":
         return "var(--nocie-color)";
       default:
