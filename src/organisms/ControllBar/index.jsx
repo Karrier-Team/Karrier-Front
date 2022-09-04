@@ -18,6 +18,7 @@ const ControllBar = ({
   onChangeSearchType,
   onChangeSearchValue,
   searchValue,
+  hideSortingbar,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
@@ -29,21 +30,12 @@ const ControllBar = ({
         </div>
       )}
       <SortingBar
+        hideSortingbar={hideSortingbar}
         type={type}
         sortType={sortType}
         sortTypeOptions={sortTypeOptions}
         onChangeSortType={onChangeSortType}
       ></SortingBar>
-      {/* <SearchBar
-        type={type}
-        withBtn={withBtn}
-        onClickBtn={onClickBtn}
-        searchType={searchType}
-        searchValue={searchValue}
-        searchTypeOptions={searchTypeOptions}
-        onChangeSearchType={onChangeSearchType}
-        onChangeSearchValue={onChangeSearchValue}
-      ></SearchBar> */}
       {searchTypeOptions && (
         <S.SearchBar searchBarToTheRight={searchBarToTheRight}>
           <select

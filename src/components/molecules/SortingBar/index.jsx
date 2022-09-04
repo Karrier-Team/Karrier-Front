@@ -1,11 +1,23 @@
 import { useSearchParams } from "react-router-dom";
 import * as S from "./style";
 
-const SortingBar = ({ type, sortType, sortTypeOptions, onChangeSortType }) => {
+const SortingBar = ({
+  hideSortingbar,
+  type,
+  sortType,
+  sortTypeOptions,
+  onChangeSortType,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <div style={{ display: "flex", gap: "1em" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1em",
+        visibility: hideSortingbar && "hidden",
+      }}
+    >
       {sortTypeOptions.map((sortTypeOption, idx) => {
         return (
           <S.Div
