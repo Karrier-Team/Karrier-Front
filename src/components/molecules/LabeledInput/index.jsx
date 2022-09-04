@@ -17,7 +17,13 @@ function LabeledInput({
   return (
     <>
       <S.Wrapper>
-        <div style={{ marginBottom: "1rem" }}>
+        <div
+          style={{
+            marginBottom: "1rem",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
           <Label required={required} name={name}></Label>
         </div>
         <Input

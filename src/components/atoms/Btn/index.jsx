@@ -2,7 +2,12 @@ import React from "react";
 import * as S from "./style";
 
 function Btn({
+
+  htmlFor,
+  as,
+
   type,
+
   data,
   size,
   handleClick,
@@ -14,6 +19,7 @@ function Btn({
   backgroundColor,
   fontSize,
   height,
+  borderRadius,
 }) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
@@ -36,7 +42,12 @@ function Btn({
 
   return (
     <S.Btn
+
+      as={"label"}
+      htmlFor={htmlFor ? htmlFor : null}
+
       type={type}
+
       size={size} //width
       height={height}
       hide={hide}
@@ -44,6 +55,7 @@ function Btn({
       backgroundColor={backgroundColor}
       fontSize={fontSize}
       onClick={data ? handleClickWithData : handleClick}
+      borderRadius={borderRadius}
     >
       {children}
     </S.Btn>

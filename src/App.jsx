@@ -19,7 +19,7 @@ import MentorProgramPage from "./routes/MentorProgramPage";
 
 import CommunityPage from "./routes/CommunityPage";
 import Mypage from "./routes/Mypage";
-
+import MentorProfileChangePage from "./routes/MentorProfileChangePage";
 
 function App() {
   return (
@@ -31,12 +31,23 @@ function App() {
         <Route path="/test" element={<TestPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/mentoring" element={<MajorPage />} />
+        <Route path="/major" element={<MajorPage />} />
+        {/* 멘토-단과대학-학과별-세부페이지 */}
         <Route path="/mentoring/:id" element={<MentorPage />} />
+        {/* 학과별-세부-프로그램 신청페이지 */}
         <Route path="/mentoring/:id/apply" element={<MentoringApplyPage />} />
+        {/* 멘토 */}
+        {/* 멘토-지원 */}
         <Route path="/apply/*" element={<ApplyPage />} />
-
+        {/* 멘토-프로그램 만들기 */}
         <Route path="/mentor/program/*" element={<MentorProgramPage />} />
+        {/* 멘토-질의응답관리 */}
+        {/* 멘토-프로필 변경 */}
+        <Route
+          path="/mentor/profile/change"
+          element={<MentorProfileChangePage />}
+        />
+        {/* 멘토-계정관리 */}
 
         <Route path="/community/*" element={<CommunityPage />} />
         <Route path="/mypage/*" element={<Mypage />} />
