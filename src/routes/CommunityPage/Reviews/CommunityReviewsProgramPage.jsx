@@ -59,6 +59,7 @@ function CommunityReviewsProgramPage() {
   // states for Modal content
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [star, setStars] = useState("0");
 
   return (

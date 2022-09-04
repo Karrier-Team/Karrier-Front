@@ -30,7 +30,7 @@ export const Text = styled.span`
 
 export const Input = styled.input`
   width: 20rem;
-  height: 2.25em;
+  height: 2.8rem;
   border: none;
 `;
 

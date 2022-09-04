@@ -5,7 +5,7 @@ import * as S from "./style.js";
 
 import { Modal, Space, Text } from "@mantine/core";
 import ProfileList from "../../components/Profile/ProfileList.jsx";
-import { useLocation, useSearchParams } from "react-router-dom";
+import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -13,9 +13,8 @@ const sortTypeOptions = [
 ];
 
 const searchTypeOptions = [
-  { value: "content", name: "질문내용" },
-  { value: "title", name: "질문제목" },
-  { value: "nickname", name: "닉네임" },
+  { value: "programTitle", name: "프로그램제목" },
+  { value: "mentorName", name: "멘토이름" },
 ];
 
 const dummyData = [
@@ -72,10 +71,13 @@ function MypageQnAPage() {
         MY 찜 프로그램
       </CommunityNavbar>
       <S.RowWrapper>
-        <S.LeftSideWrapper>
-          <S.StyledNavLink to="/mypage/wishlist">MY 찜</S.StyledNavLink>
-          <S.StyledNavLink to="/mypage/followers">MY 팔로우</S.StyledNavLink>
-        </S.LeftSideWrapper>
+        <LeftSidebar
+          color="var(--wishlist-color)"
+          items={[
+            { link: "/mypage/wishlist", name: "MY 찜" },
+            { link: "/mypage/followers", name: "MY 팔로우" },
+          ]}
+        ></LeftSidebar>
         <S.RightSideWrapper>
           <S.SubControllBar>
             <div style={{ display: "flex" }}>
@@ -104,6 +106,7 @@ function MypageQnAPage() {
                 size="1.5rem"
                 weight="bold"
                 style={{ color: "", cursor: "pointer" }}
+                onClick={() => alert("서비스 준비중입니다.")}
               >
                 {"팀"}
               </Text>

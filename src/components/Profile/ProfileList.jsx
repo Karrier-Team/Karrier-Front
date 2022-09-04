@@ -6,6 +6,7 @@ const StyledProfileList = styled.div`
   width: 100%;
   box-sizing: border-box;
   /* padding: 1.7vw; */
+  padding: 2rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 1.75vw;
