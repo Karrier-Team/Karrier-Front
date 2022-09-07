@@ -26,19 +26,19 @@ export const ColWrapper = styled.div`
 `;
 
 export const Title = styled.span`
-  font-size: 2em;
+  font-size: 2vw;
   font-weight: bold;
   margin: 1em;
   width: 25%;
 `;
 
 export const Subtitle = styled.span`
-  font-size: 1.5em;
+  font-size: 1.5vw;
   word-break: keep-all;
 `;
 
 export const Content = styled.span`
-  font-size: 1em;
+  font-size: 1vw;
   color: #808080;
   margin: 0.5em;
   margin-left: 3em;

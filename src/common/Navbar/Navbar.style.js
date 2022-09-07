@@ -36,7 +36,7 @@ export const Logo = styled.img`
 
 export const Text = styled.span`
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   margin: auto 1rem;
   text-align: center;
 `;
