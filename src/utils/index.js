@@ -40,3 +40,13 @@ export const getColorByType = (type) => {
       return "var(--primary-color)";
   }
 };
+
+export const getFullPropertyName = (object, str) => {
+  const arr = Object.keys(object);
+  const idx = arr.findIndex((key) => key.includes(str));
+  return arr[idx];
+};
+
+export const parseDate = (date) => {
+  return date.slice(0, 10);
+};

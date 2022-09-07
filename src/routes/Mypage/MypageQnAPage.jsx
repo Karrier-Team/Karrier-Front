@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import CommunityPostDiv from "../../organisms/CommunityPostDiv/index.jsx";
 import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
 import ControllBar from "../../organisms/ControllBar/index.jsx";
 import Selector from "../../components/atoms/Selector";
 import * as S from "./style.js";
 
 import { Text, Modal } from "@mantine/core";
+import MypageQnaPostDiv from "../../organisms/MypageQnaPostDiv";
+import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuestionModalContent/index.jsx";
+
+import { apiPostNewQuestion } from "../../apis/mypage.js";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -22,23 +25,23 @@ const searchTypeOptions = [
 const dummyData = [
   {
     programNo: 1,
-    programName: "컴공 맛보기",
+    programName: "1번 프로그램",
     questionNo: 3,
     nickname: "행복한바지",
-    title: "질문 제목",
-    content: "질문 내용",
+    title: "1번프로그램 질문 제목",
+    content: "1번프로그램 질문 내용 이거 참 이상하네요",
     answer: false,
-    solve: false,
+    solve: true,
     modifyDate: "2022-08-20T17:01:56.707375",
     questionLikeNo: 1,
   },
   {
     programNo: 4,
-    programName: "라라",
+    programName: "4번 프로그램",
     questionNo: 1,
     nickname: "행복한바지",
-    title: "질문 제목",
-    content: "질문 내용",
+    title: "4번 프로그램 질문 제목",
+    content: "4번 프로그램 질문 내용",
     answer: false,
     solve: false,
     modifyDate: "2022-08-24T20:59:49.82776",
@@ -50,8 +53,24 @@ function MypageQnAPage() {
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
-  const [isModalOpened, setIsModalOpened] = useState(false);
-  const [curProgram, setCurProgram] = useState("");
+  const [isEditModalOpened, setIsEditModalOpened] = useState(false);
+  const [curProgramNo, setCurProgramNo] = useState(null);
+
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleApiPostNewQuestion = async () => {
+    const [result, status] = await apiPostNewQuestion({
+      curProgramNo,
+      title,
+      content,
+    });
+    if (status === 200 || status === 201) {
+      alert("성공");
+    } else {
+      alert(result);
+    }
+  };
 
   return (
     <>
@@ -65,7 +84,7 @@ function MypageQnAPage() {
         <ControllBar
           searchBarToTheRight
           withBtn={true}
-          onClickBtn={setIsModalOpened}
+          onClickBtn={() => setIsEditModalOpened(true)}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
           onChangeSortType={setSortType}
@@ -77,48 +96,42 @@ function MypageQnAPage() {
         ></ControllBar>
         <div style={{ width: "30rem" }}>
           <Selector
-            name={"프로그램"}
-            handleChange={setCurProgram}
+            name="프로그램"
+            handleChange={setCurProgramNo}
             options={dummyData.map((question) => {
-              return { name: question.programName };
+              return {
+                id: question.programNo,
+                name: question.programName,
+              };
             })}
           ></Selector>
         </div>
-        <Modal
-          size="60%"
-          centered
-          opened={isModalOpened}
-          onClose={() => setIsModalOpened(false)}
-        >
-          <S.CenterWrapper>
-            <S.H1>질문이 해결되셨습니까?</S.H1>
-            <div>
-              <S.Button
-                onClick={() => {
-                  console.log("API");
-                  alert("질문해결완료");
-                }}
-                type="yes"
-              >
-                예
-              </S.Button>
-              <S.Button onClick={() => setIsModalOpened(false)} type="no">
-                아니오
-              </S.Button>
-            </div>
-          </S.CenterWrapper>
-        </Modal>
         {dummyData
           .filter((question) => {
-            if (curProgram === "")
-              return true; // 아직 선택된 프로그램이 없을때는 모든 질의응답을 보여줌.
-            else return question.programName === curProgram;
+            if (!curProgramNo) return true;
+            else return question.programNo === curProgramNo;
           })
           // .sort() 이친구는 나중에 구현해야지!
           .map((question) => (
-            <CommunityPostDiv key={question.questionNo} data={question} />
+            <MypageQnaPostDiv key={question.questionNo} data={question} />
           ))}
       </S.Wrapper>
+
+      {/* 모달 */}
+      <Modal
+        size="60%"
+        centered
+        opened={isEditModalOpened}
+        onClose={() => setIsEditModalOpened(false)}
+      >
+        <CommunityQnAQuestionModalContent
+          handleSubmit={handleApiPostNewQuestion}
+          title={title}
+          setTitle={setTitle}
+          content={content}
+          setContent={setContent}
+        />
+      </Modal>
     </>
   );
 }

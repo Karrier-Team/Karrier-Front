@@ -11,6 +11,7 @@ const CommunityQnAQuestionModalContent = ({
   setTitle,
   content,
   setContent,
+  handleSubmit,
 }) => {
   return (
     <>
@@ -45,7 +46,7 @@ const CommunityQnAQuestionModalContent = ({
         />
       </S.ColWrapper>
       <S.RowWrapper>
-        <Btn type={type} data={null} handleClick={null} withAlert>
+        <Btn type={type} handleClick={handleSubmit} withAlert>
           작성완료
         </Btn>
       </S.RowWrapper>
