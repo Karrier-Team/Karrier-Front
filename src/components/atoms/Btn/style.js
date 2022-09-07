@@ -30,6 +30,13 @@ export const BtnStyle = css`
     }
   }};
 
+  ${(props) =>
+    props.disabled &&
+    css`
+      background-color: var(--disabled-color);
+      pointer-events: none;
+    `}
+
   border: none;
   border-radius: 9px;
   box-shadow: var(--box-shadow);

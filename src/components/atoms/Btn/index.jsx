@@ -14,6 +14,7 @@ function Btn({
   backgroundColor,
   fontSize,
   height,
+  disabled,
 }) {
   const handleClickWithData = (event) => {
     if (handleClick === undefined) return null;
@@ -24,6 +25,7 @@ function Btn({
   if (to) {
     return (
       <S.StyledLink
+        disabled={disabled}
         type={type}
         onClick={data ? handleClickWithData : handleClick}
         to={to}
@@ -36,6 +38,7 @@ function Btn({
 
   return (
     <S.Btn
+      disabled={disabled}
       type={type}
       size={size} //width
       height={height}
@@ -50,30 +53,4 @@ function Btn({
   );
 }
 
-// function Button({ children, href, to, styletype = "primary", fit = false, grow = false, ...props }: Props): React.ReactElement {
-//   const customprops = {
-//     fit,
-//     grow,
-//   };
-
-//   if (to) {
-//     return (
-//       <S.StyledLink styletype={styletype} to={to} customprops={customprops} {...props}>
-//         {children}
-//       </S.StyledLink>
-//     );
-//   } else if (href) {
-//     return (
-//       <S.Anchor styletype={styletype} href={href} customprops={customprops} {...props}>
-//         {children}
-//       </S.Anchor>
-//     );
-//   }
-
-//   return (
-//     <S.StyledBtn styletype={styletype} customprops={customprops} {...props}>
-//       {children}
-//     </S.StyledBtn>
-//   );
-// }
 export default Btn;

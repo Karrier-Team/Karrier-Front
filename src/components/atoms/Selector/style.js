@@ -14,6 +14,7 @@ export const Selector = styled.select`
   box-shadow: var(--box-shadow);
 
   font-size: 1em;
+  font-weight: bold;
   ::placeholder {
     opacity: 50%;
   }
