@@ -153,8 +153,8 @@ function MentorDetailedInformation() {
             <S.StyledMarginDiv>
               <MediaInput
                 fileName={"instagramIcon.png"}
-                value={facebookUrl}
-                handleChange={setFacebookUrl}
+                value={instaUrl}
+                handleChange={setInstaUrl}
                 placeholder={"인스타그램 URL을 입력해주세요"}
                 height={"4em"}
               />

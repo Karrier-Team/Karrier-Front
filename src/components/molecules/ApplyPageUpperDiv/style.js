@@ -28,7 +28,7 @@ export const ColWrapper = styled.div`
 export const Title = styled.span`
   font-size: 2em;
   font-weight: bold;
-  margin: 15px;
+  margin: 1em;
   width: 25%;
 `;
 

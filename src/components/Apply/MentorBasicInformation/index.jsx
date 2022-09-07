@@ -23,8 +23,8 @@ function MentorBasicInformation() {
 
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
-  const [college, setCollege] = useState("");
   const [university, setUniversity] = useState("");
+  const [college, setCollege] = useState("");
   const [major, setMajor] = useState("");
   const [detailedMajor, setDetailedMajor] = useState("");
   const [student_id, setStudent_id] = useState("");

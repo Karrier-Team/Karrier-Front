@@ -20,6 +20,7 @@ import MentorProgramPage from "./routes/MentorProgramPage";
 import CommunityPage from "./routes/CommunityPage";
 import Mypage from "./routes/Mypage";
 import MentorProfileChangePage from "./routes/MentorProfileChangePage";
+import MentorAccountManagement from "./routes/MentorAccountMangementPage/index";
 
 function App() {
   return (
@@ -48,6 +49,10 @@ function App() {
           element={<MentorProfileChangePage />}
         />
         {/* 멘토-계정관리 */}
+        <Route
+          path="/mentor/account/management/*"
+          element={<MentorAccountManagement />}
+        />
 
         <Route path="/community/*" element={<CommunityPage />} />
         <Route path="/mypage/*" element={<Mypage />} />

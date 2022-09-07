@@ -14,6 +14,11 @@ function MentorFinalConfirmation() {
   // eslint-disable-next-line no-unused-vars
   const [storage, setStorage] = useLocalStorage({ key: "mentor_apply_info" });
 
+  const handleSubmit = () => {
+    postMentorApplyInfo(storage);
+    // localStorage.clear();
+  };
+
   return (
     <>
       <S.Wrapper>
@@ -53,7 +58,7 @@ function MentorFinalConfirmation() {
           </S.Section>
           <S.RowWrapper>
             <Btn to="../step4">이전</Btn>
-            <Btn data={storage} handleClick={postMentorApplyInfo} withAlert>
+            <Btn data={storage} handleClick={handleSubmit} withAlert>
               제출
             </Btn>
           </S.RowWrapper>
