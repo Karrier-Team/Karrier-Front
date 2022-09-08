@@ -10,6 +10,7 @@ import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuesti
 
 import { apiPostNewQuestion } from "../../apis/mypage.js";
 import { useNavigate } from "react-router-dom";
+import { makeProgramList } from "../../utils/mypage.js";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -111,12 +112,7 @@ function MypageQnAPage() {
           <Selector
             name="프로그램"
             handleChange={setCurProgramNo}
-            options={dummyData.map((question) => {
-              return {
-                id: question.programNo,
-                name: question.programName,
-              };
-            })}
+            options={makeProgramList(dummyData)}
           ></Selector>
         </div>
         {dummyData
