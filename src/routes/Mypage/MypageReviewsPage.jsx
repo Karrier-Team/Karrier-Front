@@ -8,7 +8,7 @@ import { Text, Modal } from "@mantine/core";
 import MypageReviewsPostDiv from "../../organisms/MypageReviewsPostDiv";
 import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuestionModalContent/index.jsx";
 
-import { apiPostNewQuestion } from "../../apis/mypage.js";
+import { apiPostNewReview } from "../../apis/mypage.js";
 import { useNavigate } from "react-router-dom";
 
 import { makeProgramList } from "../../utils/mypage.js";
@@ -154,19 +154,21 @@ function MypageReviewsPage() {
   const [isEditModalOpened, setIsEditModalOpened] = useState(false);
   const [curProgramNo, setCurProgramNo] = useState(null);
 
+  const [star, setStar] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const handleApiPostNewQuestion = async () => {
-    const [result, status] = await apiPostNewQuestion({
+  const handleApiPostNewReview = async () => {
+    const [result, status] = await apiPostNewReview({
       curProgramNo,
+      star: parseInt(star) / 20 < 0 ? 0 : parseInt(star) / 20,
       title,
       content,
     });
     if (status === 200 || status === 201) {
       alert("성공");
-      const { questionNo } = result;
-      navigate(`/community/qna/${curProgramNo}/question/${questionNo}`);
+      const { reviewNo } = result;
+      navigate(`/community/reviews/${curProgramNo}/review/${reviewNo}`);
     } else {
       alert(result);
     }
@@ -233,7 +235,9 @@ function MypageReviewsPage() {
         onClose={() => setIsEditModalOpened(false)}
       >
         <CommunityQnAQuestionModalContent
-          handleSubmit={handleApiPostNewQuestion}
+          type="reviews"
+          handleSubmit={handleApiPostNewReview}
+          setStar={setStar}
           title={title}
           setTitle={setTitle}
           content={content}

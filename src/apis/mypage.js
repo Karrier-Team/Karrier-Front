@@ -47,3 +47,33 @@ export const apiPostNewQuestion = async ({ curProgramNo, title, content }) => {
     return [errorResponse.message, errorResponse.status];
   }
 };
+
+export const apiPostNewReview = async ({
+  curProgramNo,
+  star,
+  title,
+  content,
+}) => {
+  const axiosConfig = {
+    method: "post",
+    url: `${config.baseURL}/community/review/new`,
+    headers: {},
+    auth: {
+      username: "test2@test.com",
+      password: "qwer1234!",
+    },
+    data: qs.stringify({
+      programNo: curProgramNo,
+      star: star,
+      title: title,
+      content: content,
+    }),
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
+  }
+};

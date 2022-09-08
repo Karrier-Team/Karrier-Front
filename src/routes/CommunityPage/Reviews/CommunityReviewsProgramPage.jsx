@@ -60,7 +60,7 @@ function CommunityReviewsProgramPage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   // eslint-disable-next-line no-unused-vars
-  const [star, setStars] = useState("0");
+  const [star, setStar] = useState("0");
 
   return (
     <>
@@ -95,7 +95,7 @@ function CommunityReviewsProgramPage() {
         >
           <CommunityQnAQuestionModalContent
             type="reviews"
-            setStars={setStars}
+            setStar={setStar}
             title={title}
             setTitle={setTitle}
             content={content}

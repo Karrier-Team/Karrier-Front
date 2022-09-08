@@ -6,7 +6,7 @@ import StarRating from "../../components/molecules/StarRating";
 
 const CommunityQnAQuestionModalContent = ({
   type,
-  setStars,
+  setStar,
   title,
   setTitle,
   content,
@@ -26,7 +26,7 @@ const CommunityQnAQuestionModalContent = ({
             <Text weight="bold" size="1.5rem">
               별점 :{" "}
             </Text>
-            <StarRating star="0" setStars={setStars}></StarRating>
+            <StarRating star="0" setStar={setStar}></StarRating>
           </div>
         ) : null}
         <TextInput

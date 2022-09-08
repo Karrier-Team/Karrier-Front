@@ -2,12 +2,12 @@ import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 // import API from "apis"
 
-const StarRating = ({ star, setStars }) => {
+const StarRating = ({ star, setStar }) => {
   const [rating, setRating] = useState(0); // initial rating value
 
   const handleRating = (rate) => {
     setRating(rate);
-    setStars(rate);
+    setStar(rate);
     // other logic
   };
 
