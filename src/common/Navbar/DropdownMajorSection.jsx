@@ -53,7 +53,9 @@ function DropdownMajorSection({ type, college: idx }) {
             <S.MajorItems
               type={type}
               className={dept === major ? "active" : null}
-              onClick={() => navigate(`/community/${type || "qna"}/${dept}`)}
+              onClick={() =>
+                navigate(`/community/${type || "qna"}?major=${dept}`)
+              }
               key={idx}
             >
               {dept}

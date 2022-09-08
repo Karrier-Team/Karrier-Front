@@ -9,6 +9,7 @@ import MypageQnaPostDiv from "../../organisms/MypageQnaPostDiv";
 import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuestionModalContent/index.jsx";
 
 import { apiPostNewQuestion } from "../../apis/mypage.js";
+import { useNavigate } from "react-router-dom";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -50,6 +51,8 @@ const dummyData = [
 ];
 
 function MypageQnAPage() {
+  const navigate = useNavigate();
+
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
@@ -67,9 +70,19 @@ function MypageQnAPage() {
     });
     if (status === 200 || status === 201) {
       alert("성공");
+      const { questionNo } = result;
+      navigate(`/community/qna/${curProgramNo}/question/${questionNo}`);
     } else {
       alert(result);
     }
+  };
+
+  const handleMakeNewPostButton = () => {
+    if (!curProgramNo) {
+      alert("프로그램을 선택해주세요!");
+      return;
+    }
+    setIsEditModalOpened(true);
   };
 
   return (
@@ -84,7 +97,7 @@ function MypageQnAPage() {
         <ControllBar
           searchBarToTheRight
           withBtn={true}
-          onClickBtn={() => setIsEditModalOpened(true)}
+          onClickBtn={handleMakeNewPostButton}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
           onChangeSortType={setSortType}

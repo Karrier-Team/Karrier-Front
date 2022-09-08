@@ -18,27 +18,19 @@ function CommunityPage() {
         {/* CommunityQnA로 Routing 되는 경우를 하나로 나타낼순 없을까!? */}
         <Route index element={<CommunityQnAProgramsPage />} />
         <Route path="qna" element={<CommunityQnAProgramsPage />} />
-        <Route path="qna/:major" element={<CommunityQnAProgramsPage />} />
+        <Route path="qna/:programNo" element={<CommunityQnaProgramPage />} />
         <Route
-          path="qna/:major/:programNo"
-          element={<CommunityQnaProgramPage />}
-        />
-        <Route
-          path="qna/:major/:programNo/question/:questionNo"
+          path="qna/:programNo/question/:questionNo"
           element={<CommunityQuestionPage />}
         />
 
         <Route path="reviews" element={<CommunityReviewsProgramsPage />} />
         <Route
-          path="reviews/:major"
-          element={<CommunityReviewsProgramsPage />}
-        />
-        <Route
-          path="reviews/:major/:programNo"
+          path="reviews/:programNo"
           element={<CommunityReviewsProgramPage />}
         />
         <Route
-          path="reviews/:major/:programNo/review/:questionNo"
+          path="reviews/:programNo/review/:reviewNo"
           element={<CommunityReviewPage />}
         />
       </Routes>

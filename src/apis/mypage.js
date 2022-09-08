@@ -41,8 +41,9 @@ export const apiPostNewQuestion = async ({ curProgramNo, title, content }) => {
   };
   try {
     const response = await axios(axiosConfig);
-    return [response.data, response.status];
+    return [response.data.body, response.status];
   } catch (error) {
-    return [error.message, error.response.status];
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
   }
 };
