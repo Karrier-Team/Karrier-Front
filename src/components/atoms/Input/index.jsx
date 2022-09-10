@@ -11,6 +11,7 @@ function Input({
   height,
   padding,
   fontSize,
+  borderRadius,
 }) {
   const [storage] = useLocalStorage({
     key: "mentor_apply_info",
@@ -31,6 +32,7 @@ function Input({
       height={height}
       padding={padding}
       fontSize={fontSize}
+      borderRadius={borderRadius}
     ></S.Input>
   );
 }

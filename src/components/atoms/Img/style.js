@@ -19,4 +19,6 @@ export const Img = styled.img`
 
   object-position: 50% 50%;
   object-fit: contain;
+
+  background-color: white;
 `;

@@ -2,7 +2,11 @@ import React from "react";
 import * as S from "./style";
 
 function Btn({
+  htmlFor,
+  as,
+
   type,
+
   data,
   size,
   handleClick,
@@ -14,6 +18,7 @@ function Btn({
   backgroundColor,
   fontSize,
   height,
+  borderRadius,
   disabled,
 }) {
   const handleClickWithData = (event) => {
@@ -38,6 +43,8 @@ function Btn({
 
   return (
     <S.Btn
+      as={"label"}
+      htmlFor={htmlFor ? htmlFor : null}
       disabled={disabled}
       type={type}
       size={size} //width
@@ -47,6 +54,7 @@ function Btn({
       backgroundColor={backgroundColor}
       fontSize={fontSize}
       onClick={data ? handleClickWithData : handleClick}
+      borderRadius={borderRadius}
     >
       {children}
     </S.Btn>
