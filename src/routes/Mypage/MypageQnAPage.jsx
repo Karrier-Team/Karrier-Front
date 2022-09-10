@@ -122,7 +122,12 @@ function MypageQnAPage() {
           })
           // .sort() 이친구는 나중에 구현해야지!
           .map((question) => (
-            <MypageQnaPostDiv key={question.questionNo} data={question} />
+            <MypageQnaPostDiv
+              setTitle={setTitle}
+              setContent={setContent}
+              key={question.questionNo}
+              data={question}
+            />
           ))}
       </S.Wrapper>
 

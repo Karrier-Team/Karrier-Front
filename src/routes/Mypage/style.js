@@ -47,6 +47,19 @@ export const RightSideWrapper = styled.div`
   padding-left: 3rem;
 `;
 
+export const StyledText = styled.span`
+  font-size: ${(props) => props.size || "1rem"};
+  font-weight: ${(props) => props.bold || "normal"};
+  color: ${(props) => props.color || "black"};
+`;
+
+export const WrapperSpaceBtwn = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Wrapper = styled.div`
   ${FlexCol}
   box-sizing: border-box;

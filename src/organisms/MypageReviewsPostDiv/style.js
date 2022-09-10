@@ -51,6 +51,13 @@ export const ColWrapperCntr = styled.div`
   width: 10%;
 `;
 
+export const FlexDiv = styled.div`
+  display: flex;
+  justify-content: ${(props) => props.left && "flex-start"};
+  justify-content: ${(props) => props.center && "center"};
+  width: ${(props) => props.width || "100%"};
+`;
+
 export const LowerRowWrapper = styled.div`
   ${FlexRow};
   height: 1.5em;

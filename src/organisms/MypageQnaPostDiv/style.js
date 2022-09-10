@@ -45,6 +45,13 @@ export const ColWrapper = styled.div`
   }
 `;
 
+export const FlexDiv = styled.div`
+  display: flex;
+  justify-content: ${(props) => props.left && "flex-start"};
+  justify-content: ${(props) => props.center && "center"};
+  width: ${(props) => props.width || "100%"};
+`;
+
 export const ColWrapperCntr = styled.div`
   ${FlexColCenter}
   justify-content: center;

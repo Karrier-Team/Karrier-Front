@@ -5,23 +5,36 @@ import CircleWithText from "../../components/molecules/CircleWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { getColorByType, getFullPropertyName, parseDate } from "../../utils";
-import Btn from "../../components/atoms/Btn";
+// import Btn from "../../components/atoms/Btn";
+import CommunityQnAQuestionModalContent from "../CommunityQnAQuestionModalContent";
 
-// import { apiPostSolveQuestion } from "../../apis/mypage";
+import { apiUpdateCurReview } from "../../apis/mypage";
 
-const MypageReviewsPostDiv = ({ type, data }) => {
+const MypageReviewsPostDiv = ({
+  type,
+  data,
+  setStar,
+  setTitle,
+  setContent,
+}) => {
   const [clicked, setClicked] = useState(false);
-  // const [isSolveModalOpened, setIsSolveModalOpened] = useState(false);
-  // const apiData = { programNo: data.programNo, reviewNo: data.reviewNo };
+  const [isEditModalOpened, setIsEditModalOpened] = useState(false);
 
-  // const handleSolveQuestion = async (apiData) => {
-  //   const [result, status] = await apiPostSolveQuestion(apiData);
-  //   if (status === 200 || status === 201) {
-  //     alert("성공");
-  //   } else {
-  //     alert(result);
-  //   }
-  // };
+  const handleApiUpdateCurReview = async (data) => {
+    const apiData = {
+      programNo: data.programNo,
+      reviewNo: data.reviewNo,
+      star: data.star,
+      title: data.title,
+      content: data.content,
+    };
+    const [result, status] = await apiUpdateCurReview(apiData);
+    if (status === 200 || status === 201) {
+      alert("성공");
+    } else {
+      alert(result);
+    }
+  };
 
   return (
     <S.Wrapper>
@@ -59,7 +72,7 @@ const MypageReviewsPostDiv = ({ type, data }) => {
         </S.ColWrapperCntr>
       </S.RowWrapper>
       <S.LowerRowWrapper>
-        <div style={{ display: "flex", width: "80%" }}>
+        <S.FlexDiv width="80%">
           <Text color={"gray"}>{data.nickname}</Text>
           <Space w="xl"></Space>
           {!type || type === "qna" ? (
@@ -67,17 +80,25 @@ const MypageReviewsPostDiv = ({ type, data }) => {
               {"답변"}
             </Text>
           ) : null}
-        </div>
+        </S.FlexDiv>
 
-        <div style={{ display: "flex", width: "10%" }}>
+        <S.FlexDiv width="10%">
           <Text color="gray">
             {parseDate(data[getFullPropertyName(data, "Date")])}
           </Text>
-        </div>
+        </S.FlexDiv>
 
-        <div
-          style={{ display: "flex", width: "10%", justifyContent: "center" }}
-        >
+        {/* <S.FlexDiv width="10%" center>
+          <Btn
+            fontSize="0.9rem"
+            handleClick={() => setIsEditModalOpened(true)}
+            type="reviews"
+          >
+            수정
+          </Btn>
+        </S.FlexDiv> */}
+
+        <S.FlexDiv width="10%" center>
           {data.comment ? (
             <Text color="var(--reviews-color)" size="1rem" weight="bold">
               답변
@@ -87,28 +108,27 @@ const MypageReviewsPostDiv = ({ type, data }) => {
               미답변
             </Text>
           )}
-        </div>
+        </S.FlexDiv>
       </S.LowerRowWrapper>
 
-      {/* 모달모음! */}
-      {/* <Modal
-        size="40%"
+      {/* 모달 */}
+      <Modal
+        size="60%"
         centered
-        opened={isSolveModalOpened}
-        onClose={() => setIsSolveModalOpened(false)}
+        opened={isEditModalOpened}
+        onClose={() => setIsEditModalOpened(false)}
       >
-        <S.CenterWrapper>
-          <S.H1>질문이 해결되셨습니까?</S.H1>
-          <div>
-            <S.Button onClick={() => handleSolveQuestion(apiData)} type="yes">
-              예
-            </S.Button>
-            <S.Button onClick={() => setIsSolveModalOpened(false)} type="no">
-              아니오
-            </S.Button>
-          </div>
-        </S.CenterWrapper>
-      </Modal> */}
+        <CommunityQnAQuestionModalContent
+          type="reviews"
+          star={data.reviewStar}
+          handleSubmit={() => handleApiUpdateCurReview(data)}
+          setStar={setStar}
+          title={data.title}
+          setTitle={setTitle}
+          content={data.content}
+          setContent={setContent}
+        />
+      </Modal>
     </S.Wrapper>
   );
 };

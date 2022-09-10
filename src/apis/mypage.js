@@ -4,7 +4,7 @@ import config from "../configs";
 
 export const apiPostSolveQuestion = async ({ programNo, questionNo }) => {
   const axiosConfig = {
-    method: "post",
+    method: "put",
     url: `${config.baseURL}/my-page/manage/question/solve`,
     headers: {},
     auth: {
@@ -12,6 +12,35 @@ export const apiPostSolveQuestion = async ({ programNo, questionNo }) => {
       password: "qwer1234!",
     },
     data: qs.stringify({
+      programNo: programNo,
+      questionNo: questionNo,
+    }),
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data, response.status];
+  } catch (error) {
+    return [error.message, error.response.status];
+  }
+};
+
+export const apiUpdateCurQuestion = async ({
+  programNo,
+  questionNo,
+  title,
+  content,
+}) => {
+  const axiosConfig = {
+    method: "put",
+    url: `${config.baseURL}/community/question`,
+    headers: {},
+    auth: {
+      username: "test2@test.com",
+      password: "qwer1234!",
+    },
+    data: qs.stringify({
+      title: title,
+      content: content,
       programNo: programNo,
       questionNo: questionNo,
     }),
@@ -75,5 +104,36 @@ export const apiPostNewReview = async ({
   } catch (error) {
     const errorResponse = error.response.data;
     return [errorResponse.message, errorResponse.status];
+  }
+};
+
+export const apiUpdateCurReview = async ({
+  programNo,
+  reviewNo,
+  star,
+  title,
+  content,
+}) => {
+  const axiosConfig = {
+    method: "put",
+    url: `${config.baseURL}/community/review`,
+    headers: {},
+    auth: {
+      username: "test2@test.com",
+      password: "qwer1234!",
+    },
+    data: qs.stringify({
+      programNo,
+      reviewNo,
+      star,
+      title,
+      content,
+    }),
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data, response.status];
+  } catch (error) {
+    return [error.message, error.response.status];
   }
 };

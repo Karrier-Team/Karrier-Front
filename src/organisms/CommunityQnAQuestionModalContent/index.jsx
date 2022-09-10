@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import * as S from "./style";
 import { TextInput, Textarea, Text, Space } from "@mantine/core";
 import Btn from "../../components/atoms/Btn";
@@ -6,6 +7,7 @@ import StarRating from "../../components/molecules/StarRating";
 
 const CommunityQnAQuestionModalContent = ({
   type,
+  star,
   setStar,
   title,
   setTitle,
@@ -13,6 +15,10 @@ const CommunityQnAQuestionModalContent = ({
   setContent,
   handleSubmit,
 }) => {
+  useEffect(() => {
+    console.log("star", star);
+  }, []);
+
   return (
     <>
       <S.ColWrapper>
@@ -26,7 +32,7 @@ const CommunityQnAQuestionModalContent = ({
             <Text weight="bold" size="1.5rem">
               별점 :{" "}
             </Text>
-            <StarRating star="0" setStar={setStar}></StarRating>
+            <StarRating star={star} setStar={setStar}></StarRating>
           </div>
         ) : null}
         <TextInput

@@ -7,15 +7,32 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { getColorByType, getFullPropertyName, parseDate } from "../../utils";
 import Btn from "../../components/atoms/Btn";
 
-import { apiPostSolveQuestion } from "../../apis/mypage";
+import { apiPostSolveQuestion, apiUpdateCurQuestion } from "../../apis/mypage";
+import CommunityQnAQuestionModalContent from "../CommunityQnAQuestionModalContent";
 
-const MypageQnaPostDiv = ({ type, data }) => {
+const MypageQnaPostDiv = ({ type, data, setTitle, setContent }) => {
   const [clicked, setClicked] = useState(false);
   const [isSolveModalOpened, setIsSolveModalOpened] = useState(false);
-  const apiData = { programNo: data.programNo, questionNo: data.questionNo };
+  const [isEditModalOpened, setIsEditModalOpened] = useState(false);
 
-  const handleSolveQuestion = async (apiData) => {
+  const handleSolveQuestion = async (data) => {
+    const apiData = { programNo: data.programNo, questionNo: data.questionNo };
     const [result, status] = await apiPostSolveQuestion(apiData);
+    if (status === 200 || status === 201) {
+      alert("성공");
+    } else {
+      alert(result);
+    }
+  };
+
+  const handleApiUpdateCurQuestion = async (data) => {
+    const apiData = {
+      programNo: data.programNo,
+      questionNo: data.questionNo,
+      title: data.title,
+      content: data.content,
+    };
+    const [result, status] = await apiUpdateCurQuestion(apiData);
     if (status === 200 || status === 201) {
       alert("성공");
     } else {
@@ -59,7 +76,7 @@ const MypageQnaPostDiv = ({ type, data }) => {
         </S.ColWrapperCntr>
       </S.RowWrapper>
       <S.LowerRowWrapper>
-        <div style={{ display: "flex", width: "80%" }}>
+        <S.FlexDiv width="70%">
           <Text color={"gray"}>{data.nickname}</Text>
           <Space w="xl"></Space>
           {!type || type === "qna" ? (
@@ -67,32 +84,42 @@ const MypageQnaPostDiv = ({ type, data }) => {
               {"답변"}
             </Text>
           ) : null}
-        </div>
+        </S.FlexDiv>
 
-        <div style={{ display: "flex", width: "10%" }}>
+        <S.FlexDiv width="10%">
           <Text color="gray">
             {parseDate(data[getFullPropertyName(data, "Date")])}
           </Text>
-        </div>
+        </S.FlexDiv>
 
-        <div
-          style={{ display: "flex", width: "10%", justifyContent: "center" }}
-        >
+        <S.FlexDiv width="10%" center>
+          <Btn
+            handleClick={() => setIsEditModalOpened(true)}
+            fontSize="0.9rem"
+            to=""
+            disabled={data.solve && true}
+          >
+            수정
+          </Btn>
+        </S.FlexDiv>
+
+        <S.FlexDiv width="10%" center>
           {data.solve ? (
-            <Btn fontSize="0.8rem" disabled to="">
+            <Btn disabled fontSize="0.9rem" to="">
               해결완료
             </Btn>
           ) : (
             <Btn
-              fontSize="0.8rem"
+              fontSize="0.9rem"
               handleClick={() => setIsSolveModalOpened(true)}
             >
               해결
             </Btn>
           )}
-        </div>
+        </S.FlexDiv>
       </S.LowerRowWrapper>
-      {/* 모달모음! */}
+
+      {/* 모달1. 질문 해결 모달 */}
       <Modal
         size="40%"
         centered
@@ -102,7 +129,7 @@ const MypageQnaPostDiv = ({ type, data }) => {
         <S.CenterWrapper>
           <S.H1>질문이 해결되셨습니까?</S.H1>
           <div>
-            <S.Button onClick={() => handleSolveQuestion(apiData)} type="yes">
+            <S.Button onClick={() => handleSolveQuestion(data)} type="yes">
               예
             </S.Button>
             <S.Button onClick={() => setIsSolveModalOpened(false)} type="no">
@@ -110,6 +137,23 @@ const MypageQnaPostDiv = ({ type, data }) => {
             </S.Button>
           </div>
         </S.CenterWrapper>
+      </Modal>
+
+      {/* 모달2. 질문 수정 모달 */}
+      <Modal
+        size="60%"
+        centered
+        opened={isEditModalOpened}
+        onClose={() => setIsEditModalOpened(false)}
+      >
+        <CommunityQnAQuestionModalContent
+          // /community/question
+          handleSubmit={() => handleApiUpdateCurQuestion(data)}
+          title={data.title}
+          setTitle={setTitle}
+          content={data.content}
+          setContent={setContent}
+        />
       </Modal>
     </S.Wrapper>
   );

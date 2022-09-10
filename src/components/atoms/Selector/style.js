@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Selector = styled.select`
   box-sizing: border-box;
-  width: 100%; // width (574px)
+  width: ${(props) => props.width || "100%"};
   height: 7vh;
   padding: 1em 2em;
 

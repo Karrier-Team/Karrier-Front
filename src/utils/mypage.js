@@ -8,3 +8,7 @@ export function makeProgramList(data) {
     return { name: program.programName, id: program.programNo };
   });
 }
+
+export const getRatingByOneDecimalPoint = (star) => {
+  return Math.round(star * 10) / 10;
+};
