@@ -1,33 +1,18 @@
 import React, { useState, useEffect, memo } from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import * as utils from "../utils/index";
+import { useLocation, useNavigate } from "react-router-dom";
+import * as utils from "../../utils/index";
+import * as S from "./style";
+
+// hooks
+import useAuth from "../../hooks/useAuth";
 
 // components
-import LoginInput from "../components/Login/LoginInput";
-import LoginButton from "../components/Login/LoginButton";
-import SocialLoginSection from "../components/Login/SocialLoginSection";
+import LoginInput from "../../components/Login/LoginInput";
+import LoginButton from "../../components/Login/LoginButton";
+import SocialLoginSection from "../../components/Login/SocialLoginSection";
 
 // apis
-import { apiPostLoginUser } from "../apis/users.js";
-
-// styled-components
-const Wrapper = styled.div`
-  height: 90vh;
-  width: 100%;
-  box-sizing: border-box;
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ErrorParap = styled.div`
-  color: red;
-  font-size: 0.8rem;
-`;
+import { apiPostLoginUser } from "../../apis/users.js";
 
 const initialErrorInfo = {
   emailError: "",
@@ -39,7 +24,12 @@ export function LoginPage() {
   const [passwordValue, setPasswordValue] = useState("");
   const [errorInfo, setErrorInfo] = useState(initialErrorInfo);
 
+  const { setAuth } = useAuth();
+
+  // Login페이지로 Redirect되었다면, 로그인 이후 다시 Redirect된 페이지로 이동.
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (emailValue === "" && passwordValue === "") return;
@@ -60,8 +50,14 @@ export function LoginPage() {
     });
     if (status === 200) {
       alert("로그인 성공");
-      // 유저정보를 Context에 저장하기
-      // 특정 주소로 navigate() 하기
+      const {
+        email,
+        role,
+        nickname,
+        profileImage: { storeFileName: img },
+      } = result;
+      setAuth({ email, password: passwordValue, role, nickname, img });
+      navigate(from, { replace: true });
     } else {
       alert(result);
       setErrorInfo(initialErrorInfo);
@@ -70,7 +66,7 @@ export function LoginPage() {
 
   return (
     <>
-      <Wrapper>
+      <S.Wrapper>
         <SocialLoginSection></SocialLoginSection>
         <LoginInput
           handleChange={setEmailValue}
@@ -79,7 +75,7 @@ export function LoginPage() {
           caption="이메일"
           placeholder="이메일을 입력해주세요"
         ></LoginInput>
-        <ErrorParap>{errorInfo.emailError}</ErrorParap>
+        <S.ErrorParap>{errorInfo.emailError}</S.ErrorParap>
         <LoginInput
           handleChange={setPasswordValue}
           name="password"
@@ -87,9 +83,9 @@ export function LoginPage() {
           caption="비밀번호"
           placeholder="비밀번호를 입력해주세요"
         ></LoginInput>
-        <ErrorParap>{errorInfo.passwordError}</ErrorParap>
+        <S.ErrorParap>{errorInfo.passwordError}</S.ErrorParap>
         <LoginButton handleSubmit={handleSubmit} />
-      </Wrapper>
+      </S.Wrapper>
     </>
   );
 }
