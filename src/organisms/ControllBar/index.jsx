@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import { Space } from "@mantine/core";
 import SortingBar from "../../components/molecules/SortingBar";
 import Btn from "../../components/atoms/Btn";
 import * as S from "./style";
@@ -69,9 +70,12 @@ const ControllBar = ({
         </S.SearchBar>
       )}
       {withBtn ? (
-        <Btn type={type} handleClick={onClickBtn}>
-          작성하기
-        </Btn>
+        <>
+          <Space w="xl" />
+          <Btn type={type} handleClick={onClickBtn}>
+            작성하기
+          </Btn>
+        </>
       ) : null}
     </S.Wrapper>
   );

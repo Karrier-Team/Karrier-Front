@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import MentorProgramPage from "./MentorProgramPage";
 import MentorProfileChangePage from "./MentorProfileChangePage";
 import MentorQnaPage from "./MentorQnaPage";
+import MentorReviewsPage from "./MentorReviewsPage";
 
 //
 function MentorPage() {
@@ -22,7 +23,7 @@ function MentorPage() {
       <Route path="/qna" element={<MentorQnaPage />} />
 
       {/* 멘토-수강후기 관리 페이지  */}
-      {/* /reviews */}
+      <Route path="/reviews" element={<MentorReviewsPage />} />
 
       {/* 멘토-찜 및 팔로우(찜) 관리 페이지  */}
       {/* /wishlist */}

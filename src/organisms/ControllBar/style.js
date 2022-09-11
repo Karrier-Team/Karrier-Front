@@ -36,7 +36,6 @@ export const Input = styled.input`
 
 export const SearchBar = styled.div`
   margin-left: ${(props) => props.searchBarToTheRight && "auto"};
-  margin-right: ${(props) => props.searchBarToTheRight && "2rem"};
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   border-radius: 10px;
