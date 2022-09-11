@@ -4,10 +4,10 @@ import * as S from "./Navbar.style";
 import Dropdown from "./Dropdown";
 import Logo from "../../images/Logo.png";
 import useAuth from "../../hooks/useAuth";
-import MentorNavbar from "./UserNavbar";
 import { useNavigate } from "react-router-dom";
 import BasicNavbar from "./BasicNavbar";
 import UserNavbar from "./UserNavbar";
+import MentorNavbar from "./MentorNavbar";
 
 const ROLES = {
   USER: "USER",
