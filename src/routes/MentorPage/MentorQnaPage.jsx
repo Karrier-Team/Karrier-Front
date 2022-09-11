@@ -102,7 +102,7 @@ function MentorQnaPage() {
         </Text>
         <ControllBar
           searchBarToTheRight
-          withBtn={true}
+          withBtn={false}
           onClickBtn={handleMakeNewPostButton}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}

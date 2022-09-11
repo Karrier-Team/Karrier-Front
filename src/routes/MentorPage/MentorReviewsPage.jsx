@@ -8,7 +8,10 @@ import { Text } from "@mantine/core";
 
 import { apiPostNewQuestion } from "../../apis/mypage.js";
 import { useNavigate } from "react-router-dom";
-import { makeProgramList } from "../../utils/mypage.js";
+import {
+  getRatingByOneDecimalPoint,
+  makeProgramList,
+} from "../../utils/mypage.js";
 import MentorReviewsPostDiv from "../../organisms/MentorReviewsPostDiv";
 
 const sortTypeOptions = [
@@ -112,7 +115,7 @@ function MentorReviewsPage() {
         <ControllBar
           type="reviews"
           searchBarToTheRight
-          withBtn={true}
+          withBtn={false}
           onClickBtn={handleMakeNewPostButton}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
@@ -123,13 +126,20 @@ function MentorReviewsPage() {
           onChangeSearchValue={setSearchValue}
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
-        <div style={{ width: "30rem" }}>
+        <S.WrapperSpaceBtwn>
           <Selector
+            width="30rem"
             name="프로그램"
             handleChange={setCurProgramNo}
             options={makeProgramList(dummyData)}
           ></Selector>
-        </div>
+          <span>
+            <S.StyledText bold="bold">평균평점⭐️ </S.StyledText>
+            <S.StyledText bold="bold" color="var(--reviews-color)">
+              {getRatingByOneDecimalPoint(dummyData[0].averageStar)}
+            </S.StyledText>
+          </span>
+        </S.WrapperSpaceBtwn>
         {dummyData
           .filter((question) => {
             if (!curProgramNo) return true;

@@ -61,7 +61,7 @@ export const LowerRowWrapper = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  /* font-weight: bold; */
+  font-weight: bold;
   color: ${(props) => props.color || "var(--reviews-color)"};
   text-decoration: none;
 `;

@@ -63,7 +63,7 @@ const MentorReviewsPostDiv = ({ type, data }) => {
           <Text color={"gray"}>{data.nickname}</Text>
         </div>
         <div style={{ display: "flex", width: "72%" }}>
-          {data.solve ? (
+          {data.comment ? (
             <Text weight="bold" color={"gray"}>
               답변완료
             </Text>

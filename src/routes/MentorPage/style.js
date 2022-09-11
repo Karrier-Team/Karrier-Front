@@ -16,3 +16,16 @@ export const RowWrapperBtwn = styled.div`
 export const RowWrapper = styled.div`
   ${FlexRow}
 `;
+
+export const WrapperSpaceBtwn = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const StyledText = styled.span`
+  font-size: ${(props) => props.size || "1rem"};
+  font-weight: ${(props) => props.bold || "normal"};
+  color: ${(props) => props.color || "black"};
+`;

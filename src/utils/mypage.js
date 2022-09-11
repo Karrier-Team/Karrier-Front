@@ -10,5 +10,7 @@ export function makeProgramList(data) {
 }
 
 export const getRatingByOneDecimalPoint = (star) => {
-  return Math.round(star * 10) / 10;
+  const number = Math.round(star * 10) / 10;
+  if (number === parseInt(number)) return number + ".0";
+  else return number;
 };
