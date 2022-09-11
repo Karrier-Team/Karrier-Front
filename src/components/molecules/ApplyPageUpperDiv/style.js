@@ -5,7 +5,8 @@ export const Wrapper = styled.div`
   width: 100%;
 
   box-sizing: border-box;
-  padding: 25px;
+  padding: 6%;
+  padding-left: 9%;
 
   border: none;
   border-radius: 9px;
@@ -28,17 +29,22 @@ export const ColWrapper = styled.div`
 export const Title = styled.span`
   font-size: 2vw;
   font-weight: bold;
-  margin: 1em;
-  width: 25%;
+  margin: 0.1em;
+  width: 26%;
 `;
 
 export const Subtitle = styled.span`
-  font-size: 1.5vw;
+  font-size: 1.3vw;
   word-break: keep-all;
+  font-weight: bold;
+
+  opacity: 0.5;
 `;
 
 export const Content = styled.span`
   font-size: 1vw;
+  font-weight: bold;
+  opacity: 0.7;
   color: #808080;
   margin: 0.5em;
   margin-left: 3em;

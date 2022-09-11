@@ -1,13 +1,14 @@
-import React, { memo, useState, useMemo } from "react";
+import React, { memo, useState, useMemo, useEffect } from "react";
 import Btn from "../../atoms/Btn";
 import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
 import LabeledFileInput from "../../molecules/LabeledFileInput";
 import { postMentorVerificationInformation } from "../../../apis/apply";
 import * as S from "./style";
+import { Input } from "@mantine/core";
 
 function MentorVerification() {
-  const [profileImg, setProfileImg] = useState();
   const [studentInfoImg, setStudentInfoImg] = useState();
+  const [profileImg, setProfileImg] = useState();
 
   const submitJson = useMemo(() => {
     const formData = new FormData();
@@ -29,16 +30,35 @@ function MentorVerification() {
 
         <S.ContentWrapper>
           <S.Section>
-            <LabeledFileInput
-              name={"재학증명서"}
-              handleChange={setProfileImg}
-            ></LabeledFileInput>
+            <div style={{ width: "100%" }}>
+              <LabeledFileInput
+                name={"재학증명서"}
+                handleChange={setStudentInfoImg}
+                file={
+                  studentInfoImg
+                    ? studentInfoImg
+                    : require("../../../images/defaultFileImage.png")
+                }
+                padding={"0 3.5em"}
+                imageClickable={true}
+              ></LabeledFileInput>
+              <br />
+            </div>
           </S.Section>
           <S.Section>
-            <LabeledFileInput
-              name={"프로필사진"}
-              handleChange={setStudentInfoImg}
-            ></LabeledFileInput>
+            <div style={{ width: "100%" }}>
+              <LabeledFileInput
+                name={"프로필사진"}
+                handleChange={setProfileImg}
+                file={
+                  profileImg
+                    ? profileImg
+                    : require("../../../images/defaultFileImage.png")
+                }
+                padding={"0 3.5em"}
+                imageClickable={true}
+              ></LabeledFileInput>
+            </div>
           </S.Section>
           <S.RowWrapper>
             <Btn

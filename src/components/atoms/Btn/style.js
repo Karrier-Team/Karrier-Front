@@ -12,10 +12,6 @@ export const BtnStyle = css`
 
   color: ${(props) => (props.color ? props.color : "white")};
 
-
-  background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "var(--primary-color)"};
-
   background-color: ${(props) => {
     switch (props.type) {
       case "qna":
@@ -31,10 +27,9 @@ export const BtnStyle = css`
       case "followers":
         return "var(--followers-color)";
       default:
-        return "var(--primary-color)";
+        return props.backgroundColor;
     }
   }};
-
 
   border: none;
   border-radius: ${(props) =>

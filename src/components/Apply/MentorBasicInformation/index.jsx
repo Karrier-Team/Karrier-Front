@@ -38,11 +38,22 @@ function MentorBasicInformation() {
       college,
       university,
       major,
+      detailedMajor,
       student_id,
       year,
       setStorage,
     }));
-  }, [name, gender, college, university, major, student_id, year, setStorage]);
+  }, [
+    name,
+    gender,
+    college,
+    university,
+    major,
+    detailedMajor,
+    student_id,
+    year,
+    setStorage,
+  ]);
 
   return (
     <>
@@ -53,14 +64,14 @@ function MentorBasicInformation() {
             subtitle={"학과별 페이지에 나타나는 기본정보입니다."}
             contents={[
               "대학교, 단과대학, 학과 정보를 정확하게 작성해주세요.",
-              "기본정보는 캐리어에서 사용하는 멘토님의 명합입니다.",
+              "기본정보는 캐리어에서 사용하는 멘토님의 명함입니다.",
             ]}
           />
         </S.Section>
         <S.ContentWrapper>
           <S.Section>
             <LabeledInput
-              required
+              required={true}
               storage={"name"}
               value={name}
               handleChange={setName}
@@ -74,7 +85,8 @@ function MentorBasicInformation() {
           <S.Section>
             <LabeledSelector
               name={"성별"}
-              required
+              required={true}
+              value={gender}
               handleChange={setGender}
               options={[
                 { value: "male", name: "남성" },
@@ -97,7 +109,8 @@ function MentorBasicInformation() {
           </S.Section>
           <S.Section>
             <LabeledSelector
-              required
+              required={true}
+              value={college}
               name={"단과대학"}
               handleChange={setCollege}
               options={converted_colleges(colleges)}

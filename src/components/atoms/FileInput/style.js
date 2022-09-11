@@ -7,7 +7,8 @@ export const Img = styled.img`
   box-sizing: border-box;
   width: 100%; // width (574px)
   aspect-ratio: ${(props) => (props.aspectRatio ? props.aspectRatio : 7 / 3)};
-  padding: 0;
+
+  padding: ${(props) => (props.padding ? props.padding : 0)};
 
   border: none;
   border-radius: ${(props) =>
@@ -17,6 +18,8 @@ export const Img = styled.img`
   font-size: 3em;
   font-weight: bold;
   text-align: center;
+
+  object-fit: ${(props) => (props.objectFit ? props.objectFit : "scale-down")};
 
   cursor: pointer;
 `;

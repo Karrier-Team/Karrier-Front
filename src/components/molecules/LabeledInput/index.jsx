@@ -27,11 +27,11 @@ function LabeledInput({
           <Label required={required} name={name}></Label>
         </div>
         <Input
+          required={required}
           storage={storage}
           value={value}
           handleChange={handleChange}
           placeholder={placeholder}
-          required={required}
           height={height}
           fontSize={fontSize}
           padding={padding}
