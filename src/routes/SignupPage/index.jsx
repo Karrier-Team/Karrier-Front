@@ -79,7 +79,7 @@ export function SignupPage() {
   return (
     <>
       <S.Wrapper>
-        <SocialLoginSection></SocialLoginSection>
+        <SocialLoginSection>간편 회원가입</SocialLoginSection>
         <LoginInput
           value={emailValue}
           handleChange={setEmailValue}

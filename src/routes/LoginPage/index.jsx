@@ -54,9 +54,9 @@ export function LoginPage() {
         email,
         role,
         nickname,
-        // profileImage: { storeFileName: img },
+        profileImage: { fileUrl: img },
       } = result;
-      setAuth({ email, password: passwordValue, role, nickname, img: "" });
+      setAuth({ email, password: passwordValue, role, nickname, img });
       navigate(from, { replace: true });
     } else {
       alert(result);
@@ -67,7 +67,7 @@ export function LoginPage() {
   return (
     <>
       <S.Wrapper>
-        <SocialLoginSection></SocialLoginSection>
+        <SocialLoginSection>간편 로그인</SocialLoginSection>
         <LoginInput
           value={emailValue}
           handleChange={setEmailValue}

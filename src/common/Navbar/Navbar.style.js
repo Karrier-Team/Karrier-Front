@@ -51,6 +51,7 @@ export const RightSection = styled.div`
 export const Logo = styled.img`
   height: 1rem;
   margin-right: 2rem;
+  cursor: pointer;
 `;
 
 export const Text = styled.span`

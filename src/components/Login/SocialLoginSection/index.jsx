@@ -5,10 +5,10 @@ import * as S from "./SocialLoginSection.style";
 import IconGoogle from "../../../images/IconGoogle.png";
 import IconNaver from "../../../images/IconNaver.png";
 
-function SocialLoginSection({ caption, placeholder }) {
+function SocialLoginSection({ children }) {
   return (
     <S.SocialLoginDiv>
-      <S.SocialLoginHeader>간편 회원가입</S.SocialLoginHeader>
+      <S.SocialLoginHeader>{children}</S.SocialLoginHeader>
       <S.SocialLoginIcon src={IconNaver} alt="IconNaver"></S.SocialLoginIcon>
       <S.SocialLoginIcon src={IconGoogle} alt="IconGoogle"></S.SocialLoginIcon>
     </S.SocialLoginDiv>
