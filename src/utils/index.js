@@ -1,4 +1,9 @@
-export function validate(emailValue, passwordValue, repasswordValue) {
+export function validate(
+  emailValue,
+  passwordValue,
+  repasswordValue,
+  nicknameValue
+) {
   const errors = {};
   const regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -18,6 +23,12 @@ export function validate(emailValue, passwordValue, repasswordValue) {
     errors.repasswordError = "비밀번호 확인을 입력하지 않으셨습니다.";
   } else if (passwordValue !== repasswordValue) {
     errors.repasswordError = "비밀번호가 일치하지 않습니다.";
+  }
+
+  if (!nicknameValue) {
+    errors.nicknameError = "닉네임을 입력하지 않으셨습니다.";
+  } else if (!(3 <= nicknameValue.length && nicknameValue.length <= 10)) {
+    errors.nicknameError = "닉네임 길이를 3~10자로 해주세요. ";
   }
   return errors;
 }

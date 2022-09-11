@@ -84,7 +84,7 @@ export function LoginPage() {
           placeholder="비밀번호를 입력해주세요"
         ></LoginInput>
         <S.ErrorParap>{errorInfo.passwordError}</S.ErrorParap>
-        <LoginButton handleSubmit={handleSubmit} />
+        <LoginButton value="LOGIN" handleSubmit={handleSubmit} />
       </S.Wrapper>
     </>
   );

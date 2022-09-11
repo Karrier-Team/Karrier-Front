@@ -7,6 +7,7 @@ export const LoginButtonInput = styled.input`
   background-color: #2c8ecb;
   color: white;
   font-weight: bold;
+  font-size: 1.3rem;
 
   width: 430px;
   height: 55px;
