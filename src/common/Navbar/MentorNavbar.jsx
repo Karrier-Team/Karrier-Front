@@ -44,26 +44,26 @@ const MentorNavbar = ({ auth, setAuth }) => {
           <Menu.Divider />
 
           <Menu.Label>마이페이지</Menu.Label>
-          <Menu.Item component={Link} to="/mentor/mypage/programs">
+          <Menu.Item component={Link} to="/mentor/programs">
             개인 프로그램 관리
           </Menu.Item>
-          <Menu.Item component={Link} to="/mentor/mypage/qna">
+          <Menu.Item component={Link} to="/mentor/qna">
             질의응답 관리
           </Menu.Item>
-          <Menu.Item component={Link} to="/mentor/mypage/reviews">
+          <Menu.Item component={Link} to="/mentor/reviews">
             수강후기 관리
           </Menu.Item>
-          <Menu.Item component={Link} to="/mentor/mypage/wishlist">
+          <Menu.Item component={Link} to="/mentor/wishlist">
             찜 및 팔로우
           </Menu.Item>
 
           <Menu.Divider />
 
           <Menu.Label>내정보</Menu.Label>
-          <Menu.Item component={Link} to="/mentor/profile/change">
+          <Menu.Item component={Link} to="/mentor/profile">
             프로필
           </Menu.Item>
-          <Menu.Item component={Link} to="/mentor/account/management">
+          <Menu.Item component={Link} to="/mentor/account">
             계정 관리
           </Menu.Item>
           <Menu.Item component={Link} to="/" onClick={handleLogout}>
