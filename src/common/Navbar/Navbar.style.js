@@ -16,6 +16,25 @@ const colors = css`
   }}
 `;
 
+export const Wrapper = styled.div`
+  width: 100vw;
+  height: 10vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid var(--line-color);
+
+  background-color: var(--bg-color-l);
+
+  padding: 0px 20px;
+  box-sizing: border-box;
+
+  font-weight: bold;
+  font-size: 1.3em;
+`;
+
 export const LeftSection = styled.div`
   height: 100%;
   display: flex;
@@ -36,7 +55,7 @@ export const Logo = styled.img`
 
 export const Text = styled.span`
   cursor: pointer;
-  font-size: 1rem;
+  font-size: ${(props) => props.size || "1rem"};
   margin: auto 1rem;
   text-align: center;
 `;

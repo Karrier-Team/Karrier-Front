@@ -1,40 +1,31 @@
 import React, { memo, useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as S from "./Navbar.style";
 import { Menu, Avatar } from "@mantine/core";
 
+import DefaultProfileImg from "../../images/DefaultProfileImg.jpeg";
+
 import Dropdown from "./Dropdown";
 import Logo from "../../images/Logo.png";
-
-const Wrapper = styled.div`
-  width: 100vw;
-  height: 10vh;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  border-bottom: 1px solid var(--line-color);
-
-  background-color: var(--bg-color-l);
-
-  padding: 0px 20px;
-  box-sizing: border-box;
-
-  font-weight: bold;
-  font-size: 1.3em;
-`;
+import useAuth from "../../hooks/useAuth";
+import { apiGetLogoutUser } from "../../apis/users";
 
 function Header() {
   const [showDropbox, setShowDropbox] = useState(false);
   const [opened, setOpened] = useState(false);
-  // const { loggedUser, loggedIn, setLoggedUser, setLoggedIn } = useContext(Context);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { auth, setAuth } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async (event) => {
+    console.log("로그아웃 완료");
+    await apiGetLogoutUser(auth);
+    setAuth({});
+    navigate("/");
+  };
 
   return (
     <>
-      <Wrapper>
+      <S.Wrapper>
         <S.LeftSection>
           <Link to="/">
             <S.Logo src={Logo} alt="service logo"></S.Logo>
@@ -58,13 +49,14 @@ function Header() {
         </S.LeftSection>
         <S.RightSection>
           <S.Searchbar placeholder="지금 검색하세요"></S.Searchbar>
-          {isLoggedIn ? (
+          {auth?.email ? (
             <>
-              {/* TODO: 아니 전역적인 이미지 관리는 어떻게한담!? */}
-              <Avatar src={null} radius="xl" />
+              <Avatar src={auth?.img || DefaultProfileImg} radius="xl" />
               <Menu width={"10rem"} opened={opened} onChange={setOpened}>
                 <Menu.Target>
-                  <S.Text>최고의 멘토</S.Text>
+                  <S.Text size="1.2rem">
+                    {auth?.nickname + "님" || "닉네임없음님"}
+                  </S.Text>
                 </Menu.Target>
                 <Menu.Dropdown>
                   <Menu.Label>마이페이지</Menu.Label>
@@ -87,12 +79,7 @@ function Header() {
                   <Menu.Item component={Link} to="/profile">
                     프로필
                   </Menu.Item>
-                  <Menu.Item
-                    component={Link}
-                    to="/"
-                    // TODO: API 연결!
-                    onClick={() => console.log("로그아웃")}
-                  >
+                  <Menu.Item component={Link} to="/" onClick={handleLogout}>
                     로그아웃
                   </Menu.Item>
                 </Menu.Dropdown>
@@ -109,7 +96,7 @@ function Header() {
             </>
           )}
         </S.RightSection>
-      </Wrapper>
+      </S.Wrapper>
       {showDropbox ? <Dropdown setShowDropbox={setShowDropbox} /> : null}
     </>
   );

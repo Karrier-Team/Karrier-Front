@@ -20,3 +20,22 @@ export const apiPostLoginUser = async ({ email, password }) => {
     return [errorResponse.message, errorResponse.status];
   }
 };
+
+export const apiGetLogoutUser = async ({ email, password }) => {
+  const axiosConfig = {
+    method: "get",
+    url: `${config.baseURL}/members/logout`,
+    headers: {},
+    auth: {
+      username: email,
+      password: password,
+    },
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
+  }
+};
