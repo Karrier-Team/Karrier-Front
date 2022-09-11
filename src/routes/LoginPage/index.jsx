@@ -54,9 +54,9 @@ export function LoginPage() {
         email,
         role,
         nickname,
-        profileImage: { storeFileName: img },
+        // profileImage: { storeFileName: img },
       } = result;
-      setAuth({ email, password: passwordValue, role, nickname, img });
+      setAuth({ email, password: passwordValue, role, nickname, img: "" });
       navigate(from, { replace: true });
     } else {
       alert(result);
@@ -69,6 +69,7 @@ export function LoginPage() {
       <S.Wrapper>
         <SocialLoginSection></SocialLoginSection>
         <LoginInput
+          value={emailValue}
           handleChange={setEmailValue}
           name="email"
           type="email"
@@ -77,6 +78,7 @@ export function LoginPage() {
         ></LoginInput>
         <S.ErrorParap>{errorInfo.emailError}</S.ErrorParap>
         <LoginInput
+          value={passwordValue}
           handleChange={setPasswordValue}
           name="password"
           type="password"
