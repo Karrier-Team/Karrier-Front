@@ -16,6 +16,7 @@ import LandingPage from "./routes/LandingPage";
 import MajorPage from "./routes/MajorPage";
 import MentorPage from "./routes/MentorPage";
 import ApplyPage from "./routes/ApplyPage";
+import UnauthorizedPage from "./routes/UnauthorizedPage";
 import MentoringApplyPage from "./routes/MentoringApplyPage";
 
 import MentorProgramPage from "./routes/MentorProgramPage";
@@ -38,8 +39,7 @@ const Auth = ({ allowedRoles }) => {
   return allowedRoles.includes(auth?.role) ? (
     <Outlet />
   ) : auth?.email ? (
-    // <Navigate to="/unauthorized" state={{ from: location }} replace />
-    <Navigate to="/login" state={{ from: location }} replace />
+    <Navigate to="/unauthorized" state={{ from: location }} replace />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />
   );
@@ -82,7 +82,7 @@ function App() {
           {/* 멘토-프로그램 만들기 */}
           <Route path="/mentor/program/*" element={<MentorProgramPage />} />
         </Route>
-
+        <Route path="/unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

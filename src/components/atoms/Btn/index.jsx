@@ -4,9 +4,7 @@ import * as S from "./style";
 function Btn({
   htmlFor,
   as,
-
   type,
-
   data,
   size,
   handleClick,

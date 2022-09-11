@@ -50,12 +50,8 @@ export function LoginPage() {
     });
     if (status === 200) {
       alert("로그인 성공");
-      const {
-        email,
-        role,
-        nickname,
-        profileImage: { fileUrl: img },
-      } = result;
+      const { email, role, nickname } = result;
+      const img = (result.profileImage && result.profileImage["fileUrl"]) || "";
       setAuth({ email, password: passwordValue, role, nickname, img });
       navigate(from, { replace: true });
     } else {

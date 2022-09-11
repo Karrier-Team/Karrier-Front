@@ -13,9 +13,11 @@ const MentorNavbar = ({ auth, setAuth }) => {
   const [opened, setOpened] = useState(false);
   const navigate = useNavigate();
   const handleLogout = async () => {
-    await apiGetLogoutUser(auth);
-    setAuth({});
-    navigate("/");
+    if (auth.email) {
+      await apiGetLogoutUser(auth);
+      setAuth({});
+      navigate("/");
+    }
   };
 
   return (
