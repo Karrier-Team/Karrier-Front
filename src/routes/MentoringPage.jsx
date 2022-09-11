@@ -52,7 +52,7 @@ const dummyMentoData = [
   },
 ];
 
-const MajorPage = () => {
+const MentoringPage = () => {
   // 남은 일
   // getData -> 서버에서 받아오기
   // 이때 각 객체당 이미지 파일도 저장해야 한다
@@ -76,4 +76,4 @@ const MajorPage = () => {
     </>
   );
 };
-export default React.memo(MajorPage);
+export default React.memo(MentoringPage);

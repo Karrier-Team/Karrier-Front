@@ -2,12 +2,12 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 //components
-import MentorProgramNavBar from "../components/MentorProgram/MentorProgramNavbar";
-import ProgramInfo from "../components/MentorProgram/ProgramInfo";
-import ProgramIntro from "../components/MentorProgram/ProgramIntro";
-import Curriculum from "../components/MentorProgram/Curriculum";
-import MentorIntro from "../components/MentorProgram/MentorIntro";
-import Btn from "../components/atoms/Btn";
+import MentorProgramNavBar from "../../components/MentorProgram/MentorProgramNavbar";
+import ProgramInfo from "../../components/MentorProgram/ProgramInfo";
+import ProgramIntro from "../../components/MentorProgram/ProgramIntro";
+import Curriculum from "../../components/MentorProgram/Curriculum";
+import MentorIntro from "../../components/MentorProgram/MentorIntro";
+import Btn from "../../components/atoms/Btn";
 
 //styled-components
 const Wrapper = styled.div`

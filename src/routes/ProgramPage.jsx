@@ -56,7 +56,7 @@ const fetchedMentorData = {
 
 const fetchedProgramData = "안녕하세요 프로그램 소개입니다. ";
 
-function MentorPage() {
+function ProgramPage() {
   const [mentorCarrierMenu, setMentorCarrierMenu] = useState("mentor_info");
   const [mentorCarrierContent, setMentorCarrierContent] = useState("");
   const [mentorProgramContent, setMentorProgramContent] = useState("null");
@@ -130,4 +130,4 @@ function MentorPage() {
   );
 }
 
-export default memo(MentorPage);
+export default memo(ProgramPage);

@@ -13,17 +13,15 @@ import LoginPage from "./routes/LoginPage";
 import SignupPage from "./routes/SignupPage";
 import ErrorPage from "./routes/ErrorPage";
 import LandingPage from "./routes/LandingPage";
-import MajorPage from "./routes/MajorPage";
-import MentorPage from "./routes/MentorPage";
+import MentoringPage from "./routes/MentoringPage";
+import ProgramPage from "./routes/ProgramPage";
 import ApplyPage from "./routes/ApplyPage";
 import UnauthorizedPage from "./routes/UnauthorizedPage";
 import MentoringApplyPage from "./routes/MentoringApplyPage";
 
-import MentorProgramPage from "./routes/MentorProgramPage";
-
 import CommunityPage from "./routes/CommunityPage";
 import Mypage from "./routes/Mypage";
-import MentorProfileChangePage from "./routes/MentorProfileChangePage";
+import MentorPage from "./routes/MentorPage";
 
 const ROLES = {
   USER: "USER",
@@ -54,8 +52,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/major" element={<MajorPage />} />
-        <Route path="/mentoring/:id" element={<MentorPage />} />
+        <Route path="/mentoring" element={<MentoringPage />} />
+        <Route path="/mentoring/:id" element={<ProgramPage />} />
         <Route path="/community/*" element={<CommunityPage />} />
 
         {/* Allow Only Admin */}
@@ -74,13 +72,7 @@ function App() {
 
         {/* Allow ApprovedMentor, Admin */}
         <Route element={<Auth allowedRoles={[ROLES.MENTOR_O, ROLES.ADMIN]} />}>
-          {/* 멘토-프로필 변경 */}
-          <Route
-            path="/mentor/profile/change"
-            element={<MentorProfileChangePage />}
-          />
-          {/* 멘토-프로그램 만들기 */}
-          <Route path="/mentor/program/*" element={<MentorProgramPage />} />
+          <Route path="/mentor/*" element={<MentorPage />} />
         </Route>
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<ErrorPage />} />

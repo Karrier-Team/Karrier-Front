@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 //components
-import Btn from "../components/atoms/Btn";
-import Label from "../components/atoms/Label";
-import Div from "../components/atoms/Div";
-import FileInput from "../components/atoms/FileInput/index";
-import Input from "../components/atoms/Input/index";
-import LabeledInput from "../components/molecules/LabeledInput/index";
+import Btn from "../../components/atoms/Btn";
+import Label from "../../components/atoms/Label";
+import Div from "../../components/atoms/Div";
+import FileInput from "../../components/atoms/FileInput/index";
+import Input from "../../components/atoms/Input/index";
+import LabeledInput from "../../components/molecules/LabeledInput/index";
 
 //styled-components
 const Wrapper = styled.div`
