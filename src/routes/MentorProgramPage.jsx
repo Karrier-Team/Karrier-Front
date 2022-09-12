@@ -36,10 +36,13 @@ const SubmitSection = styled.section`
 `;
 
 const MentorProgramPage = () => {
+  // programInfo data
   const [programInfo, setProgramInfo] = useState({
     representInfo: "",
+    representImg: "",
   });
 
+  // program Intro data
   const [programIntro, setProgramIntro] = useState({
     intro: "",
     title: "",
@@ -53,10 +56,14 @@ const MentorProgramPage = () => {
     price: undefined,
     recommended_target: [],
   });
+
+  //curriculum data
   const [curriculum, setCurriculum] = useState({
     curriculum_info: "",
     lecture: [],
   });
+
+  //mentorIntro data
   const [mentorIntro, setMentorIntro] = useState({
     mentorIntro_info: "",
     introduce: "",

@@ -90,8 +90,15 @@ function MentorFinalConfirmation() {
             </LabeledDiv>
           </S.Section>
           <S.RowWrapper>
-            <Btn to="../step4">이전</Btn>
-            <Btn data={storage} handleClick={handleSubmit} withAlert>
+            <Btn to="../step4" type={"qna"}>
+              이전
+            </Btn>
+            <Btn
+              data={storage}
+              handleClick={handleSubmit}
+              withAlert
+              type={"qna"}
+            >
               제출
             </Btn>
           </S.RowWrapper>

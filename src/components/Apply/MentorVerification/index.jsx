@@ -65,6 +65,7 @@ function MentorVerification() {
               data={submitJson}
               handleClick={postMentorVerificationInformation}
               to="../step3"
+              type={"qna"}
             >
               이전
             </Btn>
@@ -72,6 +73,7 @@ function MentorVerification() {
               data={submitJson}
               handleClick={postMentorVerificationInformation}
               to="../step5"
+              type={"qna"}
             >
               다음
             </Btn>

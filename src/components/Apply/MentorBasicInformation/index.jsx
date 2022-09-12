@@ -169,7 +169,9 @@ function MentorBasicInformation() {
           </S.Section>
           <S.RowWrapper>
             <Btn hide={true}>이전</Btn>
-            <Btn to="../step2">다음</Btn>
+            <Btn to="../step2" type={"qna"}>
+              다음
+            </Btn>
           </S.RowWrapper>
         </S.ContentWrapper>
       </S.Wrapper>

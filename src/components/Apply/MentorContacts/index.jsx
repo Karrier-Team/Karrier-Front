@@ -88,8 +88,12 @@ function MentorContacts() {
             ></LabeledSelector>
           </S.Section>
           <S.RowWrapper>
-            <Btn to="../step2">이전</Btn>
-            <Btn to="../step4">다음</Btn>
+            <Btn to="../step2" type={"qna"}>
+              이전
+            </Btn>
+            <Btn to="../step4" type={"qna"}>
+              다음
+            </Btn>
           </S.RowWrapper>
         </S.ContentWrapper>
       </S.Wrapper>

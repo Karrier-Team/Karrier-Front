@@ -179,6 +179,7 @@ const MentorProfileChangePage = () => {
                 borderRadius={"20px"}
                 height={"2.8em"}
                 handleClick={setImage}
+                type={"qna"}
               />
               <br />
               <br />

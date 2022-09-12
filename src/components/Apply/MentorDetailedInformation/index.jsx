@@ -161,8 +161,12 @@ function MentorDetailedInformation() {
             </S.StyledMarginDiv>
           </S.StyledSection>
           <S.RowWrapper>
-            <Btn to="../step1">이전</Btn>
-            <Btn to="../step3">다음</Btn>
+            <Btn to="../step1" type={"qna"}>
+              이전
+            </Btn>
+            <Btn to="../step3" type={"qna"}>
+              다음
+            </Btn>
           </S.RowWrapper>
         </S.ContentWrapper>
       </S.Wrapper>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as S from "./style";
 
 const FileInput = ({
+  htmlfor,
   name,
   file,
   handleChange,

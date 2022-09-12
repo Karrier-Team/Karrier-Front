@@ -5,6 +5,11 @@ import Btn from "../../atoms/Btn/index";
 import Label from "../../atoms/Label/index";
 import Textarea from "../../atoms/Textarea/index";
 import FileInput from "../../atoms/FileInput/index";
+import Div from "../../atoms/Div";
+
+const programInfo = {
+  name: "프로그램 대표 정보에 관한 안내",
+};
 
 //styled-component
 const Wrapper = styled.div`
@@ -31,6 +36,18 @@ const File = styled.section`
   width: 100%;
   display: flex;
   margin-top: 3%;
+`;
+
+const Span = styled.span`
+  font-weight: bold;
+  font-size: 1.1em;
+  color: gray;
+`;
+
+const ImgSection = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ProgramInfo = ({
@@ -72,13 +89,53 @@ const ProgramInfo = ({
         />
       </InfoSection>
       <FileSection>
-        <Label name={"대표 사진"} fontsize={"big"} />
+        <Label required name={"대표 사진"} fontsize={"big"} />
         <File>
           <div style={{ width: "80%", marginRight: "5em" }}>
-            <FileInput />
+            <FileInput
+              name={"representImg"}
+              aspectRatio={"7/5"}
+              imageClickable={true}
+              file={
+                programInfo.representImg
+                  ? programInfo.representImg
+                  : require("../../../images/defaultFileImage.png")
+              }
+              handleChange={() => {}}
+            />
           </div>
           <div style={{ width: "80%" }}>
-            <FileInput />
+            <Div width={"100%"} height={"100%"} pd={"2em 3em"}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1.5em",
+                }}
+              >
+                <Label name={"프로그램 대표 사진"} fontsize="big" />
+                <Span>-프로그램 대표 사진을 첨부해주세요.</Span>
+                <Span>
+                  -아래{" "}
+                  <span style={{ color: "var(--primary-color)" }}>예시</span>를
+                  참고해주세요.
+                </Span>
+                <ImgSection>
+                  <img
+                    src={require("../../../images/defaultFileImage.png")}
+                    style={{ width: "30%" }}
+                  />
+                  <img
+                    src={require("../../../images/defaultFileImage.png")}
+                    style={{ width: "30%" }}
+                  />
+                  <img
+                    src={require("../../../images/defaultFileImage.png")}
+                    style={{ width: "30%" }}
+                  />
+                </ImgSection>
+              </div>
+            </Div>
           </div>
         </File>
       </FileSection>
@@ -88,6 +145,7 @@ const ProgramInfo = ({
 ProgramInfo.defaultProps = {
   programInfo: {
     representInfo: "",
+    representImg: "",
   },
 };
 export default ProgramInfo;
