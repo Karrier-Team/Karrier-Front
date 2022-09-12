@@ -12,6 +12,7 @@ import MentoringInfoSection from "../components/Mentor/MentoringInfoSection";
 // components - main
 import UpperMainGrid from "../components/Mentor/UpperMainGrid";
 import LowerMainSection from "../components/Mentor/LowerMainSection";
+import ProgramDetailSection from "../organisms/ProgramDetailSection";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -25,6 +26,7 @@ const LeftsideWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 20vw;
+  height: 120vh;
 `;
 
 const MainWrapper = styled.div`
@@ -40,7 +42,8 @@ const UpperMainWrapper = styled.div`
 
 const LowerMainWrapper = styled.div`
   width: 100%;
-  height: calc(100vh * 0.8 - 10vw - 3em);
+  /* height: calc(100vh * 0.8 - 10vw - 3em); */
+  height: 100vh;
   border-left: 1px solid #dadada;
 `;
 
@@ -92,6 +95,16 @@ function ProgramPage() {
     instar_address: "https://www.google.com",
   };
 
+  const dummyDetail = {
+    title: "4444",
+    mentorName: "김민수",
+    type: "전공소개",
+    openDate: "2022년 9월 26일(월)",
+    closeDate: "2022년 10월 7일(금)",
+    runningTime: "화, 목 오전 10시 ~12시 / 금 오후 2시 ~ 4시",
+    onlineOffline: true,
+  };
+
   // 사용자 - 프로그램 정보
   const dummyUserProgramData = {
     isParticipating: "true",
@@ -108,6 +121,7 @@ function ProgramPage() {
           <MentorContactSection data={dummyMountData} />
           <MentorInfoSection data={dummyMountData} />
           <MentoringInfoSection data={dummyUserProgramData} />
+          <ProgramDetailSection data={dummyDetail}></ProgramDetailSection>
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper>

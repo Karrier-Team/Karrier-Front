@@ -3,7 +3,6 @@ import axios from "axios";
 import config from "../configs";
 
 const dummy = {
-  programName: "고3 대비 컴퓨터공학의 모든것",
   title: "4444",
   mentorName: "김민수",
   type: "전공소개",

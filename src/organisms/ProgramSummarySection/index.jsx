@@ -4,7 +4,8 @@ import * as S from "./style";
 function ProgramSummarySection({ data }) {
   return (
     <S.Wrapper>
-      <S.Span>{data.programName}</S.Span>
+      {/* 프로그램 이름 */}
+      <S.Span>{data.title}</S.Span>
       <S.Div>
         <S.Left>멘토</S.Left>
         <S.Right>{data.mentorName}</S.Right>
