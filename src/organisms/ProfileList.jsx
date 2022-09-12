@@ -29,6 +29,7 @@ const ProfileList = ({
     <StyledProfileList>
       {mentoData.map((item, index) => (
         <div
+          key={index}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -36,7 +37,7 @@ const ProfileList = ({
             gap: "1rem",
           }}
         >
-          <ProfileItem key={index} {...item} />
+          <ProfileItem {...item} />
           {isUnsubscribeActive && (
             <Btn type="wishlist" handleClick={onBtnClick}>
               {btntxt}

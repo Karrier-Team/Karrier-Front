@@ -47,21 +47,25 @@ function DropdownMajorSection({ type, college: idx }) {
   return (
     <>
       <Wrapper>
-        <StyledH1 type={type}>{colleges[idx].college + " >"}</StyledH1>
-        {colleges[idx].departments.map((dept, idx) => {
-          return (
-            <S.MajorItems
-              type={type}
-              className={dept === major ? "active" : null}
-              onClick={() =>
-                navigate(`/community/${type || "qna"}?major=${dept}`)
-              }
-              key={idx}
-            >
-              {dept}
-            </S.MajorItems>
-          );
-        })}
+        <StyledH1 type={type}>
+          {colleges.find((college) => college.id === idx).college + " >"}
+        </StyledH1>
+        {colleges
+          .find((college) => college.id === idx)
+          .departments.map((dept, idx) => {
+            return (
+              <S.MajorItems
+                type={type}
+                className={dept === major ? "active" : null}
+                onClick={() =>
+                  navigate(`/community/${type || "qna"}?major=${dept}`)
+                }
+                key={idx}
+              >
+                {dept}
+              </S.MajorItems>
+            );
+          })}
       </Wrapper>
     </>
   );
