@@ -1,7 +1,11 @@
 import styled from "styled-components";
+
+import DefaultProgramImage1 from "../../images/DefaultProgramImage1.png";
+
 const StyledMajorInfo = styled.div`
-  height: 33.9583vw;
-  background-color: yellowgreen;
+  width: 100%;
+  height: 40vh;
+  background: url(${DefaultProgramImage1}) no-repeat center 30%/100%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledMajorInfoBar = styled.div`
+  width: 100%;
+  padding: 0 3rem;
+  box-sizing: border-box;
   height: 3.5vw;
   background-color: #fbfbfb;
   display: flex;

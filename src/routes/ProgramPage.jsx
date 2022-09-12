@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 // components - left-side
@@ -66,6 +66,8 @@ function ProgramPage() {
   const [mentorProgramContent, setMentorProgramContent] = useState("null");
   const [searchParams] = useSearchParams();
 
+  const navigate = useNavigate();
+
   //CONNECT:
   useEffect(() => {
     // 해당 멘토의 정보를 불러오는 부분 (axios)
@@ -81,7 +83,9 @@ function ProgramPage() {
     // GET mentor/123?program=introduction
     // fetchedProgramData = await fetch() 이런식일듯
     setMentorProgramContent(fetchedProgramData);
-  }, [searchParams]);
+    if (!searchParams.get("program"))
+      navigate("?program=introduction", { replace: true });
+  }, [searchParams, navigate]);
 
   // 멘토정보
   const dummyMountData = {
