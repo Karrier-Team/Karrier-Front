@@ -18,6 +18,7 @@ import ProgramPage from "./routes/ProgramPage";
 import ApplyPage from "./routes/ApplyPage";
 import UnauthorizedPage from "./routes/UnauthorizedPage";
 import MentoringApplyPage from "./routes/MentoringApplyPage";
+import MentoringApplySuccessPage from "./routes/MentoringApplySuccessPage";
 
 import CommunityPage from "./routes/CommunityPage";
 import Mypage from "./routes/Mypage";
@@ -65,6 +66,11 @@ function App() {
         <Route element={<Auth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
           {/* 학과별-세부-프로그램 신청페이지 */}
           <Route path="/mentoring/:id/apply" element={<MentoringApplyPage />} />
+          {/* 학과별-세부-프로그램 신청완료 페이지 */}
+          <Route
+            path="/mentoring/:id/apply/success"
+            element={<MentoringApplySuccessPage />}
+          />
           {/* 멘토-지원 */}
           <Route path="/apply/*" element={<ApplyPage />} />
           <Route path="/mypage/*" element={<Mypage />} />

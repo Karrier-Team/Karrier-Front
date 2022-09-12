@@ -29,6 +29,7 @@ function Btn({
     return (
       <S.StyledLink
         disabled={disabled}
+        size={size} //width
         type={type}
         onClick={data ? handleClickWithData : handleClick}
         to={to}
