@@ -96,7 +96,7 @@ function MypageFollowingPage() {
             btntxt={isUnsubscribeActive ? "취소" : "삭제"}
             onClickBtn={() => setIsUnsubscribeActive((prev) => !prev)}
             hideSortingbar
-            type={isUnsubscribeActive ? "follow-cancel" : "followers"}
+            type={isUnsubscribeActive ? "cancel" : "followers"}
             spacebetween={true}
             withBtn={true}
             sortType={sortType}

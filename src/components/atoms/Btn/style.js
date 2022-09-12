@@ -29,7 +29,7 @@ export const BtnStyle = css`
         return "var(--programs-color)";
       case "followers":
         return "var(--followers-color)";
-      case "follow-cancel":
+      case "cancel":
         return "white";
       default:
         return props.backgroundColor || "var(--primary-color)";
@@ -44,7 +44,7 @@ export const BtnStyle = css`
     `}
 
   ${(props) =>
-    props.type === "follow-cancel" &&
+    props.type === "cancel" &&
     css`
       color: black;
     `}

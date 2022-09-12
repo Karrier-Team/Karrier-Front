@@ -64,7 +64,14 @@ function MypageWishlistPage() {
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
-  const [isModalOpened, setIsModalOpened] = useState(false);
+  const [isUnsubscribeActive, setIsUnsubscribeActive] = useState(false);
+  const [isCancelModalOpened, setIsCancelModalOpened] = useState(false);
+
+  const handleCancelWishlist = (event) => {
+    // TODO: API 연결
+    alert("찜 취소 API 연결");
+  };
+
   return (
     <>
       <CommunityNavbar isAdVisible={false} type="wishlist">
@@ -113,10 +120,11 @@ function MypageWishlistPage() {
             </div>
           </S.SubControllBar>
           <ControllBar
-            type="wishlist"
+            btntxt={isUnsubscribeActive ? "취소" : "찜 취소"}
+            onClickBtn={() => setIsUnsubscribeActive((prev) => !prev)}
+            type={isUnsubscribeActive ? "cancel" : "wishlist"}
             spacebetween={true}
             withBtn={true}
-            onClickBtn={setIsModalOpened}
             sortType={sortType}
             sortTypeOptions={sortTypeOptions}
             onChangeSortType={setSortType}
@@ -126,33 +134,34 @@ function MypageWishlistPage() {
             onChangeSearchValue={setSearchValue}
             searchTypeOptions={searchTypeOptions}
           ></ControllBar>
-          <Modal
-            size="60%"
-            centered
-            opened={isModalOpened}
-            onClose={() => setIsModalOpened(false)}
-          >
-            <S.CenterWrapper>
-              <S.H1>질문이 해결되셨습니까?</S.H1>
-              <div>
-                <S.Button
-                  onClick={() => {
-                    console.log("API");
-                    alert("질문해결완료");
-                  }}
-                  type="yes"
-                >
-                  예
-                </S.Button>
-                <S.Button onClick={() => setIsModalOpened(false)} type="no">
-                  아니오
-                </S.Button>
-              </div>
-            </S.CenterWrapper>
-          </Modal>
-          <ProfileList mentoData={dummyData} />
+          <ProfileList
+            mentoData={dummyData}
+            btntxt="취소"
+            isUnsubscribeActive={isUnsubscribeActive}
+            onBtnClick={() => setIsCancelModalOpened(true)}
+          />
         </S.RightSideWrapper>
       </S.RowWrapper>
+
+      {/* 모달1. 팔로우 취소  */}
+      <Modal
+        size="40%"
+        centered
+        opened={isCancelModalOpened}
+        onClose={() => setIsCancelModalOpened(false)}
+      >
+        <S.CenterWrapper>
+          <S.H1>찜을 취소하시겠습니까?</S.H1>
+          <div>
+            <S.Button onClick={handleCancelWishlist} type="yes">
+              예
+            </S.Button>
+            <S.Button onClick={() => setIsCancelModalOpened(false)} type="no">
+              아니오
+            </S.Button>
+          </div>
+        </S.CenterWrapper>
+      </Modal>
     </>
   );
 }
