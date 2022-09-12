@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ProfileList from "../../components/Profile/ProfileList.jsx";
+import ProfileList from "../../organisms/ProfileList.jsx";
 import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
 import ControllBar from "../../organisms/ControllBar/index.jsx";
 import * as S from "./style.js";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CommunityNavbar from "../../../organisms/CommunityNavbar";
 import ControllBar from "../../../organisms/ControllBar";
-import ProfileList from "../../../components/Profile/ProfileList";
+import ProfileList from "../../../organisms/ProfileList";
 import * as S from "./style.js";
 import Dropdown from "../../../common/Navbar/Dropdown";
 

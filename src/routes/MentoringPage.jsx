@@ -2,7 +2,7 @@ import React from "react";
 
 import MajorInfoBar from "../components/Major/MajorInfoBar";
 import MajorInfo from "../components/Major/MajorInfo";
-import ProfileList from "../components/Profile/ProfileList";
+import ProfileList from "../organisms/ProfileList";
 
 const dummyProps = {
   college: "IT대학",

@@ -1,4 +1,4 @@
-import ProfileItem from "../Profile/ProfileItem";
+import ProfileItem from "../components/molecules/ProfileItem";
 import styled from "styled-components";
 import React from "react";
 
