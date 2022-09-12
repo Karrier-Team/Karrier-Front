@@ -115,3 +115,13 @@ export const H1 = styled.h1`
 export const CenterWrapper = styled.div`
   ${FlexColCenter}
 `;
+
+export const MentorListWrapper = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 8rem;
+  grid-row-gap: 4rem;
+`;

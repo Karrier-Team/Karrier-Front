@@ -20,7 +20,7 @@ const ControllBar = ({
   onChangeSearchValue,
   searchValue,
   hideSortingbar,
-  hideSearchbar,
+  btntxt = "작성하기",
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
@@ -74,7 +74,7 @@ const ControllBar = ({
         <div>
           <Space w="xl" />
           <Btn type={type} handleClick={onClickBtn}>
-            작성하기
+            {btntxt}
           </Btn>
         </div>
       ) : null}

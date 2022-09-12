@@ -29,8 +29,10 @@ export const BtnStyle = css`
         return "var(--programs-color)";
       case "followers":
         return "var(--followers-color)";
+      case "follow-cancel":
+        return "white";
       default:
-        return "var(--primary-color)";
+        return props.backgroundColor || "var(--primary-color)";
     }
   }};
 
@@ -39,6 +41,12 @@ export const BtnStyle = css`
     css`
       background-color: var(--disabled-color);
       pointer-events: none;
+    `}
+
+  ${(props) =>
+    props.type === "follow-cancel" &&
+    css`
+      color: black;
     `}
 
   border: none;

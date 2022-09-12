@@ -5,6 +5,8 @@ import * as S from "./style.js";
 
 import { Text, Modal, Space } from "@mantine/core";
 import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
+import Img from "../../components/atoms/Img";
+import UserProfileWithText from "../../components/molecules/UserProfileImgWithText/index.jsx";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -19,14 +21,16 @@ const searchTypeOptions = [
 
 const dummyData = [
   {
-    name: "나고고",
-    major: "컴퓨터학부",
-    profileImage: "d",
+    email: "test5@test.com",
+    name: "Hello",
+    major: null,
+    profileImage: "d3444294-e1d2-44b6-9d88-0ae2779feede프로필 사진.PNG",
   },
   {
-    name: "다고고",
-    major: "컴퓨터학부",
-    profileImage: "d",
+    email: "test@test.com",
+    name: "hi!",
+    major: null,
+    profileImage: "2e5308f3-522c-4ff1-90b1-67fdf8f32a64변경된 프로필 사진.PNG",
   },
 ];
 
@@ -34,7 +38,7 @@ function MypageFollowingPage() {
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
-  const [isModalOpened, setIsModalOpened] = useState(false);
+  const [isUnsubscribeActive, setIsUnsubscribeActive] = useState(false);
 
   return (
     <>
@@ -84,11 +88,12 @@ function MypageFollowingPage() {
             </div>
           </S.SubControllBar>
           <ControllBar
+            btntxt={isUnsubscribeActive ? "취소" : "삭제"}
+            onClickBtn={() => setIsUnsubscribeActive((prev) => !prev)}
             hideSortingbar
-            type="wishlist"
+            type={isUnsubscribeActive ? "follow-cancel" : "followers"}
             spacebetween={true}
             withBtn={true}
-            onClickBtn={setIsModalOpened}
             sortType={sortType}
             sortTypeOptions={sortTypeOptions}
             onChangeSortType={setSortType}
@@ -98,33 +103,18 @@ function MypageFollowingPage() {
             onChangeSearchValue={setSearchValue}
             searchTypeOptions={searchTypeOptions}
           ></ControllBar>
-          <Modal
-            size="60%"
-            centered
-            opened={isModalOpened}
-            onClose={() => setIsModalOpened(false)}
-          >
-            <S.CenterWrapper>
-              <S.H1>질문이 해결되셨습니까?</S.H1>
-              <div>
-                <S.Button
-                  onClick={() => {
-                    console.log("API");
-                    alert("질문해결완료");
-                  }}
-                  type="yes"
-                >
-                  예
-                </S.Button>
-                <S.Button onClick={() => setIsModalOpened(false)} type="no">
-                  아니오
-                </S.Button>
-              </div>
-            </S.CenterWrapper>
-          </Modal>
-          {dummyData.map((e) => (
-            <h1>{e.name}</h1>
-          ))}
+          <S.MentorListWrapper>
+            {dummyData.map((mentor) => (
+              <UserProfileWithText
+                src={mentor.profileImage}
+                maintxt={mentor.name}
+                isUnsubscribeActive={isUnsubscribeActive}
+                subtxt="멘토"
+                btntxt="팔로우 취소"
+                // btnOnclick={() => }
+              ></UserProfileWithText>
+            ))}
+          </S.MentorListWrapper>
         </S.RightSideWrapper>
       </S.RowWrapper>
     </>
