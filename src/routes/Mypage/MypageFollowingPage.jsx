@@ -5,7 +5,6 @@ import * as S from "./style.js";
 
 import { Text, Modal, Space } from "@mantine/core";
 import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
-import Img from "../../components/atoms/Img";
 import UserProfileWithText from "../../components/molecules/UserProfileImgWithText/index.jsx";
 
 const sortTypeOptions = [
@@ -39,6 +38,12 @@ function MypageFollowingPage() {
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
   const [isUnsubscribeActive, setIsUnsubscribeActive] = useState(false);
+  const [isCancelModalOpened, setIsCancelModalOpened] = useState(false);
+
+  const handleCancelFollowing = (event) => {
+    // TODO: API 연결
+    alert("팔로잉 취소API 연결");
+  };
 
   return (
     <>
@@ -111,12 +116,32 @@ function MypageFollowingPage() {
                 isUnsubscribeActive={isUnsubscribeActive}
                 subtxt="멘토"
                 btntxt="팔로우 취소"
-                // btnOnclick={() => }
+                btnOnclick={() => setIsCancelModalOpened(true)}
               ></UserProfileWithText>
             ))}
           </S.MentorListWrapper>
         </S.RightSideWrapper>
       </S.RowWrapper>
+
+      {/* 모달1. 팔로우 취소  */}
+      <Modal
+        size="40%"
+        centered
+        opened={isCancelModalOpened}
+        onClose={() => setIsCancelModalOpened(false)}
+      >
+        <S.CenterWrapper>
+          <S.H1>팔로우를 취소하시겠습니까?</S.H1>
+          <div>
+            <S.Button onClick={handleCancelFollowing} type="yes">
+              예
+            </S.Button>
+            <S.Button onClick={() => setIsCancelModalOpened(false)} type="no">
+              아니오
+            </S.Button>
+          </div>
+        </S.CenterWrapper>
+      </Modal>
     </>
   );
 }
