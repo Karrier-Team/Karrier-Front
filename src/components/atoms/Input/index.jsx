@@ -12,6 +12,8 @@ function Input({
   padding,
   fontSize,
   borderRadius,
+  type,
+  color,
 }) {
   const [storage] = useLocalStorage({
     key: "mentor_apply_info",
@@ -25,6 +27,7 @@ function Input({
 
   return (
     <S.Input
+      color={color}
       required={required}
       value={value}
       onChange={(e) => handleChange(e.target.value)}
@@ -33,6 +36,7 @@ function Input({
       padding={padding}
       fontSize={fontSize}
       borderRadius={borderRadius}
+      type={type ? type : "text"}
     ></S.Input>
   );
 }

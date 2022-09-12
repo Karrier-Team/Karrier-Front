@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 //components
+import Div from "../../atoms/Div";
 import Label from "../../atoms/Label";
 import LabeledTextarea from "../../molecules/LabeledTextarea/index";
 import MediaInput from "../../atoms/MediaInput/index";
 import InputTag from "../../molecules/InputTag/index";
+import { mentorInfoData } from "../hardData";
 
 //styled-component
 const StyledSection = styled.div`
@@ -16,13 +18,20 @@ const StyledSection = styled.div`
 const StyledMarginDiv = styled.div`
   margin-bottom: 3%;
 `;
+const Span = styled.span`
+  font-weight: bold;
+  font-size: 1.1em;
+  color: gray;
+`;
 
 const MentorIntro = ({ mentorIntro, handleChange }) => {
   // tag input state
   const [inputValue, setInputValue] = useState("");
 
+  const tagRef = useRef(0);
+
   // 태그 추가
-  const handleInsert = useCallback(() => {
+  const handleInsert = () => {
     if (mentorIntro.tag.length < 10) {
       if (mentorIntro.tag.find((tag) => tag === inputValue)) {
         alert("중복된 태그입니다. 다른 태그을 입력해 주세요.");
@@ -31,43 +40,49 @@ const MentorIntro = ({ mentorIntro, handleChange }) => {
       } else {
         handleChange({
           ...mentorIntro,
-          tag: [inputValue, ...mentorIntro.tag],
+          tag: [
+            {
+              id: tagRef.current,
+              data: inputValue,
+            },
+            ...mentorIntro.tag,
+          ],
         });
       }
     } else {
       alert("최대 10개까지 작성할 수 있습니다.");
     }
     setInputValue("");
-  }, [inputValue]);
+    tagRef.current += 1;
+  };
 
   // 태그 삭제
-  const handleDelete = useCallback(
-    (e) => {
-      const newData = mentorIntro.tag.filter((item) => {
-        return !(item === e.target.className);
-      });
-      handleChange({
-        ...mentorIntro,
-        tag: [...newData],
-      });
-    },
-    [mentorIntro.tag]
-  );
+  const handleDelete = (id) => {
+    handleChange({
+      ...mentorIntro,
+      tag: mentorIntro.tag.filter((item) => item.id !== id),
+    });
+  };
   return (
     <>
       <div style={{ margin: "5% 0" }}>
-        <LabeledTextarea
-          name={"멘토 소개"}
-          placeholder={"멘토 소개에 관한 안내"}
-          fontsize={"big"}
-          value={mentorIntro.mentorIntro_info}
-          handleChange={(e) => {
-            handleChange({
-              ...mentorIntro,
-              mentorIntro_info: e,
-            });
-          }}
-        />
+        <div style={{ marginBottom: "3%" }}>
+          <Label name={"멘토소개"} fontsize={"big"} />
+        </div>
+        <Div width={"100%"} pd={"2em 3em"}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.3em",
+            }}
+          >
+            <Label name={mentorInfoData.name} fontsize={"big"} />
+            {mentorInfoData.data.map((it) => (
+              <Span>{it}</Span>
+            ))}
+          </div>
+        </Div>
       </div>
       <StyledSection>
         <LabeledTextarea

@@ -58,14 +58,10 @@ const MentorProgramPage = () => {
   });
 
   //curriculum data
-  const [curriculum, setCurriculum] = useState({
-    curriculum_info: "",
-    lecture: [],
-  });
+  const [curriculum, setCurriculum] = useState([]);
 
   //mentorIntro data
   const [mentorIntro, setMentorIntro] = useState({
-    mentorIntro_info: "",
     introduce: "",
     club: "",
     contest: "",

@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     --primary-color-l: #2191d2; // 짙은파랑 light
     --bg-color-ll: #F6F6F6; // 밝은 회색
     --bg-color-l: #F0F0F0;
+    --bg-color-lll: #d3d3d3;
     --bg-color: #ACACAC;
     --bg-color-d: gray;
     --reviews-color: #19A96A;

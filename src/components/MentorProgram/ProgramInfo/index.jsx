@@ -13,7 +13,7 @@ const programInfo = {
 
 //styled-component
 const Wrapper = styled.div`
-  margin-bottom: 5%;
+  margin-bottom: 10%;
 `;
 
 const InfoSection = styled.section`
@@ -46,6 +46,7 @@ const Span = styled.span`
 
 const ImgSection = styled.section`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
 `;
@@ -82,14 +83,27 @@ const ProgramInfo = ({
             </div>
           </BtnSection>
         </InfoTitleSection>
-        <Textarea
-          value={programInfo.representInfo}
-          placeholder={"프로그램 대표 정보에 관한 안내"}
-          handleChange={handleChange}
-        />
+        <Div width={"100%"} pd={"2em 3em"}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "1.3em",
+            }}
+          >
+            <Label name={"프로그램 대표 정보에 관한 안내"} fontsize={"big"} />
+            <Span>
+              -학과를 눌렀을 때 페이지에 나올 프로그램 대표사진입니다.
+            </Span>
+            <Span>
+              -해당 사진은 학과별 페이지, 학과별 상세페이지에 나타납니다.
+            </Span>
+            <Span>-사진 크기에 맞게 대표사진을 첨부해주세요.</Span>
+          </div>
+        </Div>
       </InfoSection>
       <FileSection>
-        <Label required name={"대표 사진"} fontsize={"big"} />
+        <Label required name={"대표 사진"} />
         <File>
           <div style={{ width: "80%", marginRight: "5em" }}>
             <FileInput
@@ -108,6 +122,7 @@ const ProgramInfo = ({
             <Div width={"100%"} height={"100%"} pd={"2em 3em"}>
               <div
                 style={{
+                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   gap: "1.5em",
@@ -121,18 +136,36 @@ const ProgramInfo = ({
                   참고해주세요.
                 </Span>
                 <ImgSection>
-                  <img
-                    src={require("../../../images/defaultFileImage.png")}
-                    style={{ width: "30%" }}
-                  />
-                  <img
-                    src={require("../../../images/defaultFileImage.png")}
-                    style={{ width: "30%" }}
-                  />
-                  <img
-                    src={require("../../../images/defaultFileImage.png")}
-                    style={{ width: "30%" }}
-                  />
+                  <div
+                    style={{
+                      width: "28%",
+                      height: "100%",
+                      backgroundImage: `url(${require("../../../images/tempImage1.png")})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      boxShadow: "var(--box-shadow-strong)",
+                    }}
+                  ></div>
+                  <div
+                    style={{
+                      width: "28%",
+                      height: "100%",
+                      backgroundImage: `url(${require("../../../images/tempImage2.png")})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      boxShadow: "var(--box-shadow-strong)",
+                    }}
+                  ></div>
+                  <div
+                    style={{
+                      width: "28%",
+                      height: "100%",
+                      backgroundImage: `url(${require("../../../images/tempImage3.png")})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      boxShadow: "var(--box-shadow-strong)",
+                    }}
+                  ></div>
                 </ImgSection>
               </div>
             </Div>

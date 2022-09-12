@@ -21,7 +21,13 @@ const TagDiv = ({
       padding={padding}
     >
       {tagList.length > 0
-        ? tagList.map((item) => <TagItem value={item} onClick={handleDelete} />)
+        ? tagList.map((item) => (
+            <TagItem
+              value={item.data}
+              id={item.id}
+              onClick={() => handleDelete(item.id)}
+            />
+          ))
         : null}
     </S.TagDiv>
   );
