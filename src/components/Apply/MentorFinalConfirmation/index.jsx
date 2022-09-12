@@ -14,6 +14,11 @@ function MentorFinalConfirmation() {
   // eslint-disable-next-line no-unused-vars
   const [storage, setStorage] = useLocalStorage({ key: "mentor_apply_info" });
 
+  const handleSubmit = () => {
+    postMentorApplyInfo(storage);
+    // localStorage.clear();
+  };
+
   return (
     <>
       <S.Wrapper>
@@ -32,28 +37,68 @@ function MentorFinalConfirmation() {
         </S.Section>
         <S.ContentWrapper>
           <S.Section>
-            <LabeledDiv name={"멘토 프로필"}>
-              <S.FlexCol>
-                <Text size="1.5em" align="center">
-                  {storage.name + "멘토"}
-                </Text>
-                <Text size="xl">{storage.university}</Text>
-                <Text size="xl">{storage.college}</Text>
-                <Text size="xl">{storage.major}</Text>
-                <Text size="xl">{storage.student_id}</Text>
-                <Text size="xl">{storage.year}</Text>
-              </S.FlexCol>
+            <LabeledDiv name={"멘토 프로필"} labelFontSize={"big"}>
+              <S.ProfileSection>
+                <S.ProfileImg
+                  borderRadius={"50%"}
+                  aspectRatio={"1 /1"}
+                  src={
+                    storage.ProfileImg
+                      ? storage.ProfileImg
+                      : require("../../../images/defaultFileImage.png")
+                  }
+                />
+                <S.ProfileInfo>
+                  {/* <Text size="1.5em" align="start">
+                    {storage.name + " 멘토"}
+                  </Text>
+                  <Text size="xl">{storage.university}</Text>
+                  <Text size="xl">{storage.college}</Text>
+                  <Text size="xl">{storage.major}</Text>
+                  <Text size="xl">{storage.student_id}</Text>
+                  <Text size="xl">{storage.year}</Text> */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.7em",
+                    }}
+                  >
+                    <div style={{ marginBottom: "10%" }}>
+                      <S.NameSpan>{storage.name}</S.NameSpan>
+                      <S.Span>멘토</S.Span>
+                    </div>
+                    <div>
+                      <S.Span>{storage.university}</S.Span>
+                    </div>
+                    <div>
+                      <S.Span>{storage.college}</S.Span>
+                      <S.SmSpan>{storage.major}</S.SmSpan>
+                    </div>
+                    <div>
+                      <S.Span>{storage.student_id.slice(2, 4) + "학번"}</S.Span>
+                      <S.SmSpan>{storage.year + "학년"}</S.SmSpan>
+                    </div>
+                  </div>
+                </S.ProfileInfo>
+              </S.ProfileSection>
               <Divider />
               <Space h="md"></Space>
-              <Text size="1.5em" align="center">
-                {"멘토소개"}
-              </Text>
+              <S.Span>멘토 소개</S.Span>
+              <Space h="md"></Space>
               <Text color={"var(--bg-color-d)"}>{storage.introduce}</Text>
             </LabeledDiv>
           </S.Section>
           <S.RowWrapper>
-            <Btn to="../step4">이전</Btn>
-            <Btn data={storage} handleClick={postMentorApplyInfo} withAlert>
+            <Btn to="../step4" type={"qna"}>
+              이전
+            </Btn>
+            <Btn
+              data={storage}
+              handleClick={handleSubmit}
+              withAlert
+              type={"qna"}
+            >
               제출
             </Btn>
           </S.RowWrapper>

@@ -1,27 +1,13 @@
 import React, { memo, useState, useEffect } from "react";
-import * as S from "./style";
+import * as S from "./style.js";
 
-import LabeledTextarea from "../../molecules/LabeledTextarea";
-import Btn from "../../atoms/Btn";
-import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
-import Label from "../../atoms/Label";
-import MediaInput from "../../atoms/MediaInput";
+import LabeledTextarea from "../../../../components/molecules/LabeledTextarea";
+import Btn from "../../../../components/atoms/Btn";
+import ApplyPageUpperDiv from "../../../../components/molecules/ApplyPageUpperDiv";
+import Label from "../../../../components/atoms/Label";
+import MediaInput from "../../../../components/atoms/MediaInput";
 
-import { useLocalStorage } from "@mantine/hooks";
-
-// apis
-// import { postMentorApplyDetailedInformation } from "../../../apis/apply";
-
-// 데이터 플로우
-// 0. usef로 데이터 먼저 받아옴 -> 지금 생각해보니, 이건 딱히 저장을 해두진 않을것같다.
-// 1. 먼저 localstorage에서 값을 받아옴. 없으면 기존 정보 렌더링
-
-function MentorDetailedInformation() {
-  // eslint-disable-next-line no-unused-vars
-  const [storage, setStorage] = useLocalStorage({
-    key: "mentor_apply_info",
-  });
-
+const DetailInfo = () => {
   const [introduce, setIntroduce] = useState("");
   const [club, setClub] = useState("");
   const [contest, setContest] = useState("");
@@ -31,36 +17,16 @@ function MentorDetailedInformation() {
   const [facebookUrl, setFacebookUrl] = useState("");
   const [instaUrl, setInstaUrl] = useState("");
 
-  useEffect(() => {
-    setStorage((prev) => ({
-      ...prev,
-      introduce,
-      club,
-      contest,
-      external_activity,
-      intern,
-      naverUrl,
-      facebookUrl,
-      instaUrl,
-    }));
-  }, [
-    introduce,
-    club,
-    contest,
-    external_activity,
-    intern,
-    naverUrl,
-    instaUrl,
-    facebookUrl,
-    setStorage,
-  ]);
-
   // 연산량이 많은 그런 코드도 아니고,
   // "관련없는 data의 변경(state, props등)이 영향을 끼치는것도 아니다."
   // 그렇기 때문에, 단순히 useEffect를 이용하는게 맞는것같다.
   // const submitJson = useMemo(() => {
   //   return { introduce, club, contest, external_activity, intern };
   // }, [introduce, club, contest, external_activity, intern]);
+
+  const handleSubmit = () => {
+    console.log("data");
+  };
 
   return (
     <>
@@ -161,17 +127,12 @@ function MentorDetailedInformation() {
             </S.StyledMarginDiv>
           </S.StyledSection>
           <S.RowWrapper>
-            <Btn to="../step1" type={"qna"}>
-              이전
-            </Btn>
-            <Btn to="../step3" type={"qna"}>
-              다음
-            </Btn>
+            <Btn children={"저장"} handleClick={handleSubmit} size={"80%"} />
           </S.RowWrapper>
         </S.ContentWrapper>
       </S.Wrapper>
     </>
   );
-}
+};
 
-export default memo(MentorDetailedInformation);
+export default DetailInfo;

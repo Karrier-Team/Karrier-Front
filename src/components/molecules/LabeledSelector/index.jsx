@@ -3,7 +3,13 @@ import * as S from "./style";
 import Label from "../../atoms/Label";
 import Selector from "../../atoms/Selector";
 
-function LabeledSelector({ handleChange, name, options, required }) {
+function LabeledSelector({
+  handleChange,
+  name,
+
+  options,
+  required,
+}) {
   return (
     <>
       <S.Wrapper>

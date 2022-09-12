@@ -10,12 +10,17 @@ function LabeledDiv({
   children,
   centercontent,
   height,
+  labelFontSize,
 }) {
   return (
     <>
       <S.Wrapper>
         <div style={{ marginBottom: "3%" }}>
-          <Label reuired={required} fontsize={fontsize} name={name}></Label>
+          <Label
+            reuired={required}
+            fontsize={labelFontSize}
+            name={name}
+          ></Label>
         </div>
         {children ? (
           <Div

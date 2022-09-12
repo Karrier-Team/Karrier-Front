@@ -4,29 +4,30 @@ import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.div`
   ${FlexColCenter}
-  width: 20%;
+  width: 10%;
   height: 100vh;
-
   background-color: #f0f0f0;
 
   top: 0;
   position: sticky;
 
-  overflow: auto;
-  padding: 0;
-  padding-top: 2rem;
-
-  gap: 3rem;
+  padding: 1rem;
+  gap: 1rem;
 `;
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
+  margin: 1em 0;
+
+  display: flex;
+  justify-content: center;
 
   &.active {
     color: ${(props) => props.color || "var(--primary-color)"};
-    font-weight: bold;
   }
 
   color: black;
-  font-size: 1.5rem;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
 `;

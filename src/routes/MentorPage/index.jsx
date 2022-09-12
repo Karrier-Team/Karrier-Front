@@ -8,6 +8,7 @@ import MentorQnaPage from "./MentorQnaPage";
 import MentorReviewsPage from "./MentorReviewsPage";
 import MentorWishlistPage from "./MentorWishlistPage";
 import MentorFollowsPage from "./MentorFollowsPage";
+import MentorAccountManagement from "./MentorAccountMangementPage";
 
 function MentorPage() {
   return (
@@ -36,7 +37,7 @@ function MentorPage() {
       <Route path="/profile" element={<MentorProfileChangePage />} />
 
       {/* 멘토-계정관리 페이지 */}
-      {/* /account - 승열이가만들어둠! */}
+      <Route path="/account/*" element={<MentorAccountManagement />} />
     </Routes>
   );
 }

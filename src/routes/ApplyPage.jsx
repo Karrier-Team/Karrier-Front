@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
+  margin-top: 1%;
 `;
 
 function ApplyPage() {

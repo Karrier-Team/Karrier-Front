@@ -166,11 +166,12 @@ const MentorProfileChangePage = () => {
                 aspectRatio={"1 / 1"}
                 file={image}
                 handleChange={setImage}
+                objectFit={"cover"}
               />
               <br />
               <br />
               <Btn
-                // label 속성으로 바꿈
+                // label 속성으로 바꿈 -> Btn 과 input 연결, Img 는 연결하지 않음
                 as="label"
                 htmlFor="imgButton"
                 children={"사진 변경"}
@@ -178,6 +179,7 @@ const MentorProfileChangePage = () => {
                 borderRadius={"20px"}
                 height={"2.8em"}
                 handleClick={setImage}
+                type={"qna"}
               />
               <br />
               <br />

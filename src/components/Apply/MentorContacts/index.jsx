@@ -2,9 +2,28 @@ import React, { memo, useState, useEffect } from "react";
 import Btn from "../../atoms/Btn";
 import ApplyPageUpperDiv from "../../molecules/ApplyPageUpperDiv";
 import LabeledInput from "../../molecules/LabeledInput";
+import LabeledSelector from "../../molecules/LabeledSelector";
 import * as S from "./style";
 
 import { useLocalStorage } from "@mantine/hooks";
+
+//select data
+const countryData = [
+  { value: "대한민국", name: "대한민국" },
+  { value: "중국", name: "중국" },
+  { value: "일본", name: "일본" },
+  { value: "미국", name: "미국" },
+];
+
+const cityData = [
+  { value: "서울 & 경기도", name: "서울 & 경기도" },
+  { value: "강원도", name: "강원도" },
+  { value: "충청도(대전, 세종)", name: "충청도(대전, 세종)" },
+  { value: "경상도(대구, 부산, 울산)", name: "경상도(대구, 부산, 울산)" },
+  { value: "전라도(광주)", name: "전라도(광주)" },
+  { value: "제주도", name: "제주도" },
+  { value: "해외", name: "해외" },
+];
 
 function MentorContacts() {
   // eslint-disable-next-line no-unused-vars
@@ -41,9 +60,10 @@ function MentorContacts() {
         <S.ContentWrapper>
           <S.Section>
             <LabeledInput
+              required={true}
               storage={"phone_no"}
               value={phone_no}
-              placeholder="휴대전화 번호를 입력해주세요."
+              placeholder="010-xxxx-xxxx 형식으로 기입해주세요."
               name="휴대전화 번호"
               handleChange={setPhone_no}
               fontSize={"1em"}
@@ -52,32 +72,28 @@ function MentorContacts() {
             ></LabeledInput>
           </S.Section>
           <S.Section>
-            <LabeledInput
-              placeholder="주요 활동 국가를 입력해주세요."
-              name="국가"
+            <LabeledSelector
+              required={true}
+              name={"주요 국가"}
               handleChange={setCountry}
-              storage={"country"}
-              value={country}
-              fontSize={"1em"}
-              height={"7vh"}
-              padding={"1em 2em"}
-            ></LabeledInput>
+              options={countryData}
+            ></LabeledSelector>
           </S.Section>
           <S.Section>
-            <LabeledInput
-              placeholder="주요 활동 도시를 입력해주세요."
-              name="도시"
+            <LabeledSelector
+              required={true}
+              name={"주요 도시"}
               handleChange={setCity}
-              storage={"city"}
-              value={city}
-              fontSize={"1em"}
-              height={"7vh"}
-              padding={"1em 2em"}
-            ></LabeledInput>
+              options={cityData}
+            ></LabeledSelector>
           </S.Section>
           <S.RowWrapper>
-            <Btn to="../step2">이전</Btn>
-            <Btn to="../step4">다음</Btn>
+            <Btn to="../step2" type={"qna"}>
+              이전
+            </Btn>
+            <Btn to="../step4" type={"qna"}>
+              다음
+            </Btn>
           </S.RowWrapper>
         </S.ContentWrapper>
       </S.Wrapper>

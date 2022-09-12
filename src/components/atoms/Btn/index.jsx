@@ -41,7 +41,7 @@ function Btn({
 
   return (
     <S.Btn
-      as={"label"}
+      as={"as"}
       htmlFor={htmlFor ? htmlFor : null}
       disabled={disabled}
       type={type}

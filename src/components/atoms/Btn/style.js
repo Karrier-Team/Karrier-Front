@@ -12,9 +12,6 @@ export const BtnStyle = css`
 
   color: ${(props) => (props.color ? props.color : "white")};
 
-  background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : "var(--primary-color)"};
-
   background-color: ${(props) => {
     switch (props.type) {
       case "qna":

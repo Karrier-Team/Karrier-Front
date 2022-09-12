@@ -6,17 +6,20 @@ export const Wrapper = styled.div`
   border-bottom: 1px solid var(--line-color);
   /* border-bottom: 1px solid #e1e1e1; */
   width: 100vw;
-  height: 10vh;
+  height: 7vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  gap: 9%;
 `;
 
 export const StyledNavLink = styled(NavLink)`
+  font-size: 1rem;
   text-decoration: none;
   color: black;
-  margin: 5%;
+  font-weight: bold;
 
   &:hover {
     color: #007bc3;
