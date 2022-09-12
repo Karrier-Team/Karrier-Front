@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { Text } from "@mantine/core";
 import React, { memo, useCallback } from "react";
 import { NavLink, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
@@ -100,11 +101,20 @@ function UpperMainGrid({
 
   const activeProgramStyle = {
     backgroundColor: "var(--bg-color-l)",
+    fontWeight: "bold",
+    fontSize: "1.1rem",
   };
 
   const activeLeftStyle = {
     backgroundColor: "var(--primary-color)",
+    fontWeight: "bold",
     color: "white",
+    fontSize: "1.1rem",
+  };
+
+  const basicStyle = {
+    fontWeight: "bold",
+    fontSize: "1.1rem",
   };
 
   const [searchParams] = useSearchParams();
@@ -118,7 +128,9 @@ function UpperMainGrid({
         </div>
         <div
           className="left"
-          style={mentorCarrierMenu === "mentor_info" ? activeLeftStyle : null}
+          style={
+            mentorCarrierMenu === "mentor_info" ? activeLeftStyle : basicStyle
+          }
           value="mentor_info"
           onClick={handleOnClick}
         >
@@ -126,7 +138,9 @@ function UpperMainGrid({
         </div>
         <div
           className="left"
-          style={mentorCarrierMenu === "club_info" ? activeLeftStyle : null}
+          style={
+            mentorCarrierMenu === "club_info" ? activeLeftStyle : basicStyle
+          }
           value="club_info"
           onClick={handleOnClick}
         >
@@ -135,7 +149,9 @@ function UpperMainGrid({
         <div
           className="left"
           style={
-            mentorCarrierMenu === "competition_info" ? activeLeftStyle : null
+            mentorCarrierMenu === "competition_info"
+              ? activeLeftStyle
+              : basicStyle
           }
           value="competition_info"
           onClick={handleOnClick}
@@ -145,7 +161,9 @@ function UpperMainGrid({
         <div
           className="left"
           style={
-            mentorCarrierMenu === "activities_info" ? activeLeftStyle : null
+            mentorCarrierMenu === "activities_info"
+              ? activeLeftStyle
+              : basicStyle
           }
           value="activities_info"
           onClick={handleOnClick}
@@ -154,7 +172,9 @@ function UpperMainGrid({
         </div>
         <div
           className="left"
-          style={mentorCarrierMenu === "intern_info" ? activeLeftStyle : null}
+          style={
+            mentorCarrierMenu === "intern_info" ? activeLeftStyle : basicStyle
+          }
           value="intern_info"
           onClick={handleOnClick}
         >
@@ -162,7 +182,9 @@ function UpperMainGrid({
         </div>
         <div
           className="left"
-          style={mentorCarrierMenu === "blog_info" ? activeLeftStyle : null}
+          style={
+            mentorCarrierMenu === "blog_info" ? activeLeftStyle : basicStyle
+          }
           value="blog_info"
           onClick={handleOnClick}
         >
@@ -176,30 +198,39 @@ function UpperMainGrid({
         <NavLink
           className="program"
           to="?program=introduction"
-          style={activeLink === "introduction" ? activeProgramStyle : null}
+          style={
+            activeLink === "introduction" ? activeProgramStyle : basicStyle
+          }
         >
           프로그램소개
         </NavLink>
         <NavLink
           className="program"
           to="?program=curriculum"
-          style={activeLink === "curriculum" ? activeProgramStyle : null}
+          style={activeLink === "curriculum" ? activeProgramStyle : basicStyle}
         >
           커리큘럼
         </NavLink>
         <NavLink
           className="program"
+          to="?program=qna"
+          style={activeLink === "qna" ? activeProgramStyle : basicStyle}
+        >
+          질의응답
+        </NavLink>
+        <NavLink
+          className="program"
           to="?program=review"
-          style={activeLink === "review" ? activeProgramStyle : null}
+          style={activeLink === "review" ? activeProgramStyle : basicStyle}
         >
           수강후기
         </NavLink>
         <NavLink
           className="program"
-          to="?program=qna"
-          style={activeLink === "qna" ? activeProgramStyle : null}
+          to="?program=menteeInfo"
+          style={activeLink === "menteeInfo" ? activeProgramStyle : basicStyle}
         >
-          질의응답
+          멘티정보
         </NavLink>
         <NavLink to="#"></NavLink>
       </Wrapper>

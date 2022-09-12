@@ -11,6 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     --bg-color-l: #F0F0F0;
     --bg-color: #ACACAC;
     --bg-color-d: gray;
+    --text-color-l: #353535;
     --reviews-color: #19A96A;
     --programs-color: #E19200;
     --followers-color: #00BA8B;
