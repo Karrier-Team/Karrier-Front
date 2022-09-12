@@ -49,7 +49,8 @@ const LowerMainWrapper = styled.div`
 
 const fetchedMentorData = {
   hashtags: "#기본소개 #대학소개 #동아리 #오프라인 #공모전",
-  mentor_info: "멘토 정보",
+  mentor_info:
+    "안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n",
   club_info: "동아리 내역",
   activities_info: "대외활동 내역",
   competition_info: "수상 내역",

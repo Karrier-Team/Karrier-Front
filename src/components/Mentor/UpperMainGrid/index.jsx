@@ -83,7 +83,9 @@ const Wrapper = styled.div`
   }
 
   .main-content {
-    padding: 10px;
+    padding: 1.5rem;
+    line-height: 1.5rem;
+    color: var(--text-color-l);
     grid-column: 2 / -1;
     grid-row: 2 / -2;
   }
@@ -193,7 +195,7 @@ function UpperMainGrid({
         <div className="onemore"></div>
 
         <div className="sub-content">{sub_content}</div>
-        <div className="main-content">{main_content}</div>
+        <pre className="main-content">{main_content}</pre>
 
         <NavLink
           className="program"
