@@ -7,7 +7,7 @@ import * as S from "./Navbar.style";
 import { apiGetLogoutUser } from "../../apis/users";
 
 // images
-import DefaultProfileImg from "../../images/DefaultProfileImg.jpeg";
+import DefaultProfileImg from "../../images/DefaultProfileImg.png";
 
 const MentorNavbar = ({ auth, setAuth }) => {
   const [opened, setOpened] = useState(false);
