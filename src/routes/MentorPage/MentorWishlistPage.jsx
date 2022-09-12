@@ -3,7 +3,8 @@ import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
 import ControllBar from "../../organisms/ControllBar/index.jsx";
 import * as S from "./style.js";
 
-import { Text, Modal, Space } from "@mantine/core";
+import { Modal, Space, Text } from "@mantine/core";
+import ProfileList from "../../components/Profile/ProfileList.jsx";
 import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
 
 const sortTypeOptions = [
@@ -12,41 +13,69 @@ const sortTypeOptions = [
 ];
 
 const searchTypeOptions = [
-  { value: "all", name: "전체" },
-  { value: "menteeName", name: "멘티이름" },
-  { value: "major", name: "학과" },
+  { value: "programTitle", name: "프로그램제목" },
+  { value: "mentorName", name: "멘토이름" },
 ];
 
 const dummyData = [
   {
-    name: "나고고",
+    college: "IT대학",
     major: "컴퓨터학부",
-    profileImage: "d",
+    name: "이승열",
+    comment:
+      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
   },
   {
-    name: "다고고",
+    college: "IT대학",
+    major: "컴퓨터통신공학부",
+    name: "홍희림",
+    comment:
+      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
+    major: "글로벌SW융합전공",
+    name: "이승열",
+    comment:
+      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
     major: "컴퓨터학부",
-    profileImage: "d",
+    name: "이승열",
+    comment:
+      "안녕하세요 현재 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+  },
+  {
+    college: "IT대학",
+    major: "컴퓨터통신공학부",
+    name: "홍희림",
+    comment: "동해물과 백두산이 마르고 닳도록",
+  },
+  {
+    college: "IT대학",
+    major: "글로벌SW융합전공",
+    name: "서영균",
+    comment: "DB warrier가 되어봅시다 ",
   },
 ];
 
-function MypageFollowersPage() {
+function MypageQnAPage() {
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpened, setIsModalOpened] = useState(false);
-
   return (
     <>
-      <CommunityNavbar isAdVisible={false} type="followers">
-        MY 팔로우 멘티
+      <CommunityNavbar isAdVisible={false} type="wishlist">
+        MY 찜 프로그램
       </CommunityNavbar>
       <S.RowWrapper>
         <LeftSidebar
-          color="var(--followers-color)"
+          color="var(--wishlist-color)"
           items={[
-            { link: "/mypage/wishlist", name: "MY 찜" },
-            { link: "/mypage/followers", name: "MY 팔로우" },
+            { link: "/mentor/wishlist", name: "MY 찜" },
+            { link: "/mentor/followers", name: "MY 팔로우" },
           ]}
         ></LeftSidebar>
         <S.RightSideWrapper>
@@ -55,9 +84,9 @@ function MypageFollowersPage() {
               <Text
                 size="1.5rem"
                 weight="bold"
-                style={{ color: "var(--followers-color)" }}
+                style={{ color: "var(--wishlist-color" }}
               >
-                {"팔로우"}
+                {"좋아요"}
               </Text>
               <Space w="xs"></Space>
               <Text size="1.5rem" weight="bold">
@@ -68,7 +97,7 @@ function MypageFollowersPage() {
               <Text
                 size="1.5rem"
                 weight="bold"
-                style={{ color: "var(--followers-color)" }}
+                style={{ color: "var(--wishlist-color" }}
               >
                 {"개인"}
               </Text>
@@ -84,10 +113,9 @@ function MypageFollowersPage() {
             </div>
           </S.SubControllBar>
           <ControllBar
-            hideSortingbar
             type="wishlist"
             spacebetween={true}
-            withBtn={true}
+            withBtn={false}
             onClickBtn={setIsModalOpened}
             sortType={sortType}
             sortTypeOptions={sortTypeOptions}
@@ -122,13 +150,11 @@ function MypageFollowersPage() {
               </div>
             </S.CenterWrapper>
           </Modal>
-          {dummyData.map((e) => (
-            <h1>{e.name}</h1>
-          ))}
+          <ProfileList mentoData={dummyData} />
         </S.RightSideWrapper>
       </S.RowWrapper>
     </>
   );
 }
 
-export default MypageFollowersPage;
+export default MypageQnAPage;

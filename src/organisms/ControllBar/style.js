@@ -32,6 +32,7 @@ export const Input = styled.input`
   width: 20rem;
   height: 2.8rem;
   border: none;
+  padding-left: 1rem;
 `;
 
 export const SearchBar = styled.div`

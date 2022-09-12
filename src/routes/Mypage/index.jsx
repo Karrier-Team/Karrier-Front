@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import MypageProgramsPage from "./MypageProgramsPage";
 import MypageQnAPage from "./MypageQnAPage";
 import MypageWishlistPage from "./MypageWishlistPage";
-import MypageFollowersPage from "./MypageFollowersPage";
+import MypageFollowingPage from "./MypageFollowingPage";
 import MypageReviewsPage from "./MypageReviewsPage";
 
 // /mypage/*
@@ -17,7 +17,7 @@ function Mypage() {
       <Route path="/qna" element={<MypageQnAPage />} />
       <Route path="/reviews" element={<MypageReviewsPage />} />
       <Route path="/wishlist" element={<MypageWishlistPage />} />
-      <Route path="/followers" element={<MypageFollowersPage />} />
+      <Route path="/following" element={<MypageFollowingPage />} />
     </Routes>
   );
 }

@@ -20,6 +20,7 @@ const ControllBar = ({
   onChangeSearchValue,
   searchValue,
   hideSortingbar,
+  hideSearchbar,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   return (
@@ -65,17 +66,17 @@ const ControllBar = ({
               searchParams.set(searchType, event.target.value);
               setSearchParams(searchParams);
             }}
-            placeholder="입력하세요."
+            placeholder="내용을 입력하세요."
           ></S.Input>
         </S.SearchBar>
       )}
       {withBtn ? (
-        <>
+        <div>
           <Space w="xl" />
           <Btn type={type} handleClick={onClickBtn}>
             작성하기
           </Btn>
-        </>
+        </div>
       ) : null}
     </S.Wrapper>
   );
