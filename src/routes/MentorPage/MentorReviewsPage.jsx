@@ -6,8 +6,6 @@ import * as S from "./style.js";
 
 import { Text } from "@mantine/core";
 
-import { apiPostNewQuestion } from "../../apis/mypage.js";
-import { useNavigate } from "react-router-dom";
 import {
   getRatingByOneDecimalPoint,
   makeProgramList,
@@ -69,39 +67,10 @@ const dummyData = [
 ];
 
 function MentorReviewsPage() {
-  const navigate = useNavigate();
-
   const [sortType, setSortType] = useState("latest");
   const [searchType, setSearchType] = useState("content");
   const [searchValue, setSearchValue] = useState("");
-  const [isEditModalOpened, setIsEditModalOpened] = useState(false);
   const [curProgramNo, setCurProgramNo] = useState(null);
-
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const handleApiPostNewQuestion = async () => {
-    const [result, status] = await apiPostNewQuestion({
-      curProgramNo,
-      title,
-      content,
-    });
-    if (status === 200 || status === 201) {
-      alert("성공");
-      const { questionNo } = result;
-      navigate(`/community/qna/${curProgramNo}/question/${questionNo}`);
-    } else {
-      alert(result);
-    }
-  };
-
-  const handleMakeNewPostButton = () => {
-    if (!curProgramNo) {
-      alert("프로그램을 선택해주세요!");
-      return;
-    }
-    setIsEditModalOpened(true);
-  };
 
   return (
     <>
@@ -116,7 +85,6 @@ function MentorReviewsPage() {
           type="reviews"
           searchBarToTheRight
           withBtn={false}
-          onClickBtn={handleMakeNewPostButton}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
           onChangeSortType={setSortType}

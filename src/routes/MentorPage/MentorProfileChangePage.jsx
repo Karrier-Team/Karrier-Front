@@ -110,7 +110,7 @@ const MentorProfileChangePage = () => {
         setCmpNewNum(false);
       }
     }
-  }, [checkNewNum, checkNewNum]);
+  }, [checkNewNum, newNum]);
 
   // method
   // 중복 확인
@@ -138,9 +138,9 @@ const MentorProfileChangePage = () => {
     }
   };
   // 휴면 신청
-  const handleDormancy = () => {};
+  // const handleDormancy = () => {};
   // 탈퇴 신청
-  const handleResign = () => {};
+  // const handleResign = () => {};
 
   return (
     <Wrapper>

@@ -89,3 +89,13 @@ export const Button = styled.button`
     opacity: 1;
   }
 `;
+
+export const MentorListWrapper = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 8rem;
+  grid-row-gap: 4rem;
+`;

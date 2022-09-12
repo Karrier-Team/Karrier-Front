@@ -1,5 +1,4 @@
 import * as S from "./style";
-import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import Btn from "../../components/atoms/Btn";

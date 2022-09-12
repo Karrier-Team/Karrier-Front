@@ -7,8 +7,8 @@ import MentorProfileChangePage from "./MentorProfileChangePage";
 import MentorQnaPage from "./MentorQnaPage";
 import MentorReviewsPage from "./MentorReviewsPage";
 import MentorWishlistPage from "./MentorWishlistPage";
+import MentorFollowsPage from "./MentorFollowsPage";
 
-//
 function MentorPage() {
   return (
     <Routes>
@@ -29,8 +29,8 @@ function MentorPage() {
       {/* 멘토-찜 및 팔로우(찜) 관리 페이지  */}
       <Route path="/wishlist" element={<MentorWishlistPage />} />
 
-      {/* 멘토-찜 및 팔로워(팔로우) 관리 페이지  */}
-      {/* /follows */}
+      {/* 멘토-찜 및 팔로우(팔로우) 관리 페이지  */}
+      <Route path="/follows" element={<MentorFollowsPage />} />
 
       {/* 멘토-프로필 변경 페이지 */}
       <Route path="/profile" element={<MentorProfileChangePage />} />

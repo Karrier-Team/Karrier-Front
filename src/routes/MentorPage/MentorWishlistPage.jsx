@@ -4,7 +4,7 @@ import ControllBar from "../../organisms/ControllBar/index.jsx";
 import * as S from "./style.js";
 
 import { Modal, Space, Text } from "@mantine/core";
-import ProfileList from "../../components/Profile/ProfileList.jsx";
+import ProfileList from "../../organisms/ProfileList.jsx";
 import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
 
 const sortTypeOptions = [
@@ -75,7 +75,7 @@ function MypageQnAPage() {
           color="var(--wishlist-color)"
           items={[
             { link: "/mentor/wishlist", name: "MY 찜" },
-            { link: "/mentor/followers", name: "MY 팔로우" },
+            { link: "/mentor/follows", name: "MY 팔로우" },
           ]}
         ></LeftSidebar>
         <S.RightSideWrapper>
