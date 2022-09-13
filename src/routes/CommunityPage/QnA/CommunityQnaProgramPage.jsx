@@ -65,7 +65,7 @@ function CommunityQnaProgramPage() {
           <Text size="1em">무엇을 도와드릴까요?</Text>
         </div>
       </CommunityNavbar>
-      <S.Wrapper>
+      <S.WrapperNarrow>
         <Text style={{ marginTop: "0.5em" }} weight={"bold"} size="2rem">
           {"질의응답"}
         </Text>
@@ -83,7 +83,7 @@ function CommunityQnaProgramPage() {
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
         <Modal
-          size="60%"
+          size="50%"
           centered
           opened={isModalOpened}
           onClose={() => setIsModalOpened(false)}
@@ -95,13 +95,13 @@ function CommunityQnaProgramPage() {
             setContent={setContent}
           />
         </Modal>
-        <Text weight={"500"} color="var(--primary-color)" size="2.5rem">
+        <Text weight={"bold"} color="var(--primary-color)" size="2.5rem">
           {dummyProgramData.title}
         </Text>
         {dummyProgramData.questions.map((question) => (
           <CommunityPostDiv data={question} />
         ))}
-      </S.Wrapper>
+      </S.WrapperNarrow>
     </>
   );
 }

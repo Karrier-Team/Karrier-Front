@@ -18,6 +18,7 @@ export const RowWrapper = styled.div`
 
 export const ColWrapper = styled.div`
   ${FlexCol};
+  box-sizing: border-box;
   width: 90%;
   position: relative;
   .icon {

@@ -1,9 +1,9 @@
-import { useEffect } from "react";
 import * as S from "./style";
 import { TextInput, Textarea, Text, Space } from "@mantine/core";
 import Btn from "../../components/atoms/Btn";
 import { getColorByType } from "../../utils";
 import StarRating from "../../components/molecules/StarRating";
+import useAuth from "../../hooks/useAuth";
 
 const CommunityQnAQuestionModalContent = ({
   type,
@@ -15,16 +15,14 @@ const CommunityQnAQuestionModalContent = ({
   setContent,
   handleSubmit,
 }) => {
-  useEffect(() => {
-    console.log("star", star);
-  }, []);
+  const { auth } = useAuth();
 
   return (
     <>
       <S.ColWrapper>
         <Text color={getColorByType(type)} weight="bold" size="xl">
           {/* useContext를 이용해서 로그인한  유저의 정보를 빼와야함*/}
-          {"소식돼지님"}
+          {auth?.nickname + "님의 질문" || "닉네임님의 질문"}
         </Text>
         <Space h="xs"></Space>
         {type === "reviews" ? (
@@ -38,7 +36,7 @@ const CommunityQnAQuestionModalContent = ({
         <TextInput
           value={title}
           onChange={(event) => setTitle(event.target.value)}
-          style={{ width: "100%" }}
+          style={{ width: "100%", fontSize: "1.3rem" }}
           placeholder="제목을 입력해주세요."
         />
         <Space h="xs"></Space>
