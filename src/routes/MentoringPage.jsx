@@ -10,14 +10,6 @@ const dummyProps = {
   major: "컴퓨터학부",
 };
 
-// {
-//   college: "IT대학",
-//   major: "컴퓨터학부",
-//   name: "이승열",
-//   comment:
-//     "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-// },
-
 const dummyMentoData = [
   {
     programNo: 9,
