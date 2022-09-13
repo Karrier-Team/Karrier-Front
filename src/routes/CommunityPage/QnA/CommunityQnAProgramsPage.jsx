@@ -16,46 +16,28 @@ const searchTypeOptions = [
   { value: "mentorName", name: "멘토 이름" },
 ];
 
-const dummyMentoData = [
+const data = [
   {
-    college: "IT대학",
-    major: "컴퓨터학부",
-    name: "이승열",
-    comment:
-      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
+    programNo: 9,
+    name: "김철",
+    title: "1111",
+    profileImage: "c5b8a81e-c261-440c-8894-0016e12aa0f5프로필 사진.PNG",
+    mainImage: "545efb6b-8a7c-4cc2-a391-317c8a9da530photo.jpg",
+    major: "글로벌소프트웨어전공",
+    likeCount: 0,
+    onlineOffline: true,
+    state: "Recruiting",
   },
   {
-    college: "IT대학",
-    major: "컴퓨터통신공학부",
-    name: "홍희림",
-    comment:
-      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "글로벌SW융합전공",
-    name: "이승열",
-    comment:
-      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "컴퓨터학부",
-    name: "이승열",
-    comment:
-      "안녕하세요 현재 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "컴퓨터통신공학부",
-    name: "홍희림",
-    comment: "동해물과 백두산이 마르고 닳도록",
-  },
-  {
-    college: "IT대학",
-    major: "글로벌SW융합전공",
-    name: "서영균",
-    comment: "DB warrier가 되어봅시다 ",
+    programNo: 11,
+    name: "김철",
+    title: "2222",
+    profileImage: "c5b8a81e-c261-440c-8894-0016e12aa0f5프로필 사진.PNG",
+    mainImage: "ea4b107d-330b-4f4c-b36d-a31c781bd4d1photo.jpg",
+    major: "글로벌소프트웨어전공",
+    likeCount: 0,
+    onlineOffline: true,
+    state: "Recruiting",
   },
 ];
 
@@ -79,7 +61,7 @@ function CommunityQnaProgramsPage() {
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
         <Dropdown inCommunityPage />
-        <ProfileList mentoData={dummyMentoData} />
+        <ProfileList mentoData={data} />
       </S.Wrapper>
     </>
   );

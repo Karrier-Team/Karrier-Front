@@ -2,7 +2,7 @@ import Img from "../../atoms/Img";
 import Btn from "../../atoms/Btn";
 import * as S from "./style";
 
-import DefaultProfileImg from "../../../images/DefaultProfileImg.jpeg";
+import DefaultProfileImg from "../../../images/DefaultProfileImg.png";
 
 const UserProfileWithText = ({
   src,

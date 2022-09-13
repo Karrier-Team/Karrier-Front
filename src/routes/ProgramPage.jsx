@@ -1,5 +1,5 @@
 import React, { useEffect, useState, memo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 // components - left-side
@@ -12,6 +12,7 @@ import MentoringInfoSection from "../components/Mentor/MentoringInfoSection";
 // components - main
 import UpperMainGrid from "../components/Mentor/UpperMainGrid";
 import LowerMainSection from "../components/Mentor/LowerMainSection";
+import ProgramDetailSection from "../organisms/ProgramDetailSection";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -25,6 +26,7 @@ const LeftsideWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 20vw;
+  height: 120vh;
 `;
 
 const MainWrapper = styled.div`
@@ -40,13 +42,15 @@ const UpperMainWrapper = styled.div`
 
 const LowerMainWrapper = styled.div`
   width: 100%;
-  height: calc(100vh * 0.8 - 10vw - 3em);
+  /* height: calc(100vh * 0.8 - 10vw - 3em); */
+  height: 100vh;
   border-left: 1px solid #dadada;
 `;
 
 const fetchedMentorData = {
   hashtags: "#기본소개 #대학소개 #동아리 #오프라인 #공모전",
-  mentor_info: "멘토 정보",
+  mentor_info:
+    "안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n",
   club_info: "동아리 내역",
   activities_info: "대외활동 내역",
   competition_info: "수상 내역",
@@ -61,6 +65,8 @@ function ProgramPage() {
   const [mentorCarrierContent, setMentorCarrierContent] = useState("");
   const [mentorProgramContent, setMentorProgramContent] = useState("null");
   const [searchParams] = useSearchParams();
+
+  const navigate = useNavigate();
 
   //CONNECT:
   useEffect(() => {
@@ -77,7 +83,9 @@ function ProgramPage() {
     // GET mentor/123?program=introduction
     // fetchedProgramData = await fetch() 이런식일듯
     setMentorProgramContent(fetchedProgramData);
-  }, [searchParams]);
+    if (!searchParams.get("program"))
+      navigate("?program=introduction", { replace: true });
+  }, [searchParams, navigate]);
 
   // 멘토정보
   const dummyMountData = {
@@ -90,6 +98,16 @@ function ProgramPage() {
     naverblog_address: "https://www.naver.com",
     facebook_address: "https://www.facecbook.com",
     instar_address: "https://www.google.com",
+  };
+
+  const dummyDetail = {
+    title: "4444",
+    mentorName: "김민수",
+    type: "전공소개",
+    openDate: "2022년 9월 26일(월)",
+    closeDate: "2022년 10월 7일(금)",
+    runningTime: "화, 목 오전 10시 ~12시 / 금 오후 2시 ~ 4시",
+    onlineOffline: true,
   };
 
   // 사용자 - 프로그램 정보
@@ -108,6 +126,7 @@ function ProgramPage() {
           <MentorContactSection data={dummyMountData} />
           <MentorInfoSection data={dummyMountData} />
           <MentoringInfoSection data={dummyUserProgramData} />
+          <ProgramDetailSection data={dummyDetail}></ProgramDetailSection>
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper>

@@ -61,3 +61,11 @@ export const getFullPropertyName = (object, str) => {
 export const parseDate = (date) => {
   return date.slice(0, 10);
 };
+
+export const rand = (start, end) => {
+  return start + Math.floor(Math.random() * end - start);
+};
+
+export const parseNthPath = (pathname, nth) => {
+  return pathname.split("/")[nth];
+};

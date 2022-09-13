@@ -1,8 +1,12 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledMajorInfoBar = styled.div`
-  height: 3.5vw;
+  width: 100%;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  height: 3vw;
   background-color: #fbfbfb;
   display: flex;
   align-items: center;
@@ -33,12 +37,15 @@ const StyledMajor = styled.div`
   color: #333;
 `;
 
-const MajorInfoBar = ({ majorData }) => {
+const MajorInfoBar = () => {
+  const [searchParams] = useSearchParams();
   return (
     <StyledMajorInfoBar>
-      <StyledCollege>{majorData.college}</StyledCollege>
-      <span style={{ fontWeight: "normal", marginRight: 5 }}>&#62;</span>
-      <StyledMajor>{majorData.major}</StyledMajor>
+      <StyledCollege>{"멘토링 >"}</StyledCollege>
+      <StyledCollege>
+        {searchParams.get("college") && searchParams.get("college") + " > "}
+      </StyledCollege>
+      <StyledMajor>{searchParams.get("dept")}</StyledMajor>
     </StyledMajorInfoBar>
   );
 };

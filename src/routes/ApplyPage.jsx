@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import styled from "styled-components";
 
 // components
@@ -24,7 +24,6 @@ function ApplyPage() {
       <MentorApplyNavbar />
       <Wrapper>
         <Routes>
-          <Route index element={<MentorBasicInformation />} />
           <Route path="step1" element={<MentorBasicInformation />} />
           <Route path="step2" element={<MentorDetailedInformation />} />
           <Route path="step3" element={<MentorContacts />} />

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { FlexCol } from "../../../commonStyles";
 
 const colors = {
   point: "#007CC6",
@@ -34,7 +35,39 @@ export const Text = styled.div`
   ${colorStyles}
 `;
 
+export const Wrapper = styled.div`
+  ${FlexCol}
+  gap: 3rem;
+`;
+
+export const SubWrapper = styled.div`
+  ${FlexCol}
+  gap: 1rem;
+`;
+
 export const StyledH1 = styled.h1`
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color-l);
+`;
+
+export const StyledH2 = styled.h2`
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: black;
+  font-weight: bold;
+`;
+
+export const Parag = styled.pre`
+  font-size: 1rem;
+  color: var(--text-color-l);
+  line-height: 1.5rem;
+`;
+
+export const Badge = styled.div`
+  border-radius: 10px;
+  padding: 0.4rem;
+  font-size: 1rem;
+  color: black;
+  background-color: ${(props) => props.bgcolor || "white"};
 `;

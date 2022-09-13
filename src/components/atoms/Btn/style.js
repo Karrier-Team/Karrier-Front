@@ -63,6 +63,17 @@ export const BtnStyle = css`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* onHoverAnimation */
+  transition: 0.15s;
+  ${(props) =>
+    props.onHoverAnimaton &&
+    css`
+      :hover {
+        color: white;
+        background-color: var(--primary-color);
+      }
+    `}
 `;
 
 export const Btn = styled.button`

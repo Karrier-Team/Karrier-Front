@@ -27,7 +27,7 @@ function Header() {
         <S.LeftSection>
           <S.Logo onClick={() => navigate("/")} src={Logo} alt="service logo" />
           <S.StyledLink
-            to="/mentoring"
+            to="/mentoring?college=인문대학&dept=국어국문학과"
             onMouseEnter={() => setShowDropbox(true)}
             onMouseLeave={() => setShowDropbox(false)}
           >
@@ -36,7 +36,13 @@ function Header() {
           <S.StyledLink to="/community">
             <S.Text>커뮤니티</S.Text>
           </S.StyledLink>
-          <S.StyledLink to="/volunteer">
+          <S.StyledLink
+            onClick={(e) => {
+              e.preventDefault();
+              alert("서비스 준비중입니다!");
+            }}
+            to="/volunteers"
+          >
             <S.Text>자원봉사</S.Text>
           </S.StyledLink>
           <S.StyledLink to="/apply">

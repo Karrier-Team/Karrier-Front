@@ -7,7 +7,7 @@ import DropdownMajorSection from "./DropdownMajorSection";
 import { colleges } from "./colleges";
 
 function Dropdown({ inCommunityPage, type, setShowDropbox }) {
-  const [collegeIdx, setCollegeIdx] = useState("0");
+  const [collegeIdx, setCollegeIdx] = useState();
 
   return (
     <>
@@ -24,13 +24,13 @@ function Dropdown({ inCommunityPage, type, setShowDropbox }) {
                 type={type}
                 key={e.id}
                 id={e.id}
-                onClick={(e) =>
+                onClick={(e) => {
                   setCollegeIdx(
                     collegeIdx === e.target.getAttribute("id")
                       ? "-1"
                       : e.target.getAttribute("id")
-                  )
-                }
+                  );
+                }}
               >
                 {e.college}
               </S.StyledDropdownLi>

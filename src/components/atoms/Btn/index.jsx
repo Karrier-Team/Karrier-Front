@@ -2,6 +2,7 @@ import React from "react";
 import * as S from "./style";
 
 function Btn({
+  onHoverAnimaton,
   htmlFor,
   as,
   type,
@@ -28,11 +29,17 @@ function Btn({
   if (to) {
     return (
       <S.StyledLink
+        onHoverAnimaton={onHoverAnimaton}
         disabled={disabled}
+        size={size} //width
+        height={height}
         type={type}
         onClick={data ? handleClickWithData : handleClick}
         to={to}
+        fontSize={fontSize}
         hide={hide}
+        color={color}
+        backgroundColor={backgroundColor}
       >
         {children}
       </S.StyledLink>
@@ -42,6 +49,7 @@ function Btn({
   return (
     <S.Btn
       as={as ? as : null}
+      onHoverAnimaton={onHoverAnimaton} 
       htmlFor={htmlFor ? htmlFor : null}
       disabled={disabled}
       type={type}

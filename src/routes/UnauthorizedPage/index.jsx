@@ -37,7 +37,7 @@ const UnauthorizedPage = () => {
       <span style={{ fontSize: "2rem", marginBottom: "1rem" }}>
         {getRoleByCode(auth.role)}에게 허용되지 않은 페이지 입니다!
       </span>
-      <Btn size="5rem" handleClick={() => navigate("../")}>
+      <Btn size="5rem" handleClick={() => navigate(-1)}>
         돌아가기
       </Btn>
     </S.Wrapper>

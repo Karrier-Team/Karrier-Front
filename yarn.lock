@@ -1696,6 +1696,7 @@
   dependencies:
     "@mantine/utils" "5.2.0"
 
+
 "@mantine/hooks@^5.1.1", "@mantine/hooks@5.2.0":
   "integrity" "sha512-9pBlt12lxwzTOWUmigTlcbkW9eEHOYODALEXc65F0uMkbdYpjfMq2rJ0Pp4mEoQkXtl9m77vbD1b3RLrncVpfg=="
   "resolved" "https://registry.npmjs.org/@mantine/hooks/-/hooks-5.2.0.tgz"
@@ -1705,6 +1706,7 @@
   "integrity" "sha512-0wUUqB+JmGGyUoMIrKig+7cd3s2A48tzAIexTu94LVixBQ4l7RnFjxh8/1ZPcWz76SVpmliljiCIHyQUV590Kg=="
   "resolved" "https://registry.npmjs.org/@mantine/styles/-/styles-5.2.0.tgz"
   "version" "5.2.0"
+  
   dependencies:
     "clsx" "1.1.1"
     "csstype" "3.0.9"
@@ -7792,6 +7794,7 @@
   "version" "12.0.1"
   dependencies:
     "@babel/code-frame" "^7.16.0"
+
     "address" "^1.1.2"
     "browserslist" "^4.18.1"
     "chalk" "^4.1.2"
@@ -7888,6 +7891,7 @@
   "integrity" "sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ=="
   "resolved" "https://registry.npmjs.org/react-scripts/-/react-scripts-5.0.1.tgz"
   "version" "5.0.1"
+
   dependencies:
     "@babel/core" "^7.16.0"
     "@pmmmwh/react-refresh-webpack-plugin" "^0.5.3"
