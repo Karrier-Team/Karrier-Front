@@ -41,8 +41,10 @@ const MajorInfoBar = () => {
   const [searchParams] = useSearchParams();
   return (
     <StyledMajorInfoBar>
-      <StyledCollege>{searchParams.get("college")}</StyledCollege>
-      <span style={{ fontWeight: "normal", marginRight: 5 }}>&#62;</span>
+      <StyledCollege>{"멘토링 >"}</StyledCollege>
+      <StyledCollege>
+        {searchParams.get("college") && searchParams.get("college") + " > "}
+      </StyledCollege>
       <StyledMajor>{searchParams.get("dept")}</StyledMajor>
     </StyledMajorInfoBar>
   );

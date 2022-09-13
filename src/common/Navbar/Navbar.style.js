@@ -97,13 +97,14 @@ export const StyledDropdownLi = styled.li`
   width: calc(100% / 7);
   height: 70px;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
 
   :hover {
     color: ${colors};
   }
 
   &.active {
-    font-weight: bold;
     color: ${colors};
   }
 `;
@@ -116,9 +117,10 @@ export const DropdownWrapper = styled.div`
 
   box-sizing: border-box;
   background-color: ${(props) =>
-    props.inCommunityPage ? "var(--bg-color-l)" : "white"};
+    props.inCommunityPage ? "var(--bg-color-ll)" : "white"};
   z-index: 1;
-  border-bottom: 1px solid var(--line-color);
+  ${(props) =>
+    props.inCommunityPage || "border-bottom: 1px solid var(--line-color)"};
 
   display: flex;
   justify-content: flex-start;
@@ -129,6 +131,8 @@ export const DropdownWrapper = styled.div`
 
 export const MajorItems = styled.li`
   list-style: none;
+  font-weight: 500;
+  font-size: 1rem;
   margin: 0.7em 1em;
   cursor: pointer;
   :hover {

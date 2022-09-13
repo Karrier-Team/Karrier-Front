@@ -16,10 +16,7 @@ function CommunityPage() {
     <>
       <Routes>
         {/* CommunityQnA로 Routing 되는 경우를 하나로 나타낼순 없을까!? */}
-        <Route
-          index
-          element={<Navigate to="qna?major=국어국문학과" replace />}
-        />
+        <Route index element={<Navigate to="qna" replace />} />
         <Route path="qna" element={<CommunityQnAProgramsPage />} />
         <Route path="qna/:programNo" element={<CommunityQnaProgramPage />} />
         <Route

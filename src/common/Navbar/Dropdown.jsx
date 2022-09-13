@@ -5,11 +5,9 @@ import SubDropdown from "./SubDropdown";
 import DropdownMajorSection from "./DropdownMajorSection";
 
 import { colleges } from "./colleges";
-import { useSearchParams } from "react-router-dom";
 
 function Dropdown({ inCommunityPage, type, setShowDropbox }) {
-  const [collegeIdx, setCollegeIdx] = useState("-1");
-  const [searchParams] = useSearchParams();
+  const [collegeIdx, setCollegeIdx] = useState();
 
   return (
     <>
@@ -22,19 +20,17 @@ function Dropdown({ inCommunityPage, type, setShowDropbox }) {
           {colleges.map((e) => {
             return (
               <S.StyledDropdownLi
-                className={
-                  e.college === searchParams.get("college") ? "active" : null
-                }
+                className={e.id === collegeIdx ? "active" : null}
                 type={type}
                 key={e.id}
                 id={e.id}
-                onClick={(e) =>
+                onClick={(e) => {
                   setCollegeIdx(
                     collegeIdx === e.target.getAttribute("id")
                       ? "-1"
                       : e.target.getAttribute("id")
-                  )
-                }
+                  );
+                }}
               >
                 {e.college}
               </S.StyledDropdownLi>

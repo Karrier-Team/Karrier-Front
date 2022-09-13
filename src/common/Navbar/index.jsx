@@ -27,7 +27,7 @@ function Header() {
         <S.LeftSection>
           <S.Logo onClick={() => navigate("/")} src={Logo} alt="service logo" />
           <S.StyledLink
-            to="#"
+            to="/mentoring?college=인문대학&dept=국어국문학과"
             onMouseEnter={() => setShowDropbox(true)}
             onMouseLeave={() => setShowDropbox(false)}
           >

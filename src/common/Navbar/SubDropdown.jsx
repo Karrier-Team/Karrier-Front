@@ -12,6 +12,7 @@ const SubDropdownWrapper = styled(S.DropdownWrapper)`
 
 export const StyledH1 = styled.h1`
   font-size: 1.5rem;
+  font-weight: bold;
   box-sizing: border-box;
   width: calc(100% / 7);
   height: 70px;
