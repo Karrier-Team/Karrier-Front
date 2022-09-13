@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
 import MentorProgramPage from "./MentorProgramPage";
+import MentorProgramsPage from "./MentorProgramsPage";
 import MentorProfileChangePage from "./MentorProfileChangePage";
 import MentorQnaPage from "./MentorQnaPage";
 import MentorReviewsPage from "./MentorReviewsPage";
@@ -16,7 +17,7 @@ function MentorPage() {
       <Route index element={<Navigate to="./programs" replace />} />
 
       {/* 멘토-개인프로그램 관리 페이지 */}
-      {/* /programs */}
+      <Route path="/programs" element={<MentorProgramsPage />} />
 
       {/* 멘토-개인 프로그램 만들기 페이지*/}
       <Route path="/program/create" element={<MentorProgramPage />} />

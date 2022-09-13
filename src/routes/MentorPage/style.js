@@ -5,6 +5,14 @@ import {
   FlexRowBtwn,
   FlexColCenter,
 } from "../../commonStyles";
+import { Link } from "react-router-dom";
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+`;
 
 export const Wrapper = styled.div`
   ${FlexCol}

@@ -42,9 +42,8 @@ const ProfileItem = ({
     <S.StyledProfileItem
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      bgimg={IMAGES[programNo % 4]}
+      bgimg={mainImage || IMAGES[programNo % 4]}
       onClick={() => navigate(`/mentoring/${programNo}`)}
-      // style={{ backgroundImage: DefaultProgramImage1 }}
     >
       {hover ? (
         <S.RowWrapper>
@@ -54,9 +53,8 @@ const ProfileItem = ({
       ) : (
         <div></div>
       )}
-      {/* IMAGES[rand(0, IMAGES.length())] */}
       <S.RowWrapper>
-        <Img src={DefaultProfileImg} size="3rem"></Img>
+        <Img src={profileImage || DefaultProfileImg} size="3rem"></Img>
         <S.Text size="1.3rem">{name}</S.Text>
         <S.Text>{major}</S.Text>
       </S.RowWrapper>
