@@ -42,6 +42,7 @@ const ControllBar = ({
         <S.SearchBar searchBarToTheRight={searchBarToTheRight}>
           <select
             style={{
+              fontSize: "1rem",
               height: "2.25em",
               border: "none",
             }}
@@ -71,9 +72,9 @@ const ControllBar = ({
         </S.SearchBar>
       )}
       {withBtn ? (
-        <div>
+        <div style={{ marginLeft: "2rem" }}>
           <Space w="xl" />
-          <Btn type={type} handleClick={onClickBtn}>
+          <Btn size="8rem" height="2.2rem" type={type} handleClick={onClickBtn}>
             {btntxt}
           </Btn>
         </div>
