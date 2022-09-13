@@ -1,24 +1,27 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 10%;
+  width: 100%;
 
-  background-color: #f0f0f0;
   position: sticky;
-  top: 0;
-  padding: 1em;
+  top: 0px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8em;
+  background-color: var(--bg-color-l);
 `;
 
 export const StyledNavLink = styled.div`
   text-decoration: none;
   color: black;
-  margin: 3em 0;
+  margin: 1.2em 0;
 
   display: flex;
   justify-content: center;
 
   font-weight: bold;
-  font-size: 1vw;
+  font-size: 1em;
   cursor: pointer;
 
   &:hover {
