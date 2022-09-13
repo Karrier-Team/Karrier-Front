@@ -4,10 +4,11 @@ import * as S from "./Navbar.style";
 import Dropdown from "./Dropdown";
 import Logo from "../../images/Logo.png";
 import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BasicNavbar from "./BasicNavbar";
 import UserNavbar from "./UserNavbar";
 import MentorNavbar from "./MentorNavbar";
+import { Menu } from "@mantine/core";
 
 const ROLES = {
   USER: "USER",
@@ -18,6 +19,7 @@ const ROLES = {
 
 function Header() {
   const [showDropbox, setShowDropbox] = useState(false);
+  const [opened, setOpened] = useState(false);
   const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -32,9 +34,30 @@ function Header() {
           >
             <S.Text>멘토링</S.Text>
           </S.StyledLink>
-          <S.StyledLink to="/community">
+          <S.StyledLink
+            to="/community"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpened(true);
+            }}
+          >
             <S.Text>커뮤니티</S.Text>
           </S.StyledLink>
+          <div
+            style={{ transform: "translate(-5rem, 1rem)" }}
+            onMouseLeave={() => setOpened(false)}
+          >
+            <Menu width={"10rem"} opened={opened} onChange={setOpened}>
+              <Menu.Dropdown>
+                <Menu.Item component={Link} to="/community/qna">
+                  질의응답
+                </Menu.Item>
+                <Menu.Item component={Link} to="/community/reviews">
+                  수강후기
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
+          </div>
           <S.StyledLink
             onClick={(e) => {
               e.preventDefault();

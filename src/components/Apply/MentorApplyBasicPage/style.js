@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 93vh;
   background-image: url(${(props) => props.bgimg});
   background-position: center;
   background-repeat: no-repeat;
