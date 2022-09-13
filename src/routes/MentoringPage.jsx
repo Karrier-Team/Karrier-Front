@@ -195,7 +195,7 @@ const WrapperStyle = {
 const MentoringPage = () => {
   return (
     <div style={WrapperStyle}>
-      {/* <MajorInfoBar majorData={dummyProps} /> */}
+      <MajorInfoBar />
       <Adbar></Adbar>
       <MajorInfo majorData={dummyProps} />
       <div style={{ width: "80%" }}>

@@ -103,6 +103,7 @@ export const StyledDropdownLi = styled.li`
   }
 
   &.active {
+    font-weight: bold;
     color: ${colors};
   }
 `;

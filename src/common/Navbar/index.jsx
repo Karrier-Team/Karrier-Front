@@ -27,7 +27,7 @@ function Header() {
         <S.LeftSection>
           <S.Logo onClick={() => navigate("/")} src={Logo} alt="service logo" />
           <S.StyledLink
-            to="/mentoring"
+            to="#"
             onMouseEnter={() => setShowDropbox(true)}
             onMouseLeave={() => setShowDropbox(false)}
           >

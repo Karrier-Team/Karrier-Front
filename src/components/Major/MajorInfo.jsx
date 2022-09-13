@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
 import DefaultProgramImage1 from "../../images/DefaultProgramImage1.png";
@@ -37,12 +38,12 @@ const StyledMajor = styled.div`
   color: #f3f3f3;
 `;
 
-const MajorInfo = ({ majorData }) => {
+const MajorInfo = () => {
+  const [searchParams] = useSearchParams();
   return (
     <StyledMajorInfo>
-      {/* props 로 받기 */}
-      <StyledCollege>{majorData.college}</StyledCollege>
-      <StyledMajor>{majorData.major}</StyledMajor>
+      <StyledCollege>{searchParams.get("college")}</StyledCollege>
+      <StyledMajor>{searchParams.get("dept")}</StyledMajor>
     </StyledMajorInfo>
   );
 };
