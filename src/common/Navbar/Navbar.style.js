@@ -32,6 +32,9 @@ export const Wrapper = styled.div`
 
   font-weight: bold;
   font-size: 1.3em;
+
+  position: sticky;
+  z-index: 1;
 `;
 
 export const LeftSection = styled.div`
