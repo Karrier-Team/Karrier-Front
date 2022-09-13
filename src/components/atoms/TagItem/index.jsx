@@ -21,7 +21,6 @@ const randomColor = [
   "#FEBF36",
   "#FF7238",
   "#acc7bf",
-  "#c37070",
   "#eae160",
   "#bf7aa3",
   "#d7d967",
@@ -35,17 +34,9 @@ const randomColor = [
   "#B8F3B8",
 ];
 
-const TagItem = ({ value, onClick }) => {
-  useEffect(() => {
-    console.log("render");
-  }, [onClick]);
-
+const TagItem = ({ value, onClick, id }) => {
   return (
-    <StyledTagWrapper
-      backgroundColor={
-        randomColor[Math.floor(Math.random() * randomColor.length)]
-      }
-    >
+    <StyledTagWrapper backgroundColor={randomColor[id % randomColor.length]}>
       {value}
       <span
         onClick={onClick}

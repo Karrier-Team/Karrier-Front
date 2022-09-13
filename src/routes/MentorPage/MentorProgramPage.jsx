@@ -11,14 +11,12 @@ import Btn from "../../components/atoms/Btn";
 
 //styled-components
 const Wrapper = styled.div`
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-  display: flex;
+  width: 100%;
+  height: 100%;
 `;
 
 const PageWrapper = styled.div`
-  width: 89%;
+  width: 100%;
   display: flex;
   justify-content: center;
 `;
@@ -58,14 +56,10 @@ const MentorProgramPage = () => {
   });
 
   //curriculum data
-  const [curriculum, setCurriculum] = useState({
-    curriculum_info: "",
-    lecture: [],
-  });
+  const [curriculum, setCurriculum] = useState([]);
 
   //mentorIntro data
   const [mentorIntro, setMentorIntro] = useState({
-    mentorIntro_info: "",
     introduce: "",
     club: "",
     contest: "",

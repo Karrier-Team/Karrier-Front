@@ -48,8 +48,8 @@ function Btn({
 
   return (
     <S.Btn
-      onHoverAnimaton={onHoverAnimaton}
-      as={"as"}
+      as={as ? as : null}
+      onHoverAnimaton={onHoverAnimaton} 
       htmlFor={htmlFor ? htmlFor : null}
       disabled={disabled}
       type={type}

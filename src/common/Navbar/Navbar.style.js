@@ -17,8 +17,7 @@ const colors = css`
 `;
 
 export const Wrapper = styled.div`
-  width: 100vw;
-  height: 10vh;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;
@@ -28,11 +27,14 @@ export const Wrapper = styled.div`
 
   background-color: var(--bg-color-l);
 
-  padding: 0px 20px;
+  padding: 0.7em 1.5em;
   box-sizing: border-box;
 
   font-weight: bold;
   font-size: 1.3em;
+
+  position: sticky;
+  z-index: 1;
 `;
 
 export const LeftSection = styled.div`

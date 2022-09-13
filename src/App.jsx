@@ -82,6 +82,7 @@ function App() {
         <Route element={<Auth allowedRoles={[ROLES.MENTOR_O, ROLES.ADMIN]} />}>
           <Route path="/mentor/*" element={<MentorPage />} />
         </Route>
+
         <Route path="/unauthorized" element={<UnauthorizedPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
