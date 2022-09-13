@@ -7,7 +7,7 @@ import { colleges } from "./colleges";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const SubDropdownWrapper = styled(S.DropdownWrapper)`
-  top: calc(10vh + 70px * 3 + 1px); // (navbar + dropdown * 3 + border-bottom)
+  top: calc(4.2rem + 70px * 3 + 2px); // (navbar + dropdown * 3 + border-bottom)
 `;
 
 export const StyledH1 = styled.h1`

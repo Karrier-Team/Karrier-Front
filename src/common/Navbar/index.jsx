@@ -29,7 +29,6 @@ function Header() {
           <S.StyledLink
             to="/mentoring?college=인문대학&dept=국어국문학과"
             onMouseEnter={() => setShowDropbox(true)}
-            onMouseLeave={() => setShowDropbox(false)}
           >
             <S.Text>멘토링</S.Text>
           </S.StyledLink>

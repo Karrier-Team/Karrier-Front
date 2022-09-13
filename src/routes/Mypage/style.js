@@ -44,7 +44,7 @@ export const RightSideWrapper = styled.div`
   ${FlexCol}
   width: 80%;
   height: auto;
-  padding-left: 3rem;
+  padding-left: 6%;
 `;
 
 export const StyledText = styled.span`
