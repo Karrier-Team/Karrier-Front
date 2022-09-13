@@ -19,6 +19,7 @@ import ApplyPage from "./routes/ApplyPage";
 import UnauthorizedPage from "./routes/UnauthorizedPage";
 import MentoringApplyPage from "./routes/MentoringApplyPage";
 import MentoringApplySuccessPage from "./routes/MentoringApplySuccessPage";
+import MentorApplyBasicPage from "./components/Apply/MentorApplyBasicPage";
 
 import CommunityPage from "./routes/CommunityPage";
 import Mypage from "./routes/Mypage";
@@ -72,6 +73,7 @@ function App() {
             element={<MentoringApplySuccessPage />}
           />
           {/* 멘토-지원 */}
+          <Route path="/apply" element={<MentorApplyBasicPage />} />
           <Route path="/apply/*" element={<ApplyPage />} />
           <Route path="/mypage/*" element={<Mypage />} />
         </Route>
