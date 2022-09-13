@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Selector = styled.select`
   box-sizing: border-box;
@@ -14,6 +14,14 @@ export const Selector = styled.select`
   box-shadow: var(--box-shadow);
 
   font-size: 1em;
+
+  ${(props) =>
+    props.type &&
+    css`
+      font-size: 1.5rem;
+      height: auto;
+      padding: 1rem 1rem;
+    `}
   font-weight: bold;
   ::placeholder {
     opacity: 50%;

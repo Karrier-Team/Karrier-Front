@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import * as S from "./style";
 
-function Selector({ name, width, handleChange, options }) {
+function Selector({ type, name, width, handleChange, options }) {
   const [selected, setSelected] = useState(false);
   return (
     <S.Selector
+      type={type}
       width={width}
       onChange={(e) => {
         handleChange(parseInt(e.target.value));

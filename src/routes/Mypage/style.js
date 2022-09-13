@@ -64,7 +64,7 @@ export const Wrapper = styled.div`
   ${FlexCol}
   box-sizing: border-box;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 15%;
   padding-top: 1rem;
 `;
 

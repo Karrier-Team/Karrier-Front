@@ -110,6 +110,7 @@ function MypageQnAPage() {
         ></ControllBar>
         <div style={{ width: "30rem" }}>
           <Selector
+            type="mypage"
             name="프로그램"
             handleChange={setCurProgramNo}
             options={makeProgramList(dummyData)}
@@ -140,7 +141,7 @@ function MypageQnAPage() {
       >
         <CommunityQnAQuestionModalContent
           handleSubmit={handleApiPostNewQuestion}
-          title={title}
+          title={title + "z"}
           setTitle={setTitle}
           content={content}
           setContent={setContent}

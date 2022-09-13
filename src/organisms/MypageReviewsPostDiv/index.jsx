@@ -40,7 +40,9 @@ const MypageReviewsPostDiv = ({
     <S.Wrapper>
       <S.RowWrapper>
         <S.ColWrapper clicked={clicked}>
-          <Text size="2em">{data.title}</Text>
+          <Text weight="600" size="1.5em">
+            {data.title}
+          </Text>
           <Space h="xs"></Space>
           <Text
             className={clicked ? "onClicked" : "notClicked"}
