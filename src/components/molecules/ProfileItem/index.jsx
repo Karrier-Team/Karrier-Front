@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Img from "../../atoms/Img";
 import * as S from "./style";
 
@@ -9,6 +9,7 @@ import DefaultProgramImage2 from "../../../images/DefaultProgramImage2.png";
 import DefaultProgramImage3 from "../../../images/DefaultProgramImage3.png";
 import DefaultProgramImage4 from "../../../images/DefaultProgramImage4.png";
 import DefaultProfileImg from "../../../images/DefaultProfileImg.png";
+import { parseNthPath } from "../../../utils";
 
 const IMAGES = [
   DefaultProgramImage1,
@@ -29,6 +30,25 @@ const ProfileItem = ({
 }) => {
   const [hover, setHover] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { pathname } = location;
+  const firstPath = parseNthPath(pathname, 1);
+
+  const onClickNavigatePath = () => {
+    let address;
+    switch (firstPath) {
+      case "mentoring":
+        address = `/mentoring/${programNo}`;
+        break;
+      case "community":
+        address = `/community/qna/${programNo}`;
+        break;
+      default:
+        address = `/error`;
+        break;
+    }
+    return () => navigate(address);
+  };
 
   const handleMouseEnter = () => {
     setHover(true);
@@ -43,7 +63,7 @@ const ProfileItem = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       bgimg={mainImage || IMAGES[programNo % 4]}
-      onClick={() => navigate(`/mentoring/${programNo}`)}
+      onClick={onClickNavigatePath()}
     >
       {hover ? (
         <S.RowWrapper>

@@ -65,3 +65,7 @@ export const parseDate = (date) => {
 export const rand = (start, end) => {
   return start + Math.floor(Math.random() * end - start);
 };
+
+export const parseNthPath = (pathname, nth) => {
+  return pathname.split("/")[nth];
+};
