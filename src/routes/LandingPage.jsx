@@ -5,18 +5,16 @@ import Fullpage, {
   FullpageSection,
   FullpageNavigation,
 } from "@ap.cx/react-fullpage";
-import styled from "styled-components";
 
+//components
 import Btn from "../components/atoms/Btn";
+import Footer from "../common/Footer";
 
 function LandingPage() {
   const SectionStyle = {
     height: "100vh",
     width: "100%",
     position: "relative",
-    // backgroundImage: `url(${require("../images/landing1.png")})`,
-    // backgroundSize: "auto",
-    // backgroundPosition: "center",
   };
 
   const navigate = useNavigate();
@@ -30,7 +28,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing1.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "70%",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundColor: "rgb(248, 248, 248)",
@@ -76,7 +74,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing2.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -85,7 +83,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing3.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -114,7 +112,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing4.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -123,7 +121,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing5.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -132,7 +130,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing6.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -141,7 +139,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing7.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundColor: "rgb(44,69,120)",
@@ -151,7 +149,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing8.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
@@ -160,7 +158,7 @@ function LandingPage() {
             style={{
               ...SectionStyle,
               backgroundImage: `url(${require("../images/landing9.png")})`,
-              backgourndSize: "cover",
+              backgroundSize: "contain",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundColor: "rgb(85,156,222)",
@@ -171,11 +169,23 @@ function LandingPage() {
                 width: "100%",
                 height: "70%",
                 backgroundImage: `url(${require("../images/landing9.png")})`,
-
                 backgroundPosition: "50% 10%",
                 backgroundColor: "rgb(85,156,222)",
               }}
             ></div> */}
+          </FullpageSection>
+          <FullpageSection
+            style={{
+              ...SectionStyle,
+              height: "50vh",
+              backgroundColor: "rgb(248, 248, 248)",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "2%",
+            }}
+          >
+            <Footer />
           </FullpageSection>
         </FullPageSections>
       </Fullpage>

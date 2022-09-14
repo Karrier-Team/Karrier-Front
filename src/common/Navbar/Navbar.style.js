@@ -18,16 +18,15 @@ const colors = css`
 
 export const Wrapper = styled.div`
   width: 100%;
-
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   border-bottom: 1px solid var(--line-color);
-
   background-color: var(--bg-color-l);
 
-  padding: 0.7em 1.5em;
+  padding: 0 20px;
   box-sizing: border-box;
 
   font-weight: bold;
@@ -51,7 +50,7 @@ export const RightSection = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 1rem;
+  height: 2rem;
   margin-right: 2rem;
   cursor: pointer;
 `;
