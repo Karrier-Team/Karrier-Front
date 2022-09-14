@@ -7,8 +7,9 @@ import * as S from "./style.js";
 import CommunityQnAQuestionModalContent from "../../../organisms/CommunityQnAQuestionModalContent";
 import useAsync from "../../../hooks/useAsync";
 import Loading from "../../../organisms/Loading";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { apiGetCommunityQnaProgramPage } from "../../../apis/community";
+import { apiPostNewQuestion } from "../../../apis/community";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -55,7 +56,24 @@ function CommunityQnaProgramPage() {
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpened, setIsModalOpened] = useState(false);
 
+  const navigate = useNavigate();
+
   const { programNo } = useParams();
+
+  const handleApiPostNewQuestion = async () => {
+    const [result, status] = await apiPostNewQuestion({
+      programNo,
+      title,
+      content,
+    });
+    if (status === 200 || status === 201) {
+      alert("성공");
+      const { questionNo } = result;
+      navigate(`/community/qna/${programNo}/question/${questionNo}`);
+    } else {
+      alert(result);
+    }
+  };
 
   // states for Modal content
   const [title, setTitle] = useState("");
@@ -102,6 +120,7 @@ function CommunityQnaProgramPage() {
           onClose={() => setIsModalOpened(false)}
         >
           <CommunityQnAQuestionModalContent
+            handleSubmit={handleApiPostNewQuestion}
             title={title}
             setTitle={setTitle}
             content={content}

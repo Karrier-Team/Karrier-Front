@@ -24,6 +24,9 @@ export const StyledProfileItem = styled.div`
       rgba(0, 0, 0, 1) 97%
     ),
     url(${(props) => props.bgimg || DefaultProgramImage1});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export const RowWrapper = styled.div`

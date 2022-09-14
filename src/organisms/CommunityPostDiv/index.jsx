@@ -5,6 +5,7 @@ import CircleWithText from "../../components/molecules/CircleWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { parseDate } from "../../utils";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const getColorByType = (type) => {
   switch (type) {
@@ -33,6 +34,7 @@ function getFullPropertyName(object, str) {
 
 const CommunityPostDiv = ({ type, data }) => {
   const [clicked, setClicked] = useState(false);
+  const navigate = useNavigate();
 
   const textRef = useRef();
 
@@ -40,7 +42,12 @@ const CommunityPostDiv = ({ type, data }) => {
     <S.Wrapper>
       <S.RowWrapper>
         <S.ColWrapper clicked={clicked}>
-          <Text weight="600" size="1.5em">
+          <Text
+            style={{ cursor: "pointer" }}
+            weight="600"
+            size="1.5em"
+            onClick={() => navigate(`./question/${data.questionNo}`)}
+          >
             {data.title}
           </Text>
           <Space h="xs"></Space>

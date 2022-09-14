@@ -46,7 +46,7 @@ export const apiGetMentoringPrograms = async ({ major }) => {
       password: "qwer1234!",
     },
     params: {
-      major,
+      major: "컴퓨터학부",
     },
   };
   const dummy = [
