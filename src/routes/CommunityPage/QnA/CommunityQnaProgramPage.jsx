@@ -5,6 +5,10 @@ import CommunityPostDiv from "../../../organisms/CommunityPostDiv";
 import { Modal, Text } from "@mantine/core";
 import * as S from "./style.js";
 import CommunityQnAQuestionModalContent from "../../../organisms/CommunityQnAQuestionModalContent";
+import useAsync from "../../../hooks/useAsync";
+import Loading from "../../../organisms/Loading";
+import { Navigate, useParams } from "react-router-dom";
+import { apiGetCommunityQnaProgramPage } from "../../../apis/community";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -18,7 +22,7 @@ const searchTypeOptions = [
   { value: "nickname", name: "닉네임" },
 ];
 
-const dummyProgramData = {
+const dummydata = {
   program_no: "1",
   title: "고3 대비 컴퓨터 공학과의 진실",
   questions: [
@@ -51,9 +55,18 @@ function CommunityQnaProgramPage() {
   const [searchValue, setSearchValue] = useState("");
   const [isModalOpened, setIsModalOpened] = useState(false);
 
+  const { programNo } = useParams();
+
   // states for Modal content
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const [state] = useAsync(() => apiGetCommunityQnaProgramPage({ programNo }));
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   return (
     <>
@@ -96,9 +109,9 @@ function CommunityQnaProgramPage() {
           />
         </Modal>
         <Text weight={"bold"} color="var(--primary-color)" size="2.5rem">
-          {dummyProgramData.title}
+          {data.title || "컴퓨터에 대한 모든것"}
         </Text>
-        {dummyProgramData.questions.map((question) => (
+        {data.map((question) => (
           <CommunityPostDiv data={question} />
         ))}
       </S.WrapperNarrow>

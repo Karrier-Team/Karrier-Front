@@ -4,6 +4,13 @@ import ControllBar from "../../../organisms/ControllBar";
 import ProfileList from "../../../organisms/ProfileList";
 import * as S from "./style.js";
 import Dropdown from "../../../common/Navbar/Dropdown";
+import useAsync from "../../../hooks/useAsync";
+import Loading from "../../../organisms/Loading";
+import { Navigate } from "react-router-dom";
+import {
+  apiGetMentoringPrograms,
+  apiGetProgramPageData,
+} from "../../../apis/mentoring";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -45,6 +52,15 @@ function CommunityQnaProgramsPage() {
   const [sortType, setSortType] = useState("latest"); // sort by recent, likes, name || recent, unsolved, solved
   const [searchType, setSearchType] = useState("programName");
   const [searchValue, setSearchValue] = useState("");
+
+  const [state] = useAsync(() =>
+    apiGetMentoringPrograms({ major: "컴퓨터학부" })
+  );
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   return (
     <>

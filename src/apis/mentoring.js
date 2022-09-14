@@ -42,7 +42,7 @@ export const apiGetMentoringPrograms = async ({ major }) => {
     url: `${config.baseURL}/programs/major`,
     headers: {},
     auth: {
-      username: "test2@test.com",
+      username: "mentee@karrier.com",
       password: "qwer1234!",
     },
     params: {
@@ -63,9 +63,9 @@ export const apiGetMentoringPrograms = async ({ major }) => {
     },
   ];
   try {
-    // const response = await axios(axiosConfig);
-    // return [response.data.body, response.status];
-    return [dummy, 200];
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+    // return [dummy, 200];
   } catch (error) {
     const errorResponse = error.response.data;
     return [errorResponse.message, errorResponse.status];

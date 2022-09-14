@@ -4,6 +4,7 @@ import { Text, Space } from "@mantine/core";
 import CircleWithText from "../../components/molecules/CircleWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { parseDate } from "../../utils";
 
 const getColorByType = (type) => {
   switch (type) {
@@ -78,7 +79,9 @@ const CommunityPostDiv = ({ type, data }) => {
           <Text color={"gray"}>{data.nickname}</Text>
         </div>
         <div style={{ display: "flex", width: "10%" }}>
-          <Text color="gray">{data[getFullPropertyName(data, "Date")]}</Text>
+          <Text color="gray">
+            {parseDate(data[getFullPropertyName(data, "Date")])}
+          </Text>
         </div>
         <div
           style={{ display: "flex", width: "10%", justifyContent: "center" }}
