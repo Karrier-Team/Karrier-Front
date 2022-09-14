@@ -25,7 +25,7 @@ function MentorApplyBasicPage() {
           </Btn>
         </S.Div>
       </S.Wrapper>
-      <div style={{ margin: "3% 0", width: "100%" }}>
+      <div style={{ margin: "3% 0", width: "80%" }}>
         <Footer />
       </div>
     </Wrapper>
