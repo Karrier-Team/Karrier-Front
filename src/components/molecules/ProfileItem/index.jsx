@@ -55,7 +55,7 @@ const ProfileItem = ({
         }
         break;
       default:
-        address = `/error`;
+        address = `/mentoring/${programNo}`;
         break;
     }
     return () => navigate(address, { state: { title: title } });

@@ -71,7 +71,7 @@ const MentorQnaPostDiv = ({ type, data }) => {
             <S.StyledLink
               to={`/community/qna/${data.programNo}/question/${data.questionNo}`}
             >
-              <Text>답변하기</Text>
+              <Text weight="bold">답변하기</Text>
             </S.StyledLink>
           )}
         </div>

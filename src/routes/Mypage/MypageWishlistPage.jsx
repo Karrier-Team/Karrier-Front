@@ -6,6 +6,10 @@ import * as S from "./style.js";
 import { Modal, Space, Text } from "@mantine/core";
 import ProfileList from "../../organisms/ProfileList.jsx";
 import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
+import useAsync from "../../hooks/useAsync.js";
+import { apiGetMentoringPrograms } from "../../apis/mentoring.js";
+import Loading from "../../organisms/Loading/index.jsx";
+import { Navigate } from "react-router-dom";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -17,7 +21,7 @@ const searchTypeOptions = [
   { value: "mentorName", name: "멘토이름" },
 ];
 
-const dummyData = [
+const data = [
   {
     college: "IT대학",
     major: "컴퓨터학부",
@@ -67,6 +71,15 @@ function MypageWishlistPage() {
   const [isUnsubscribeActive, setIsUnsubscribeActive] = useState(false);
   const [isCancelModalOpened, setIsCancelModalOpened] = useState(false);
 
+  const [state] = useAsync(() =>
+    apiGetMentoringPrograms({ major: "컴퓨터학부" })
+  );
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
+
   const handleCancelWishlist = (event) => {
     // TODO: API 연결
     alert("찜 취소 API 연결");
@@ -97,7 +110,7 @@ function MypageWishlistPage() {
               </Text>
               <Space w="xs"></Space>
               <Text size="1.5rem" weight="bold">
-                {dummyData.length || 0}
+                {data.length || 0}
               </Text>
             </div>
             <div style={{ display: "flex" }}>
@@ -135,7 +148,7 @@ function MypageWishlistPage() {
             searchTypeOptions={searchTypeOptions}
           ></ControllBar>
           <ProfileList
-            mentoData={dummyData}
+            mentoData={data}
             btntxt="취소"
             isUnsubscribeActive={isUnsubscribeActive}
             onBtnClick={() => setIsCancelModalOpened(true)}

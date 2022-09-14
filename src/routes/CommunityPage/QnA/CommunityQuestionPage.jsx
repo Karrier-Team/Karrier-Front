@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import * as S from "./style";
 import Div from "../../../components/atoms/Div";
 import { parseDate } from "../../../utils";
@@ -10,8 +10,11 @@ import { Text, Space } from "@mantine/core";
 import DoubleTextWithProfileImg from "../../../components/molecules/DoubleTextWithProfileImg";
 import InputWithProfileImg from "../../../components/molecules/InputWithProfileImg";
 import { useNavigate } from "react-router-dom";
+import useAsync from "../../../hooks/useAsync";
+import Loading from "../../../organisms/Loading";
+import { apiGetCommunityQuestionPage } from "../../../apis/community";
 
-const dummyData = {
+const data = {
   programNo: 1,
   programName: "컴공 맛보기",
   questionNo: 3,
@@ -55,11 +58,14 @@ const CommunityQuestionPage = () => {
   const { programNo, questionNo } = useParams();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // API 사용
-    // setState 안써도될것같다.
-    console.log(programNo, questionNo);
-  }, []);
+  const [state] = useAsync(() =>
+    apiGetCommunityQuestionPage({ programNo, questionNo })
+  );
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   return (
     <S.Wrapper>
@@ -73,12 +79,10 @@ const CommunityQuestionPage = () => {
       </Text>
 
       <DoubleTextWithProfileImg
-        src={dummyData.writerProfileImage}
+        src={data.writerProfileImage}
         type="upperbig"
-        uppertxt={dummyData.title}
-        lowertxt={[dummyData.writer, parseDate(dummyData.modifyDate)].join(
-          " · "
-        )}
+        uppertxt={data.title}
+        lowertxt={[data.mentorName, parseDate(data.modifyDate)].join(" · ")}
       />
       {/* question */}
       <Div column pd="2em 5rem" bgcolor={"var(--bg-color-ll)"}>
@@ -97,7 +101,7 @@ const CommunityQuestionPage = () => {
               color: "gray",
             }}
           >
-            {dummyData.content}
+            {data.content}
           </Text>
           <S.RowWrapperBtwn>
             <div style={{ display: "flex" }}>
@@ -115,7 +119,7 @@ const CommunityQuestionPage = () => {
                   fontWeight: "bold",
                 }}
               >
-                {dummyData.questionLikeNo}
+                {data.questionLikeNo}
               </Text>
             </div>
             <div style={{ display: "flex" }}>
@@ -145,17 +149,17 @@ const CommunityQuestionPage = () => {
       <Div
         column
         pd="2em 5rem"
-        centercontent={dummyData.answer ? null : true}
+        centercontent={data.answer ? null : true}
         bgcolor={"var( --bg-color-ll)"}
       >
-        {dummyData.answer ? (
+        {data.answer ? (
           <>
             <div style={{ marginBottom: "3%" }}>
               <DoubleTextWithProfileImg
-                src={dummyData.mentorProfileImage}
+                src={data.mentorProfileImage}
                 type={"upperMid"}
-                uppertxt={dummyData.mentorName}
-                lowertxt={parseDate(dummyData.answerDate)}
+                uppertxt={data.mentorName}
+                lowertxt={parseDate(data.answerDate)}
               />
             </div>
             <Text
@@ -166,7 +170,7 @@ const CommunityQuestionPage = () => {
                 color: "gray",
               }}
             >
-              {dummyData.answer}
+              {data.answer}
             </Text>
             <S.RowWrapperBtwn>
               <div style={{ display: "flex" }}>
@@ -177,9 +181,7 @@ const CommunityQuestionPage = () => {
                   좋아요
                 </Text>
                 <Space w="md"></Space>
-                <Text style={{ fontWeight: "bold" }}>
-                  {dummyData.answerLikeNo}
-                </Text>
+                <Text style={{ fontWeight: "bold" }}>{data.answerLikeNo}</Text>
               </div>
               <div style={{ display: "flex" }}>
                 {/* TODO: 현재 로그인한 유저 중 멘토인 경우에만 보이도록 수정하기. */}
@@ -210,12 +212,12 @@ const CommunityQuestionPage = () => {
           <Text
             style={{ fontWeight: "bold", color: "gray", fontSize: "1.3em" }}
           >
-            {dummyData.questionCommentListDto.length}
+            {data.questionCommentListDto.length}
           </Text>
         </S.RowWrapper>
         <div style={{ display: "flex", flexDirection: "column", gap: "1em" }}>
-          <InputWithProfileImg src={dummyData.writerProfileImage} />
-          {dummyData.questionCommentListDto.map((comment) => (
+          <InputWithProfileImg src={data.writerProfileImage} />
+          {data.questionCommentListDto.map((comment) => (
             <DoubleTextWithProfileImg
               key={comment.commentNo}
               src={comment.writerProfileImage}

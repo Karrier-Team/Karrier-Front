@@ -6,6 +6,10 @@ import * as S from "./style.js";
 import { Text, Modal, Space } from "@mantine/core";
 import LeftSidebar from "../../components/molecules/LeftSidebar/index.jsx";
 import UserProfileWithText from "../../components/molecules/UserProfileImgWithText/index.jsx";
+import useAsync from "../../hooks/useAsync.js";
+import Loading from "../../organisms/Loading/index.jsx";
+import { Navigate } from "react-router-dom";
+import { apiGetMypageFollowingPage } from "../../apis/mypage.js";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -18,7 +22,7 @@ const searchTypeOptions = [
   { value: "major", name: "학과" },
 ];
 
-const dummyData = [
+const data = [
   {
     email: "test5@test.com",
     name: "Hello",
@@ -45,6 +49,13 @@ function MypageFollowingPage() {
     alert("팔로잉 취소API 연결");
   };
 
+  const [state] = useAsync(apiGetMypageFollowingPage);
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
+
   return (
     <>
       <CommunityNavbar isAdVisible={false} type="followers">
@@ -70,7 +81,7 @@ function MypageFollowingPage() {
               </Text>
               <Space w="xs"></Space>
               <Text size="1.5rem" weight="bold">
-                {dummyData.length || 0}
+                {data.length || 0}
               </Text>
             </div>
             <div style={{ display: "flex" }}>
@@ -109,7 +120,7 @@ function MypageFollowingPage() {
             searchTypeOptions={searchTypeOptions}
           ></ControllBar>
           <S.MentorListWrapper>
-            {dummyData.map((mentor) => (
+            {data.map((mentor) => (
               <UserProfileWithText
                 src={mentor.profileImage}
                 maintxt={mentor.name}

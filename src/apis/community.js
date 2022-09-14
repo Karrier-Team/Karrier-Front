@@ -48,3 +48,29 @@ export const apiPostNewQuestion = async ({ programNo, title, content }) => {
     return [errorResponse.message, errorResponse.status];
   }
 };
+
+export const apiGetCommunityQuestionPage = async ({
+  programNo,
+  questionNo,
+}) => {
+  const axiosConfig = {
+    method: "get",
+    url: `${config.baseURL}/community/question/detail`,
+    headers: {},
+    auth: {
+      username: "mentee@karrier.com",
+      password: "qwer1234!",
+    },
+    params: {
+      programNo,
+      questionNo,
+    },
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
+  }
+};

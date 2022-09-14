@@ -156,3 +156,22 @@ export const apiGetMypageQnaPage = async () => {
     return [errorResponse.message, errorResponse.status];
   }
 };
+
+export const apiGetMypageFollowingPage = async () => {
+  const axiosConfig = {
+    method: "get",
+    url: `${config.baseURL}/my-page/manage/following-list`,
+    headers: {},
+    auth: {
+      username: "mentee@karrier.com",
+      password: "qwer1234!",
+    },
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
+  }
+};

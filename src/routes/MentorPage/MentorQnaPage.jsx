@@ -8,9 +8,12 @@ import { Text, Modal } from "@mantine/core";
 import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuestionModalContent/index.jsx";
 
 import { apiPostNewQuestion } from "../../apis/mypage.js";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { makeProgramList } from "../../utils/mypage.js";
 import CommunityPostDiv from "../../organisms/MentorQnaPostDiv";
+import useAsync from "../../hooks/useAsync.js";
+import { apiGetMentorQnaPage } from "../../apis/mentor.js";
+import Loading from "../../organisms/Loading/index.jsx";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -24,7 +27,7 @@ const searchTypeOptions = [
   { value: "nickname", name: "닉네임" },
 ];
 
-const dummyData = [
+const data = [
   {
     programNo: 1,
     programName: "1번 프로그램",
@@ -62,6 +65,13 @@ function MentorQnaPage() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const [state] = useAsync(apiGetMentorQnaPage);
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   const handleApiPostNewQuestion = async () => {
     const [result, status] = await apiPostNewQuestion({
@@ -117,10 +127,10 @@ function MentorQnaPage() {
           <Selector
             name="프로그램"
             handleChange={setCurProgramNo}
-            options={makeProgramList(dummyData)}
+            options={makeProgramList(data)}
           ></Selector>
         </div>
-        {dummyData
+        {data
           .filter((question) => {
             if (!curProgramNo) return true;
             else return question.programNo === curProgramNo;
