@@ -1,5 +1,6 @@
 import { createGlobalStyle, css } from "styled-components";
 import reset from "styled-reset";
+import "../src/font.css";
 
 // 기본 여백 삭제
 export const GlobalStyles = createGlobalStyle`
@@ -26,6 +27,12 @@ export const GlobalStyles = createGlobalStyle`
     --box-shadow-d: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     --box-shadow-sexy: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;;
   }
+
+  *, body, button, input{
+    font-family: "SCoreDream";
+    font-weight: 500;
+    font-style: normal;
+  } 
 `;
 
 export const FlexRow = css`

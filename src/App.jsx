@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, useLocation, Outlet, Navigate } from "react-router-dom";
+import { MantineProvider } from "@mantine/core";
 
 import { GlobalStyles } from "./commonStyles";
 
@@ -47,48 +48,57 @@ const Auth = ({ allowedRoles }) => {
 function App() {
   return (
     <>
-      <GlobalStyles />
-      <Navbar />
-      <Routes>
-        {/* Allow Every Roles */}
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/mentoring" element={<MentoringPage />} />
-        <Route path="/mentoring/:programNo" element={<ProgramPage />} />
-        <Route path="/community/*" element={<CommunityPage />} />
+      <MantineProvider
+        theme={{
+          fontFamily: "SCoreDream",
+          fontWeight: "500",
+        }}
+      >
+        <GlobalStyles />
+        <Navbar />
+        <Routes>
+          {/* Allow Every Roles */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/mentoring" element={<MentoringPage />} />
+          <Route path="/mentoring/:programNo" element={<ProgramPage />} />
+          <Route path="/community/*" element={<CommunityPage />} />
 
-        {/* Allow Only Admin */}
-        <Route element={<Auth allowedRoles={[ROLES.ADMIN]} />}>
-          <Route path="/test" element={<TestPage />} />
-        </Route>
+          {/* Allow Only Admin */}
+          <Route element={<Auth allowedRoles={[ROLES.ADMIN]} />}>
+            <Route path="/test" element={<TestPage />} />
+          </Route>
 
-        {/* Allow User, Admin */}
-        <Route element={<Auth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
-          {/* 학과별-세부-프로그램 신청페이지 */}
+          {/* Allow User, Admin */}
+          <Route element={<Auth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
+            {/* 학과별-세부-프로그램 신청페이지 */}
+            <Route
+              path="/mentoring/:programNo/apply"
+              element={<MentoringApplyPage />}
+            />
+            {/* 학과별-세부-프로그램 신청완료 페이지 */}
+            <Route
+              path="/mentoring/:programNo/apply/success"
+              element={<MentoringApplySuccessPage />}
+            />
+            {/* 멘토-지원 */}
+            <Route path="/apply" element={<MentorApplyBasicPage />} />
+            <Route path="/apply/*" element={<ApplyPage />} />
+            <Route path="/mypage/*" element={<Mypage />} />
+          </Route>
+
+          {/* Allow ApprovedMentor, Admin */}
           <Route
-            path="/mentoring/:programNo/apply"
-            element={<MentoringApplyPage />}
-          />
-          {/* 학과별-세부-프로그램 신청완료 페이지 */}
-          <Route
-            path="/mentoring/:programNo/apply/success"
-            element={<MentoringApplySuccessPage />}
-          />
-          {/* 멘토-지원 */}
-          <Route path="/apply" element={<MentorApplyBasicPage />} />
-          <Route path="/apply/*" element={<ApplyPage />} />
-          <Route path="/mypage/*" element={<Mypage />} />
-        </Route>
+            element={<Auth allowedRoles={[ROLES.MENTOR_O, ROLES.ADMIN]} />}
+          >
+            <Route path="/mentor/*" element={<MentorPage />} />
+          </Route>
 
-        {/* Allow ApprovedMentor, Admin */}
-        <Route element={<Auth allowedRoles={[ROLES.MENTOR_O, ROLES.ADMIN]} />}>
-          <Route path="/mentor/*" element={<MentorPage />} />
-        </Route>
-
-        <Route path="/unauthorized" element={<UnauthorizedPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+          <Route path="/unauthorized" element={<UnauthorizedPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </MantineProvider>
     </>
   );
 }
