@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useState, useEffect } from "react";
 import styled from "styled-components";
 
 // components
@@ -9,6 +9,8 @@ import LabeledTextarea from "../components/molecules/LabeledTextarea";
 import LabeledSelector from "../components/molecules/LabeledSelector";
 import OnOffBtn from "../components/atoms/OnOffBtn";
 import Label from "../components/atoms/Label";
+import { apiPostParticipateProgram } from "../apis/mentoring";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -34,20 +36,87 @@ const Section = styled.div`
 function MentoringApplyPage() {
   const [name, setName] = useState("");
   const [gender, setGender] = useState(true);
-  const [phone_no, setPhone_no] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
   const [age, setAge] = useState("");
   const [region, setRegion] = useState("");
-  const [school_name, setSchool] = useState("");
-  const [application_route, setApplication_route] = useState("");
+  const [schoolName, setSchoolName] = useState("");
+  const [applicationRoute, setApplicationRoute] = useState("");
   const [introduce, setIntroduce] = useState("");
   const [questionCategory, setQuestionCategory] = useState("");
   const [questionContent, setQuestionContent] = useState("");
+  const { programNo } = useParams();
+
+  const navigate = useNavigate();
 
   const [hasBlankInput, setHasBlankInput] = useState(true);
 
+  useEffect(() => {
+    if (
+      programNo &&
+      name &&
+      // gender &&
+      phoneNo &&
+      age &&
+      region &&
+      schoolName &&
+      applicationRoute &&
+      introduce &&
+      questionCategory &&
+      questionContent
+    ) {
+      setHasBlankInput(false);
+    } else {
+      console.log(
+        programNo,
+        name,
+        gender,
+        phoneNo,
+        age,
+        region,
+        schoolName,
+        applicationRoute,
+        introduce,
+        questionCategory,
+        questionContent
+      );
+    }
+  }, [
+    programNo,
+    name,
+    gender,
+    phoneNo,
+    age,
+    region,
+    schoolName,
+    applicationRoute,
+    introduce,
+    questionCategory,
+    questionContent,
+  ]);
+
   // 최종 제출
-  const handleSubmit = () => {
-    console.log("fetch");
+  const handleSubmit = async (e) => {
+    if (hasBlankInput) return;
+    e.preventDefault();
+    const [result, status] = await apiPostParticipateProgram({
+      programNo,
+      name,
+      gender,
+      phoneNo,
+      age,
+      region,
+      schoolName,
+      applicationRoute,
+      introduce,
+      questionCategory,
+      questionContent,
+    });
+    if (status === 200) {
+      alert("성공");
+      navigate("./success");
+    } else {
+      alert(result);
+    }
   };
 
   return (
@@ -99,8 +168,8 @@ function MentoringApplyPage() {
         </GenderSection>
         <Section>
           <LabeledInput
-            value={phone_no}
-            handleChange={setPhone_no}
+            value={phoneNo}
+            handleChange={setPhoneNo}
             placeholder="휴대전화(- 없이 작성해주세요.)"
             name="연락처"
             required
@@ -135,8 +204,8 @@ function MentoringApplyPage() {
         </Section>
         <Section>
           <LabeledInput
-            value={school_name}
-            handleChange={setSchool}
+            value={schoolName}
+            handleChange={setSchoolName}
             placeholder="학교를 입력해주세요."
             name="학교"
             required
@@ -147,8 +216,8 @@ function MentoringApplyPage() {
         </Section>
         <Section>
           <LabeledInput
-            value={application_route}
-            handleChange={setApplication_route}
+            value={applicationRoute}
+            handleChange={setApplicationRoute}
             placeholder="강의를 어떻게 알게되었는지 입력해주세요.."
             name="강의"
             required
@@ -210,14 +279,7 @@ function MentoringApplyPage() {
           ></LabeledTextarea>
         </Section>
         <Section>
-          <Btn
-            handleClick={() => {
-              !hasBlankInput && window.alert("프로그램신청완료");
-              handleSubmit();
-            }}
-            size="100%"
-            height={"3em"}
-          >
+          <Btn handleClick={handleSubmit} size="100%" height={"3em"}>
             프로그램 신청하기
           </Btn>
         </Section>

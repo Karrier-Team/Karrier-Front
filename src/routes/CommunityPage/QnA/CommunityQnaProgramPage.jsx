@@ -10,6 +10,8 @@ import Loading from "../../../organisms/Loading";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { apiGetCommunityQnaProgramPage } from "../../../apis/community";
 import { apiPostNewQuestion } from "../../../apis/community";
+import { useLocation } from "react-router-dom";
+import { useRef } from "react";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -76,6 +78,11 @@ function CommunityQnaProgramPage() {
   };
 
   // states for Modal content
+  const { state: locationState } = useLocation();
+  const programTitle = useRef(
+    (locationState && locationState["title"]) || "프로그램명"
+  );
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -128,7 +135,7 @@ function CommunityQnaProgramPage() {
           />
         </Modal>
         <Text weight={"bold"} color="var(--primary-color)" size="2.5rem">
-          {data.title || "컴퓨터에 대한 모든것"}
+          {programTitle.current}
         </Text>
         {data.map((question) => (
           <CommunityPostDiv data={question} />

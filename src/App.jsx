@@ -55,7 +55,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/mentoring" element={<MentoringPage />} />
-        <Route path="/mentoring/:id" element={<ProgramPage />} />
+        <Route path="/mentoring/:programNo" element={<ProgramPage />} />
         <Route path="/community/*" element={<CommunityPage />} />
 
         {/* Allow Only Admin */}
@@ -66,10 +66,13 @@ function App() {
         {/* Allow User, Admin */}
         <Route element={<Auth allowedRoles={[ROLES.USER, ROLES.ADMIN]} />}>
           {/* 학과별-세부-프로그램 신청페이지 */}
-          <Route path="/mentoring/:id/apply" element={<MentoringApplyPage />} />
+          <Route
+            path="/mentoring/:programNo/apply"
+            element={<MentoringApplyPage />}
+          />
           {/* 학과별-세부-프로그램 신청완료 페이지 */}
           <Route
-            path="/mentoring/:id/apply/success"
+            path="/mentoring/:programNo/apply/success"
             element={<MentoringApplySuccessPage />}
           />
           {/* 멘토-지원 */}

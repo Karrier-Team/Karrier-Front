@@ -9,10 +9,8 @@ import * as S from "./style";
 import Loading from "../../organisms/Loading";
 
 function MentoringApplySuccessPage() {
-  const { id } = useParams();
-  const [state] = useAsync(() =>
-    apiGetMentoringApplySuccess({ programId: id })
-  );
+  const { programNo } = useParams();
+  const [state] = useAsync(() => apiGetMentoringApplySuccess({ programNo }));
   const { loading, error, data } = state;
 
   if (loading) return <Loading />;
@@ -28,7 +26,7 @@ function MentoringApplySuccessPage() {
         <Text size="1rem" weight="bold">
           해당 프로그램 신청이 완료되었습니다.
         </Text>
-        <Btn to={`/mentoring/${id}`} size="10rem">
+        <Btn to={`/mentoring/${programNo}`} size="10rem">
           신청한 프로그램 보기
         </Btn>
       </S.RowWrapper>

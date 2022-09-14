@@ -219,13 +219,6 @@ function UpperMainGrid({
         >
           수강후기
         </NavLink>
-        <NavLink
-          className="program"
-          to="?program=menteeInfo"
-          style={activeLink === "menteeInfo" ? activeProgramStyle : basicStyle}
-        >
-          멘티정보
-        </NavLink>
         <NavLink to="#"></NavLink>
       </Wrapper>
     </>

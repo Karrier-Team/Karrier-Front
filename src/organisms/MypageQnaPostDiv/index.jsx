@@ -20,6 +20,7 @@ const MypageQnaPostDiv = ({ type, data, setTitle, setContent }) => {
     const [result, status] = await apiPostSolveQuestion(apiData);
     if (status === 200 || status === 201) {
       alert("성공");
+      window.location.reload();
     } else {
       alert(result);
     }

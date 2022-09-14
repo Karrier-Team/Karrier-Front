@@ -3,14 +3,16 @@ import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
 import ControllBar from "../../organisms/ControllBar/index.jsx";
 import Selector from "../../components/atoms/Selector";
 import * as S from "./style.js";
+import Loading from "react-loading";
 
 import { Text, Modal } from "@mantine/core";
 import MypageQnaPostDiv from "../../organisms/MypageQnaPostDiv";
 import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuestionModalContent/index.jsx";
 
-import { apiPostNewQuestion } from "../../apis/mypage.js";
-import { useNavigate } from "react-router-dom";
+import { apiGetMypageQnaPage, apiPostNewQuestion } from "../../apis/mypage.js";
+import { Navigate, useNavigate } from "react-router-dom";
 import { makeProgramList } from "../../utils/mypage.js";
+import useAsync from "../../hooks/useAsync.js";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -24,33 +26,6 @@ const searchTypeOptions = [
   { value: "nickname", name: "닉네임" },
 ];
 
-const dummyData = [
-  {
-    programNo: 1,
-    programName: "1번 프로그램",
-    questionNo: 3,
-    nickname: "행복한바지",
-    title: "1번프로그램 질문 제목",
-    content: "1번프로그램 질문 내용 이거 참 이상하네요",
-    answer: false,
-    solve: true,
-    modifyDate: "2022-08-20T17:01:56.707375",
-    questionLikeNo: 1,
-  },
-  {
-    programNo: 4,
-    programName: "4번 프로그램",
-    questionNo: 1,
-    nickname: "행복한바지",
-    title: "4번 프로그램 질문 제목",
-    content: "4번 프로그램 질문 내용",
-    answer: false,
-    solve: false,
-    modifyDate: "2022-08-24T20:59:49.82776",
-    questionLikeNo: 0,
-  },
-];
-
 function MypageQnAPage() {
   const navigate = useNavigate();
 
@@ -62,6 +37,13 @@ function MypageQnAPage() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const [state] = useAsync(apiGetMypageQnaPage);
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   const handleApiPostNewQuestion = async () => {
     const [result, status] = await apiPostNewQuestion({
@@ -113,10 +95,10 @@ function MypageQnAPage() {
             type="mypage"
             name="프로그램"
             handleChange={setCurProgramNo}
-            options={makeProgramList(dummyData)}
+            options={makeProgramList(data)}
           ></Selector>
         </div>
-        {dummyData
+        {data
           .filter((question) => {
             if (!curProgramNo) return true;
             else return question.programNo === curProgramNo;
@@ -141,7 +123,7 @@ function MypageQnAPage() {
       >
         <CommunityQnAQuestionModalContent
           handleSubmit={handleApiPostNewQuestion}
-          title={title + "z"}
+          title={title}
           setTitle={setTitle}
           content={content}
           setContent={setContent}

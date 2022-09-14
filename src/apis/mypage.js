@@ -8,7 +8,7 @@ export const apiPostSolveQuestion = async ({ programNo, questionNo }) => {
     url: `${config.baseURL}/my-page/manage/question/solve`,
     headers: {},
     auth: {
-      username: "test2@test.com",
+      username: "mentee@karrier.com",
       password: "qwer1234!",
     },
     data: qs.stringify({
@@ -135,5 +135,24 @@ export const apiUpdateCurReview = async ({
     return [response.data, response.status];
   } catch (error) {
     return [error.message, error.response.status];
+  }
+};
+
+export const apiGetMypageQnaPage = async () => {
+  const axiosConfig = {
+    method: "get",
+    url: `${config.baseURL}/my-page/manage/question`,
+    headers: {},
+    auth: {
+      username: "mentee@karrier.com",
+      password: "qwer1234!",
+    },
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
   }
 };

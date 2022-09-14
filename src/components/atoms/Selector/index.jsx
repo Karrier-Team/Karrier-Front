@@ -8,7 +8,7 @@ function Selector({ type, name, width, handleChange, options }) {
       type={type}
       width={width}
       onChange={(e) => {
-        handleChange(parseInt(e.target.value));
+        handleChange(e.target.value);
         setSelected(true);
       }}
       selected={selected}

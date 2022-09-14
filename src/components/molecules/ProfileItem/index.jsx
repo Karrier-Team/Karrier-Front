@@ -58,7 +58,7 @@ const ProfileItem = ({
         address = `/error`;
         break;
     }
-    return () => navigate(address);
+    return () => navigate(address, { state: { title: title } });
   };
 
   const handleMouseEnter = () => {

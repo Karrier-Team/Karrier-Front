@@ -8,7 +8,7 @@ export const apiGetMentoringApplySuccess = async ({ programNo }) => {
     url: `${config.baseURL}/programs/participate-complete`,
     headers: {},
     auth: {
-      username: "test2@test.com",
+      username: "mentee@karrier.com",
       password: "qwer1234!",
     },
     params: {
@@ -27,9 +27,8 @@ export const apiGetMentoringApplySuccess = async ({ programNo }) => {
   };
 
   try {
-    // const response = await axios(axiosConfig);
-    // return [response.data.body, response.status];
-    return [dummy, 200];
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
   } catch (error) {
     const errorResponse = error.response.data;
     return [errorResponse.message, errorResponse.status];
@@ -78,7 +77,7 @@ export const apiGetProgramPageData = async ({ programNo }) => {
     url: `${config.baseURL}/programs/show`,
     headers: {},
     auth: {
-      username: "test2@test.com",
+      username: "mentee@karrier.com",
       password: "qwer1234!",
     },
     params: {
@@ -274,11 +273,55 @@ export const apiGetProgramPageData = async ({ programNo }) => {
     ],
   };
   try {
-    // const response = await axios(axiosConfig);
-    // return [response.data.body, response.status];
-    return [dummy, 200];
+    const response = await axios(axiosConfig);
+    console.log("z", response.data.body);
+    return [response.data.body, response.status];
   } catch (error) {
-    console.log("???", error);
+    const errorResponse = error.response.data;
+    console.log("z", error);
+    return [errorResponse.message, errorResponse.status];
+  }
+};
+
+export const apiPostParticipateProgram = async ({
+  programNo,
+  name,
+  gender,
+  phoneNo,
+  age,
+  region,
+  schoolName,
+  applicationRoute,
+  introduce,
+  questionCategory,
+  questionContent,
+}) => {
+  const axiosConfig = {
+    method: "post",
+    url: `${config.baseURL}/programs/participate`,
+    headers: {},
+    auth: {
+      username: "mentee@karrier.com",
+      password: "qwer1234!",
+    },
+    data: qs.stringify({
+      programNo,
+      name,
+      gender,
+      phoneNo,
+      age,
+      region,
+      schoolName,
+      applicationRoute,
+      introduce,
+      questionCategory,
+      questionContent,
+    }),
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
     const errorResponse = error.response.data;
     return [errorResponse.message, errorResponse.status];
   }
