@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import * as S from "./style";
 import Div from "../../../components/atoms/Div";
+import { parseDate } from "../../../utils";
 // import API from apis
 
 // components
@@ -23,7 +24,7 @@ const dummyData = {
   content: "질문 내용",
   answer: "질문 답변",
   modifyDate: "2022-08-20T17:01:56.707375",
-  answerDate: null,
+  answerDate: "2022-08-20T17:01:56.707375",
   questionLikeNo: 1,
   answerLikeNo: 0,
   writer: false,
@@ -66,57 +67,130 @@ const CommunityQuestionPage = () => {
         size="1.3rem"
         color="var(--primary-color)"
         onClick={() => navigate("../")}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: "pointer", fontWeight: "bold" }}
       >
-        {"< 질의응답"}
+        {"<  질의응답"}
       </Text>
 
       <DoubleTextWithProfileImg
         src={dummyData.writerProfileImage}
         type="upperbig"
         uppertxt={dummyData.title}
-        lowertxt={[dummyData.writer, dummyData.modifyDate].join(" · ")}
+        lowertxt={[dummyData.writer, parseDate(dummyData.modifyDate)].join(
+          " · "
+        )}
       />
       {/* question */}
-      <Div column pd="5rem">
-        <Text>{dummyData.content}</Text>
-        <S.RowWrapperBtwn>
-          <div style={{ display: "flex" }}>
-            <Text color="var(--primary-color)">좋아요</Text>
-            <Space w="md"></Space>
-            <Text>{dummyData.questionLikeNo}</Text>
-          </div>
-          <div style={{ display: "flex" }}>
-            {/* TODO: 현재 로그인한 유저인 경우에만 보이도록 수정하기. */}
-            <Text color="var(--primary-color)">수정</Text>
-            <Space w="md"></Space>
-            <Text>삭제</Text>
-          </div>
-        </S.RowWrapperBtwn>
+      <Div column pd="2em 5rem" bgcolor={"var(--bg-color-ll)"}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text
+            style={{
+              fontWeight: "bold",
+              fontSize: "1.1em",
+              marginBottom: "5%",
+              color: "gray",
+            }}
+          >
+            {dummyData.content}
+          </Text>
+          <S.RowWrapperBtwn>
+            <div style={{ display: "flex" }}>
+              <Text
+                color="var(--primary-color)"
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                좋아요
+              </Text>
+              <Space w="md"></Space>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                {dummyData.questionLikeNo}
+              </Text>
+            </div>
+            <div style={{ display: "flex" }}>
+              {/* TODO: 현재 로그인한 유저인 경우에만 보이도록 수정하기. */}
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+                color="var(--primary-color)"
+              >
+                수정
+              </Text>
+              <Space w="md"></Space>
+              <Text
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                삭제
+              </Text>
+            </div>
+          </S.RowWrapperBtwn>
+        </div>
       </Div>
 
       {/* answer */}
-      <Div column pd="5rem" centercontent={dummyData.answer ? null : true}>
+      <Div
+        column
+        pd="2em 5rem"
+        centercontent={dummyData.answer ? null : true}
+        bgcolor={"var( --bg-color-ll)"}
+      >
         {dummyData.answer ? (
           <>
-            <DoubleTextWithProfileImg
-              src={dummyData.mentorProfileImage}
-              type="upperbig"
-              uppertxt={dummyData.mentorName}
-              lowertxt={dummyData.answerDate}
-            />
-            <Text>{dummyData.answer}</Text>
+            <div style={{ marginBottom: "3%" }}>
+              <DoubleTextWithProfileImg
+                src={dummyData.mentorProfileImage}
+                type={"upperMid"}
+                uppertxt={dummyData.mentorName}
+                lowertxt={parseDate(dummyData.answerDate)}
+              />
+            </div>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: "1.1em",
+                marginBottom: "5%",
+                color: "gray",
+              }}
+            >
+              {dummyData.answer}
+            </Text>
             <S.RowWrapperBtwn>
               <div style={{ display: "flex" }}>
-                <Text color="var(--primary-color)">좋아요</Text>
+                <Text
+                  style={{ fontWeight: "bold" }}
+                  color="var(--primary-color)"
+                >
+                  좋아요
+                </Text>
                 <Space w="md"></Space>
-                <Text>{dummyData.answerLikeNo}</Text>
+                <Text style={{ fontWeight: "bold" }}>
+                  {dummyData.answerLikeNo}
+                </Text>
               </div>
               <div style={{ display: "flex" }}>
                 {/* TODO: 현재 로그인한 유저 중 멘토인 경우에만 보이도록 수정하기. */}
-                <Text color="var(--primary-color)">수정</Text>
+                <Text
+                  style={{ fontWeight: "bold" }}
+                  color="var(--primary-color)"
+                >
+                  수정
+                </Text>
                 <Space w="md"></Space>
-                <Text>삭제</Text>
+                <Text style={{ fontWeight: "bold" }}>삭제</Text>
               </div>
             </S.RowWrapperBtwn>
           </>
@@ -128,22 +202,32 @@ const CommunityQuestionPage = () => {
       </Div>
 
       {/* comments */}
-      <Div pd="3.5rem" column>
+      <Div pd="2em 5rem" column bgcolor={"var(--bg-color-ll)"}>
         <S.RowWrapper>
-          <Text size="xl">댓글</Text>
+          <Text style={{ fontWeight: "bold", fontSize: "1.5em" }}>댓글</Text>
           <Space w="xl"></Space>
-          <Text>{dummyData.questionCommentListDto.length}</Text>
+
+          <Text
+            style={{ fontWeight: "bold", color: "gray", fontSize: "1.3em" }}
+          >
+            {dummyData.questionCommentListDto.length}
+          </Text>
         </S.RowWrapper>
-        <InputWithProfileImg src={dummyData.writerProfileImage} />
-        {dummyData.questionCommentListDto.map((comment) => (
-          <DoubleTextWithProfileImg
-            key={comment.commentNo}
-            src={comment.writerProfileImage}
-            type="lowerbig"
-            uppertxt={[comment.writerName, comment.commentDate].join(" · ")}
-            lowertxt={comment.content}
-          />
-        ))}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1em" }}>
+          <InputWithProfileImg src={dummyData.writerProfileImage} />
+          {dummyData.questionCommentListDto.map((comment) => (
+            <DoubleTextWithProfileImg
+              key={comment.commentNo}
+              src={comment.writerProfileImage}
+              type="3.5rem"
+              uppertxt={[
+                comment.writerName,
+                parseDate(comment.commentDate),
+              ].join(" · ")}
+              lowertxt={comment.content}
+            />
+          ))}
+        </div>
       </Div>
     </S.Wrapper>
   );
