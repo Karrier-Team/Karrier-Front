@@ -50,7 +50,7 @@ export const RightSection = styled.div`
 `;
 
 export const Logo = styled.img`
-  height: 1rem;
+  height: 2rem;
   margin-right: 2rem;
   cursor: pointer;
 `;
