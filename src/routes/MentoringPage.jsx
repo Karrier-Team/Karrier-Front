@@ -33,7 +33,10 @@ const MentoringPage = () => {
   const [searchType, setSearchType] = useState("programName");
   const [searchValue, setSearchValue] = useState("");
   const [searchParams] = useSearchParams();
+
+
   const major = searchParams.get("dept");
+
 
   const [state] = useAsync(() => apiGetMentoringPrograms(major));
   const { loading, error, data } = state;

@@ -14,14 +14,19 @@ function InputWithProfileImg({ src }) {
       <Img size={"3.5rem"} src={src} />
       <Space w="lg"></Space>
       <Input
-        style={{ width: "90%" }}
+        style={{ width: "90%", fontWeight: "bold" }}
         placeholder="댓글 추가..."
         size="lg"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       ></Input>
       <FontAwesomeIcon
-        style={{ marginLeft: "2rem", cursor: "pointer" }}
+        style={{
+          marginLeft: "2rem",
+          cursor: "pointer",
+          color: "gray",
+        }}
+        size={"xl"}
         onClick={() => console.log(value + " 정보를 백엔드로 보내기")}
         icon={faPaperPlane}
       />

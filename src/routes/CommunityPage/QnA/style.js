@@ -5,9 +5,10 @@ export const Wrapper = styled.div`
   ${FlexCol}
   box-sizing: border-box;
   width: 100%;
-  padding: 0 15%;
-  padding-top: 1.5rem;
-  gap: 1.5rem;
+  padding: 0 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  gap: 3rem;
 `;
 
 export const WrapperNarrow = styled.div`
@@ -25,4 +26,5 @@ export const RowWrapperBtwn = styled.div`
 
 export const RowWrapper = styled.div`
   ${FlexRow}
+  margin-bottom: 1em;
 `;

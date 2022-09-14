@@ -7,18 +7,59 @@ import Img from "../../atoms/Img";
 function DoubleTextWithProfileImg({ src, type, uppertxt, lowertxt }) {
   return (
     <S.Wrapper>
-      <Img size={type === "upperbig" ? "4rem" : "3.5rem"} src={src} />
-      <Space w="lg"></Space>
-      <div>
+      <Img
+        size={
+          type === "upperbig"
+            ? "6rem"
+            : type === "upperMid"
+            ? "4.5rem"
+            : "3.5rem"
+        }
+        src={src}
+      />
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-between",
+        }}
+      >
         <Text
-          color={type === "upperbig" ? "black" : "gray"}
-          size={type === "upperbig" ? "1.3rem" : "1rem"}
+          color={
+            type === "upperbig"
+              ? "black"
+              : type === "upperMid"
+              ? "black"
+              : "gray"
+          }
+          size={
+            type === "upperbig"
+              ? "1.3rem"
+              : type === "upperMid"
+              ? "1.2rem"
+              : "1rem"
+          }
+          style={{ width: "100%", marginBottom: "5%", fontWeight: "bold" }}
         >
           {uppertxt}
         </Text>
         <Text
-          color={type === "upperbig" ? "gray" : "black"}
-          size={type === "upperbig" ? "1rem" : "1.2rem"}
+          color={
+            type === "upperbig"
+              ? "gray"
+              : type === "upperMid"
+              ? "gray"
+              : "black"
+          }
+          size={
+            type === "upperbig"
+              ? "1.1rem"
+              : type === "upperMid"
+              ? "1.0rem"
+              : "1.1rem"
+          }
+          style={{ width: "100%", fontWeight: "bold" }}
         >
           {lowertxt}
         </Text>
