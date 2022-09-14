@@ -25,21 +25,21 @@ const randomColors = [
 function ProgramIntroduction({ content }) {
   return (
     <S.Wrapper>
-      <S.StyledH1>{dummy.programName}</S.StyledH1>
+      <S.StyledH1>{content.title}</S.StyledH1>
       <div>
         <S.StyledH2>{"프로그램 소개"}</S.StyledH2>
-        <S.Parag>{dummy.programDetail}</S.Parag>
+        <S.Parag>{content.introduce}</S.Parag>
       </div>
       <div>
         <S.StyledH2>{"추천 대상"}</S.StyledH2>
         <S.SubWrapper>
-          {dummy.recommends.map((recommend) => (
+          {content.recommendedTargetList.map((list) => (
             <S.Badge
               bgcolor={
                 randomColors[Math.floor(Math.random() * randomColors.length)]
               }
             >
-              {recommend}
+              {list.target}
             </S.Badge>
           ))}
         </S.SubWrapper>

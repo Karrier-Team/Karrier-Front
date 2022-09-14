@@ -30,7 +30,10 @@ function Header() {
           <S.Logo onClick={() => navigate("/")} src={Logo} alt="service logo" />
           <S.StyledLink
             to="/mentoring?college=인문대학&dept=국어국문학과"
-            onMouseEnter={() => setShowDropbox(true)}
+            onClick={(e) => {
+              e.preventDefault();
+              setShowDropbox(true);
+            }}
           >
             <S.Text>멘토링</S.Text>
           </S.StyledLink>

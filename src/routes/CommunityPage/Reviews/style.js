@@ -5,8 +5,9 @@ export const Wrapper = styled.div`
   ${FlexCol}
   box-sizing: border-box;
   width: 100%;
-  padding: 0 10%;
-  padding-top: 1rem;
+  padding: 0 15%;
+  padding-top: 1.5rem;
+  gap: 1.5rem;
 `;
 
 export const RowWrapperBtwn = styled.div`

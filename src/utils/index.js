@@ -67,5 +67,7 @@ export const rand = (start, end) => {
 };
 
 export const parseNthPath = (pathname, nth) => {
-  return pathname.split("/")[nth];
+  const paths = pathname.split("/");
+  if (paths.length <= nth) return null;
+  return paths[nth];
 };

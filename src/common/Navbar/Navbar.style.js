@@ -120,7 +120,7 @@ export const DropdownWrapper = styled.div`
   box-sizing: border-box;
   background-color: ${(props) =>
     props.inCommunityPage ? "var(--bg-color-ll)" : "white"};
-  z-index: 1;
+  z-index: 2;
   ${(props) =>
     props.inCommunityPage || "border-bottom: 1px solid var(--line-color)"};
 

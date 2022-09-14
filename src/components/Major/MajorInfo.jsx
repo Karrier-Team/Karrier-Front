@@ -24,6 +24,7 @@ const StyledCollege = styled.div`
   letter-spacing: -1.3px;
   text-align: left;
   color: #f3f3f3;
+  text-shadow: 2px 4px 2px gray;
 `;
 
 const StyledMajor = styled.div`
@@ -36,6 +37,7 @@ const StyledMajor = styled.div`
   letter-spacing: -1.7px;
   text-align: left;
   color: #f3f3f3;
+  text-shadow: 2px 4px 2px gray;
 `;
 
 const MajorInfo = () => {

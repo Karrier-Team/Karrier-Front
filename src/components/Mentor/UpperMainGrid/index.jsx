@@ -131,31 +131,27 @@ function UpperMainGrid({
         <div
           className="left"
           style={
-            mentorCarrierMenu === "mentor_info" ? activeLeftStyle : basicStyle
+            mentorCarrierMenu === "mentorIntroduce"
+              ? activeLeftStyle
+              : basicStyle
           }
-          value="mentor_info"
+          value="mentorIntroduce"
           onClick={handleOnClick}
         >
           멘토 소개
         </div>
         <div
           className="left"
-          style={
-            mentorCarrierMenu === "club_info" ? activeLeftStyle : basicStyle
-          }
-          value="club_info"
+          style={mentorCarrierMenu === "club" ? activeLeftStyle : basicStyle}
+          value="club"
           onClick={handleOnClick}
         >
           동아리
         </div>
         <div
           className="left"
-          style={
-            mentorCarrierMenu === "competition_info"
-              ? activeLeftStyle
-              : basicStyle
-          }
-          value="competition_info"
+          style={mentorCarrierMenu === "contest" ? activeLeftStyle : basicStyle}
+          value="contest"
           onClick={handleOnClick}
         >
           공모전
@@ -163,31 +159,27 @@ function UpperMainGrid({
         <div
           className="left"
           style={
-            mentorCarrierMenu === "activities_info"
+            mentorCarrierMenu === "externalActivity"
               ? activeLeftStyle
               : basicStyle
           }
-          value="activities_info"
+          value="externalActivity"
           onClick={handleOnClick}
         >
           대외활동
         </div>
         <div
           className="left"
-          style={
-            mentorCarrierMenu === "intern_info" ? activeLeftStyle : basicStyle
-          }
-          value="intern_info"
+          style={mentorCarrierMenu === "intern" ? activeLeftStyle : basicStyle}
+          value="intern"
           onClick={handleOnClick}
         >
           인턴
         </div>
         <div
           className="left"
-          style={
-            mentorCarrierMenu === "blog_info" ? activeLeftStyle : basicStyle
-          }
-          value="blog_info"
+          style={mentorCarrierMenu === "blog" ? activeLeftStyle : basicStyle}
+          value="blog"
           onClick={handleOnClick}
         >
           블로그

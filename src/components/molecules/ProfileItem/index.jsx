@@ -33,6 +33,7 @@ const ProfileItem = ({
   const location = useLocation();
   const { pathname } = location;
   const firstPath = parseNthPath(pathname, 1);
+  const secondPath = parseNthPath(pathname, 2);
 
   const onClickNavigatePath = () => {
     let address;
@@ -41,7 +42,17 @@ const ProfileItem = ({
         address = `/mentoring/${programNo}`;
         break;
       case "community":
-        address = `/community/qna/${programNo}`;
+        switch (secondPath) {
+          case "qna":
+            address = `/community/qna/${programNo}`;
+            break;
+          case "reviews":
+            address = `/community/reviews/${programNo}`;
+            break;
+          default:
+            address = `/community/qna/${programNo}`;
+            break;
+        }
         break;
       default:
         address = `/error`;

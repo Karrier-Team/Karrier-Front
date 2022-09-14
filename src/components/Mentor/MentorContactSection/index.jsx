@@ -15,15 +15,30 @@ function MentorContactSection({ data }) {
         </S.Text>
         <S.SNSImg
           src={IconMiniNaver}
-          onClick={() => window.open(data.naverblog_address, "_blank")}
+          onClick={() =>
+            window.open(
+              data.naverBlogAddress || "https://www.naver.com",
+              "_blank"
+            )
+          }
         />
         <S.SNSImg
           src={IconMiniInstagram}
-          onClick={() => window.open(data.instar_address, "_blank")}
+          onClick={() =>
+            window.open(
+              data.instarAddress || "https://www.instagram.com",
+              "_blank"
+            )
+          }
         />
         <S.SNSImg
           src={IconMiniFacebook}
-          onClick={() => window.open(data.facebook_address, "_blank")}
+          onClick={() =>
+            window.open(
+              data.facebookAddress || "https://www.facebook.com",
+              "_blank"
+            )
+          }
         />
       </S.Wrapper>
     </>

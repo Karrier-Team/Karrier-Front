@@ -118,7 +118,14 @@ export const Title = styled(Text)`
 export const Content = styled(Text)`
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 60%;
   height: 100%;
   padding: 0 1.5em;
+  ${(props) =>
+    props.fit &&
+    css`
+      font-size: 0.9rem;
+      text-align: center;
+    `}
 `;

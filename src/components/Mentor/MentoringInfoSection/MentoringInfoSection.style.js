@@ -94,7 +94,7 @@ export const Box = styled.div`
     props.hover && props.active
       ? css`
           color: white;
-          background-color: var(--primary-color);
+          background-color: var(--primary-color-l);
         `
       : null}
 

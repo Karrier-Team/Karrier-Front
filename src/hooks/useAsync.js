@@ -35,9 +35,12 @@ function useAsync(callback, deps = []) {
   const fetchData = async () => {
     dispatch({ type: "LOADING" });
     try {
+      console.log("a");
       const [data] = await callback();
+      console.log("zasd", data);
       dispatch({ type: "SUCCESS", data });
     } catch (e) {
+      console.log("e", e);
       dispatch({ type: "ERROR", error: e });
     }
   };

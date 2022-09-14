@@ -18,12 +18,13 @@ const Img = styled.img`
   border: none;
   box-shadow: var(--box-shadow);
   border-radius: 100%;
+  object-fit: cover;
 `;
 
 function ProfileImg({ data }) {
   return (
     <Box>
-      <Img src={data.img} alt="img"></Img>
+      <Img src={data} alt="img"></Img>
     </Box>
   );
 }

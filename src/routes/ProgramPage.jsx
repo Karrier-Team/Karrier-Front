@@ -1,6 +1,13 @@
 import React, { useEffect, useState, memo } from "react";
-import { Navigate, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Navigate,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import styled from "styled-components";
+import useAsync from "../hooks/useAsync";
+import Loading from "react-loading";
 
 // components - left-side
 import AdBar from "../common/Adbar";
@@ -13,6 +20,7 @@ import MentoringInfoSection from "../components/Mentor/MentoringInfoSection";
 import UpperMainGrid from "../components/Mentor/UpperMainGrid";
 import LowerMainSection from "../components/Mentor/LowerMainSection";
 import ProgramDetailSection from "../organisms/ProgramDetailSection";
+import { apiGetProgramPageData } from "../apis/mentoring";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -47,92 +55,45 @@ const LowerMainWrapper = styled.div`
   border-left: 1px solid #dadada;
 `;
 
-const fetchedMentorData = {
-  hashtags: "#기본소개 #대학소개 #동아리 #오프라인 #공모전",
-  mentor_info:
-    "안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n안녕하세요 김기혁 멘토입니다.\n",
-  club_info: "동아리 내역",
-  activities_info: "대외활동 내역",
-  competition_info: "수상 내역",
-  intern_info: "인턴 내역",
-  blog_info: "블로그 정보",
-};
-
-const fetchedProgramData = "안녕하세요 프로그램 소개입니다. ";
-
 function ProgramPage() {
-  const [mentorCarrierMenu, setMentorCarrierMenu] = useState("mentor_info");
+  const [mentorCarrierMenu, setMentorCarrierMenu] = useState("mentorIntroduce");
   const [mentorCarrierContent, setMentorCarrierContent] = useState("");
-  const [mentorProgramContent, setMentorProgramContent] = useState("null");
   const [searchParams] = useSearchParams();
 
   const navigate = useNavigate();
+  const { programNo } = useParams();
 
-  //CONNECT:
-  useEffect(() => {
-    // 해당 멘토의 정보를 불러오는 부분 (axios)
-    // 해당 멘토의 정보를 setState해서 state로 저장!
-  }, []);
+  const [state] = useAsync(() => apiGetProgramPageData({ programNo }));
+  const { loading, error, data } = state;
 
   useEffect(() => {
-    setMentorCarrierContent(fetchedMentorData[mentorCarrierMenu]);
-  }, [mentorCarrierMenu]);
-
-  useEffect(() => {
-    // 멘토의 프로그램 소개 / 커리큘렴 / 수강후기 / 질의응답 받아오는부분임 (axios)
-    // GET mentor/123?program=introduction
-    // fetchedProgramData = await fetch() 이런식일듯
-    setMentorProgramContent(fetchedProgramData);
+    if (!data) return;
+    setMentorCarrierContent(data[mentorCarrierMenu]);
     if (!searchParams.get("program"))
       navigate("?program=introduction", { replace: true });
-  }, [searchParams, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, mentorCarrierMenu, searchParams]);
 
-  // 멘토정보
-  const dummyMountData = {
-    name: "아무개",
-    university: "경북대학교",
-    student_id: "18학번",
-    college: "IT대학",
-    department: "컴퓨터학부",
-    major: "글로벌소프트웨어융합전공",
-    naverblog_address: "https://www.naver.com",
-    facebook_address: "https://www.facecbook.com",
-    instar_address: "https://www.google.com",
-  };
-
-  const dummyDetail = {
-    title: "4444",
-    mentorName: "김민수",
-    type: "전공소개",
-    openDate: "2022년 9월 26일(월)",
-    closeDate: "2022년 10월 7일(금)",
-    runningTime: "화, 목 오전 10시 ~12시 / 금 오후 2시 ~ 4시",
-    onlineOffline: true,
-  };
-
-  // 사용자 - 프로그램 정보
-  const dummyUserProgramData = {
-    isParticipating: "true",
-    isFollowing: "true",
-    isInWishlist: "false",
-  };
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   return (
     <>
       <AdBar />
       <Wrapper>
         <LeftsideWrapper>
-          <ProfileImg data={dummyMountData} />
-          <MentorContactSection data={dummyMountData} />
-          <MentorInfoSection data={dummyMountData} />
-          <MentoringInfoSection data={dummyUserProgramData} />
-          <ProgramDetailSection data={dummyDetail}></ProgramDetailSection>
+          <ProfileImg data={data.profileImage} />
+          <MentorContactSection data={data} />
+          <MentorInfoSection data={data} />
+          <MentoringInfoSection data={data} />
+          <ProgramDetailSection data={data} />
         </LeftsideWrapper>
         <MainWrapper>
           <UpperMainWrapper>
             <UpperMainGrid
-              sub_content={fetchedMentorData["hashtags"]}
-              main_content={mentorCarrierContent}
+              sub_content={data.tagList.map((tag) => tag.tagName + " ")}
+              main_content={mentorCarrierContent} // ?
               mentorCarrierMenu={mentorCarrierMenu}
               setMentorCarrierMenu={setMentorCarrierMenu}
             />
@@ -140,7 +101,7 @@ function ProgramPage() {
           <LowerMainWrapper>
             <LowerMainSection
               type={searchParams.get("program")}
-              content={mentorProgramContent}
+              content={data}
             />
           </LowerMainWrapper>
         </MainWrapper>
