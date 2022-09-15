@@ -18,7 +18,7 @@ const colors = css`
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 10vh;
+  height: 7vh;
   display: flex;
   justify-content: space-between;
   align-items: center;

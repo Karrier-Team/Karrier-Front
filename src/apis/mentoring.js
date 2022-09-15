@@ -89,7 +89,7 @@ export const apiGetProgramPageData = async ({ programNo }) => {
     name: "김민수",
     university: "경북대",
     studentId: "22학번",
-    department: "컴퓨터학부",
+    department: "컴퓨터학과",
     major: null,
     profileImage:
       "https://karrier.s3.ap-northeast-2.amazonaws.com/profile-image/84569b2c-7195-44e5-a9b2-1c37d34acafc%ED%94%84%EB%A1%9C%ED%95%84%20%EC%82%AC%EC%A7%84.jpg",

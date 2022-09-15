@@ -10,10 +10,10 @@ export const Label = styled.label`
           ::after {
             content: "*";
             position: relative;
-            top: 0.4em;
+            top: 0.1em;
             left: 0.2em;
             color: red;
-            font-size: 2em;
+            font-size: 1.5rem;
           }
         `
       : null}

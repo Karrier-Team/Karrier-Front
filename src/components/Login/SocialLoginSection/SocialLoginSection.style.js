@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const SocialLoginHeader = styled.legend`
-  font: 1.5em/0 "Averia Serif Libre";
+  /* font: 1.5em/0 "Averia Serif Libre"; */
+  font-size: 1.3rem;
   font-weight: bold;
   margin: 0 auto;
   padding: 0 1em;

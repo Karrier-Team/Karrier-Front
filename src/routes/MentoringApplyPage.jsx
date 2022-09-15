@@ -60,9 +60,9 @@ function MentoringApplyPage() {
       region &&
       schoolName &&
       applicationRoute &&
-      introduce &&
-      questionCategory &&
-      questionContent
+      introduce
+      // questionCategory &&
+      // questionContent
     ) {
       setHasBlankInput(false);
     } else {

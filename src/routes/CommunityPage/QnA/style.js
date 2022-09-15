@@ -6,9 +6,9 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   width: 100%;
   padding: 0 10%;
-  padding-top: 5%;
+  padding-top: 1.5rem;
   padding-bottom: 5%;
-  gap: 3rem;
+  gap: 1.5rem;
 `;
 
 export const WrapperNarrow = styled.div`
