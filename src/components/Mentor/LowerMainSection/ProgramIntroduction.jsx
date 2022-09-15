@@ -26,7 +26,7 @@ function ProgramIntroduction({ content }) {
   return (
     <S.Wrapper>
       <S.StyledH1>{content.title}</S.StyledH1>
-      <div>
+      <div style={{ width: "100%" }}>
         <S.StyledH2>{"프로그램 소개"}</S.StyledH2>
         <S.Parag>{content.introduce}</S.Parag>
       </div>
