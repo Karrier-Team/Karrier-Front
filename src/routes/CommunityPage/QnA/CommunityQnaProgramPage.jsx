@@ -148,7 +148,7 @@ function CommunityQnaProgramPage() {
         {data.length <= 0 ? (
           <Nodata contentType="질문" />
         ) : (
-          data.map((question) => <CommunityPostDiv data={question} />)
+          data.map((question) => <CommunityPostDiv data={question} />).reverse()
         )}
       </S.WrapperNarrow>
     </>
