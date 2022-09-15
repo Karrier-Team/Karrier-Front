@@ -8,8 +8,8 @@ export const apiGetMyMentorPrograms = async () => {
     url: `${config.baseURL}/mentors/manage/program-list`,
     headers: {},
     auth: {
-      username: config.mentorEmail,
-      password: config.password,
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
   };
   try {
@@ -26,8 +26,8 @@ export const apiGetMentorQnaPage = async () => {
     url: `${config.baseURL}/mentors/manage/question`,
     headers: {},
     auth: {
-      username: config.mentorEmail,
-      password: config.password,
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
   };
   try {

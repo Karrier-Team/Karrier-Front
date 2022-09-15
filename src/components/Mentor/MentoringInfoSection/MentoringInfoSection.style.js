@@ -65,7 +65,7 @@ const boxSizeStyles = ({ size }) => {
         width: 30%;
         height: 1.5em;
         margin-top: 1.5em;
-        padding: 1em;
+        /* padding: 1em; */
       `;
     default:
       return css`
@@ -77,7 +77,7 @@ const boxSizeStyles = ({ size }) => {
   }
 };
 
-export const Box = styled.div`
+export const Box = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;

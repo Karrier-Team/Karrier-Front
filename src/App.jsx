@@ -62,8 +62,23 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/mentoring" element={<MentoringPage />} />
-          <Route path="/mentoring/:programNo" element={<ProgramPage />} />
-          <Route path="/community/*" element={<CommunityPage />} />
+
+          {/* Allow User, Mentor, Admin */}
+          <Route
+            element={
+              <Auth
+                allowedRoles={[
+                  ROLES.ADMIN,
+                  ROLES.MENTOR_O,
+                  ROLES.MENTOR_X,
+                  ROLES.USER,
+                ]}
+              />
+            }
+          >
+            <Route path="/mentoring/:programNo" element={<ProgramPage />} />
+            <Route path="/community/*" element={<CommunityPage />} />
+          </Route>
 
           {/* Allow Only Admin */}
           <Route element={<Auth allowedRoles={[ROLES.ADMIN]} />}>

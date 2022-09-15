@@ -34,11 +34,13 @@ function ProgramDetailSection({ data }) {
         </S.Row>
         <S.Row>
           <S.Title>최대수강인원</S.Title>
-          <S.Content>{data.maxPeople || NOTEXIST}</S.Content>
+          <S.Content>
+            {(data.maxPeople && data.maxPeople + "명") || NOTEXIST}
+          </S.Content>
         </S.Row>
         <S.Row className="bt">
           <S.Title>가격</S.Title>
-          <S.Content>{data.price || NOTEXIST}</S.Content>
+          <S.Content>{(data.price && data.price + "원") || NOTEXIST}</S.Content>
         </S.Row>
       </S.SubWrapper>
     </S.Wrapper>

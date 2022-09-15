@@ -22,7 +22,7 @@ const CommunityQnAQuestionModalContent = ({
       <S.ColWrapper>
         <Text color={getColorByType(type)} weight="bold" size="xl">
           {/* useContext를 이용해서 로그인한  유저의 정보를 빼와야함*/}
-          {auth?.nickname + "님" || "닉네임님"}
+          {(auth?.nickname && auth.nickname + "님") || "닉네임"}
         </Text>
         <Space h="xs"></Space>
         {type === "reviews" ? (

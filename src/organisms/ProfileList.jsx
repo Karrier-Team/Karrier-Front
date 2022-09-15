@@ -2,6 +2,7 @@ import ProfileItem from "../components/molecules/ProfileItem";
 import styled from "styled-components";
 import React from "react";
 import Btn from "../components/atoms/Btn";
+import Nodata from "./Nodata";
 
 const StyledProfileList = styled.div`
   width: 100%;
@@ -21,6 +22,7 @@ const ProfileList = ({
   btntxt = "취소",
   onBtnClick,
 }) => {
+  if (mentoData?.length <= 0) return <Nodata />;
   return (
     <StyledProfileList>
       {mentoData.map((item, index) => (

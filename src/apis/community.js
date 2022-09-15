@@ -8,8 +8,8 @@ export const apiGetCommunityQnaProgramPage = async ({ programNo }) => {
     url: `${config.baseURL}/community/question`,
     headers: {},
     auth: {
-      username: "mentee@karrier.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     params: {
       programNo,
@@ -31,8 +31,8 @@ export const apiPostNewQuestion = async ({ programNo, title, content }) => {
     url: `${config.baseURL}/community/question/new`,
     headers: {},
     auth: {
-      username: "mentee@karrier.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: qs.stringify({
       programNo: programNo,
@@ -58,8 +58,8 @@ export const apiGetCommunityQuestionPage = async ({
     url: `${config.baseURL}/community/question/detail`,
     headers: {},
     auth: {
-      username: "mentee@karrier.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     params: {
       programNo,

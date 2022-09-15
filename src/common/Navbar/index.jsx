@@ -55,7 +55,14 @@ function Header() {
                 <Menu.Item component={Link} to="/community/qna">
                   질의응답
                 </Menu.Item>
-                <Menu.Item component={Link} to="/community/reviews">
+                <Menu.Item
+                  component={Link}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    alert("서비스 준비중입니다.");
+                  }}
+                  to="/community/reviews"
+                >
                   수강후기
                 </Menu.Item>
               </Menu.Dropdown>

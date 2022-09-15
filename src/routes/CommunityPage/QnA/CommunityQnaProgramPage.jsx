@@ -12,6 +12,8 @@ import { apiGetCommunityQnaProgramPage } from "../../../apis/community";
 import { apiPostNewQuestion } from "../../../apis/community";
 import { useLocation } from "react-router-dom";
 import { useRef } from "react";
+import Nodata from "../../../organisms/Nodata";
+import useAuth from "../../../hooks/useAuth";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -59,10 +61,16 @@ function CommunityQnaProgramPage() {
   const [isModalOpened, setIsModalOpened] = useState(false);
 
   const navigate = useNavigate();
-
   const { programNo } = useParams();
 
+  const { auth } = useAuth();
+
   const handleApiPostNewQuestion = async () => {
+    if (!auth?.email) {
+      alert("로그인이 필요합니다!");
+      navigate("/login");
+      return;
+    }
     const [result, status] = await apiPostNewQuestion({
       programNo,
       title,
@@ -137,9 +145,11 @@ function CommunityQnaProgramPage() {
         <Text weight={"bold"} color="var(--primary-color)" size="2.5rem">
           {programTitle.current}
         </Text>
-        {data.map((question) => (
-          <CommunityPostDiv data={question} />
-        ))}
+        {data.length <= 0 ? (
+          <Nodata contentType="질문" />
+        ) : (
+          data.map((question) => <CommunityPostDiv data={question} />)
+        )}
       </S.WrapperNarrow>
     </>
   );

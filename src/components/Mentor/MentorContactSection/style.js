@@ -10,7 +10,7 @@ const sizes = {
     fontSize: "28px",
   },
   medium: {
-    fontSize: "22px",
+    fontSize: "20px",
   },
   small: {
     fontSize: "16px",

@@ -122,10 +122,11 @@ export const Content = styled(Text)`
   width: 60%;
   height: 100%;
   padding: 0 1.5em;
+  box-sizing: border-box;
   ${(props) =>
     props.fit &&
     css`
-      font-size: 0.9rem;
+      font-size: 0.8vw;
       text-align: center;
     `}
 `;
