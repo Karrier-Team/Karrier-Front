@@ -30,13 +30,11 @@ const searchTypeOptions = [
 
 const MentoringPage = () => {
   const [sortType, setSortType] = useState("latest"); // sort by recent, likes, name || recent, unsolved, solved
-  const [searchType, setSearchType] = useState("programName");
+  const [searchType, setSearchType] = useState("programName"); // programName || mentorName
   const [searchValue, setSearchValue] = useState("");
   const [searchParams] = useSearchParams();
 
-
   const major = searchParams.get("dept");
-
 
   const [state] = useAsync(() => apiGetMentoringPrograms(major));
   const { loading, error, data } = state;
@@ -61,7 +59,12 @@ const MentoringPage = () => {
           onChangeSearchValue={setSearchValue}
           searchTypeOptions={searchTypeOptions}
         ></ControllBar>
-        <ProfileList mentoData={data} />
+        <ProfileList
+          sortType={sortType}
+          searchType={searchType}
+          searchValue={searchValue}
+          mentoData={data}
+        />
       </div>
     </div>
   );
