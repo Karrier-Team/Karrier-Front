@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MajorInfoBar from "../components/Major/MajorInfoBar";
 import MajorInfo from "../components/Major/MajorInfo";
@@ -33,11 +33,19 @@ const MentoringPage = () => {
   const [searchType, setSearchType] = useState("programName"); // programName || mentorName
   const [searchValue, setSearchValue] = useState("");
   const [searchParams] = useSearchParams();
-
-  const major = searchParams.get("dept");
-
-  const [state] = useAsync(() => apiGetMentoringPrograms(major));
+  const [major, setMajor] = useState(searchParams.get("dept"));
+  const [state, fetchData] = useAsync(
+    () => apiGetMentoringPrograms({ major }),
+    [major]
+  );
   const { loading, error, data } = state;
+
+  useEffect(() => {
+    setMajor(searchParams.get("dept"));
+    fetchData();
+    // Don't know why but it works even if there is no fetchData dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   if (loading) return <Loading />;
   if (error) return <Navigate to="/error" replace></Navigate>;

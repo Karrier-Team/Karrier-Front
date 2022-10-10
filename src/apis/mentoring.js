@@ -36,6 +36,7 @@ export const apiGetMentoringApplySuccess = async ({ programNo }) => {
 };
 
 export const apiGetMentoringPrograms = async ({ major }) => {
+  if (major === "컴퓨터공학과") major = "컴퓨터학부";
   const axiosConfig = {
     method: "get",
     url: `${config.baseURL}/programs/major`,
@@ -45,7 +46,7 @@ export const apiGetMentoringPrograms = async ({ major }) => {
       password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     params: {
-      major: "컴퓨터학부",
+      major,
     },
   };
   const dummy = [

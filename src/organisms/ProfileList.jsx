@@ -1,4 +1,5 @@
 import ProfileItem from "../components/molecules/ProfileItem";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import React from "react";
 import Btn from "../components/atoms/Btn";
@@ -47,33 +48,48 @@ const ProfileList = ({
     }
   };
 
-  if (mentoData?.length <= 0) return <Nodata />;
+  if (mentoData?.length <= 0)
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          textAlign: "center",
+        }}
+      >
+        <Nodata />
+        <Link
+          to="/mentoring?college=IT대학&dept=컴퓨터공학과"
+          style={{ margin: "-5rem" }}
+        >
+          가장 활발한 컴퓨터공학과로 이동하기
+        </Link>
+      </div>
+    );
   return (
     <StyledProfileList>
-      {
-        mentoData
-          .filter(filterFunc)
-          .sort(sortFunc)
-          .map((item, index) => (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                gap: "1rem",
-              }}
-            >
-              <ProfileItem {...item} />
-              {isUnsubscribeActive && (
-                <Btn type="wishlist" handleClick={onBtnClick}>
-                  {btntxt}
-                </Btn>
-              )}
-            </div>
-          ))
-        // .filter(filterFunc)
-      }
+      {mentoData
+        .filter(filterFunc)
+        .sort(sortFunc)
+        .map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "1rem",
+            }}
+          >
+            <ProfileItem {...item} />
+            {isUnsubscribeActive && (
+              <Btn type="wishlist" handleClick={onBtnClick}>
+                {btntxt}
+              </Btn>
+            )}
+          </div>
+        ))}
     </StyledProfileList>
   );
 };
