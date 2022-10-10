@@ -163,17 +163,7 @@ function LandingPage() {
               backgroundPosition: "center",
               backgroundColor: "rgb(85,156,222)",
             }}
-          >
-            {/* <div
-              style={{
-                width: "100%",
-                height: "70%",
-                backgroundImage: `url(${require("../images/landing9.png")})`,
-                backgroundPosition: "50% 10%",
-                backgroundColor: "rgb(85,156,222)",
-              }}
-            ></div> */}
-          </FullpageSection>
+          ></FullpageSection>
           <FullpageSection
             style={{
               ...SectionStyle,
