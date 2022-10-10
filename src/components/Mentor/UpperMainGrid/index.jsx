@@ -108,7 +108,7 @@ function UpperMainGrid({
   };
 
   const activeLeftStyle = {
-    backgroundColor: "var(--primary-color)",
+    backgroundColor: "var(--primary-color-l)",
     fontWeight: "bold",
     color: "white",
     fontSize: "1.1rem",

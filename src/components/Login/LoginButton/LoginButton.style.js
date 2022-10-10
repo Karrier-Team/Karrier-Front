@@ -11,7 +11,7 @@ export const LoginButtonInput = styled.input`
 
   width: 430px;
   height: 55px;
-  margin: 3em;
+  margin: 1.5em;
 
   display: flex;
   justify-content: center;

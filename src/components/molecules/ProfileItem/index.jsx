@@ -78,7 +78,7 @@ const ProfileItem = ({
     >
       {hover ? (
         <S.RowWrapper>
-          <S.Text size="1.3rem">{title}</S.Text>
+          <S.Text size="1.5vw">{title}</S.Text>
           <S.Text>{"❤️ " + likeCount}</S.Text>
         </S.RowWrapper>
       ) : (
@@ -86,8 +86,8 @@ const ProfileItem = ({
       )}
       <S.RowWrapper>
         <Img src={profileImage || DefaultProfileImg} size="3rem"></Img>
-        <S.Text size="1.3rem">{name}</S.Text>
-        <S.Text>{major}</S.Text>
+        <S.Text size="1.3vw">{name}</S.Text>
+        <S.Text size="1vw">{major}</S.Text>
       </S.RowWrapper>
     </S.StyledProfileItem>
   );

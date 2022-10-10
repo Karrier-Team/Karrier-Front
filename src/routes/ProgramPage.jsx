@@ -34,7 +34,7 @@ const LeftsideWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 20vw;
-  height: 120vh;
+  height: 130vh;
 `;
 
 const MainWrapper = styled.div`

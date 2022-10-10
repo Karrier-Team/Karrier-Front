@@ -4,7 +4,13 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(
-    JSON.parse(localStorage.getItem("auth")) || {}
+    JSON.parse(localStorage.getItem("auth")) || {
+      email: "",
+      img: "",
+      nickname: "",
+      password: "",
+      role: "",
+    }
   );
 
   useEffect(() => {

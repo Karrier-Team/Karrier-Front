@@ -62,6 +62,9 @@ export const Parag = styled.pre`
   font-size: 1rem;
   color: var(--text-color-l);
   line-height: 1.5rem;
+  width: 100%;
+  /* word-break: break-all; */
+  white-space: pre-wrap;
 `;
 
 export const Badge = styled.div`

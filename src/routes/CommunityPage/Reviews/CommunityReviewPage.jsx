@@ -114,7 +114,12 @@ const CommunityReviewPage = () => {
             </S.RowWrapperBtwn>
           </>
         ) : (
-          <Text size="1.5rem" color="gray" style={{ padding: "7rem" }}>
+          <Text
+            size="1.3rem"
+            weight="bold"
+            color="gray"
+            style={{ padding: "7rem" }}
+          >
             아직 멘토의 답변이 없습니다.
           </Text>
         )}

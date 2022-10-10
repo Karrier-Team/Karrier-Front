@@ -9,7 +9,7 @@ function MentorContactSection({ data }) {
   return (
     <>
       <S.Wrapper>
-        <S.Text size="large">
+        <S.Text size="medium">
           {data.name + " "}
           <S.Text size="small">멘토</S.Text>
         </S.Text>

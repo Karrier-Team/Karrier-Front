@@ -163,8 +163,8 @@ export const apiGetMypageFollowingPage = async () => {
     url: `${config.baseURL}/my-page/manage/following-list`,
     headers: {},
     auth: {
-      username: "mentee@karrier.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
   };
   try {

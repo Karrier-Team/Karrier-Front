@@ -16,6 +16,7 @@ export const apiPostLoginUser = async ({ email, password }) => {
     const response = await axios(axiosConfig);
     return [response.data.body, response.status];
   } catch (error) {
+    console.log(error);
     const errorResponse = error.response.data;
     return [errorResponse.message, errorResponse.status];
   }

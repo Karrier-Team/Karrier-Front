@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const LoginInput = styled.input`
   width: 430px;
-  height: 55px;
+  height: 3rem;
 
   border: 2px solid #a9a9a9;
   border-radius: 10px;
