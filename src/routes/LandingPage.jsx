@@ -37,16 +37,17 @@ function LandingPage() {
             <div
               style={{
                 position: "absolute",
-                top: "63%",
-                left: "23%",
+                top: "65%",
+                left: "24%",
                 transform: "translate(-50%, -50%)",
               }}
             >
               <Btn
-                size={"13em"}
-                height={"2.8em"}
+                size={"12em"}
+                height={"2.6em"}
+                fontSize={"1.2em"}
+                borderRadius={"12px"}
                 children={"멘토모집"}
-                borderRadius={"20px"}
                 backgroundColor={"rgb(27,76,117)"}
                 handleClick={() => navigate("/apply")}
               />
@@ -54,16 +55,17 @@ function LandingPage() {
             <div
               style={{
                 position: "absolute",
-                top: "63%",
+                top: "65%",
                 left: "40%",
                 transform: "translate(-50%, -50%)",
               }}
             >
               <Btn
-                size={"13em"}
-                height={"2.8em"}
+                size={"12em"}
+                height={"2.6em"}
+                fontSize={"1.2em"}
+                borderRadius={"12px"}
                 children={"로그인 "}
-                borderRadius={"20px"}
                 backgroundColor={"var(--bg-color-lll)"}
                 color={"rgb(27,76,117)"}
                 handleClick={() => navigate("/login")}
@@ -97,13 +99,13 @@ function LandingPage() {
               }}
             >
               <Btn
-                size={"18em"}
-                height={"2.8em"}
+                size={"14em"}
+                height={"2.6em"}
+                fontSize={"1.2em"}
                 children={"학과별 페이지 보기 >"}
-                borderRadius={"10px"}
-                backgroundColor={"var(--bg-color-lll)"}
+                borderRadius={"12px"}
+                backgroundColor={"var(--bg-color-l)"}
                 color={"black"}
-                fontSize={"1.3em"}
                 handleClick={() => navigate("/mentoring")}
               />
             </div>
@@ -116,7 +118,34 @@ function LandingPage() {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
-          ></FullpageSection>
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "60%",
+                left: "59%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <Btn
+                size={"13em"}
+                height={"2.8em"}
+                children={
+                  <span>
+                    <span style={{ color: "var(--reviews-color)" }}>
+                      수강후기
+                    </span>
+                    &nbsp;페이지 보기 >
+                  </span>
+                }
+                borderRadius={"10px"}
+                backgroundColor={"var(--bg-color-l)"}
+                color={"black"}
+                fontSize={"1.2em"}
+                handleClick={() => navigate("/community/reviews")}
+              />
+            </div>
+          </FullpageSection>
           <FullpageSection
             style={{
               ...SectionStyle,
@@ -125,7 +154,34 @@ function LandingPage() {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
             }}
-          ></FullpageSection>
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "60%",
+                left: "29%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <Btn
+                size={"13em"}
+                height={"2.8em"}
+                children={
+                  <span>
+                    <span style={{ color: "var(--primary-color)" }}>
+                      질의응답
+                    </span>
+                    &nbsp;페이지 보기 >
+                  </span>
+                }
+                borderRadius={"10px"}
+                backgroundColor={"var(--bg-color-l)"}
+                color={"black"}
+                fontSize={"1.2em"}
+                handleClick={() => navigate("/community/reviews")}
+              />
+            </div>
+          </FullpageSection>
           <FullpageSection
             style={{
               ...SectionStyle,
@@ -164,15 +220,43 @@ function LandingPage() {
               backgroundColor: "rgb(85,156,222)",
             }}
           >
-            {/* <div
+            <div
               style={{
-                width: "100%",
-                height: "70%",
-                backgroundImage: `url(${require("../images/landing9.png")})`,
-                backgroundPosition: "50% 10%",
-                backgroundColor: "rgb(85,156,222)",
+                position: "absolute",
+                top: "65%",
+                left: "41%",
+                transform: "translate(-50%, -50%)",
               }}
-            ></div> */}
+            >
+              <Btn
+                size={"12em"}
+                height={"2.6em"}
+                fontSize={"1.2em"}
+                children={"멘토모집"}
+                borderRadius={"15px"}
+                backgroundColor={"rgb(27,76,117)"}
+                handleClick={() => navigate("/apply")}
+              />
+            </div>
+            <div
+              style={{
+                position: "absolute",
+                top: "65%",
+                left: "59%",
+                transform: "translate(-50%, -50%)",
+              }}
+            >
+              <Btn
+                size={"12em"}
+                height={"2.6em"}
+                fontSize={"1.2em"}
+                children={"로그인 "}
+                borderRadius={"15px"}
+                backgroundColor={"var(--bg-color-l)"}
+                color={"rgb(27,76,117)"}
+                handleClick={() => navigate("/login")}
+              />
+            </div>
           </FullpageSection>
           <FullpageSection
             style={{
