@@ -45,6 +45,8 @@ const Auth = ({ allowedRoles }) => {
     <Navigate to="/login" state={{ from: location }} replace />
   );
 };
+
+
 function App() {
   return (
     <>
