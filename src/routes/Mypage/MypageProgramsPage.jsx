@@ -1,51 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProfileList from "../../organisms/ProfileList.jsx";
 import CommunityNavbar from "../../organisms/CommunityNavbar/index.jsx";
 import ControllBar from "../../organisms/ControllBar/index.jsx";
 import * as S from "./style.js";
-
-const dummyData = [
-  {
-    college: "IT대학",
-    major: "컴퓨터학부",
-    name: "이승열",
-    comment:
-      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "컴퓨터통신공학부",
-    name: "홍희림",
-    comment:
-      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "글로벌SW융합전공",
-    name: "이승열",
-    comment:
-      "안녕하세요 현제 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "컴퓨터학부",
-    name: "이승열",
-    comment:
-      "안녕하세요 현재 네이버 재직 중인 이승열이라고 합니다 취업, 학업 다 물어보셔도 좋습니다!",
-  },
-  {
-    college: "IT대학",
-    major: "컴퓨터통신공학부",
-    name: "홍희림",
-    comment: "동해물과 백두산이 마르고 닳도록",
-  },
-  {
-    college: "IT대학",
-    major: "글로벌SW융합전공",
-    name: "서영균",
-    comment: "DB warrier가 되어봅시다 ",
-  },
-];
+import { apiGetMypageEnrolledPrograms } from "../../apis/mypage.js";
+import useAsync from "../../hooks/useAsync.js";
+import { Navigate } from "react-router-dom";
+import Loading from "react-loading";
 
 const sortTypeOptions = [
   { value: "all", name: "전체" },
@@ -56,6 +17,17 @@ const sortTypeOptions = [
 function MypageProgramsPage() {
   const [sortType, setSortType] = useState("all"); // sort by recent, likes, name || recent, unsolved, solved
 
+  const [state, fetchData] = useAsync(apiGetMypageEnrolledPrograms);
+  const { loading, error, data } = state;
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
+
   return (
     <>
       <CommunityNavbar type="programs">마이페이지 수강목록</CommunityNavbar>
@@ -63,12 +35,12 @@ function MypageProgramsPage() {
         <ControllBar
           type="programs"
           lefttxt="수강목록"
-          leftnum={dummyData?.length || 0}
+          leftnum={data?.length || 0}
           sortType={sortType}
           sortTypeOptions={sortTypeOptions}
           onChangeSortType={setSortType}
         ></ControllBar>
-        <ProfileList mentoData={dummyData} />
+        <ProfileList mentoData={data} />
       </S.Wrapper>
     </>
   );

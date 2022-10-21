@@ -82,7 +82,7 @@ function Header() {
           </S.StyledLink>
         </S.LeftSection>
         <S.RightSection>
-          <S.Searchbar placeholder="지금 검색하세요"></S.Searchbar>
+          {/* <S.Searchbar placeholder="지금 검색하세요"></S.Searchbar> */}
           {[ROLES.USER, ROLES.MENTOR_X].includes(auth.role) ? (
             <UserNavbar auth={auth} setAuth={setAuth} />
           ) : [ROLES.ADMIN, ROLES.MENTOR_O].includes(auth.role) ? (

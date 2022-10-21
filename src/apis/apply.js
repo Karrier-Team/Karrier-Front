@@ -86,8 +86,8 @@ export const postMentorApplyInfo = async (data) => {
     url: `${config.baseURL}/mentors/new`,
     withCredentials: true,
     auth: {
-      username: "test5@test.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: formData,
   };

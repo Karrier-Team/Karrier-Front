@@ -60,9 +60,9 @@ const UserNavbar = ({ auth, setAuth }) => {
           <Menu.Divider />
 
           <Menu.Label>내정보</Menu.Label>
-          <Menu.Item component={Link} to="/mypage/profile">
+          {/* <Menu.Item component={Link} to="/mypage/profile">
             프로필
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item component={Link} to="/" onClick={handleLogout}>
             로그아웃
           </Menu.Item>

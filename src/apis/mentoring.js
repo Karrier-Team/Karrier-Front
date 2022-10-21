@@ -49,19 +49,6 @@ export const apiGetMentoringPrograms = async ({ major }) => {
       major,
     },
   };
-  const dummy = [
-    {
-      programNo: 9,
-      name: "김철",
-      title: "1111",
-      profileImage: "c5b8a81e-c261-440c-8894-0016e12aa0f5프로필 사진.PNG",
-      mainImage: "545efb6b-8a7c-4cc2-a391-317c8a9da530photo.jpg",
-      major: "글로벌소프트웨어전공",
-      likeCount: 0,
-      onlineOffline: true,
-      state: "Recruiting",
-    },
-  ];
   try {
     const response = await axios(axiosConfig);
     return [response.data.body, response.status];

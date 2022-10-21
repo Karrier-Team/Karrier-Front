@@ -8,8 +8,8 @@ export const apiPostSolveQuestion = async ({ programNo, questionNo }) => {
     url: `${config.baseURL}/my-page/manage/question/solve`,
     headers: {},
     auth: {
-      username: "mentee@karrier.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: qs.stringify({
       programNo: programNo,
@@ -35,8 +35,8 @@ export const apiUpdateCurQuestion = async ({
     url: `${config.baseURL}/community/question`,
     headers: {},
     auth: {
-      username: "test2@test.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: qs.stringify({
       title: title,
@@ -59,8 +59,8 @@ export const apiPostNewQuestion = async ({ curProgramNo, title, content }) => {
     url: `${config.baseURL}/community/question/new`,
     headers: {},
     auth: {
-      username: "test2@test.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: qs.stringify({
       programNo: curProgramNo,
@@ -88,8 +88,8 @@ export const apiPostNewReview = async ({
     url: `${config.baseURL}/community/review/new`,
     headers: {},
     auth: {
-      username: "test2@test.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: qs.stringify({
       programNo: curProgramNo,
@@ -119,8 +119,8 @@ export const apiUpdateCurReview = async ({
     url: `${config.baseURL}/community/review`,
     headers: {},
     auth: {
-      username: "test2@test.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
     data: qs.stringify({
       programNo,
@@ -144,8 +144,8 @@ export const apiGetMypageQnaPage = async () => {
     url: `${config.baseURL}/my-page/manage/question`,
     headers: {},
     auth: {
-      username: "mentee@karrier.com",
-      password: "qwer1234!",
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
     },
   };
   try {
@@ -160,11 +160,33 @@ export const apiGetMypageQnaPage = async () => {
 export const apiGetMypageFollowingPage = async () => {
   const axiosConfig = {
     method: "get",
-    url: `${config.baseURL}/my-page/manage/following-list`,
+    url: `${config.baseURL}/my-page/manage/followings`,
     headers: {},
     auth: {
       username: JSON.parse(localStorage.getItem("auth"))?.email,
       password: JSON.parse(localStorage.getItem("auth"))?.password,
+    },
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
+  }
+};
+
+export const apiGetMypageEnrolledPrograms = async () => {
+  const axiosConfig = {
+    method: "get",
+    url: `${config.baseURL}/programs/major`,
+    headers: {},
+    auth: {
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
+    },
+    params: {
+      major: "컴퓨터학부",
     },
   };
   try {
