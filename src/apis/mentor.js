@@ -5,7 +5,7 @@ import config from "../configs";
 export const apiGetMyMentorPrograms = async () => {
   const axiosConfig = {
     method: "get",
-    url: `${config.baseURL}/mentors/manage/program-list`,
+    url: `${config.baseURL}/mentors/manage/programs`,
     headers: {},
     auth: {
       username: JSON.parse(localStorage.getItem("auth"))?.email,

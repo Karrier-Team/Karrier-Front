@@ -45,7 +45,7 @@ const MentoringPage = () => {
     fetchData();
     // Don't know why but it works even if there is no fetchData dependency
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams]);
+  }, [searchParams.get("dept")]);
 
   if (loading) return <Loading />;
   if (error) return <Navigate to="/error" replace></Navigate>;
