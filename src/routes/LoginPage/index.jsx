@@ -63,7 +63,7 @@ export function LoginPage() {
   return (
     <>
       <S.Wrapper>
-        <SocialLoginSection>간편 로그인</SocialLoginSection>
+        {/* <SocialLoginSection>간편 로그인</SocialLoginSection> */}
         <LoginInput
           value={emailValue}
           handleChange={setEmailValue}
