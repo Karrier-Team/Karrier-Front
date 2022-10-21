@@ -138,6 +138,25 @@ export const apiUpdateCurReview = async ({
   }
 };
 
+export const apiGetMypageReviewPage = async () => {
+  const axiosConfig = {
+    method: "get",
+    url: `${config.baseURL}/my-page/manage/review`,
+    headers: {},
+    auth: {
+      username: JSON.parse(localStorage.getItem("auth"))?.email,
+      password: JSON.parse(localStorage.getItem("auth"))?.password,
+    },
+  };
+  try {
+    const response = await axios(axiosConfig);
+    return [response.data.body, response.status];
+  } catch (error) {
+    const errorResponse = error.response.data;
+    return [errorResponse.message, errorResponse.status];
+  }
+};
+
 export const apiGetMypageQnaPage = async () => {
   const axiosConfig = {
     method: "get",

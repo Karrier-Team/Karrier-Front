@@ -8,13 +8,15 @@ import { Text, Modal } from "@mantine/core";
 import MypageReviewsPostDiv from "../../organisms/MypageReviewsPostDiv";
 import CommunityQnAQuestionModalContent from "../../organisms/CommunityQnAQuestionModalContent/index.jsx";
 
-import { apiPostNewReview } from "../../apis/mypage.js";
-import { useNavigate } from "react-router-dom";
+import { apiGetMypageReviewPage, apiPostNewReview } from "../../apis/mypage.js";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import {
   makeProgramList,
   getRatingByOneDecimalPoint,
 } from "../../utils/mypage.js";
+import Loading from "react-loading";
+import useAsync from "../../hooks/useAsync.js";
 
 const sortTypeOptions = [
   { value: "latest", name: "최신순" },
@@ -26,126 +28,6 @@ const searchTypeOptions = [
   { value: "content", name: "질문내용" },
   { value: "title", name: "질문제목" },
   { value: "nickname", name: "닉네임" },
-];
-
-const dummyData = [
-  {
-    programNo: 1,
-    programName: "컴공 맛보기",
-    averageStar: 4.42857,
-    reviewStar: 3.0,
-    reviewNo: 1,
-    nickname: "행복한바지",
-    title: "별점체크(3.0)",
-    content: "수강후기 내용 ㅎㅎㅎ 1번 프로그램 너무 좋은듯",
-    comment: true,
-    registerDate: "2022-08-19T18:00:23.460696",
-    reviewLikeNo: 1,
-  },
-  {
-    programNo: 1,
-    programName: "컴공 맛보기",
-    averageStar: 4.42857,
-    reviewStar: 3.5,
-    reviewNo: 3,
-    nickname: "행복한바지",
-    title: "별점체크(3.5)",
-    content: "수강후기 내용 ㅎㅎㅎ 1번 프로그램 너무 좋은듯",
-    comment: false,
-    registerDate: "2022-08-20T15:14:52.563823",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 1,
-    programName: "컴공 맛보기",
-    averageStar: 4.42857,
-    reviewStar: 0.5,
-    reviewNo: 4,
-    nickname: "행복한바지",
-    title: "별점체크(0.5)",
-    content: "수강후기 내용 ㅎㅎㅎ 1번 프로그램 너무 좋은듯",
-    comment: false,
-    registerDate: "2022-08-20T15:14:57.326689",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 1,
-    programName: "컴공 맛보기",
-    averageStar: 4.42857,
-    reviewStar: 4.5,
-    reviewNo: 5,
-    nickname: "행복한바지",
-    title: "수강후기 제목",
-    content: "수강후기 내용 ",
-    comment: false,
-    registerDate: "2022-08-21T17:33:27.814259",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 1,
-    programName: "컴공 맛보기",
-    averageStar: 4.42857,
-    reviewStar: 4.5,
-    reviewNo: 6,
-    nickname: "행복한바지",
-    title: "수강후기 제목",
-    content: "수강후기 내용 ",
-    comment: false,
-    registerDate: "2022-08-21T17:35:29.620842",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 1,
-    programName: "컴공 맛보기",
-    averageStar: 4.42857,
-    reviewStar: 4,
-    reviewNo: 7,
-    nickname: "행복한바지",
-    title: "수강후기 제목",
-    content: "수강후기 내용 ",
-    comment: false,
-    registerDate: "2022-08-21T17:35:36.510593",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 4,
-    programName: "라라",
-    averageStar: 2,
-    reviewStar: 4,
-    reviewNo: 1,
-    nickname: "행복한바지",
-    title: "수강후기 제목",
-    content: "수강후기 내용 ",
-    comment: true,
-    registerDate: "2022-08-24T21:27:32.247857",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 4,
-    programName: "라라",
-    averageStar: 2,
-    reviewStar: 5,
-    reviewNo: 2,
-    nickname: "행복한바지",
-    title: "수강후기 제목",
-    content: "수강후기 내용 ",
-    comment: false,
-    registerDate: "2022-08-24T21:27:37.999857",
-    reviewLikeNo: 0,
-  },
-  {
-    programNo: 4,
-    programName: "라라",
-    averageStar: 2,
-    reviewStar: 3.5,
-    reviewNo: 3,
-    nickname: "행복한바지",
-    title: "수강후기 제목",
-    content: "수강후기 내용 ",
-    comment: true,
-    registerDate: "2022-08-24T21:27:42.096914",
-    reviewLikeNo: 0,
-  },
 ];
 
 function MypageReviewsPage() {
@@ -160,6 +42,13 @@ function MypageReviewsPage() {
   const [star, setStar] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
+  const [state] = useAsync(apiGetMypageReviewPage);
+  const { loading, error, data } = state;
+
+  if (loading) return <Loading />;
+  if (error) return <Navigate to="/error" replace></Navigate>;
+  if (!data) return <h1>데이터에러</h1>;
 
   const handleApiPostNewReview = async () => {
     const [result, status] = await apiPostNewReview({
@@ -213,17 +102,17 @@ function MypageReviewsPage() {
             width="30rem"
             name="프로그램"
             handleChange={setCurProgramNo}
-            options={makeProgramList(dummyData)}
+            options={makeProgramList(data)}
           ></Selector>
           <span>
             <S.StyledText bold="bold">평균평점 ⭐️ </S.StyledText>
             <S.StyledText bold="bold" color="var(--reviews-color)">
-              {getRatingByOneDecimalPoint(dummyData[0].averageStar)}
+              {getRatingByOneDecimalPoint(data[0].averageStar)}
             </S.StyledText>
           </span>
         </S.WrapperSpaceBtwn>
 
-        {dummyData
+        {data
           .filter((review) => {
             if (!curProgramNo) return true;
             else return review.programNo === curProgramNo;

@@ -8,7 +8,7 @@ function Selector({ type, name, width, handleChange, options }) {
       type={type}
       width={width}
       onChange={(e) => {
-        handleChange(e.target.value);
+        handleChange(e.target.id);
         setSelected(true);
       }}
       selected={selected}
@@ -17,7 +17,7 @@ function Selector({ type, name, width, handleChange, options }) {
         {name + "을 입력해주세요."}
       </option>
       {options.map((option) => (
-        <option key={option.id} value={option.id}>
+        <option id={option.id} key={option.id} value={option.id}>
           {option.name}
         </option>
       ))}
