@@ -49,6 +49,9 @@ export const apiGetMentoringPrograms = async ({ major }) => {
       major,
     },
   };
+
+  if (!JSON.parse(localStorage.getItem("auth"))?.email) delete axiosConfig.auth;
+
   try {
     const response = await axios(axiosConfig);
     return [response.data.body, response.status];
