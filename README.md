@@ -49,27 +49,14 @@ macOS 12.3.1
 
 ## 개발 환경
 ### Spec
-- Java 11
-- Spring Boot (v2.7.1)
-- Spring Data JPA
-- IntelliJ IDEA CE
-- MariaDB (v3.0.6)
+- React: ^18.2.0
+- React-Dom: ^18.2.0
+- React-Router-Dom: ^6.3.0
+- Axios: ^0.27.2
+- Styled-Components: ^5.3.5
 
 
-### Spring Initializr - Selected Dependencies
 
-#### Developer Tools
-- Spring Boot DevTools
-- Lombok
-
-#### Web
-- Spring Web
-
-#### Security
-- Spring Security
-
-#### SQL
-- Spring Data JPA
 
 
 ## 주요 기능
