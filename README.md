@@ -16,8 +16,8 @@
 ## 설치 및 실행
 
 ### 설치
-``` bash
-https://github.com/Karrier-Team/Karrier-Front.git
+```
+git clone https://github.com/Karrier-Team/Karrier-Front.git
 ```
 
 
