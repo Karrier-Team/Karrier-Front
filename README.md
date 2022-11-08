@@ -22,11 +22,10 @@ git clone https://github.com/Karrier-Team/Karrier-Front.git
 
 
 ### 실행
-```
+```python
 1. ide를 통해 해당 repository open
-2. 개별적으로 social login 키값을 작성한 oauth properties 파일 생성 
-3. application 실행
-(추후, Docker를 기반으로, 통합적인 실행이 가능하도록 구성할 예정)
+2. yarn #install required packages
+3. yarn start #run prod mode
 ```
 
 
