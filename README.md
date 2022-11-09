@@ -74,12 +74,13 @@ macOS 12.3.1
 </div>
 
 
-### 3. 커뮤니티 - 질의응답, 수강후기
+### 3. 커뮤니티 - 질의응답
 <div style="float:left;margin:0 10px 10px 0" markdown="1">
 <img src = "https://github.com/Karrier-Team/Karrier-Front/blob/main/src/images/CommunityQuestion1.png" width="40%" height="40%">
-<img src = "https://github.com/Karrier-Team/Karrier-Front/blob/main/src/images/CommunityReview1-1.png" width="33%" height="33%">
+<img src = "https://github.com/Karrier-Team/Karrier-Front/blob/main/src/images/CommunityQuestion1-1.png" width="40%" height="40%">
 </div>
 
+### 3. 커뮤니티 - 수강후기
 <div style="float:left;margin:0 10px 10px 0" markdown="1">
 <img src = "https://github.com/Karrier-Team/Karrier-Front/blob/main/src/images/CommunityReview1.png" width="40%" height="40%">
 <img src = "https://github.com/Karrier-Team/Karrier-Front/blob/main/src/images/CommunityReview1-1.png" width="33%" height="33%">
